@@ -26,7 +26,8 @@
   .listing-image-frame
     #listing-image-link.listing-image-frame-content
       .listing-image-vertical-centering{:class => "${aspectRatioClass}" }
-        %img{:src => "${url}", :alt => @listing.title, :class => "listing-image ${aspectRatioClass}"}
+        %a{"data-fancybox" => "gallery", :href => "${urlFull}"}
+          %img{:src => "${url}", :alt => @listing.title, :class => "listing-image ${aspectRatioClass}"}
 
 %script{type: "text/template", class: "template", id: "image-thumbnail-template"}
   .listing-image-thumbnail-container

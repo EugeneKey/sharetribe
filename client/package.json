@@ -19,7 +19,7 @@
     "build:test": "npm run ensure-node-version && npm run build:client && npm run build:server",
     "print-phantomjs-version": "npm run ensure-node-version && phantomjs --version",
     "start-phantomjs": "npm run ensure-node-version && phantomjs --webdriver=8910",
-    "styleguide": "npm run ensure-node-version && start-storybook -p 9001",
+    "styleguide": "npm run ensure-node-version && start-storybook -p 3001",
     "deploy-storybook": "npm run ensure-node-version && storybook-to-ghpages",
     "test:stories": "npm run ensure-node-version && mocha './app/components/**/*.story.js' --reporter mocha-circleci-reporter --require babel-register --require ignore-styles --require ./mochaConfig.js",
     "test:specs": "npm run ensure-node-version && mocha './app/specs/*.spec.js' --reporter mocha-circleci-reporter --require babel-register --require ignore-styles --require ./mochaConfig.js",

@@ -67,14 +67,14 @@
   @extend .listing-image-navi-clickarea;
   right: 0;
   text-align: right;
-  width: 75%;
+  width: 30px;
 }
 
 .listing-image-navi-left {
   @extend .listing-image-navi-clickarea;
   left: 0;
   text-align: left;
-  width: 25%;
+  width: 30px;
 }
 
 .listing-no-image {

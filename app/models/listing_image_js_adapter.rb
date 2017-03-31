@@ -8,7 +8,8 @@ class ListingImageJSAdapter < JSAdapter
     @errored = listing_image.error.present?
     @images = {
       thumb: listing_image.image.url(:thumb),
-      big: listing_image.image.url(:big)
+      big: listing_image.image.url(:big),
+      original: listing_image.image.url(:original)
     }
     @urls = {
       remove: listing_image_path(listing_image.id),

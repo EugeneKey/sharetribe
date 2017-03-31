@@ -9,7 +9,7 @@ ST.imageCarousel = function(images) {
 
   // Initialize thumbnail elements
   var elements = _.map(images, function(image) {
-    return $(tmpl({url: image.images.big, aspectRatioClass: image.aspectRatio }));
+    return $(tmpl({url: image.images.big, urlFull: image.images.original, aspectRatioClass: image.aspectRatio }));
   });
 
   _.each(elements, function(el) {

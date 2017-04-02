@@ -73,6 +73,7 @@
 - search
 - sessions
 - settings
+- sidekiq
 - signup
 - sitemap
 - sms

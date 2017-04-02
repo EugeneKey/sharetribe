@@ -139,6 +139,7 @@ GEM
       sass (~> 3.2.0.alpha.93)
     compass-rails (2.0.0)
       compass (>= 0.12.2)
+    concurrent-ruby (1.0.5)
     connection_pool (2.2.1)
     countries (1.2.5)
       currencies (~> 0.4.2)
@@ -353,6 +354,7 @@ GEM
       byebug (~> 9.0)
       pry (~> 0.10)
     public_suffix (1.5.3)
+    puma (3.8.2)
     pusher-client (0.6.2)
       json
       websocket (~> 1.0)
@@ -362,6 +364,8 @@ GEM
     rack-contrib (1.4.0)
       git-version-bump (~> 0.15)
       rack (~> 1.4)
+    rack-protection (1.5.3)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.7.1)
@@ -466,6 +470,11 @@ GEM
       rubyzip (~> 1.0)
       websocket (~> 1.0)
     shellany (0.0.1)
+    sidekiq (4.2.10)
+      concurrent-ruby (~> 1.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      rack-protection (>= 1.5.0)
+      redis (~> 3.2, >= 3.2.1)
     sitemap_generator (5.1.0)
       builder
     slop (3.6.0)
@@ -591,6 +600,7 @@ DEPENDENCIES
   protected_attributes (~> 1.1.3)
   pry-byebug
   public_suffix (~> 1.5.1)
+  puma
   quiet_assets (~> 1.1.0)
   rack-test (~> 0.6.2)
   rails (= 4.2.7.1)
@@ -608,6 +618,7 @@ DEPENDENCIES
   sass (~> 3.2.9)
   sass-rails (~> 4.0.0)
   selenium-webdriver (~> 2.45)
+  sidekiq
   sitemap_generator (~> 5.1.0)
   statesman (~> 1.3.1)
   stringex (~> 2.5.2)

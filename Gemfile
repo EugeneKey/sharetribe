@@ -24,6 +24,7 @@ gem 'jquery-rails', '3.1.3'
 
 # gem 'heroku' install the Heroku toolbelt (https://toolbelt.heroku.com/) instead (as gem had some problems)
 gem "passenger", "~> 5.0.30"
+gem "puma"
 
 gem "mysql2", "~> 0.4.4"
 gem 'haml', "~> 4.0.5"
@@ -52,6 +53,7 @@ gem 'possibly', '~> 1.0.1'
 
 gem 'delayed_job', "~> 4.1.1"
 gem 'delayed_job_active_record', "~> 4.1.0"
+gem 'sidekiq'
 
 gem 'web_translate_it', "~>2.1.8"
 gem 'rails-i18n', '~> 4.0.8'

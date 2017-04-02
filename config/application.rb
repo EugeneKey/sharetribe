@@ -235,7 +235,7 @@ module Kassi
     config.active_record.raise_in_transactional_callbacks = true
     # TODO Remove this when upgrading to RAILS 5 END
 
-    config.active_job.queue_adapter = :delayed_job
+    config.active_job.queue_adapter = :sidekiq
 
     # TODO remove deprecation warnings when removing legacy analytics
     ActiveSupport::Deprecation.warn("Support for Kissmetrics is deprecated, please use Google Tag Manager instead") if APP_CONFIG.use_kissmetrics.to_s == "true"

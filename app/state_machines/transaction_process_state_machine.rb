@@ -26,19 +26,18 @@ class TransactionProcessStateMachine
 
     if transaction.booking.present?
       automatic_booking_confirmation_at = transaction.booking.end_on + 2.day
-      ConfirmConversation.new(transaction, payer, current_community).activate_automatic_booking_confirmation_at!(automatic_booking_confirmation_at)
+      ConfirmConversation.new(transaction, payer, current_community).activate_automatic_booking_confirmation_at!(automatic_booking_confirmation_at.to_time)
     else
       ConfirmConversation.new(transaction, payer, current_community).activate_automatic_confirmation!
     end
-
-    Delayed::Job.enqueue(SendPaymentReceipts.new(transaction.id))
+    SendPaymentReceipts.perform_later(transaction.id)
   end
 
   after_transition(to: :rejected) do |transaction|
     rejecter = transaction.listing.author
     current_community = transaction.community
 
-    Delayed::Job.enqueue(TransactionStatusChangedJob.new(transaction.id, rejecter.id, current_community.id))
+    TransactionStatusChangedJob.perform_later(transaction.id, rejecter, current_community)
   end
 
   after_transition(to: :confirmed) do |conversation|

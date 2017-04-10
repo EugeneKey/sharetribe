@@ -1,5 +1,5 @@
 module EmailService::Jobs
-  class BatchSync
+  class BatchSync < ActiveJob::Base
 
     Synchronize = EmailService::SES::Synchronize
 

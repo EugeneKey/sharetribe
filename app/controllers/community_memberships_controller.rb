@@ -68,9 +68,8 @@ class CommunityMembershipsController < ApplicationController
       session[:fb_join] = nil
       session[:invitation_code] = nil
 
-      Delayed::Job.enqueue(CommunityJoinedJob.new(@current_user.id, @current_community.id))
-      Delayed::Job.enqueue(SendWelcomeEmail.new(@current_user.id, @current_community.id), priority: 5)
-
+      CommunityJoinedJob.perform_later(@current_user, @current_community)
+      SendWelcomeEmail.perform_later(@current_user, @current_community)
       Analytics.record_event(flash, "GaveConsent")
 
       flash[:notice] = t("layouts.notifications.you_are_now_member")

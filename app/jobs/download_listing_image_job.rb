@@ -1,8 +1,9 @@
-class DownloadListingImageJob < Struct.new(:listing_image_id, :url)
+class DownloadListingImageJob < ActiveJob::Base
+  queue_as :paperclip
 
   include DelayedAirbrakeNotification
 
-  def perform
+  def perform(listing_image_id, url)
     # Whou, paperclip and delayed paperclip gems are giving us a handful of black magic here.
     #
     # Setting `self.image` will download the image to local filesystem, if URL is given.
@@ -13,7 +14,7 @@ class DownloadListingImageJob < Struct.new(:listing_image_id, :url)
     # It's doing network operations, so I guess it can also throw.
     #
 
-    @result = listing_image.and_then { |listing_image|
+    @result = listing_image(listing_image_id).and_then { |listing_image|
 
       begin
         # Download the original image
@@ -62,7 +63,7 @@ class DownloadListingImageJob < Struct.new(:listing_image_id, :url)
       end
   end
 
-  def listing_image
+  def listing_image(listing_image_id)
     @listing_image ||= Maybe(ListingImage.where(id: listing_image_id).first).map { |listing_image|
       Result::Success.new(listing_image)
     }.or_else {

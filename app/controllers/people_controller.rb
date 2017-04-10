@@ -143,7 +143,7 @@ class PeopleController < Devise::RegistrationsController
     # If invite was used, reduce usages left
     invitation.use_once! if invitation.present?
 
-    Delayed::Job.enqueue(CommunityJoinedJob.new(@person.id, @current_community.id)) if @current_community
+    CommunityJoinedJob.perform_later(@person, @current_community)
 
     Analytics.record_event(flash, "SignUp", method: :email)
 

@@ -1,11 +1,11 @@
 module EmailService::Jobs
-  class RequestEmailVerification < Struct.new(:community_id, :id)
+  class RequestEmailVerification < ActiveJob::Base
 
     AddressStore = EmailService::Store::Address
 
     include DelayedAirbrakeNotification
 
-    def perform
+    def perform(community_id, id)
       Maybe(AddressStore.get(community_id: community_id, id: id))
         .each do |address|
         ses_client.verify_address(email: address[:email]).on_success do

@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
   def create
     if @comment.save
       @comment.reload # reload is needed, as create.js.erb refers the model directly
-      Delayed::Job.enqueue(CommentCreatedJob.new(@comment.id, @current_community.id))
+      CommentCreatedJob.perform_later(@comment, @current_community)
     else
       flash[:error] = t("layouts.notifications.comment_cannot_be_empty")
     end

@@ -1,10 +1,11 @@
 module PaypalService::Jobs
-  class ProcessPaymentsCommand < Struct.new(:process_token)
+  class ProcessPaymentsCommand < ActiveJob::Base
+    queue_as :paypal
 
     include SessionContextSerializer
     include DelayedAirbrakeNotification
 
-    def perform
+    def perform(process_token)
       ProcessCommand.run(
         process_token: process_token,
         resolve_cmd: (method :resolve_payment_cmd))

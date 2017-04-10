@@ -1,9 +1,8 @@
-class PageLoadedJob < Struct.new(:community_membership_id, :host)
+class PageLoadedJob < ActiveJob::Base
 
   include DelayedAirbrakeNotification
 
-  def perform
-    membership = CommunityMembership.find(community_membership_id)
+  def perform(membership, host)
     unless membership.last_page_load_date && membership.last_page_load_date.to_date.eql?(Date.today)
       membership.update_attribute(:last_page_load_date, DateTime.now)
       # FIXME: Day counting and badge check disabled as it produced too big numbers for unknown reason

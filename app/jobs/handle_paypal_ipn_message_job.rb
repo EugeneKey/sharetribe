@@ -1,4 +1,4 @@
-class HandlePaypalIpnMessageJob < Struct.new(:msg_id)
+class HandlePaypalIpnMessageJob < ActiveJob::Base
 
   include DelayedAirbrakeNotification
   include PaypalService::IPNInjector
@@ -7,7 +7,7 @@ class HandlePaypalIpnMessageJob < Struct.new(:msg_id)
 
   IPNDataTypes = PaypalService::DataTypes::IPN
 
-  def perform
+  def perform(msg_id)
     logger = PaypalService::Logger.new
     raw_msg = PaypalIpnMessage.find(msg_id)
 

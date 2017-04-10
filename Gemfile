@@ -78,7 +78,7 @@ gem 'statesman', '~> 1.3.1'
 gem "premailer", "~> 1.8.2"
 gem 'stringex', '~> 2.5.2'
 gem 'paypal-sdk-permissions', '~> 1.96.4'
-gem 'paypal-sdk-merchant', '~> 1.116.0'
+gem 'paypal-sdk-merchant', '~> 1.117.2'
 gem 'airbrake', '~> 4.1.0'
 
 gem 'jwt', '~> 1.5.2'

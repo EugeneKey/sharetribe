@@ -300,7 +300,7 @@ class ApplicationController < ActionController::Base
       @current_community_membership = CommunityMembership.where(person_id: @current_user.id, community_id: @current_community.id, status: "accepted").first
 
       if (@current_community_membership && !date_equals?(@current_community_membership.last_page_load_date, Date.today))
-        Delayed::Job.enqueue(PageLoadedJob.new(@current_community_membership.id, request.host))
+        PageLoadedJob.perform_later(@current_community_membership, request.host)
       end
     end
   end

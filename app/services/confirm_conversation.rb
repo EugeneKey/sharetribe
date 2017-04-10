@@ -14,15 +14,15 @@ class ConfirmConversation
 
   # Listing confirmed by user
   def confirm!
-    Delayed::Job.enqueue(TransactionConfirmedJob.new(@transaction.id, @community.id))
+    TransactionConfirmedJob.perform_later(@transaction, @community)
     [3, 10].each do |send_interval|
-      Delayed::Job.enqueue(TestimonialReminderJob.new(@transaction.id, nil, @community.id), :priority => 9, :run_at => send_interval.days.from_now)
+      TestimonialReminderJob.set(wait_until: send_interval.days.from_now).perform_later(@transaction, nil, @community)
     end
   end
 
   # Listing canceled by user
   def cancel!
-    Delayed::Job.enqueue(TransactionCanceledJob.new(@transaction.id, @community.id))
+    TransactionCanceledJob.perform_later(@transaction, @community)
   end
 
   def update_participation(feedback_given)
@@ -43,13 +43,13 @@ class ConfirmConversation
   end
 
   def activate_automatic_booking_confirmation_at!(automatic_confirmation_at)
-    Delayed::Job.enqueue(AutomaticBookingConfirmationJob.new(@transaction.id, @user.id, @community.id), run_at: automatic_confirmation_at, priority: 7)
+    AutomaticBookingConfirmationJob.set(wait_until: automatic_confirmation_at).perform_later(@transaction, @user, @community)
   end
 
   private
 
   def automatic_confirmation_job!(automatic_confirmation_at)
-    Delayed::Job.enqueue(AutomaticConfirmationJob.new(@transaction.id, @user.id, @community.id), run_at: automatic_confirmation_at, priority: 7)
+    AutomaticConfirmationJob.set(wait_until: automatic_confirmation_at).perform_later(@transaction, @user, @community)
   end
 
   def confirmation_reminder_job!(automatic_confirmation_at)
@@ -57,7 +57,7 @@ class ConfirmConversation
     activate_reminder           = @transaction.automatic_confirmation_after_days > REMIND_DAYS_BEFORE_CLOSING
 
     if activate_reminder
-      Delayed::Job.enqueue(ConfirmReminderJob.new(@transaction.id, @requester.id, @community.id, REMIND_DAYS_BEFORE_CLOSING), :priority => 9, :run_at => reminder_email_at)
+      ConfirmReminderJob.set(wait_until: reminder_email_at).perform_later(@transaction, @requester, REMIND_DAYS_BEFORE_CLOSING, @community)
     end
   end
 

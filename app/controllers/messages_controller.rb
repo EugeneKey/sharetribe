@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
 
     @message = Message.new(message_params)
     if @message.save
-      Delayed::Job.enqueue(MessageSentJob.new(@message.id, @current_community.id))
+      MessageSentJob.perform_later(@message, @current_community)
     else
       flash[:error] = "reply_cannot_be_empty"
     end

@@ -108,7 +108,7 @@ class TransactionsController < ApplicationController
           })
       }
     ).on_success { |(_, (_, _, _, process), _, _, tx)|
-      after_create_actions!(process: process, transaction: tx[:transaction], community_id: @current_community.id)
+      after_create_actions!(process: process, transaction: tx[:transaction], community: @current_community)
       flash[:notice] = after_create_flash(process: process) # add more params here when needed
       redirect_to after_create_redirect(process: process, starter_id: @current_user.id, transaction: tx[:transaction]) # add more params here when needed
     }.on_error { |error_msg, data|
@@ -352,7 +352,7 @@ class TransactionsController < ApplicationController
     end
   end
 
-  def after_create_actions!(process:, transaction:, community_id:)
+  def after_create_actions!(process:, transaction:, community:)
     case process[:process]
     when :none
       # TODO Do I really have to do the state transition here?
@@ -362,7 +362,7 @@ class TransactionsController < ApplicationController
       # TODO: remove references to transaction model
       transaction = Transaction.find(transaction[:id])
 
-      Delayed::Job.enqueue(MessageSentJob.new(transaction.conversation.messages.last.id, community_id))
+      MessageSentJob.perform_later(transaction.conversation.messages.last, community)
     else
       raise NotImplementedError.new("Not implemented for process #{process}")
     end

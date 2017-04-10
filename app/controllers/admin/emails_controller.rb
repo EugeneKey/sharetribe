@@ -8,7 +8,12 @@ class Admin::EmailsController < Admin::AdminBaseController
 
   def create
     content = params[:email][:content].gsub(/[”“]/, '"') if params[:email][:content] # Fix UTF-8 quotation marks
-    Delayed::Job.enqueue(CreateMemberEmailBatchJob.new(@current_user.id, @current_community.id, params[:email][:subject], content, params[:email][:locale]))
+    CreateMemberEmailBatchJob.perform_later(
+                              @current_community,
+                              @current_user,
+                              params[:email][:subject],
+                              content,
+                              params[:email][:locale])
     flash[:notice] = t("admin.emails.new.email_sent")
     redirect_to :action => :new
   end

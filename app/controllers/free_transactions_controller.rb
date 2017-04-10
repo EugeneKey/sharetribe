@@ -58,7 +58,7 @@ class FreeTransactionsController < ApplicationController
       transaction = Transaction.find(transaction_id)
 
       flash[:notice] = t("layouts.notifications.message_sent")
-      Delayed::Job.enqueue(MessageSentJob.new(transaction.conversation.messages.last.id, @current_community.id))
+      MessageSentJob.perform_later(transaction.conversation.messages.last, @current_community)
       redirect_to session[:return_to_content] || search_path
     else
       flash[:error] = t("layouts.notifications.message_not_sent")

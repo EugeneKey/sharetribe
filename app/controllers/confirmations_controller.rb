@@ -41,7 +41,7 @@ class ConfirmationsController < Devise::ConfirmationsController
       # Accept pending community membership if needed
       if @current_community.approve_pending_membership(person, e.address)
         # If the pending membership was accepted now, it's time to send the welcome email, unless creating admin acocunt
-        Delayed::Job.enqueue(SendWelcomeEmail.new(person.id, @current_community.id), priority: 5)
+        SendWelcomeEmail.perform_later(person, @current_community)
       end
       flash[:notice] = t("layouts.notifications.additional_email_confirmed")
 

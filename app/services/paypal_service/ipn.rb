@@ -54,7 +54,7 @@ module PaypalService
       converted = HashUtils.map_values(params) { |val| val.force_encoding(params[:charset]).encode("utf-8", invalid: :replace, replace: "") }
 
       msg = PaypalIpnMessage.create(body: converted)
-      Delayed::Job.enqueue(HandlePaypalIpnMessageJob.new(msg.id))
+      HandlePaypalIpnMessageJob.perform_later(msg.id)
     end
 
     def handle_payment_update(ipn_msg)

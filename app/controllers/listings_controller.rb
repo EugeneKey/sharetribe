@@ -351,9 +351,9 @@ class ListingsController < ApplicationController
 
         ListingImage.where(id: listing_image_ids, author_id: @current_user.id).update_all(listing_id: @listing.id)
 
-        Delayed::Job.enqueue(ListingCreatedJob.new(@listing.id, @current_community.id))
+        ListingCreatedJob.perform_later(@listing, @current_community)
         if @current_community.follow_in_use?
-          Delayed::Job.enqueue(NotifyFollowersJob.new(@listing.id, @current_community.id), :run_at => NotifyFollowersJob::DELAY.from_now)
+          NotifyFollowersJob.set(wait: 30.minutes).perform_later(@listing, @current_community)
         end
 
         flash[:notice] = t(
@@ -487,7 +487,7 @@ class ListingsController < ApplicationController
     if update_successful
       listing.location.update_attributes(params[:location]) if listing.location
       flash[:notice] = update_flash(old_availability: old_availability, new_availability: shape[:availability])
-      Delayed::Job.enqueue(ListingUpdatedJob.new(listing.id, community.id))
+      ListingUpdatedJob.perform_later(listing, community)
       reprocess_missing_image_styles(listing) if listing.closed?
       redirect_to listing
     else
@@ -1048,8 +1048,8 @@ class ListingsController < ApplicationController
   # Create image sizes that might be missing
   # from a reopened listing
   def reprocess_missing_image_styles(listing)
-    listing.listing_images.pluck(:id).each { |image_id|
-      Delayed::Job.enqueue(CreateSquareImagesJob.new(image_id))
+    listing.listing_images.each { |image|
+      CreateSquareImagesJob.perform_later(image)
     }
   end
 

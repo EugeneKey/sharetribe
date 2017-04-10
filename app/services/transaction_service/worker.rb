@@ -2,8 +2,6 @@ module TransactionService::Worker
 
   ProcessTokenStore = TransactionService::Store::ProcessToken
 
-  JOB_PRIORITY = 0 # Use high priority, user is waiting
-
   module_function
 
   def enqueue_preauthorize_op(community_id:, transaction_id:, op_name:, op_input:)
@@ -28,8 +26,6 @@ module TransactionService::Worker
   # Privates
 
   def schedule_preauthorize_job(proc_token)
-    Delayed::Job.enqueue(
-      TransactionService::Jobs::ProcessPreauthorizeCommand.new(proc_token[:process_token].to_s),
-      priority: JOB_PRIORITY)
+    TransactionService::Jobs::ProcessPreauthorizeCommand.perform_later(proc_token[:process_token].to_s)
   end
 end

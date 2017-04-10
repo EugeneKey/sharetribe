@@ -64,25 +64,19 @@ module EmailService::API
 
     def enqueue_verification_request(community_id:, id:)
       if @ses_client
-        Delayed::Job.enqueue(
-          EmailService::Jobs::RequestEmailVerification.new(community_id, id),
-          priority: 2
-        )
+        EmailService::Jobs::RequestEmailVerification.perform_later(community_id, id)
       end
     end
 
     def enqueue_status_sync(community_id:, id:)
       if @ses_client
-        Delayed::Job.enqueue(
-          EmailService::Jobs::SingleSync.new(community_id, id),
-          priority: 0
-        )
+        EmailService::Jobs::SingleSync.perform_later(community_id, id)
       end
     end
 
     def enqueue_batch_sync
       if @ses_client
-        Delayed::Job.enqueue(EmailService::Jobs::BatchSync.new)
+        EmailService::Jobs::BatchSync.perform_later
       end
     end
 

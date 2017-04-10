@@ -57,7 +57,7 @@ class Email < ActiveRecord::Base
   end
 
   def self.send_confirmation(email, community)
-    Delayed::Job.enqueue(EmailConfirmationJob.new(email.id, community.id), priority: 2)
+    EmailConfirmationJob.perform_later(email, community)
   end
 
   def self.find_by_address_and_community_id(address, community_id)

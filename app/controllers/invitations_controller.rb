@@ -46,8 +46,7 @@ class InvitationsController < ApplicationController
       )
 
       if invitation.save
-        Delayed::Job.enqueue(InvitationCreatedJob.new(invitation.id, @current_community.id))
-
+        InvitationCreatedJob.perform_later(invitation, @current_community)
         # Onboarding wizard step recording
         state_changed = Admin::OnboardingWizard.new(@current_community.id)
           .update_from_event(:invitation_created, invitation)

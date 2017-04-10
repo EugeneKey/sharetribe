@@ -1,11 +1,11 @@
 module EmailService::Jobs
-  class SingleSync < Struct.new(:community_id, :id)
+  class SingleSync < ActiveJob::Base
 
     Synchronize = EmailService::SES::Synchronize
 
     include DelayedAirbrakeNotification
 
-    def perform
+    def perform(community_id, id)
       Synchronize.run_single_synchronization!(
         community_id: community_id,
         id: id,

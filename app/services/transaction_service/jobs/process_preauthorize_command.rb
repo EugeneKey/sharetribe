@@ -1,15 +1,14 @@
 module TransactionService::Jobs
-  class ProcessPreauthorizeCommand < Struct.new(:process_token)
+  class ProcessPreauthorizeCommand < ActiveJob::Base
+    queue_as :paypal
 
     include SessionContextSerializer
     include DelayedAirbrakeNotification
-
-    def perform
+    def perform(process_token)
       ProcessCommand.run(
         process_token: UUIDTools::UUID.parse(process_token),
         resolve_cmd: (method :resolve_preauthorize_cmd))
     end
-
 
     private
 

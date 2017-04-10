@@ -90,7 +90,7 @@ class ListingImagesController < ApplicationController
     if listing_image.save
       if !listing_image.image_downloaded
         logger.info("Asynchronously downloading image", :start_async_image_download, listing_image_id: listing_image.id, url: url, params: params)
-        Delayed::Job.enqueue(DownloadListingImageJob.new(listing_image.id, url), priority: 1)
+        DownloadListingImageJob.perform_later(listing_image.id, url)
       else
         logger.info("Listing image is already downloaded", :image_already_downloaded, listing_image_id: listing_image.id, params: params.except(:image))
       end

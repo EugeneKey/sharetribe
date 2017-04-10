@@ -1,8 +1,8 @@
-class ReprocessListingImageJob < Struct.new(:listing_image_id, :style)
+class ReprocessListingImageJob < ActiveJob::Base
 
   include DelayedAirbrakeNotification
 
-  def perform
+  def perform(listing_image_id, style)
     listing_image = ListingImage.find_by_id(listing_image_id)
 
     listing_image.image.reprocess_without_delay! style.to_sym

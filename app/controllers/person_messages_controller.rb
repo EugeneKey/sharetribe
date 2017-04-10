@@ -15,7 +15,7 @@ class PersonMessagesController < ApplicationController
       save_conversation(params)
     }.on_success { |conversation|
       flash[:notice] = t("layouts.notifications.message_sent")
-      Delayed::Job.enqueue(MessageSentJob.new(conversation.messages.last.id, @current_community.id))
+      MessageSentJob.perform_later(conversation.messages.last, @current_community)
       redirect_to @recipient
     }.on_error {
       flash[:error] = t("layouts.notifications.message_not_sent")

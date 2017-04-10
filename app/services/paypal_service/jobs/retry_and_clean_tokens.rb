@@ -1,7 +1,7 @@
 module PaypalService::Jobs
-  class RetryAndCleanTokens < Struct.new(:clean_time_limit)
+  class RetryAndCleanTokens < ActiveJob::Base
 
-    def perform
+    def perform(clean_time_limit)
       payments_api.retry_and_clean_tokens(clean_time_limit)
     end
 

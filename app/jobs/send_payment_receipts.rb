@@ -1,12 +1,11 @@
-class SendPaymentReceipts < Struct.new(:transaction_id)
+class SendPaymentReceipts < ActiveJob::Base
 
   include DelayedAirbrakeNotification
 
-  def perform
+  def perform(transaction_id)
     transaction = TransactionService::Transaction.query(transaction_id)
     set_service_name!(transaction[:community_id])
     receipt_to_seller = seller_should_receive_receipt(transaction[:listing_author_id])
-
     receipts =
       case transaction[:payment_gateway]
 

@@ -52,8 +52,8 @@ gem 'flying-sphinx', "~>1.2.0"
 gem 'ts-sidekiq-delta', '~> 0.2.0'
 gem 'possibly', '~> 1.0.1'
 
-gem 'delayed_job', "~> 4.1.1"
-gem 'delayed_job_active_record', "~> 4.1.0"
+# gem 'delayed_job', "~> 4.1.1"
+# gem 'delayed_job_active_record', "~> 4.1.0"
 gem 'sidekiq'
 
 gem 'web_translate_it', "~>2.1.8"
@@ -154,6 +154,18 @@ group :development do
   gem 'better_errors', "~> 2.1.1"
   gem 'web-console', '~> 2.0'
   gem 'awesome_print', '~> 1.6.1'
+end
+
+group :development do
+  # Use Capistrano for deployment
+  gem 'capistrano', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-rvm', require: false
+  gem 'capistrano-npm', require: false
+  gem 'capistrano-nvm', require: false
+  gem 'capistrano3-puma',   require: false
+  gem 'capistrano-sidekiq', require: false
 end
 
 group :test do

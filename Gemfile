@@ -45,10 +45,11 @@ gem 'thinking-sphinx', '~> 3.1.1'
 gem 'flying-sphinx', "~>1.2.0"
 # Use patched v2.0.2
 # Fixes issues: Create a new delayed delta job if there is an existing delta job which has failed
-gem 'ts-delayed-delta', "~>2.0.2",
-  :git    => 'https://github.com/pat/ts-delayed-delta.git',
-  :branch => 'master',
-  :ref    => '839284f2f28b3f4caf3a3bf5ccde9a6d222c7f4d'
+# gem 'ts-delayed-delta', "~>2.0.2",
+#   :git    => 'https://github.com/pat/ts-delayed-delta.git',
+#   :branch => 'master',
+#   :ref    => '839284f2f28b3f4caf3a3bf5ccde9a6d222c7f4d'
+gem 'ts-sidekiq-delta', '~> 0.2.0'
 gem 'possibly', '~> 1.0.1'
 
 gem 'delayed_job', "~> 4.1.1"

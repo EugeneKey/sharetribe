@@ -1,5 +1,5 @@
 if APP_CONFIG.use_thinking_sphinx_indexing.to_s.casecmp("true") == 0
-  ThinkingSphinx::Index.define :listing, :with => :active_record, :delta => ThinkingSphinx::Deltas::DelayedDelta do
+  ThinkingSphinx::Index.define :listing, :with => :active_record, :delta => ThinkingSphinx::Deltas::ThinkingSphinx::Deltas::SidekiqDelta do
 
     #Thinking Sphinx will automatically add the SQL command SET NAMES utf8 as
     # part of the indexing process if the database connection settings have

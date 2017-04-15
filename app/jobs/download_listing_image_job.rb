@@ -3,6 +3,12 @@ class DownloadListingImageJob < ActiveJob::Base
 
   include DelayedAirbrakeNotification
 
+  rescue_from(StandardError) do |error_msg|
+    @result.on_error { |error_msg|
+      logger.error("Listing image process and download failed permanently: #{error_msg}", :listing_image_download_failed_permanently)
+    }
+  end
+
   def perform(listing_image_id, url)
     # Whou, paperclip and delayed paperclip gems are giving us a handful of black magic here.
     #
@@ -35,32 +41,10 @@ class DownloadListingImageJob < ActiveJob::Base
     }
   end
 
-  def failure
-    @result.on_error { |error_msg|
-      logger.error("Listing image process and download failed permanently: #{error_msg}", :listing_image_download_failed_permanently)
-
-      listing_image.on_success { |image|
-        # Have to use `update_column` here because `update_attribute` runs the before save hooks
-        image.update_column(:error, error_msg || "unknown")
-      }
-    }
-  end
-
   private
 
   def logger
-    @logger ||= SharetribeLogger.new(:download_listing_image_job, logger_metadata.keys).tap { |logger|
-      logger.add_metadata(logger_metadata)
-    }
-  end
-
-  def logger_metadata
-    @logger_metadata ||=
-      if listing_image.success
-        listing_image.data.attributes
-      else
-        {}
-      end
+    @logger ||= SharetribeLogger.new(:download_listing_image_job)
   end
 
   def listing_image(listing_image_id)

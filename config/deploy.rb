@@ -1,12 +1,12 @@
 # config valid only for current version of Capistrano
-lock "3.8.0"
+lock "3.8.1"
 
 set :rvm_ruby_version, '2.3.1@sharetribe'
 set :nvm_type, :user # or :system, depends on your nvm setup
 set :nvm_node, 'v6.9.5'
 set :nvm_map_bins, %w{node npm yarn}
 
-set :repo_url,        'git@github.com:EugeneKey/sharetribe.git'
+set :repo_url,        'git@github.com:EugeneKey/sharetribe-with-sidekiq.git'
 set :application,     'sharetribe'
 set :user,            'deployer'
 set :puma_threads,    [4, 16]
@@ -42,7 +42,7 @@ namespace :deploy do
   desc "Make sure local git is in sync with remote."
   task :check_revision do
     on roles(:app) do
-      unless `git rev-parse HEAD` == `git rev-parse origin/deploy`
+      unless `git rev-parse HEAD` == `git rev-parse origin/landing`
         puts "WARNING: HEAD is not the same as origin/#{fetch(:branch)}"
         puts "Run `git push` to sync changes."
         exit

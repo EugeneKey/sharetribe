@@ -6,7 +6,7 @@ module CustomLandingPage
     DATA_STR = <<JSON
 {
   "settings": {
-    "marketplace_id": 9999,
+    "marketplace_id": 1,
     "locale": "en",
     "sitename": "example"
   },
@@ -71,7 +71,7 @@ module CustomLandingPage
       "kind": "info",
       "variation": "single_column",
       "title": "Single column info section without call to action button",
-      "paragraph": "This is a single column info section without background image and call to action button.",
+      "paragraph": "This is a single column info section with background image and without call to action button.",
       "background_image": {"type": "assets", "id": "default_hero_background"}
     },
     {
@@ -243,13 +243,13 @@ module CustomLandingPage
         "author_name_color_hover": {"type": "marketplace_data", "id": "primary_color"},
         "listings": [
             {
-                "listing": { "type": "listing", "id": 99999 }
+                "listing": { "type": "listing", "id": 2 }
             },
             {
-                "listing": { "type": "listing", "id": 99999 }
+                "listing": { "type": "listing", "id": 2 }
             },
             {
-                "listing": { "type": "listing", "id": 99999 }
+                "listing": { "type": "listing", "id": 2 }
             }
         ]
     },
@@ -283,6 +283,7 @@ module CustomLandingPage
 
   "composition": [
     { "section": {"type": "sections", "id": "hero"}},
+    { "section": {"type": "sections", "id": "listings"}},
     { "section": {"type": "sections", "id": "markdown_support"}},
     { "section": {"type": "sections", "id": "single_info_without_background_and_cta"}},
     { "section": {"type": "sections", "id": "single_info_without_cta"}},

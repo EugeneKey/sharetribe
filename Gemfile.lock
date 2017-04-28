@@ -30,16 +30,6 @@ GIT
       coffee-rails (>= 3.2.2)
       railties (>= 3.0)
 
-GIT
-  remote: https://github.com/pat/ts-delayed-delta.git
-  revision: 839284f2f28b3f4caf3a3bf5ccde9a6d222c7f4d
-  ref: 839284f2f28b3f4caf3a3bf5ccde9a6d222c7f4d
-  branch: master
-  specs:
-    ts-delayed-delta (2.0.2)
-      delayed_job
-      thinking-sphinx (>= 1.5.0)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -88,7 +78,7 @@ GEM
     airbrake (4.1.0)
       builder
       multi_json
-    airbrussh (1.1.2)
+    airbrussh (1.2.0)
       sshkit (>= 1.6.1, != 1.7.0)
     annotate (2.6.10)
       activerecord (>= 3.2, <= 4.3)
@@ -96,13 +86,13 @@ GEM
     arel (6.0.4)
     ast (2.3.0)
     awesome_print (1.6.1)
-    aws-sdk (2.9.6)
-      aws-sdk-resources (= 2.9.6)
-    aws-sdk-core (2.9.6)
+    aws-sdk (2.9.12)
+      aws-sdk-resources (= 2.9.12)
+    aws-sdk-core (2.9.12)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.9.6)
-      aws-sdk-core (= 2.9.6)
+    aws-sdk-resources (2.9.12)
+      aws-sdk-core (= 2.9.12)
     aws-sigv4 (1.0.0)
     bcrypt (3.1.11)
     better_errors (2.1.1)
@@ -114,7 +104,7 @@ GEM
     builder (3.2.3)
     byebug (9.0.6)
     callsite (0.0.11)
-    capistrano (3.8.0)
+    capistrano (3.8.1)
       airbrussh (>= 1.0.0)
       i18n
       rake (>= 10.0.0)
@@ -195,8 +185,6 @@ GEM
     dalli (2.6.4)
     database_cleaner (1.5.3)
     debug_inspector (0.0.2)
-    delayed_job (4.1.2)
-      activesupport (>= 3.0, < 5.1)
     delayed_paperclip (3.0.1)
       activejob (>= 4.2)
       paperclip (>= 3.3)
@@ -243,8 +231,8 @@ GEM
     fssm (0.2.10)
     gherkin (4.1.1)
     git-version-bump (0.15.1)
-    globalid (0.3.7)
-      activesupport (>= 4.1.0)
+    globalid (0.4.0)
+      activesupport (>= 4.2.0)
     guard (2.14.1)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -282,11 +270,7 @@ GEM
       railties (>= 3.2)
       sprockets-rails
     json (1.8.6)
-<<<<<<< 79b2da246a797fc0ae6d637545d6df5a1364f503
-    jwt (1.5.4)
-=======
     jwt (1.5.6)
->>>>>>> active record and sidekiq integration instead delayed job
     kgio (2.9.3)
     launchy (2.4.3)
       addressable (~> 2.3)
@@ -302,7 +286,7 @@ GEM
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.11)
-    mail (2.6.4)
+    mail (2.6.5)
       mime-types (>= 1.16, < 4)
     mail_view (1.0.3)
       tilt
@@ -432,7 +416,8 @@ GEM
       activesupport (= 4.2.7.1)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rainbow (2.2.1)
+    rainbow (2.2.2)
+      rake
     rake (10.5.0)
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
@@ -489,11 +474,7 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 0.3)
     ruby-progressbar (1.8.1)
-<<<<<<< 79b2da246a797fc0ae6d637545d6df5a1364f503
-    ruby_dep (1.4.0)
-=======
     ruby_dep (1.5.0)
->>>>>>> active record and sidekiq integration instead delayed job
     rubyzip (1.2.1)
     sass (3.2.19)
     sass-rails (4.0.5)
@@ -506,11 +487,11 @@ GEM
       rubyzip (~> 1.0)
       websocket (~> 1.0)
     shellany (0.0.1)
-    sidekiq (4.2.10)
+    sidekiq (5.0.0)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
-      redis (~> 3.2, >= 3.2.1)
+      redis (~> 3.3, >= 3.3.3)
     sitemap_generator (5.1.0)
       builder
     slop (3.6.0)
@@ -538,11 +519,7 @@ GEM
       joiner (>= 0.2.0)
       middleware (>= 0.1.0)
       riddle (>= 1.5.11)
-<<<<<<< 79b2da246a797fc0ae6d637545d6df5a1364f503
-    thor (0.19.1)
-=======
     thor (0.19.4)
->>>>>>> active record and sidekiq integration instead delayed job
     thread_safe (0.3.6)
     tilt (1.4.1)
     timecop (0.6.3)
@@ -552,6 +529,9 @@ GEM
       oj (~> 2.18)
     trollop (2.1.2)
     truncate_html (0.9.3)
+    ts-sidekiq-delta (0.2.0)
+      sidekiq (>= 2.5.4)
+      thinking-sphinx (>= 3.1.0)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
     uglifier (2.7.2)
@@ -559,7 +539,7 @@ GEM
       json (>= 1.8.0)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.3)
+    unf_ext (0.0.7.4)
     unicode-display_width (0.3.1)
     uuidtools (2.1.5)
     warden (1.2.7)
@@ -677,7 +657,7 @@ DEPENDENCIES
   timecop (~> 0.6.3)
   transit-ruby (~> 0.8)
   truncate_html (~> 0.9.1)
-  ts-delayed-delta (~> 2.0.2)!
+  ts-sidekiq-delta (~> 0.2.0)
   uglifier (~> 2.7.2)
   uuidtools (~> 2.1)
   web-console (~> 2.0)

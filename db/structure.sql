@@ -1622,11 +1622,8 @@ CREATE TABLE `transactions` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-<<<<<<< c5a13ce68a44362f7a398da01f93d6242dbea073
+
 -- Dump completed on 2017-04-18 17:55:18
-=======
--- Dump completed on 2017-03-31 23:25:01
->>>>>>> add image gallery fancybox
 INSERT INTO schema_migrations (version) VALUES ('20080806070738');
 
 INSERT INTO schema_migrations (version) VALUES ('20080807071903');

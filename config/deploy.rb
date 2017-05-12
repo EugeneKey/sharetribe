@@ -22,7 +22,7 @@ set :linked_files, fetch(:linked_files, [])
 
 # Default value for linked_dirs is []
 set :linked_dirs, fetch(:linked_dirs, [])
-        .push('bin', 'log', 'tmp/pids', 'tmp/cache',
+        .push('bin', 'log', 'tmp/pids', 'tmp/cache', 'db/sphinx',
               'tmp/sockets', 'vendor/bundle', 'public/system',
               'public/uploads', 'client/node_modules', 'public/assets')
 

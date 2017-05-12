@@ -23,4 +23,4 @@ set :nginx_server_name, 'sharetribe.evolan.net'
 
 set :sidekiq_processes, 2
 set :sidekiq_user, fetch(:user)
-set :sidekiq_options_per_process, ["--queue paypal", "--queue paperclip --queue default --queue mailers --queue low"]
+set :sidekiq_options_per_process, ["--queue paypal", "--queue paperclip --queue default --queue mailers --queue ts_delta --queue low"]

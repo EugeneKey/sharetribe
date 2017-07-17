@@ -18,7 +18,7 @@ namespace :assets do
 
   desc "Compile assets with webpack"
   task :webpack do
-    sh "cd client && npm run build:production"
+    sh "cd client && /tmp/sharetribe/nvm-exec.sh npm run build:production"
     # sh "cd client && /tmp/sharetribe/nvm-exec.sh npm run build:client"
 
     # Skip next line if not doing server rendering

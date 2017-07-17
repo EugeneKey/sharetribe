@@ -1,4 +1,10 @@
 es-ES:
+  number:
+    currency:
+      format:
+        separator: ","
+        delimiter: "."
+        format: "%n%u"
   admin:
     categories:
       edit:
@@ -156,7 +162,7 @@ es-ES:
         resend_link: Reenviar
         invalid_email_error: "Formato de correo electrónico para '%{email}' es inválido"
         invalid_email_domain: "La dirección de correo '%{email}' usa un proveedor de correo no soportado por nuestro sistema: '%{domain}'. %{invalid_email_domain_read_more_link}"
-        invalid_email_domain_read_more_link: "Lee el artículo en nuestra base de conocimiento para más información."
+        invalid_email_domain_read_more_link: "Lee el artículo en nuestro centro de ayuda para obtener más información."
         unknown_error: "Algo salió mal"
         white_label_offer: "Configura tu propia dirección de correo electrónico al enviar mensajes y elimina toda mención de Sharetribe de los correos enviados desde tu comunidad al %{upgrade_pro_plan_link}"
         upgrade_plan_link: "suscribirte al plan Pro o un plan superior"
@@ -244,8 +250,7 @@ es-ES:
         ban_me_error: "No te puedes rechazar a ti mismo."
       new_layout:
         new_layout: "Nuevo diseño"
-        description_roadmap: "En Sharetribe, estamos en el proceso de publicar un nuevo diseño de nuestra plataforma. Durante el periodo de transición, puedes decidir que partes de tu comunidad seguirán utilizando el viejo diseño usando el menú inferior. La mayoría de nuestras nuevas funciones no soportarán el viejo diseño."
-        description_process: "Soporte para el viejo diseño será eliminado en el futuro. El equipo de Sharetribe te notificará antes de que esto suceda. Si tienes alguna pregunta no dudes en contactarnos por medio del %{support_link}."
+        description_roadmap_new: "Cuando hay nuevos componentes de diseño disponibles, puedes elegir entre usar un nuevo componente o continuar usando el viejo. Puedes cambiar la selección en cualquier momento, en esta pagina. Es recomendable siempre usar el componente más nuevo, ya que los componentes viejos podrán ser removidos en el futuro. En caso de que estés usando algún componente que vayamos a remover, te contactaremos por adelantado."
         enabled_for_you: "Habilitar sólo para ti"
         enabled_for_all: "Habilitar para todos"
         new_topbar: "Nueva barra superior (visible en todas las páginas)"
@@ -388,7 +393,6 @@ es-ES:
       users_and_transactions: "Usuarios y transacciones"
       configure: Configuración
       emails_title: Emails
-      support: Soporte
       subscription: Subscripción
       preview: "Vista Previa"
     listing_shapes:
@@ -893,11 +897,11 @@ es-ES:
       remember_to_give_feedback_to: "Recordatorio: Recuerda dar una valoración a %{name}"
       you_have_not_given_feedback_yet: "Aún no has dado una valoración a %{name} acerca de la transacción '%{event}'. Recuerda dar una valoración sobre cómo %{given_name} actuó durante la transacción."
     transaction_preauthorized:
-      subject: "%{requester} ha solicitado y autorizado el pago por %{listing_title}"
-      transaction_requested_by_user: "%{requester} ha solicitado y autorizado el pago por \"%{listing_title}\""
+      subject: "%{requester} está interesado en y autorizado el pago por %{listing_title} en %{service_name}"
+      transaction_requested_by_user: "Buenas noticias! %{requester} está interesado en \"%{listing_title}\" y ya ha autorizado el pago por este anuncio."
       you_have_time_to_accept: "Debes aceptar o rechazar la solicitud dentro de %{payment_expires_in}. Si aceptas dentro de este periodo, el pago será procesado. Si no aceptas, la solicitud se rechazará automáticamente y no recibirás el pago."
-      if_you_do_accept: ~
-      if_you_do_not_accept: ~
+      if_you_do_accept: "Si aceptas la transacción durante este tiempo, recibirás el dinero inmediatamente en tu cuenta."
+      if_you_do_not_accept: "Si rechazas la transacción o no aceptas la oferta durante este tiempo, la transacción se cancelará automáticamente, no se le cobrará a %{requester} y no recibirás el pago."
       click_here_to_reply: "Haz clic aquí para responder a la solicitud"
     transaction_preauthorized_reminder:
       subject: "Recuerda aceptar la solicitud de %{requester} sobre el anuncio %{listing_title}"

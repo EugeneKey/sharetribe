@@ -1,4 +1,10 @@
 fr:
+  number:
+    currency:
+      format:
+        separator: ","
+        delimiter: " "
+        format: "%n %u"
   admin:
     categories:
       edit:
@@ -156,7 +162,7 @@ fr:
         resend_link: Renvoyer
         invalid_email_error: "Format de l'email invalide pour '%{email}'"
         invalid_email_domain: "L'adresse email '%{email}' utilise le fournisseur '%{domain}' non supporté. %{invalid_email_domain_read_more_link}"
-        invalid_email_domain_read_more_link: "Lisez l'article dans la base de connaissances pour en savoir plus."
+        invalid_email_domain_read_more_link: "Lisez l'article dans l'espace d'aide pour en savoir plus."
         unknown_error: "Quelque chose s'est mal passé."
         white_label_offer: "Configurez votre propre adresse email comme expéditeur et supprimez toute mention de Sharetribe dans les messages envoyés en %{upgrade_pro_plan_link}."
         upgrade_plan_link: "vous abonnant à l'offre Pro ou supérieure"
@@ -244,8 +250,7 @@ fr:
         ban_me_error: "Vous ne pouvez pas vous bannir vous-même."
       new_layout:
         new_layout: "Nouveau design"
-        description_roadmap: "Sharetribe est actuellement en train de déployer un nouveau et meilleur design. Durant cette phase de transition, vous pouvez sélectionner grâce au menu ci-dessous quelles sections de votre place de marché doivent continuer à utiliser l'ancien design. Les nouvelles fonctionnalités ne seront disponibles qu'avec le nouveau design."
-        description_process: "Le support de l'ancien design cessera un jour. L'équipe Sharetribe vous notifiera avant que cela n'arrive. Des questions? Contactez l'équipe via %{support_link}."
+        description_roadmap_new: "Lorsque de nouveaux éléments de design sont disponibles pour votre place de marché, vous pouvez choisir de les utiliser sans attendre ou bien de continuer à utiliser les anciens. Vous pouvez modifier votre choix à tout moment depuis cette page. Il est préférable de toujours utiliser les versions les plus récentes, puisque les anciens éléments seront rendus obsolètes à un moment. Si un élément que vous utilisez devenait obsolète, vous serez contacté au préalable."
         enabled_for_you: "Activé pour vous"
         enabled_for_all: "Activé pour tous"
         new_topbar: "Nouvelle barre des menus (visible sur toute les pages)"
@@ -260,7 +265,7 @@ fr:
         invalid_twitter_handle: "Le nom Twitter ne peut contenir qu'au maximum 15 caractères alpha-numériques (lettres A-Z et chiffre 0-9)."
         facebook_connect: Facebook
         facebook_connect_info_text: "Pour activer la connexion avec Facebook, créez une application pour votre place de marché sur <a href='https://developers.facebook.com/'>Facebook developers</a>. Ajoutez l'id et la clé secrète de l'application ici."
-        facebook_connect_info_text_with_instructions: "Pour activer la connexion avec Facebook, créez une application pour votre place de marché sur <a href='https://developers.facebook.com/'>Facebook developers</a>. Ajoutez l'id et la clé secrète de l'application ici. %{instructions_link}."
+        facebook_connect_info_text_with_instructions: "Pour activer la connexion avec Facebook, créez une application pour votre place de marché sur <a href='https://developers.facebook.com/'>Facebook developers</a>. Ajoutez l'id et la clé secrète de l'application ici. %{instructions_link}"
         facebook_instructions_link_text: "Lire les instructions pour configurer Facebook Connect."
         facebook_connect_id: "Facebook client id"
         invalid_facebook_connect_id: "L'id client ne devrait contenir que des chiffres"
@@ -388,7 +393,6 @@ fr:
       users_and_transactions: "Utilisateurs et transactions"
       configure: Configuration
       emails_title: Emails
-      support: Support
       subscription: Abonnement
       preview: "Prévisualiser le site"
     listing_shapes:

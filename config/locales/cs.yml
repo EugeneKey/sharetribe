@@ -1,4 +1,10 @@
 cs:
+  number:
+    currency:
+      format:
+        separator: ~
+        delimiter: ~
+        format: ~
   admin:
     categories:
       edit:
@@ -249,8 +255,7 @@ cs:
         ban_me_error: "Nemůžete sami sebe zakázat."
       new_layout:
         new_layout: ~
-        description_roadmap: ~
-        description_process: ~
+        description_roadmap_new: ~
         enabled_for_you: ~
         enabled_for_all: ~
         new_topbar: ~
@@ -393,7 +398,6 @@ cs:
       users_and_transactions: "Uživatelé & transakce"
       configure: Nastavení
       emails_title: Emaily
-      support: "Zákaznická podpora"
       subscription: ~
       preview: ~
     listing_shapes:

@@ -318,13 +318,12 @@ function initialize_listing_view(locale) {
   });
 }
 
-function updateSellerGetsValue(priceInputSelector, displayTargetSelector, currencySelector, communityCommissionPercentage, minCommission, showReversed) {
+function updateSellerGetsValue(currencyOpts, priceInputSelector, displayTargetSelector, communityCommissionPercentage, minCommission, showReversed) {
   // true == Show the fee instead of what's left after the fee
   showReversed = showReversed || false;
 
   $display = $(displayTargetSelector);
   $input = $(priceInputSelector);
-  $currency = $(currencySelector);
 
   function updateYouWillGet() {
     var sum = ST.paymentMath.parseFloatFromFieldValue($input.val());
@@ -336,14 +335,19 @@ function updateSellerGetsValue(priceInputSelector, displayTargetSelector, curren
       displaySum = sum - ST.paymentMath.totalCommission(sum, communityCommissionPercentage, minCommission);
     }
 
+    displaySumInCents = displaySum * Math.pow(10, currencyOpts.digits);
+
     $display.text(
-      [ST.paymentMath.displayMoney(Math.max(0, displaySum)),
-       $currency.val()]
-        .join(" "));
+      ST.paymentMath.displayMoney(Math.max(0, displaySumInCents),
+                                  currencyOpts.symbol,
+                                  currencyOpts.digits,
+                                  currencyOpts.format,
+                                  currencyOpts.separator,
+                                  currencyOpts.delimiter)
+    );
   }
 
   $input.keyup(updateYouWillGet);
-  $currency.change(updateYouWillGet);
 
   // Run once immediately
   updateYouWillGet();

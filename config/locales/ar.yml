@@ -1,4 +1,10 @@
 ar:
+  number:
+    currency:
+      format:
+        separator: ~
+        delimiter: ~
+        format: ~
   admin:
     categories:
       edit:
@@ -229,8 +235,7 @@ ar:
         ban_me_error: "لا يمكنك حظر نفسك"
       new_layout:
         new_layout: "تصميم جديد"
-        description_roadmap: ~
-        description_process: ~
+        description_roadmap_new: ~
         enabled_for_you: "مفعل لك فقط"
         enabled_for_all: "تفعيل للكل"
         new_topbar: "قائمة علوية جديدة (متوفر على كل صفحة)"
@@ -373,7 +378,6 @@ ar:
       users_and_transactions: "المستخدمين والعمليات"
       configure: تعديل
       emails_title: "عناوين بريدية"
-      support: "الدعم الفني"
       subscription: الإشتراك
       preview: "معاينة الموقع"
     listing_shapes:

@@ -40,7 +40,6 @@ gem 'dalli', "~> 2.6.4"
 gem "memcachier", "~> 0.0.2"
 gem 'readthis', "~> 2.0.1"
 gem 'hiredis'
-gem 'kgio', "~>2.9.2"
 gem 'thinking-sphinx', '~> 3.1.1'
 gem 'flying-sphinx', "~>1.2.0"
 # Use patched v2.0.2
@@ -93,7 +92,7 @@ gem 'oauth2',
   ref: 'e0006cb5099bf392f011eb5c49cbec4f893bbdba'
 
 gem 'lograge', "~> 0.3.2"
-gem 'public_suffix', "~> 1.5.1" # Needed currently to set GA hostname right, probably not
+gem 'public_suffix', "~> 2.0.5" # Needed currently to set GA hostname right, probably not
 # needed anymore when GA script updated.
 
 # Session store was removed from Rails 4

@@ -1,4 +1,10 @@
 nl:
+  number:
+    currency:
+      format:
+        separator: ","
+        delimiter: " "
+        format: "%u%n"
   admin:
     categories:
       edit:
@@ -158,7 +164,7 @@ nl:
         resend_link: "Opnieuw zenden"
         invalid_email_error: "Ongeldig email formaat voor '%{email}'"
         invalid_email_domain: "Het '%{email}' emailadres gebruikt een niet ondersteunde email provider. '%{domain}'. %{invalid_email_domain_read_more_link}"
-        invalid_email_domain_read_more_link: "Lees het knowledge base artikel (Engels) voor meer informatie."
+        invalid_email_domain_read_more_link: "Lees het Help Center artikel (Engels) voor meer informatie."
         unknown_error: "Er ging iets mis"
         white_label_offer: "Zet je eigen emailadres als de verzender en verwijder alle Sharetribe branding van uitgaande emailberichten door %{upgrade_pro_plan_link}"
         upgrade_plan_link: "Upgrade naar het Pro plan of hoger"
@@ -246,8 +252,7 @@ nl:
         ban_me_error: "Je kunt jezelf niet uitsluiten."
       new_layout:
         new_layout: "Nieuwe layout"
-        description_roadmap: "Sharetribe is momenteel bezig om een nieuwe en verbeterde lay-out uit te brengen. Gedurende de transitieperiode kun je kiezen welke delen van je marktplaats nog de oude lay-out blijven gebruiken, door middel van het menu hieronder. Nieuwe features zijn alleen beschikbaar in de nieuwe layout."
-        description_process: "Ondersteuning voor de oude layout zal in de toekomst worden verwijderd. Het Sharetribe team zal je van te voren laten weten wanneer dit gebeurt. Vragen? Neem contact op via %{support_link}."
+        description_roadmap_new: "Wanneer nieuwe componenten van de layout beschikbaar worden gemaakt voor je marktplaats, kun je kiezen of je de nieuwe wilt gebruiken of dat je de oude wilt blijven gebruiken. Je kunt altijd wisselen op deze pagina. Het is aan te raden om altijd de nieuwe versie te gebruiken, aangezien de oude componenten op een gegeven moment waarschijnlijk zullen verdwijnen. In die gevallen zul je uiteraard lang van te voren op de hoogte gesteld worden."
         enabled_for_you: "Voor jou ingesteld"
         enabled_for_all: "Voor allen ingesteld"
         new_topbar: "Nieuwe menubalk boven (zichtbaar op iedere pagina)"
@@ -390,7 +395,6 @@ nl:
       users_and_transactions: "Gebruikers en transacties"
       configure: Configuratie
       emails_title: E-mails
-      support: Support
       subscription: Abonnement
       preview: "Preview site"
     listing_shapes:
@@ -893,11 +897,11 @@ nl:
       remember_to_give_feedback_to: "Herinnering: vergeet niet om feedback te geven aan %{name}"
       you_have_not_given_feedback_yet: "U heeft nog geen feedback gegeven aan %{name} over '%{event}'. Vergeet niet feedback te geven over hoe %{given_name} gepresteerd heeft in het evenement."
     transaction_preauthorized:
-      subject: "%{requester} heeft gevraagd en betaald voor %{listing_title}"
-      transaction_requested_by_user: "%{requester} heeft gevraagd en betaald voor \"%{listing_title}\""
+      subject: "%{requester} is geinteresseerd en heeft betaling gemachtigd voor %{listing_title}, gepubliceerd op %{service_name}."
+      transaction_requested_by_user: "Goed nieuws! %{requester} heeft interesse in %{listing_title} en heeft betaling hiervoor gemachtigd."
       you_have_time_to_accept: "Je dient het verzoek te accepteren of af te wijzen binnen %{payment_expires_in}. Als je binnen deze termijn accepteert, dan gaat de betaling door. Als je het verzoek niet accepteert, wordt het automatisch afgewezen en krijg je niet betaald."
-      if_you_do_accept: ~
-      if_you_do_not_accept: ~
+      if_you_do_accept: "Als je het verzoek binnen deze periode accepteert, ontvang je onmiddelijk het geld in je account."
+      if_you_do_not_accept: "Als je het verzoek afwijst, of niet binnen deze tijdsperiode accepteert, dan wordt de transactie automatisch geannuleerd. %{requester} wordt dan niets in rekening gebracht, en jij ontvangt geen betaling."
       click_here_to_reply: "Klik hier om te antwoorden op het verzoek"
     transaction_preauthorized_reminder:
       subject: "Vergeet niet om het verzoek van %{requester} betreffende advertentie %{listing_title} te accepteren"

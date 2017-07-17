@@ -1,4 +1,10 @@
 pt-PT:
+  number:
+    currency:
+      format:
+        separator: ~
+        delimiter: ~
+        format: ~
   admin:
     categories:
       edit:
@@ -235,8 +241,7 @@ pt-PT:
         ban_me_error: ~
       new_layout:
         new_layout: ~
-        description_roadmap: ~
-        description_process: ~
+        description_roadmap_new: ~
         enabled_for_you: ~
         enabled_for_all: ~
         new_topbar: ~
@@ -379,7 +384,6 @@ pt-PT:
       users_and_transactions: "Utilizadores & transações"
       configure: ~
       emails_title: ~
-      support: ~
       subscription: ~
       preview: ~
     listing_shapes:
@@ -605,7 +609,7 @@ pt-PT:
       no_received_messages: "Nenhuma mensagem recebida"
       no_sent_messages: "Nenhuma mensagem enviada"
     conversation:
-      accepted_request: ""
+      accepted_request: ~
       accepted_offer: ~
       rejected_request: ~
       rejected_offer: ~
@@ -619,7 +623,7 @@ pt-PT:
       message_content_not_available: ~
     message:
       accepted_request: ~
-      received_payment: ""
+      received_payment: ~
       accepted_offer: ~
       rejected_request: ~
       rejected_offer: ~
@@ -666,7 +670,7 @@ pt-PT:
       offer_accepted: Aceite
       offer_rejected: Rejeitada
       offer_canceled: ~
-      offer_confirmed: ~
+      offer_confirmed: Concluída
       offer_paid: ~
       offer_preauthorized: ~
       offer_waiting_for_payment: ~
@@ -682,7 +686,7 @@ pt-PT:
       waiting_for_listing_author_to_deliver_listing: ~
       request_accepted: Aceite
       request_rejected: Rejeitada
-      request_confirmed: ~
+      request_confirmed: Concluída
       request_canceled: ~
       request_paid: ~
       request_preauthorized: ~
@@ -895,7 +899,7 @@ pt-PT:
       welcome_email_subject: ~
       welcome_to_marketplace: ~
       love_marketplace_crew: ~
-      welcome_email_footer_text: ""
+      welcome_email_footer_text: ~
       settings_link_text: "Verifique as suas configurações"
     new_listing_by_followed_person:
       subject: "%{author_name} publicou um novo anúncio no %{service_name}"
@@ -1168,7 +1172,7 @@ pt-PT:
       join_without_facebook_link: ~
     conversations:
       messages: mensagens
-      notifications: "Notificações "
+      notifications: Notificações
       received: Recebida
       sent: Enviada
     global-header:
@@ -1276,7 +1280,7 @@ pt-PT:
       registration_considered_spam: "O registo não funcionou. Por favor, contacte-nos a partir do menu de cabeçalho, mencionando \"erro email2\"."
       reply_cannot_be_empty: "Não pode enviar uma mensagem vazia"
       reply_sent: "Resposta enviada com sucesso!"
-      request_accepted: ""
+      request_accepted: ~
       request_confirmed: ~
       request_rejected: "Pedido rejeitado."
       request_canceled: ~

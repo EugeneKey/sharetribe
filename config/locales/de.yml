@@ -1,4 +1,10 @@
 de:
+  number:
+    currency:
+      format:
+        separator: "."
+        delimiter: ","
+        format: "%n%u"
   admin:
     categories:
       edit:
@@ -79,12 +85,12 @@ de:
         verification_to_post_listings_info_content_default: "Auf diesem Marktplatz ist es erforderlich, dass man sich vom Administrator verifizieren lässt, bevor man Einträge veröffentlichen darf. Du bist noch nicht verifiziert. Bitte %{contact_admin_link}, um dich verifizieren zu lassen."
         contact_admin_link_text: "Administrator kontaktieren"
         save: "Einstellungen speichern"
-        transaction_agreement: Transaktionsvereinbarung
+        transaction_agreement: "Die Allgemeinen Geschäftsbedingungen (AGBs)"
         transaction_agreement_checkbox: "Benutzer müssen die Allgemeinen Geschäftsbedingungen vor der Transaktion akzeptieren"
         transaction_agreement_checkbox_header: "Allgemeine Geschäftsbedingungen Label"
         transaction_agreement_checkbox_label_description: "Dieser Text wird neben einer Checkbox beim Checkout angezeigt. Der Nutzer muss mit einem Haken in der Checkbox zustimmen, um die Transaktion abzuschließen. Ein Beispiel wäre etwa \"Mit Klicken dieser Box akzeptiere ich die Vereinbarung.\""
         transaction_agreement_text_header: "Allgemeine Geschäftsbedingungen"
-        transaction_agreement_description: "Dies ist der Inhalt der allgemeinen Geschäftsbedingungen (AGBs), die der Anwender akzeptieren muss. Der Inhalt der AGBs wird angezeigt, wenn der Benutzer den \"%{read_more}\" -Link neben dem Label der Allgemeinen Geschäftsbedingungen klickt."
+        transaction_agreement_description: "Dies ist der Inhalt der Allgemeinen Geschäftsbedingungen (AGBs), die der Anwender akzeptieren muss. Der Inhalt der AGBs wird angezeigt, wenn der Benutzer den %{read_more} Link neben dem Label der Allgemeinen Geschäftsbedingungen klickt."
       edit_look_and_feel:
         edit_community_look_and_feel: "Bearbeite das \"Look & Feel\" des Marktplatzes %{community_name}"
         community_logo: Logo
@@ -244,8 +250,7 @@ de:
         ban_me_error: "Du kannst dich nicht selber sperren."
       new_layout:
         new_layout: "Neues Layout"
-        description_roadmap: "Wir entwickeln derzeit ein neues, verbessertes Layout für Sharetribe. Während der Umbruchphase kannst du unten wählen, welche Aspekte deines Marktplatzes das alte Layout verwenden sollen. Neue Features von Sharetribe werden nur mit dem neuen Layout verfügbar sein."
-        description_process: "Wir werden das alte Layout in der Zukunft allmählich abbauen. Das Sharetribe-Team wird dir informieren, bevor wir dies tun. Hast du Fragen? Du kannst das Team eine Nachricht hier schicken: %{support_link}."
+        description_roadmap_new: "Sobald neue Layout-Komponenten für deinen Marktplatz verfügbar sind, kannst du wählen, ob du die neue Komponente verwenden möchtest, oder ob du weiterhin die alte verwenden willst. Du kannst die Auswahl auf dieser Seite jederzeit ändern. Es ist empfohlen, jederzeit die neuen Komponente zu verwenden, denn die alten Komponente können in der Zukunft auslaufen. Wenn eine Komponente, die du verwendest, auslaufen wird, werden wir jedoch dir im Voraus natürlich eine Nachricht schicken."
         enabled_for_you: "Für dich aktiviert"
         enabled_for_all: "Für alle aktiviert"
         new_topbar: "Neuer Top Bar (auf jeder Seite angezeigt)"
@@ -388,7 +393,6 @@ de:
       users_and_transactions: "Benutzer & Transaktionen"
       configure: Konfiguration
       emails_title: E-Mails
-      support: Support
       subscription: Abonnement
       preview: "Seitenvorschau anzeigen"
     listing_shapes:
@@ -893,11 +897,11 @@ de:
       remember_to_give_feedback_to: "Zur Erinnerung: Denke daran, %{name} zu bewerten"
       you_have_not_given_feedback_yet: "Du hast %{name} noch kein Feedback zur Transaktion '%{event}' gegeben. Denke daran, ein Feedback darüber zu hinterlassen, wie %{given_name} die Transaktion durchgeführt hat."
     transaction_preauthorized:
-      subject: "%{requester} hat %{listing_title} angefragt und bezahlt"
-      transaction_requested_by_user: "%{requester} hat \"%{listing_title}\" angefragt und bezahlt"
+      subject: "%{requester} hat %{listing_title} angefragt und eine Zahlung autorisiert auf %{service_name}"
+      transaction_requested_by_user: "Gute Nachrichten! %{requester} hat \"%{listing_title}\" angefragt und eine Zahlung autorisiert."
       you_have_time_to_accept: "Du musst die Anfrage innerhalb von %{payment_expires_in} akzeptieren oder ablehnen. Wenn Du innerhalb dieses Zeitrahmens akzeptierst, wird die Zahlung durchgehen. Wenn Du nicht zustimmst, wird die Anfrage automatisch abgelehnt, und Du wirst nicht bezahlt."
-      if_you_do_accept: ~
-      if_you_do_not_accept: ~
+      if_you_do_accept: "Wenn du die Anfrage innerhalb dieses Zeitrahmens akzeptierst, wirst du das Geld sofort auf dein Konto bekommen."
+      if_you_do_not_accept: "Wenn du die Anfrage ablehnst, oder sie nicht innerhalb dieses Zeitrahmens akzeptierst, wird die Transaktion automatisch abgebrochen, %{requester} wird nicht belastet, und du bekommst das Geld nicht."
       click_here_to_reply: "Klicke hier, um auf die Anfrage zu antworten"
     transaction_preauthorized_reminder:
       subject: "Bitte denke daran, die Anfrage von %{requester} zum Angebot %{listing_title} zu akzeptieren."
@@ -1643,7 +1647,7 @@ de:
   paypal_accounts:
     payout_info_title: Auszahlungsinformationen
     paypal_account_email_connected: "<del>Verknüpfung PayPal Konto</del> Abgeschlossen!"
-    payout_info_paypal: "%{service_name} nutzt PayPal als Zahlungsdienstleister. Ein %{create_paypal_account_link} ist nötig, um Zahlungen für Deine Angebote annehmen zu können. Dieser muss mit %{service_name} verbunden sein."
+    payout_info_paypal: "%{service_name} nutzt PayPal als Zahlungsdienstleister. Ein %{create_paypal_account_link} ist nötig, um Zahlungen für Deine Angebote annehmen zu können. Dieses muss mit %{service_name} verbunden sein."
     paypal_billing_agreement_made: "<del>Gewähre %{service_name} die Erlaubnis, eine Transaktionsgebühr zu berechnen</del> Abgeschlossen!"
     commission_permission_needed: "Du musst %{service_name} außerdem die Erlaubnis erteilen, eine Buchungsgebühr zu erheben."
     create_paypal_account_link_text: "PayPal Konto"

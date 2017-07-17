@@ -1,4 +1,10 @@
 en:
+  number:
+    currency:
+      format:
+        separator: "."
+        delimiter: ","
+        format: "%u%n"
   admin:
     categories:
       edit:
@@ -156,7 +162,7 @@ en:
         resend_link: Resend
         invalid_email_error: "Invalid email format for '%{email}'"
         invalid_email_domain: "The '%{email}' email address is using an unsupported email provider: '%{domain}'. %{invalid_email_domain_read_more_link}"
-        invalid_email_domain_read_more_link: "Read the knowledge base article for more information."
+        invalid_email_domain_read_more_link: "Read the Help Center article for more information."
         unknown_error: "Something went wrong"
         white_label_offer: "Set your own email address as the sender and remove all Sharetribe branding from outgoing email messages by %{upgrade_pro_plan_link}."
         upgrade_plan_link: "upgrading to the Pro plan or higher"
@@ -244,8 +250,7 @@ en:
         ban_me_error: "You cannot ban yourself."
       new_layout:
         new_layout: "New layout"
-        description_roadmap: "Sharetribe is currently in the process of rolling out a new and improved layout. During the transition period, you can select which parts of your marketplace should continue using the old layout using the menu below. New features will only be available on the new layout."
-        description_process: "Support for the old layout will be removed in the future. The Sharetribe team will notify you before this happens. Questions? Contact the team via %{support_link}."
+        description_roadmap_new: "When new layout components are made available for your marketplace, you can choose whether you want to start using the new component or continue using the old one. You can toggle the selection at any point from this page. It's recommended to always be using the new version, as the old components might be phased out at some point. In case a component you're currently using is going to be phased out, you will be contacted in advance."
         enabled_for_you: "Enabled for you"
         enabled_for_all: "Enabled for all"
         new_topbar: "New top bar (visible on every page)"
@@ -388,7 +393,6 @@ en:
       users_and_transactions: "Users & transactions"
       configure: Configuration
       emails_title: Emails
-      support: Support
       subscription: Subscription
       preview: "Preview site"
     listing_shapes:
@@ -895,10 +899,9 @@ en:
     transaction_preauthorized:
       subject: "%{requester} is interested and has authorized payment for %{listing_title} published in %{service_name}"
       transaction_requested_by_user: "Great news! %{requester} is interested in \"%{listing_title}\" and has authorized payment for this listing."
-      you_have_time_to_accept: "You need to accept or reject the request within %{payment_expires_in}."
+      you_have_time_to_accept: "You need to accept or reject the request within %{payment_expires_in}. If you accept within this timeframe, the payment will go through. If you don't accept, the request will be automatically rejected and you will not get paid."
       if_you_do_accept: "If you accept the request within this timeframe, you will receive the money immediately to your account."
       if_you_do_not_accept: "If you reject the request or don't accept it within this timeframe, the transaction will be automatically cancelled, %{requester} will not be charged and you will not get paid."
-      you_have_time_to_accept: "You need to accept or reject the request within %{payment_expires_in}. If you accept within this timeframe, the payment will go through. If you don't accept, the request will be automatically rejected and you will not get paid."
       click_here_to_reply: "Click here to respond to the request"
     transaction_preauthorized_reminder:
       subject: "Remember to accept the request from %{requester} about listing %{listing_title}"

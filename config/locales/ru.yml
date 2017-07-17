@@ -1,4 +1,10 @@
 ru:
+  number:
+    currency:
+      format:
+        separator: ~
+        delimiter: ~
+        format: ~
   admin:
     categories:
       edit:
@@ -254,8 +260,7 @@ ru:
         ban_me_error: "Вы не можете заблокировать сами себя"
       new_layout:
         new_layout: ~
-        description_roadmap: ~
-        description_process: ~
+        description_roadmap_new: ~
         enabled_for_you: ~
         enabled_for_all: ~
         new_topbar: ~
@@ -398,7 +403,6 @@ ru:
       users_and_transactions: "Участники и транзакции"
       configure: Конфигурация
       emails_title: Emails
-      support: Поддержка
       subscription: Подписка
       preview: ~
     listing_shapes:

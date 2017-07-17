@@ -1,4 +1,10 @@
 nb:
+  number:
+    currency:
+      format:
+        separator: ","
+        delimiter: " "
+        format: "%u %n"
   admin:
     categories:
       edit:
@@ -244,8 +250,7 @@ nb:
         ban_me_error: "Du kan ikke forby deg selv."
       new_layout:
         new_layout: "Ny layout"
-        description_roadmap: "Sharetribe holder for tiden på med å sette ut i livet en ny og forbedret layout. I overgangsperioden kan du velge hvilke deler av din markedsplass som skal fortsette å bruke den gamle layouten fra menyen under Nye funksjoner vil kun bli tilgjengelig for den nye layouten."
-        description_process: "Support for den gamle layouten vil bli fjernet i fremtiden. Sharetribe-teamet vil gi deg beskjed før dette skjer. Har du spørsmål? Kontakt dem på %{support_link}."
+        description_roadmap_new: "Når nye layout-komponenter er tilgjengelige for markedsplassen din, kan du velge om du vil begynne å bruke de nye komponentene eller fortsette å bruke de gamle. Du kan aktivere valgene dine når som helst på denne siden. Det er anbefalt å alltid bruke nyeste versjon, siden de gamle komponentene kan bli faset ut etter hvert. Hvis en komponent som du bruker vil bli faset ut, vil du bli kontaktet i forkant."
         enabled_for_you: "Tilgjengelig for deg"
         enabled_for_all: "Tilgjengelig for alle"
         new_topbar: "Ny toppmeny (synlig på alle sider)"
@@ -388,7 +393,6 @@ nb:
       users_and_transactions: "Brukere og transaksjoner"
       configure: Innstillinger
       emails_title: E-poster
-      support: Support
       subscription: Påmelding
       preview: "Forhåndsvis mitt nettsted"
     listing_shapes:

@@ -1,4 +1,10 @@
 zh-HK:
+  number:
+    currency:
+      format:
+        separator: ~
+        delimiter: ~
+        format: ~
   admin:
     categories:
       edit:
@@ -239,8 +245,7 @@ zh-HK:
         ban_me_error: ~
       new_layout:
         new_layout: ~
-        description_roadmap: ~
-        description_process: ~
+        description_roadmap_new: ~
         enabled_for_you: ~
         enabled_for_all: ~
         new_topbar: ~
@@ -383,7 +388,6 @@ zh-HK:
       users_and_transactions: ~
       configure: ~
       emails_title: 電郵
-      support: ~
       subscription: ~
       preview: ~
     listing_shapes:

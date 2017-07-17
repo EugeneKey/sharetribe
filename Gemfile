@@ -53,7 +53,7 @@ gem 'possibly', '~> 1.0.1'
 
 # gem 'delayed_job', "~> 4.1.1"
 # gem 'delayed_job_active_record', "~> 4.1.0"
-gem 'sidekiq'
+gem 'sidekiq', "~>5.0.4"
 
 gem 'web_translate_it', "~>2.1.8"
 gem 'rails-i18n', '~> 4.0.8'

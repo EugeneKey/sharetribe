@@ -3,10 +3,6 @@ require 'sidekiq/web'
 # coding: utf-8
 Kassi::Application.routes.draw do
 
-  authenticate :person, lambda { |user| user.has_admin_rights? } do
-    mount Sidekiq::Web => '/sidekiq'
-  end
-
   namespace :mercury do
     resources :images
   end
@@ -169,6 +165,10 @@ Kassi::Application.routes.draw do
 
     namespace :admin do
       get '' => "getting_started_guide#index"
+
+      authenticate :person, lambda { |user| user.has_admin_rights? } do
+        mount Sidekiq::Web, at: "tools/jobs"
+      end
 
       # Payments
       get  "/paypal_preferences"                      => "paypal_preferences#index"

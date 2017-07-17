@@ -368,8 +368,8 @@ GEM
     pry-byebug (3.4.2)
       byebug (~> 9.0)
       pry (~> 0.10)
-    puma (3.8.2)
     public_suffix (2.0.5)
+    puma (3.8.2)
     pusher-client (0.6.2)
       json
       websocket (~> 1.0)
@@ -627,8 +627,8 @@ DEPENDENCIES
   premailer (~> 1.8.2)
   protected_attributes (~> 1.1.3)
   pry-byebug
-  puma
   public_suffix (~> 2.0.5)
+  puma
   quiet_assets (~> 1.1.0)
   rack-test (~> 0.6.2)
   rails (= 4.2.7.1)

@@ -1,6 +1,6 @@
 module TransactionService::Jobs
   class ProcessPreauthorizeCommand < ActiveJob::Base
-    queue_as :paypal
+    queue_as :payments
 
     include SessionContextSerializer
     include DelayedAirbrakeNotification

@@ -1,6 +1,6 @@
 module PaypalService::Jobs
   class ProcessBillingAgreementsCommand < ActiveJob::Base
-    queue_as :paypal
+    queue_as :payments
 
     include DelayedAirbrakeNotification
 

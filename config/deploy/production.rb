@@ -21,6 +21,6 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 
 set :nginx_server_name, '13.229.53.71'
 
-set :sidekiq_processes, 2
+# set :sidekiq_processes, 2
 set :sidekiq_user, fetch(:user)
-set :sidekiq_options_per_process, ["--queue paypal", "--queue paperclip --queue default --queue mailers --queue ts_delta --queue low"]
+set :sidekiq_options_per_process, ["--queue paperclip --queue default --queue payments --queue mailers --queue ts_delta --queue low"]

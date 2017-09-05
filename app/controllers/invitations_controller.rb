@@ -1,10 +1,10 @@
 class InvitationsController < ApplicationController
 
-  before_filter do |controller|
+  before_action do |controller|
     controller.ensure_logged_in t("layouts.notifications.you_must_log_in_to_invite_new_users")
   end
 
-  before_filter :users_can_invite_new_users
+  before_action :users_can_invite_new_users
 
   def new
     @selected_tribe_navi_tab = "members"
@@ -18,7 +18,7 @@ class InvitationsController < ApplicationController
 
     view_locals = {
       invitation_limit: invitation_limit,
-      has_admin_rights: @current_user.has_admin_rights?
+      has_admin_rights: @current_user.has_admin_rights?(@current_community)
     }
 
     render locals: onboarding_popup_locals.merge(view_locals)

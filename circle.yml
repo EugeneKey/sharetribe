@@ -8,7 +8,7 @@ machine:
   ruby:
     version: ruby-2.3.1
   node:
-    version: 6.9
+    version: 7.8.0
   environment:
     MOCHA_FILE: "$CIRCLE_TEST_REPORTS/mocha.xml"
 dependencies:
@@ -32,7 +32,7 @@ test:
     - (cd client && npm run build:client && npm run build:server):
         parallel: true
   override:
-    - bundle exec rubocop
+    - bundle exec rubocop -R
     - npm run lint:
         pwd: client
     - bundle exec rspec --format progress --format RspecJunitFormatter --out $CIRCLE_TEST_REPORTS/rspec.xml:

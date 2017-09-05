@@ -3,30 +3,30 @@ class ListingsController < ApplicationController
   class ListingDeleted < StandardError; end
 
   # Skip auth token check as current jQuery doesn't provide it automatically
-  skip_before_filter :verify_authenticity_token, :only => [:close, :update, :follow, :unfollow]
+  skip_before_action :verify_authenticity_token, :only => [:close, :update, :follow, :unfollow]
 
-  before_filter :only => [ :edit, :edit_form_content, :update, :close, :follow, :unfollow ] do |controller|
+  before_action :only => [ :edit, :edit_form_content, :update, :close, :follow, :unfollow ] do |controller|
     controller.ensure_logged_in t("layouts.notifications.you_must_log_in_to_view_this_content")
   end
 
-  before_filter :only => [ :new, :new_form_content, :create ] do |controller|
+  before_action :only => [ :new, :new_form_content, :create ] do |controller|
     controller.ensure_logged_in t("layouts.notifications.you_must_log_in_to_create_new_listing", :sign_up_link => view_context.link_to(t("layouts.notifications.create_one_here"), sign_up_path)).html_safe
   end
 
-  before_filter :save_current_path, :only => :show
-  before_filter :ensure_authorized_to_view, :only => [ :show, :follow, :unfollow ]
+  before_action :save_current_path, :only => :show
+  before_action :ensure_authorized_to_view, :only => [ :show, :follow, :unfollow ]
 
-  before_filter :only => [ :close ] do |controller|
+  before_action :only => [ :close ] do |controller|
     controller.ensure_current_user_is_listing_author t("layouts.notifications.only_listing_author_can_close_a_listing")
   end
 
-  before_filter :only => [ :edit, :edit_form_content, :update ] do |controller|
+  before_action :only => [ :edit, :edit_form_content, :update ] do |controller|
     controller.ensure_current_user_is_listing_author t("layouts.notifications.only_listing_author_can_edit_a_listing")
   end
 
-  before_filter :ensure_is_admin, :only => [ :move_to_top, :show_in_updates_email ]
+  before_action :ensure_is_admin, :only => [ :move_to_top, :show_in_updates_email ]
 
-  before_filter :is_authorized_to_post, :only => [ :new, :create ]
+  before_action :is_authorized_to_post, :only => [ :new, :create ]
 
   def index
     @selected_tribe_navi_tab = "home"
@@ -305,11 +305,13 @@ class ListingsController < ApplicationController
     create_listing(shape, listing_uuid)
   end
 
+
+  # rubocop:disable Metrics/AbcSize
   def create_listing(shape, listing_uuid)
-    with_currency = params[:listing].merge({currency: @current_community.currency})
+    with_currency = params.to_unsafe_hash[:listing].merge({currency: @current_community.currency})
     valid_until_enabled = !@current_community.hide_expiration_date
     listing_params = ListingFormViewUtils.filter(with_currency, shape, valid_until_enabled)
-    listing_unit = Maybe(params)[:listing][:unit].map { |u| ListingViewUtils::Unit.deserialize(u) }.or_else(nil)
+    listing_unit = Maybe(params.to_unsafe_hash)[:listing][:unit].map { |u| ListingViewUtils::Unit.deserialize(u) }.or_else(nil)
     listing_params = ListingFormViewUtils.filter_additional_shipping(listing_params, listing_unit)
     validation_result = ListingFormViewUtils.validate(
       params: listing_params,
@@ -342,7 +344,7 @@ class ListingsController < ApplicationController
       @listing.author = @current_user
 
       if @listing.save
-        upsert_field_values!(@listing, params[:custom_fields])
+        upsert_field_values!(@listing, params.to_unsafe_hash[:custom_fields])
 
         listing_image_ids =
           if params[:listing_images]
@@ -354,7 +356,14 @@ class ListingsController < ApplicationController
 
         ListingImage.where(id: listing_image_ids, author_id: @current_user.id).update_all(listing_id: @listing.id)
 
+        if params[:listing_ordered_images].present?
+          params[:listing_ordered_images].split(",").each_with_index do |image_id, position|
+            ListingImage.where(id: image_id, author_id: @current_user.id).update_all(position: position+1)
+          end
+        end
+
         ListingCreatedJob.perform_later(@listing, @current_community)
+
         if @current_community.follow_in_use?
           NotifyFollowersJob.set(wait: 30.minutes).perform_later(@listing, @current_community)
         end
@@ -388,6 +397,7 @@ class ListingsController < ApplicationController
       end
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   def edit
     @selected_tribe_navi_tab = "home"
@@ -449,7 +459,7 @@ class ListingsController < ApplicationController
     end
 
     valid_until_enabled = !@current_community.hide_expiration_date
-    with_currency = params[:listing].merge({currency: @current_community.currency})
+    with_currency = params.require(:listing).merge({currency: @current_community.currency}).permit!.to_h
     listing_params = ListingFormViewUtils.filter(with_currency, shape, valid_until_enabled)
     listing_unit = Maybe(params)[:listing][:unit].map { |u| ListingViewUtils::Unit.deserialize(u) }.or_else(nil)
     listing_params = ListingFormViewUtils.filter_additional_shipping(listing_params, listing_unit)
@@ -482,13 +492,16 @@ class ListingsController < ApplicationController
     old_availability = @listing.availability.to_sym
     update_successful = @listing.update_fields(listing_params)
 
-    upsert_field_values!(@listing, params[:custom_fields])
+    upsert_field_values!(@listing, params.to_unsafe_hash[:custom_fields])
     finalise_update(@listing, shape, @current_community, update_successful, old_availability)
   end
 
   def finalise_update(listing, shape, community, update_successful, old_availability)
     if update_successful
-      listing.location.update_attributes(params[:location]) if listing.location
+      if listing.location
+        location_params = permit_location_params(params)
+        listing.location.update_attributes(location_params)
+      end
       flash[:notice] = update_flash(old_availability: old_availability, new_availability: shape[:availability])
       ListingUpdatedJob.perform_later(listing, community)
       reprocess_missing_image_styles(listing) if listing.closed?
@@ -535,16 +548,16 @@ class ListingsController < ApplicationController
 
     # Listings are sorted by `created_at`, so change it to now.
     if @listing.update_attribute(:updates_email_at, Time.now)
-      render :nothing => true, :status => 200
+      render :body => nil, :status => 200
     else
       logger.error("An error occured while trying to move the listing (id=#{Maybe(@listing).id.or_else('No id available')}) to the top of the homepage")
-      render :nothing => true, :status => 500
+      render :body => nil, :status => 500
     end
   end
 
   def ensure_current_user_is_listing_author(error_message)
     @listing = Listing.find(params[:id])
-    return if current_user?(@listing.author) || @current_user.has_admin_rights?
+    return if current_user?(@listing.author) || @current_user.has_admin_rights?(@current_community)
     flash[:error] = error_message
     redirect_to @listing and return
   end
@@ -687,7 +700,7 @@ class ListingsController < ApplicationController
   end
 
   def select_unit(listing_unit, shape)
-    m_unit = Maybe(shape)[:units].map { |units|
+    Maybe(shape)[:units].map { |units|
       units.length == 1 ? units.first : units.find { |u| u == listing_unit }
     }
   end
@@ -815,7 +828,7 @@ class ListingsController < ApplicationController
         option_id = answer_value.to_i
         answer = DropdownFieldValue.new
         answer.custom_field_option_selections = [CustomFieldOptionSelection.new(:custom_field_value => answer,
-                                                                                :custom_field_option_id => answer_value,
+                                                                                :custom_field_option_id => option_id,
                                                                                 :listing_id => listing_id)]
         answer
       when :text
@@ -879,7 +892,7 @@ class ListingsController < ApplicationController
 
   def is_authorized_to_post
     if @current_community.require_verification_to_post_listings?
-      unless @current_user.has_admin_rights? || @current_community_membership.can_post_listings?
+      unless @current_user.has_admin_rights?(@current_community) || @current_community_membership.can_post_listings?
         redirect_to verification_required_listings_path
       end
     end
@@ -917,7 +930,7 @@ class ListingsController < ApplicationController
     when matches([:paypal])
       can_post = PaypalHelper.community_ready_for_payments?(community.id)
       error_msg =
-        if user.has_admin_rights?
+        if user.has_admin_rights?(community)
           t("listings.new.community_not_configured_for_payments_admin",
             payment_settings_link: view_context.link_to(
               t("listings.new.payment_settings_link"),
@@ -969,19 +982,24 @@ class ListingsController < ApplicationController
     if params[:origin_loc_attributes].nil?
       listing_params
     else
-      location_params = params[:origin_loc_attributes].permit(
-        :address,
-        :google_address,
-        :latitude,
-        :longitude
-      ).merge(
-        location_type: :origin_loc
-      )
+      params = ActionController::Parameters.new(params)
+      location_params = permit_location_params(params).merge(location_type: :origin_loc)
 
       listing_params.merge(
         origin_loc_attributes: location_params
       )
     end
+  end
+
+  def permit_location_params(params)
+    p = if params[:location].present?
+          params.require(:location)
+        elsif params[:origin_loc_attributes].present?
+          params.require(:origin_loc_attributes)
+        elsif params[:listing].present? && params[:listing][:origin_loc_attributes].present?
+          params.require(:listing).require(:origin_loc_attributes)
+        end
+    p.permit(:address, :google_address, :latitude, :longitude) if p.present?
   end
 
   def get_transaction_process(community_id:, transaction_process_id:)

@@ -4,7 +4,7 @@ es-ES:
       format:
         separator: ","
         delimiter: "."
-        format: "%n%u"
+        format: "%n %u"
   admin:
     categories:
       edit:
@@ -880,7 +880,7 @@ es-ES:
       added_listing: "%{name_link} ha añadido un anuncio:"
       update_mail_title: "Novedades de %{title_link}"
       title_link_text: "%{community_name}"
-      intro_paragraph: "Aquí están algunas de los eventos que han ocurrido en %{community_link} durante los últimos %{time_since_last_update}."
+      intro_paragraph: "Aquí están algunos de los eventos que han ocurrido en %{community_link} durante los últimos %{time_since_last_update}."
       intro_paragraph_link_text: "%{community_name}"
       reduce_email_footer_text: "¿Demasiados correos? %{settings_link} o %{unsubscribe_link}."
       settings_link_text: "Edita la configuración de tu correo electrónico aquí"
@@ -1168,7 +1168,7 @@ es-ES:
       join_this_community: "Únete a la comunidad"
       read_more: "Leer más"
       feedback: "Tu mensaje para el equipo de %{service_name}"
-      dont_use_to_contact_support: "Hemos notado que eres administrador de %{service_name}. Esta forma es para que los usuarios de tu comunidad te contacten. Si lo que quieres es contactar el equipo de soporte de Sharetribe, puedes hacerlo por medio del vínculo de Soporte que se encuentra en el panel de administrador."
+      dont_use_to_contact_support: "Hemos notado que eres administrador de %{service_name}. Esta forma es para que los usuarios de tu comunidad te contacten. Si lo que quieres es contactar el equipo de soporte de Sharetribe, puedes hacerlo por medio de la burbuja de Soporte que se encuentra en la parte inferior derecha en el panel de administración."
       feedback_forum: "Foro de sugerencias"
       feedback_handle: "Sugerencia o comentario"
       give_feedback: Contáctanos

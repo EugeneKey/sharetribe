@@ -1,10 +1,10 @@
 class CommentsController < ApplicationController
 
-  before_filter do |controller|
+  before_action do |controller|
     controller.ensure_logged_in t("layouts.notifications.you_must_log_in_to_send_a_comment")
   end
 
-  before_filter :ensure_authorized_to_comment, only: [:create]
+  before_action :ensure_authorized_to_comment, only: [:create]
 
   def create
     if @comment.save
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = @current_community.listings.find(params[:listing_id]).comments.find(params[:id])
-    if current_user?(@comment.author) || @current_user.has_admin_rights?
+    if current_user?(@comment.author) || @current_user.has_admin_rights?(@current_community)
       @comment.destroy
       respond_to do |format|
         format.html { redirect_to listing_path(params[:listing_id]) }

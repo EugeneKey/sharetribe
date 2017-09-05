@@ -166,7 +166,7 @@ Rails.application.routes.draw do
     namespace :admin do
       get '' => "getting_started_guide#index"
 
-      authenticate :person, lambda { |user| user.has_admin_rights? } do
+      authenticate :person, lambda { |user| user.has_admin_rights?(user.community) } do
         mount Sidekiq::Web, at: "tools/jobs"
       end
 

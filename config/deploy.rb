@@ -1,12 +1,12 @@
 # config valid only for current version of Capistrano
-lock "3.8.1"
+lock "3.9.1"
 
-set :rvm_ruby_version, '2.3.1@sharetribe'
+set :rvm_ruby_version, '2.3.4@share-r5.1.1'
 set :nvm_type, :user # or :system, depends on your nvm setup
-set :nvm_node, 'v6.9.5'
+set :nvm_node, 'v7.8.0'
 set :nvm_map_bins, %w{node npm yarn}
 
-set :repo_url,        'git@bitbucket.org:michael-murni/murni.git'
+set :repo_url,        'git@github.com:EugeneKey/sharetribe-with-sidekiq.git'
 set :application,     'sharetribe'
 set :user,            'ubuntu'
 set :puma_threads,    [4, 16]

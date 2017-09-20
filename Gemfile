@@ -132,14 +132,14 @@ end
 
 group :development do
   # Use Capistrano for deployment
-  gem 'capistrano', require: false
-  gem 'capistrano-bundler', require: false
-  gem 'capistrano-rails', require: false
-  gem 'capistrano-rvm', require: false
-  gem 'capistrano-npm', require: false
-  gem 'capistrano-nvm', require: false
-  gem 'capistrano3-puma',   require: false
-  gem 'capistrano-sidekiq', require: false
+  gem 'capistrano',         '~> 3.9.1', require: false
+  gem 'capistrano-bundler', '~> 1.2.0', require: false
+  gem 'capistrano-rails',   '~> 1.3.0', require: false
+  gem 'capistrano-rvm',     '~> 0.1.1', require: false
+  gem 'capistrano-npm',     '~> 1.0.2', require: false
+  gem 'capistrano-nvm',     '~> 0.0.7', require: false
+  gem 'capistrano3-puma',   '~> 3.1.1', require: false
+  gem 'capistrano-sidekiq', '~> 0.20.0', require: false
 end
 
 group :test do

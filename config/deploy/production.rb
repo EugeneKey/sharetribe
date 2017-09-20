@@ -1,6 +1,6 @@
-server '13.229.53.71', port: 22, roles: [:web, :app, :db], primary: true
+server '127.0.0.0', port: 22, roles: [:web, :app, :db], primary: true
 set :ssh_options,     { forward_agent: true, user: fetch(:user),
-                        keys: %w(~/.ssh/murni_key.pem),
+                        keys: %w(~/.ssh/key.pem),
                         auth_methods: %w(publickey password) }
 
 set :rails_env, :production
@@ -19,7 +19,7 @@ set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
 
-set :nginx_server_name, '13.229.53.71'
+set :nginx_server_name, 'name.com'
 
 # set :sidekiq_processes, 2
 set :sidekiq_user, fetch(:user)

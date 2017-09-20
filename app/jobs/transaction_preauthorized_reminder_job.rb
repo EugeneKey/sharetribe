@@ -22,6 +22,8 @@ class TransactionPreauthorizedReminderJob < ActiveJob::Base
   def perform(transaction_id)
     transaction = Transaction.find(transaction_id)
 
+    return if Maybe(::PlanService::API::Api.plans.get_current(community_id: transaction.community.id).data)[:expired].or_else(false)
+
     if transaction.status == "preauthorized"
       MailCarrier.deliver_now(TransactionMailer.transaction_preauthorized_reminder(transaction))
     end

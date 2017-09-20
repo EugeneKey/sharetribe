@@ -12,6 +12,8 @@ class ConfirmReminderJob < ActiveJob::Base
   end
 
   def perform(transaction, recipient, days_to_cancel, community)
+    return if Maybe(::PlanService::API::Api.plans.get_current(community_id: community.id).data)[:expired].or_else(false)
+
     if transaction.status.eql?("paid")
       MailCarrier.deliver_now(PersonMailer.send("confirm_reminder", transaction, transaction.buyer, community, days_to_cancel))
     end

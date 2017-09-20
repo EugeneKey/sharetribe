@@ -13,6 +13,7 @@ class TestimonialReminderJob < ActiveJob::Base
   end
 
   def perform(transaction, recipient, community)
+    return if Maybe(::PlanService::API::Api.plans.get_current(community_id: community.id).data)[:expired].or_else(false)
 
     if should_send_author_reminder?(transaction)
       MailCarrier.deliver_now(PersonMailer.send("testimonial_reminder", transaction, transaction.author, community))

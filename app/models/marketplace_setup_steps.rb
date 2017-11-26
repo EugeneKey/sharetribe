@@ -10,6 +10,7 @@
 #  paypal                 :boolean          default(FALSE), not null
 #  listing                :boolean          default(FALSE), not null
 #  invitation             :boolean          default(FALSE), not null
+#  payment                :boolean          default(FALSE)
 #
 # Indexes
 #

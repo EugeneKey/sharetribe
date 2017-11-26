@@ -547,6 +547,20 @@ CREATE TABLE `follower_relationships` (
   KEY `index_follower_relationships_on_person_id` (`person_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `invitation_unsubscribes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `invitation_unsubscribes` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `community_id` int(11) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_invitation_unsubscribes_on_community_id` (`community_id`),
+  KEY `index_invitation_unsubscribes_on_email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `invitations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -811,6 +825,7 @@ CREATE TABLE `marketplace_setup_steps` (
   `paypal` tinyint(1) NOT NULL DEFAULT '0',
   `listing` tinyint(1) NOT NULL DEFAULT '0',
   `invitation` tinyint(1) NOT NULL DEFAULT '0',
+  `payment` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_marketplace_setup_steps_on_community_id` (`community_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -939,6 +954,12 @@ CREATE TABLE `payment_settings` (
   `confirmation_after_days` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
+  `api_client_id` varchar(255) DEFAULT NULL,
+  `api_private_key` varchar(255) DEFAULT NULL,
+  `api_publishable_key` varchar(255) DEFAULT NULL,
+  `api_verified` tinyint(1) DEFAULT NULL,
+  `api_visible_private_key` varchar(255) DEFAULT NULL,
+  `api_country` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_payment_settings_on_community_id` (`community_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1180,6 +1201,46 @@ CREATE TABLE `shipping_addresses` (
   `country_code` varchar(8) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_shipping_addresses_on_transaction_id` (`transaction_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `stripe_accounts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `stripe_accounts` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `person_id` varchar(255) DEFAULT NULL,
+  `community_id` int(11) DEFAULT NULL,
+  `stripe_seller_id` varchar(255) DEFAULT NULL,
+  `stripe_bank_id` varchar(255) DEFAULT NULL,
+  `stripe_customer_id` varchar(255) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `stripe_payments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `stripe_payments` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `community_id` int(11) DEFAULT NULL,
+  `transaction_id` int(11) DEFAULT NULL,
+  `payer_id` varchar(255) DEFAULT NULL,
+  `receiver_id` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `sum_cents` int(11) DEFAULT NULL,
+  `commission_cents` int(11) DEFAULT NULL,
+  `currency` varchar(255) DEFAULT NULL,
+  `stripe_charge_id` varchar(255) DEFAULT NULL,
+  `stripe_transfer_id` varchar(255) DEFAULT NULL,
+  `fee_cents` int(11) DEFAULT NULL,
+  `real_fee_cents` int(11) DEFAULT NULL,
+  `subtotal_cents` int(11) DEFAULT NULL,
+  `transfered_at` datetime DEFAULT NULL,
+  `available_on` datetime DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `testimonials`;
@@ -2130,6 +2191,10 @@ INSERT INTO `schema_migrations` (version) VALUES
 ('20170613153960'),
 ('20170613153961'),
 ('20170613153965'),
-('20170626065542');
+('20170626065542'),
+('20170801125553'),
+('20170814125622'),
+('20170817035830'),
+('20171107063241');
 
 

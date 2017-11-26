@@ -85,6 +85,7 @@ GEM
     builder (3.2.3)
     byebug (9.0.6)
     callsite (0.0.11)
+    camertron-eprun (1.1.1)
     capistrano (3.9.1)
       airbrussh (>= 1.0.0)
       i18n
@@ -120,6 +121,7 @@ GEM
     childprocess (0.7.0)
       ffi (~> 1.0, >= 1.0.11)
     chunky_png (1.3.8)
+    cldr-plurals-runtime-rb (1.0.1)
     climate_control (0.2.0)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
@@ -155,6 +157,8 @@ GEM
       money (~> 6.7)
       sixarm_ruby_unaccent (~> 1.1)
       unicode_utils (~> 1.4)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
     css_parser (1.5.0)
       addressable
     cucumber (2.4.0)
@@ -204,6 +208,10 @@ GEM
     factory_girl_rails (4.8.0)
       factory_girl (~> 4.8.0)
       railties (>= 3.0.0)
+    fake_stripe (0.0.12)
+      capybara
+      sinatra
+      webmock
     faraday (0.11.0)
       multipart-post (>= 1.2, < 3)
     faraday-encoding (0.0.4)
@@ -238,6 +246,7 @@ GEM
     haml (5.0.1)
       temple (>= 0.8.0)
       tilt
+    hashdiff (0.3.4)
     hashie (3.5.5)
     hiredis (0.6.1)
     htmlentities (4.3.4)
@@ -281,6 +290,7 @@ GEM
     mail_view (2.0.4)
       tilt
     memcachier (0.0.2)
+    memoist (0.16.0)
     meta_request (0.4.3)
       callsite (~> 0.0, >= 0.0.11)
       rack-contrib (>= 1.1, < 3)
@@ -308,6 +318,7 @@ GEM
     multi_test (0.1.2)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
+    mustermann (1.0.0)
     mysql2 (0.4.6)
     nenv (0.3.0)
     net-scp (1.2.1)
@@ -479,6 +490,7 @@ GEM
     ruby-progressbar (1.8.1)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
+    safe_yaml (1.0.4)
     sass (3.4.24)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -496,6 +508,11 @@ GEM
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
       redis (~> 3.3, >= 3.3.3)
+    sinatra (2.0.0)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.0)
+      tilt (~> 2.0)
     sitemap_generator (5.3.1)
       builder (~> 3.0)
     sixarm_ruby_unaccent (1.1.1)
@@ -512,6 +529,8 @@ GEM
       net-ssh (>= 2.8.0)
     statesman (2.0.1)
     stringex (2.7.1)
+    stripe (3.0.0)
+      faraday (~> 0.9)
     temple (0.8.0)
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
@@ -536,6 +555,10 @@ GEM
     ts-sidekiq-delta (0.2.0)
       sidekiq (>= 2.5.4)
       thinking-sphinx (>= 3.1.0)
+    twitter_cldr (4.4.1)
+      camertron-eprun
+      cldr-plurals-runtime-rb (~> 1.0)
+      tzinfo
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
     uglifier (3.2.0)
@@ -557,6 +580,10 @@ GEM
       multi_json
       multipart-post (~> 2.0)
       trollop (~> 2.0)
+    webmock (3.0.1)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
     websocket (1.2.4)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
@@ -603,6 +630,7 @@ DEPENDENCIES
   dynamic_form (~> 1.1.4)
   email_spec (~> 2.1.1)
   factory_girl_rails (~> 4.8.0)
+  fake_stripe
   faraday (~> 0.11.0)
   faraday-encoding (~> 0.0.4)
   faraday_middleware (~> 0.11.0)
@@ -621,6 +649,7 @@ DEPENDENCIES
   mail (~> 2.6.6.rc1)
   mail_view (~> 2.0.4)
   memcachier (~> 0.0.2)
+  memoist
   mercury-rails!
   meta_request (~> 0.4.3)
   money-rails (~> 1.8.0)
@@ -659,12 +688,14 @@ DEPENDENCIES
   sitemap_generator (~> 5.3.1)
   statesman (~> 2.0.1)
   stringex (~> 2.7.1)
+  stripe (~> 3.0.0)
   therubyracer (~> 0.12.3)
   thinking-sphinx (~> 3.3.0)
   timecop (~> 0.8.1)
   transit-ruby (~> 0.8.1)
   truncate_html (~> 0.9.3)
   ts-sidekiq-delta (~> 0.2.0)
+  twitter_cldr
   uglifier (~> 3.2.0)
   uuidtools (~> 2.1.5)
   web-console (~> 3.5.1)

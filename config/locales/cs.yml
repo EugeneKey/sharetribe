@@ -157,7 +157,12 @@ cs:
         amazon_ses_notification: ~
         this_is_how_it_will_look: "Takto to bude vypadat:"
         send_verification_button: "Ověřovací e-mail byl odeslán"
+        change_sender_email: ~
         successfully_saved: "Adresa odesílatele byla úspěšně uložena. Ověřovací e-mail bude brzy odeslán."
+        successfully_saved_name: ~
+        set_sender_name: ~
+        change_sender_name: ~
+        change_sender_prompt: ~
         status: "Status: %{status}"
         status_verified: "Ověřeno - již se používá"
         status_error: "Došlo k chybě. Prosíme, aktualizujte stránku."
@@ -226,6 +231,7 @@ cs:
         twitter_handle: "Twitter (používá se tweet tlačítkem na straně)"
         update_settings: "Uložit nastavení"
         automatically_confirmed_no_escrow: "Transakce bude automaticky označena jako vyřízená za %{days_dropdown} dní od doby, kdy byla platba provedena."
+        automatically_confirmed_no_escrow_stripe_info: ~
         automatic_newsletter_frequency: "Automaticky posílat newsletter: %{frequency_dropdown}"
         newsletter_daily: Denně
         newsletter_weekly: Týdně
@@ -238,6 +244,7 @@ cs:
         last_community_updates: "Prosíme, vezměte na vědomí, že po smazání, Vy i uživatelé Vašeho tržiště mohou stále dostávat e-maily s novinkami."
         you_will_be_redirected_to: "Poté, co smažete Vaše tržiště, budete přesměrováni do %{destination}. Již nikdy nebudete mít přístup do Vašeho tržiště."
         delete_this_marketplace: "Smazat toto tržiště"
+        payment_preferences: ~
       manage_members:
         manage_members: "Správa uživatelů"
         email: E-mail
@@ -252,7 +259,12 @@ cs:
         export_all_as_csv: "Exportovat vše do formátu CSV"
         save_user_status_error: "Ukládání selhalo. Prosíme, aktualizujte stránku a zkuste to znovu."
         ban_user_confirmation: "Tímto bude uživatel z tržiště odstraněn a nebude již mít pod tímto účtem přístup na tuto stránku. Jste si jisti, že chcete pokračovat?"
+        unban_user_confirmation: ~
         ban_me_error: "Nemůžete sami sebe zakázat."
+        search: ~
+        search_by_name_email: ~
+        reset_search: ~
+        for_search_terms: ~
       new_layout:
         new_layout: ~
         description_roadmap_new: ~
@@ -325,9 +337,31 @@ cs:
           canceled: Zrušeno
           initiated: "Čeká se na PayPal platbu"
           pending_ext: "Čeká se na PayPal platbu"
+          none:
+            free: ~
+          paypal:
+            free: ~
+            pending: ~
+            preauthorized: ~
+            accepted: ~
+            rejected: ~
+            paid: ~
+            confirmed: ~
+            canceled: ~
+            initiated: ~
+            pending_ext: ~
+          stripe:
+            free: ~
+            pending: ~
+            preauthorized: ~
+            accepted: ~
+            rejected: ~
+            paid: ~
+            confirmed: ~
+            canceled: ~
+            initiated: ~
+            pending_ext: ~
         not_available: Nedostupné
-      paypal_account:
-        paypal_admin_account: Platby
     custom_fields:
       edit:
         edit_listing_field: "Upravit pole inzerát %{field_name}"
@@ -385,12 +419,25 @@ cs:
       new:
         send_email_to_members: "Poslat e-mail uživatelům"
         send_email_to_members_title: "Poslat e-mail všem svým uživatelům"
+        send_email: Odeslat
+        send_email_or: ~
+        send_test_email: ~
+        test_sent: ~
+        send_email_article_title: ~
+        send_email_article_text: ~
+        recipients:
+          title: ~
+          options:
+            all_users: ~
+            with_listing: ~
+            with_listing_no_payment: ~
+            with_payment_no_listing: ~
+            no_listing_no_payment: ~
         email_subject: "Předmět e-mailu"
         email_content: "Obsah e-mailu"
         email_content_placeholder: "Co chcete sdělit Vašim uživatelům?"
         email_language: "Jazyk e-mailu příjemců"
         any_language: "Jakýkoliv jazyk"
-        send_email: Odeslat
         message_will_be_sent_only_to_people_with_this_language: "Poznámka: e-mail bude poslán pouze uživatelům, kteří používají  %{service_name} v jazyce, který vyberete."
         email_sent: "E-mail byl odeslán."
     left_hand_navigation:
@@ -408,6 +455,7 @@ cs:
       per_day_availability: ~
       per_night_availability: ~
       pricing_units_disabled_info: ~
+      can_not_find_name: ~
       index:
         listing_shapes: "Typy objednávek"
         description: "Zde můžete nastavit, jak bude Vaše stránka fungovat. Můžete se rozhodnout, zda Vaši uživatelé mohou pronajímat nebo prodávat nebo pouze přidávat příspěvky a komunikovat přes zprávy."
@@ -503,6 +551,8 @@ cs:
       integration_info_text: "Platební systém Sharetribe funguje díky PayPal. Pokud chcete uživatelům umožnit, aby prováděli platby přes Vaše tržiště, musíte se připojit ke svému PayPal účtu a zadat minimální velikost transakce a poplatek z každé provedené transakce."
       link_paypal_personal_account_label: "Poskytuješ sám produkty nebo služby?"
       link_paypal_personal_account: "Pokud ano, budeš ještě muset spojit tvůj PayPal účet s %{personal_payment_preferences_link}"
+      link_stripe_personal_account: ~
+      link_paypal_and_stripe_personal_account: ~
       personal_payment_preferences_link_text: "Tvůj osobní účet pro marketplace"
       read_more_about_paypal: "Přečtěte si více o Sharetribe platebním systému"
       edit_payment_settings: ~
@@ -515,6 +565,68 @@ cs:
       save_settings: "Uložit nastavení"
       minimum_listing_price_below_tx_fee: "Minimální velikost transakce musí být alespoň stejná částka jako minimální transakční poplatek %{minimum_transaction_fee}."
       minimum_listing_price_below_min: "Minimální velikost transakce musí být větší než minimální přirážka %{minimum_commission}."
+    payment_preferences:
+      title: ~
+      general_settings: ~
+      connect_a_payment_provider: ~
+      contact_support: ~
+      no_payments_link_text: ~
+      your_country: ~
+      you_cannot_use_online_payments: ~
+      which_to_choose: ~
+      you_can_use_stripe_or_paypal: ~
+      you_can_use_stripe_only: ~
+      read_more_stripe: ~
+      you_can_use_paypal_only: ~
+      read_more_paypal: ~
+      read_more_about_paypal_and_stripe: ~
+      general_settings_updated: ~
+      transaction_fee_settings_updated: ~
+      choose_popup_text: ~
+      invalid_api_keys: ~
+      missing_api_keys: ~
+      stripe_verified: ~
+      change_settings: ~
+      configure_stripe: ~
+      configure_paypal: ~
+      transaction_fee_settings: ~
+      transaction_fee_save: ~
+      stripe_fee: ~
+      stripe_fee_notice: ~
+      fee_should_be_less_than_minimum_price: ~
+      confirm_disable: ~
+      stripe_connected:
+        title: ~
+        disable: ~
+        disabled: ~
+        enable: ~
+      paypal_connected:
+        title: ~
+        disable: ~
+        disabled: ~
+        enable: ~
+      cannot_enable_gateway: ~
+      cannot_disable_gateway: ~
+      stripe_form:
+        add_your_api_keys: ~
+        how_to_get_these: ~
+        publishable_key_example: ~
+        secret_key_example: ~
+        save_api_keys: ~
+        invalid_secret: ~
+        invalid_publishable: ~
+      index:
+        header: ~
+        info: ~
+        active: ~
+        gateway: ~
+        process: ~
+        commission: ~
+        minimum_price: ~
+        minimum_fee: ~
+        api_verified: ~
+        actions: ~
+        payments_not_enabled: ~
     transaction_types:
       sell: Prodám
       rent: Pronajmu
@@ -579,15 +691,27 @@ cs:
     username_or_email: "E-mail nebo uživatelské jméno"
     what_is_this: "Co je to?"
     removed_user: "Odstraněný uživatel"
+    payment_fee_info:
+      title: ~
+      title_paypal: ~
+      stripe: ~
+      paypal: ~
+      info: ~
     paypal_fee_info:
       title: "poplatek PayPal za zpracování platby"
       body_text: |-
           PayPal účtuje poplatek za zpracování z každé platby. Tento poplatek se pohybuje mezi 2% a 5% z celkové prodejní ceny v závislosti na Vašem měsíčním objemu obratu a na zemi bydliště kupujícího. Obecně řečeno, že domácí nákupy mají nižší poplatky než ty mezinárodní a čím vyšší měsíční obrat máte, tím větší slevu budete mít na poplatcích.
           Po přihlášení ke svému PayPal účtu si můžete najít přesné poplatky, viz %{link_to_paypal}. Z každého provedeného nákupu obdržíte stvrzenku s přesným poplatkem.
-      body_with_shipping_text: |-
-          PayPal účtuje poplatek za zpracování z každé platby. Tento poplatek se pohybuje mezi 2% a 5% z celkové prodejní ceny (doprava zahrnuta) v závislosti na Vašem měsíčním objemu obratu a na zemi bydliště kupujícího. Obecně řečeno, že domácí nákupy mají nižší poplatky než ty mezinárodní a čím vyšší měsíční obrat máte, tím větší slevu budete mít na poplatcích.
-          Po přihlášení ke svému PayPal účtu si můžete najít přesné poplatky, viz %{link_to_paypal}. Z každého provedeného nákupu obdržíte stvrzenku s přesným poplatkem.
+      body_text_accept: ~
       link_to_paypal_text: zde
+    paypal_only_fee_info:
+      title: ~
+      body_text: ~
+      link_to_paypal_text: ~
+    stripe_fee_info:
+      title: ~
+      body_text: ~
+      link_to_stripe_text: ~
   conversations:
     accept:
       details: "Podobnosti o uspořádání"
@@ -608,8 +732,12 @@ cs:
       you_will_get_label: "Obdržíte:"
       total_label: "Celkem:"
       total_value: "%{seller_gets}*"
+      total_value_paypal: ~
+      total_value_stripe: ~
       paypal_fee_info: "* Nezahrnuje <a id='%{fee_info_link_id}' href='#'>PayPal poplatek za zpracování</a>"
+      payment_fee_info: ~
       shipping_price_label: "Doprava:"
+      stripe-fee_label: ~
     confirm:
       confirm_description: "Pokud byla Vaše žádost splněna, měli byste ji označit jako vyřízenou. Potom můžete poskytnout zpětnou vazbu druhé straně."
       cancel_description: "Pokud Vaše žádost nebyla splněna, označte ji jako \"nesplněno\". Stále můžete poskytnout zpětnou vazbu druhé straně a popsat, co se stalo."
@@ -820,7 +948,10 @@ cs:
       message_not_displaying_correctly: "Nezobrazuje se Vám tento e-mail správně?"
       view_it_in_your_browser: "Zobrazte si jej ve svém prohlížeči."
       or: nebo
+      unsubscribe_from_these_emails_info: ~
       unsubscribe_from_these_emails: "odhlásit se z přijímaní těchto e-mailů"
+      unsubscribe_from_invitation_emails_info: ~
+      unsubscribe_from_invitation_emails: ~
     conversation_status_changed:
       has_accepted_your_offer: "Uživatel %{accepter} přijal/a Vaši nabídku %{listing}."
       has_accepted_your_request: "Uživatel %{accepter} přijal/a Vaši žádost %{listing}."
@@ -855,6 +986,31 @@ cs:
       price_per_unit_type: "Cena za %{unit_type}"
       quantity: "Množství:"
       you_have_received_new_payment: "Obdrželi jste částku <b>%{payment_sum}</b> za <b>%{listing_title}</b> od uživatele %{payer_full_name}. Zde je Vaše stvrzenka."
+    payment_receipt_to_seller:
+      payment_gateway_fee: ~
+      shipping_total: ~
+      product: ~
+      price_payer_paid: ~
+      service_fee: ~
+      you_will_get: ~
+      new_payment: ~
+      price_per_unit_type: ~
+      quantity: ~
+      you_have_received_new_payment: ~
+    payment_receipt_to_payer:
+      receipt_of_payment: ~
+      you_have_made_new_payment: ~
+      product: ~
+      price_per_unit_type: ~
+      duration: ~
+      quantity: ~
+      subtotal: ~
+      total: ~
+      price: ~
+      service_fee: ~
+      stripe_gateway_fee: ~
+      paypal_gateway_fee: ~
+      money_will_be_transferred: ~
     paypal_new_payment:
       paypal_gateway_fee: "PayPal poplatek:"
       shipping_total: "Doprava:"
@@ -874,6 +1030,8 @@ cs:
       total: Celkem
       price: Cena
       service_fee: "Servisní poplatek"
+      stripe_gateway_fee: ~
+      paypal_gateway_fee: ~
       money_will_be_transferred: "Peníze budou převedeny uživateli %{recipient_name}, a) pokud označíte žádost jako vyřízenou nebo b) pokud uplynulo %{automatic_confirmation_days} dní ode dne, kdy jste zaplatili."
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name} Vás ohodnotil/a na %{service_name}."
@@ -910,6 +1068,7 @@ cs:
       transaction_requested_by_user: "Uživatel %{requester} zažádal a autorizoval platbu pro inzerát %{listing_title}"
       you_have_time_to_accept: "Musíte přijmout nebo odmítnout žádost do %{payment_expires_in}. Pokud žádost do té doby přijmete, bude platba provedena. Pokud ji do té doby nepřijmete, žádost bude automaticky odmítnuta a nedostanete zaplaceno."
       if_you_do_accept: ~
+      if_you_do_accept_stripe: ~
       if_you_do_not_accept: ~
       click_here_to_reply: "Klikněte zde a odpovězte na žádost"
     transaction_preauthorized_reminder:
@@ -959,6 +1118,8 @@ cs:
       cancel_error: "Při zrušení došlo k chybě. Nelze zrušení dokončit."
       accept_authorization_error: "Došlo k chybě při pokusu o přijetí předschválení PayPal platby. Prosíme, zkuste to znovu."
       reject_authorization_error: "Došlo k chybě při pokusu o odmítnutí předschválení PayPal platby. Prosíme, zkuste to znovu."
+    stripe:
+      generic_error: ~
   error_pages:
     back_to_kassi_front_page: "Zpět na hlavní stranu"
     error_404:
@@ -1256,8 +1417,10 @@ cs:
       feedback_sent_to: "Zpětná vazba odeslána uživateli %{target_person}."
       feedback_skipped: "Zpětná vazba přeskočena"
       invitation_cannot_be_sent: "Pozvánka nemohla být odeslána"
+      invitation_cannot_unsubscribe: ~
       invitation_limit_reached: "Snažíte se poslat příliš mnoho pozvánek. Dosáhli jste již denního limitu."
       invitation_sent: "Pozvánka byla úspěšně odeslána"
+      invitation_successfully_unsubscribed: ~
       inviting_new_users_is_not_allowed_in_this_community: "Není povoleno pozvat nové uživatele."
       login_again: "Prosíme, přihlaste se znovu."
       login_failed: "Přihlášení selhalo. Prosíme, ověřte, zda vše bylo správně zadáno."
@@ -1352,6 +1515,8 @@ cs:
       notifications: Upozornění
       profile: "Informace o profilu"
       settings: Nastavení
+      paypal_payments: ~
+      stripe_payments: ~
       payments: Platby
   listings:
     bubble_listing_not_visible:
@@ -1448,7 +1613,11 @@ cs:
         long_time: "týden, měsíc, ..."
         after_service_fee_you_will_get: "Po %{service_name} a zaplacení procesních poplatků obdržíte %{sum_with_currency}"
         no_service_fee_you_will_get_paypal_text: "%{paypal_fee_info_link} bude odečten z ceny."
+        no_service_fee_you_will_get_payment_text: ~
+        after_service_fee_you_will_get_payment_text: ~
         after_service_fee_you_will_get_paypal_text: "%{service_name} poplatek (%{sum_with_currency}) a %{paypal_fee_info_link} bude odečten z ceny."
+        after_service_fee_you_will_get_stripe_text: ~
+        payment_fee_info_link_text: ~
         paypal_fee_info_link_text: "PayPal poplatek za zpracování platby"
         delivery: "Způsob doručení"
         shipping: Doprava
@@ -1623,6 +1792,17 @@ cs:
       invalid_parameters: ~
     transaction_agreement_checkbox:
       read_more: Zobrazit.
+    stripe_payment:
+      payment: ~
+      pay_with_card: ~
+      address: ~
+      address_country: ~
+      address_name: ~
+      address_city: ~
+      address_state: ~
+      address_street1: ~
+      address_street2: ~
+      address_postal_code: ~
   mapview:
     index:
       all_categories: "Všechny kategorie"
@@ -1666,6 +1846,7 @@ cs:
     contact_admin_link_text: ~
     you_are_ready_to_accept_payments: "Nyní už můžete přijímat platby!"
     commission: "%{commission} %"
+    not_now: ~
     new:
       payout_info_you_need_to_connect: "Abyste mohli přijímat platby, musíte se připojit k Vašemu PayPal účtu na %{service_name}."
       payout_info_text: "Prosíme, vyplňte následující kroky, abyste se mohli přihlásit ke svému účtu."
@@ -1712,6 +1893,8 @@ cs:
     paypal_permission_granted_summary: ~
   paypal:
     pay_with_paypal: "Přejít k platbě"
+    checkout_with: ~
+    or_pay_with_paypal: ~
     checkout_with_paypal: "Odhlášení z PayPal"
     cancel_succesful: "Platba přes PayPal byla úspěšně zrušena"
     transaction:
@@ -1738,6 +1921,7 @@ cs:
       email_is_in_use: "Vámi zadaný e-mail je již obsazen."
       email_is_in_use_or_not_allowed: "Tento e-mail není povolen nebo je již využíván. Pokud se nemůžete přihlásit, kontaktujte nás."
       email_not_allowed: "Tento e-mail nebyl povolen v %{service_name}. Prosíme, použijte povolenou e-mailovou adresu. Pokud se i nadále nemůžete přihlásit, napište nám."
+      invalid_username_or_email: ~
       email_restriction_instructions:
         one: "Přístup do %{service_name} je omezený. K připojení budete potřebovat %{allowed_emails} e-mailovou adresu."
         few: "Přístup do %{service_name} je omezený. Budete potřebovat e-mailovou adresu, díky které se budete moci přihlásit."
@@ -2065,11 +2249,13 @@ cs:
       quantity: "Množství:"
       subtotal: "Mezisoučet:"
       shipping-price: "Doprava:"
+      stripe-fee: ~
     price_per_quantity: "Cena za %{unit_type}:"
     price: "Cena:"
     quantity: "Množství: %{quantity}"
     unit_price: "Cena za jednotku: %{unit_price}"
     total: "Celkem:"
+    total_to_pay: ~
   unit:
     day: den
     days: dny
@@ -2129,11 +2315,6 @@ cs:
         one: uživatel
         few: uživatelé
         other: uživatelů
-      listing_conversation:
-        zero: transakcí
-        one: transakce
-        few: transakce
-        other: transakcí
     previous_label: "&#8592; Předchozí"
     next_label: "Následující &#8594;"
     page_gap: "&hellip;"
@@ -2150,3 +2331,87 @@ cs:
         other: "Nalezeno všech  <b>&nbsp %{count}</b>  %{model}"
       multi_page: "Nalezen %{model} %{from} - %{to} z %{count} celkem"
       multi_page_html: "Nalezen %{model} <b> %{from}&nbsp;-&nbsp;%{to} <b> z <b> %{count} <b> celkem"
+    person:
+      community_members_entries_info:
+        multi_page: ~
+        multi_page_html: ~
+  stripe_accounts:
+    admin_account_not_connected: ~
+    contact_admin_link_text: ~
+    you_are_ready_to_accept_payments: ~
+    commission: ~
+    pay_with_stripe: ~
+    add_and_pay: ~
+    card_not_stored: ~
+    missing_payment: ~
+    stripe_bank_connected: ~
+    stripe_can_accept: ~
+    stripe_credit_card: ~
+    paypal: ~
+    paypal_connected: ~
+    paypal_can_accept: ~
+    paypal_connected_give_permission: ~
+    form_new:
+      need_info: ~
+      select_country: ~
+      legal_name: ~
+      country: ~
+      birth_date: ~
+      ssn_last_4: ~
+      personal_id_number: ~
+      address_country: ~
+      address_state: ~
+      address_city: ~
+      address_postal_code: ~
+      address_line1: ~
+      tos_link: ~
+      tos_link_title: ~
+      save_details: ~
+      edit: ~
+      cancel: ~
+    form_bank:
+      bank_account_number: ~
+      bank_routing_number: ~
+      bank_routing_1: ~
+      bank_routing_2: ~
+      bank_currency: ~
+      messages:
+        account_number: ~
+        routing_number: ~
+        bank_code: ~
+        branch_code: ~
+        transit_number: ~
+        institution_number: ~
+        format_varies_by_bank: ~
+        bsb: ~
+        error_message: ~
+        clearing_code: ~
+        sort_code: ~
+        must_match: ~
+        a_dash: ~
+        digits: ~
+        digits_or_chars: ~
+    form_verification:
+      personal_id_number: ~
+      document: ~
+      send_verification: ~
+      need_verification: ~
+    form_pin:
+      social_insurance_number: ~
+      social_security_number: ~
+      hong_kong_identity_card: ~
+      singapore_identity_card: ~
+      messages:
+        social_insurance_number: ~
+  payment_settings:
+    title: ~
+    bank_account: ~
+    paypal: ~
+    bank_account_details: ~
+    add_bank_details: ~
+    can_accept_stripe_and_paypal: ~
+    to_accept_paypal: ~
+    connect_paypal: ~
+    wrong_setup: ~
+    invalid_bank_account_number: ~
+    invalid_postal_code: ~

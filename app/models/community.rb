@@ -120,12 +120,17 @@ class Community < ApplicationRecord
   has_many :transactions
 
   has_many :listings
+  has_many :listing_shapes
+  has_many :shapes, ->{ exist_ordered }, class_name: 'ListingShape'
+
+  has_many :transaction_processes
 
   has_one :paypal_account # Admin paypal account
 
   has_many :custom_fields, :dependent => :destroy
   has_many :custom_dropdown_fields, -> { where("type = 'DropdownField'") }, :class_name => "CustomField", :dependent => :destroy
   has_many :custom_numeric_fields, -> { where("type = 'NumericField'") }, :class_name => "NumericField", :dependent => :destroy
+  has_many :marketplace_sender_emails
 
   after_create :initialize_settings
 
@@ -139,6 +144,7 @@ class Community < ApplicationRecord
   validates_format_of :custom_color2, :with => /\A[A-F0-9_-]{6}\z/i, :allow_nil => true
   validates_format_of :slogan_color, :with => /\A[A-F0-9_-]{6}\z/i, :allow_nil => true
   validates_format_of :description_color, :with => /\A[A-F0-9_-]{6}\z/i, :allow_nil => true
+  validates_length_of :custom_head_script, maximum: 65535
 
   VALID_BROWSE_TYPES = %w{grid map list}
   validates_inclusion_of :default_browse_view, :in => VALID_BROWSE_TYPES
@@ -565,7 +571,7 @@ class Community < ApplicationRecord
   #
   # There is a method `payment_type` is community service. Use that instead.
   def payments_in_use?
-    MarketplaceService::Community::Query.payment_type(id) == :paypal
+    MarketplaceService::Community::Query.payment_type(id).present?
   end
 
   def self.all_with_custom_fb_login

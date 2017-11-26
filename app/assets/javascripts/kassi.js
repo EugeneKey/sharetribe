@@ -187,25 +187,6 @@ function initialize_defaults(locale) {
   });
 }
 
-function report_analytics_event(category, action, opt_label) {
-  if (window.ST != null && typeof window.ST.gtmPush === 'function') {
-    window.ST.gtmPush({
-      'event' : 'GAEvent',
-      'eventCategory' : category,
-      'eventAction' : action,
-      'eventLabel' : opt_label,
-      'eventValue' : undefined
-    });
-  }
-  var params_array = [category, action, opt_label];
-  if (typeof _gaq !== 'undefined' && Array.isArray(_gaq)) {
-    _gaq.push(['_trackEvent'].concat(params_array));
-  }
-  if (typeof ST.customerReportEvent === 'function') {
-    ST.customerReportEvent(category, action, opt_label);
-  }
-}
-
 function initialize_network_defaults(required_message, email_message) {
   enableSamePageScroll();
 }
@@ -274,7 +255,7 @@ function initialize_send_message_form(locale) {
     },
     submitHandler: function(form) {
       disable_and_submit(form_id, form, "false", locale);
-      report_analytics_event("message", "sent");
+      window.ST.analytics.logEvent("message", "sent");
     }
   });
 }
@@ -289,7 +270,7 @@ function initialize_send_person_message_form(locale) {
     },
     submitHandler: function(form) {
       disable_and_submit(form_id, form, "false", locale);
-      report_analytics_event("message", "sent");
+      window.ST.analytics.logEvent("message", "sent");
     }
   });
 }
@@ -314,7 +295,7 @@ function initialize_listing_view(locale) {
   );
 
   $('#send_comment_button').click(function() {
-    report_analytics_event("listing", "commented");
+    window.ST.analytics.logEvent("listing", "commented");
   });
 }
 
@@ -415,7 +396,7 @@ function initialize_signup_form(locale, username_in_use_message, invalid_usernam
     onkeyup: false, //Only do validations when form focus changes to avoid exessive ASI calls
     submitHandler: function(form) {
       disable_and_submit(form_id, form, "false", locale);
-      report_analytics_event('user', "signed up", "normal form");
+      window.ST.analytics.logEvent('user', "signed up", "normal form");
     }
   });
 }
@@ -654,7 +635,8 @@ function initialize_admin_edit_tribe_look_and_feel_form(locale, community_id, in
      rules: {
        "community[custom_color1]": {required: false, minlength: 6, maxlength: 6, regex: "^([a-fA-F0-9]+)?$"},
        "community[description_color]": {required: false, minlength: 6, maxlength: 6, regex: "^([a-fA-F0-9]+)?$"},
-       "community[slogan_color]": {required: false, minlength: 6, maxlength: 6, regex: "^([a-fA-F0-9]+)?$"}
+       "community[slogan_color]": {required: false, minlength: 6, maxlength: 6, regex: "^([a-fA-F0-9]+)?$"},
+       "community[custom_head_script]": {required: false, maxlength: 65535}
      },
      messages: {
        "community[custom_color1]": { regex: invalid_color_code_message },
@@ -903,4 +885,18 @@ function enableSamePageScroll() {
     }
     return [];
   }
+}
+
+function autoSetMinimalPriceFromCountry() {
+    var _minimal_commissions = {USD: 50, AUD: 50, BRL: 50, GBP: 50, CAD: 50, CZK: 1500, DKK: 500, EUR: 50, HKD: 500, HUF: 10000, ILS: 200, JPY: 50, MXN: 500, MYR: 200, TWD: 1500, NZD: 50, NOK: 500, PHP: 2000, PLN: 200, RUB: 1500, SGD: 100, SEK: 500, CHF: 100, THB: 1500, TRY: 150};
+    var _min_price = $("#payment_preferences_form_minimum_listing_price");
+    $("#payment_preferences_form_marketplace_currency").change(function(){
+      var currency = $(this).val();
+      var min_tx = _minimal_commissions[currency] / 100;
+      var cur_tx = parseFloat(_min_price.val());
+      if(isNaN(cur_tx) || min_tx > cur_tx) {
+        _min_price.val(min_tx.toFixed(2))
+      }
+      _min_price.next(".paypal-preferences-currency-label").text(currency);
+    }).trigger('change');
 }

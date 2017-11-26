@@ -68,3 +68,15 @@ textarea.text_area_code {
 .transaction-agreement-modal.disabled:not(.label) {
   background-color: $highlight;
 }
+
+.member-banned {
+  a, span, .admin-members-can-post-listings, .admin-members-is-admin {
+    opacity: 0.5;
+  }
+}
+
+.button.search-button {
+  margin: 0px;
+  display: inline;
+  margin-right: 20px;
+}

@@ -9,13 +9,14 @@ class SendPaymentReceipts < ActiveJob::Base
     receipts =
       case transaction[:payment_gateway]
 
-      when :paypal
+      when :paypal, :stripe
         community = Community.find(transaction[:community_id])
 
         receipts = []
-        receipts << TransactionMailer.paypal_new_payment(transaction) if receipt_to_seller
-        receipts << TransactionMailer.paypal_receipt_to_payer(transaction)
+        receipts << TransactionMailer.payment_receipt_to_seller(transaction) if receipt_to_seller
+        receipts << TransactionMailer.payment_receipt_to_buyer(transaction)
         receipts
+
       else
         []
       end

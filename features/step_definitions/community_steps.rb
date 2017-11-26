@@ -108,7 +108,7 @@ Given /^community "(.*?)" has following category structure:$/ do |community, cat
     category.translations.create!(:name => hash['fi'], :locale => 'fi')
     category.translations.create!(:name => hash['en'], :locale => 'en')
 
-    shape = ListingService::API::Api.shapes.get(community_id: current_community.id)[:data].first
+    shape = category.community.shapes.first
     CategoryListingShape.create!(category_id: category.id, listing_shape_id: shape[:id])
 
     if hash['category_type'].eql?("main")
@@ -129,7 +129,6 @@ end
 
 Given /^community "(.*?)" has following listing shapes enabled:$/ do |community, listing_shapes|
   current_community = Community.where(ident: community).first
-  # TODO Add DELETE to Listing shape API
   ListingShape.where(community_id: current_community.id).destroy_all
 
   process_id = TransactionProcess.where(community_id: current_community.id, process: :none).first.id
@@ -140,8 +139,8 @@ Given /^community "(.*?)" has following listing shapes enabled:$/ do |community,
       {translations: [ {locale: 'fi', translation: (hash['button'] || 'Action')}, {locale: 'en', translation: (hash['button'] || 'Action')} ]}
     ])
 
-    ListingService::API::Api.shapes.create(
-      community_id: current_community.id,
+    ListingShape.create_with_opts(
+      community: current_community,
       opts: {
         price_enabled: true,
         shipping_enabled: false,
@@ -149,7 +148,7 @@ Given /^community "(.*?)" has following listing shapes enabled:$/ do |community,
         action_button_tr_key: action_button_tr_key,
         transaction_process_id: process_id,
         basename: hash['en'],
-        units: [ {type: :hour, quantity_selector: :number} ]
+        units: [ {unit_type: 'hour', quantity_selector: 'number', kind: 'time'} ]
       }
     )
   end
@@ -189,4 +188,57 @@ Given(/^community emails are sent from name "(.*?)" and address "(.*?)"$/) do |n
       verification_status: :verified
     }
   )
+end
+
+Given /^community "(.*?)" has country "(.*?)" and currency "(.*?)"$/ do |community, country, currency|
+  community = Community.where(ident: community).first
+  community.country = country
+  community.currency = currency
+  community.save
+end
+
+Given /^community "(.*?)" has payment method "(.*?)" provisioned$/ do |community, payment_gateway|
+  community = Community.where(ident: community).first
+  if payment_gateway
+    TransactionService::API::Api.settings.provision(
+      community_id: community.id,
+      payment_gateway: payment_gateway,
+      payment_process: :preauthorize,
+      active: true)
+  end
+  if payment_gateway == 'stripe'
+    FeatureFlagService::API::Api.features.enable(community_id: community.id, features: [:stripe])
+  end
+end
+
+Given /^community "(.*?)" has payment method "(.*?)" enabled by admin$/ do |community, payment_gateway|
+  community = Community.where(ident: community).first
+  tx_settings_api = TransactionService::API::Api.settings
+  if payment_gateway == 'paypal'
+    FactoryGirl.create(:paypal_account,
+                       community_id: community.id,
+                       order_permission: FactoryGirl.build(:order_permission))
+  end
+  data = {
+    community_id: community.id,
+    payment_process: :preauthorize,
+    payment_gateway: payment_gateway
+  }
+  tx_settings_api.activate(data)
+  tx_settings_api.update(data.merge(
+    commission_from_seller: 10,
+    minimum_price_cents: 100
+  ))
+  if payment_gateway == 'stripe'
+    tx_settings_api.update(data.merge(
+      api_private_key: 'sk_test_123456789012345678901234',
+      api_publishable_key: 'pk_test_123456789012345678901234'
+    ))
+    tx_settings_api.api_verified(data)
+  end
+end
+
+Given /^this community has transaction agreement in use$/ do
+  @current_community.transaction_agreement_in_use = true
+  @current_community.save!
 end

@@ -325,3 +325,23 @@ end
 When(/^I change field "([^"]*)" to "([^"]*)"$/) do |from, to|
   find_field_with_value(from).set(to)
 end
+
+When(/^mock googlemap location with "([^,]+), ([-.0-9]+),\s*([-.0-9]+)"/) do |address, lat, lon|
+  # sometimes google maps geojs api does not work in phantom or takes too long
+  page.execute_script("document.getElementById('person_location_address').value = '#{address}'")
+  page.execute_script("document.getElementById('person_location_latitude').value = "+lat)
+  page.execute_script("document.getElementById('person_location_longitude').value = "+lon)
+end
+
+When /^(?:|I )fill in "([^"]*)" with "([^"]*)" count of symbols$/ do |field, count_of_symbols|
+  fill_in(field, :with => 'x' * count_of_symbols.to_i)
+end
+
+Then /^I should see "([^"]*)" count of symbols in the "([^"]*)" input$/ do |count_of_symbols, field|
+  expect(find_field(field).value.size).to eq(count_of_symbols.to_i)
+end
+
+Then(/^I should see selected "([^"]*)" in the "([^"]*)" dropdown$/) do |content, field|
+   expect(page).to have_select(field, selected: content)
+end
+

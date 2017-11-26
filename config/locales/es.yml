@@ -137,7 +137,12 @@ es:
         amazon_ses_notification: ~
         this_is_how_it_will_look: ~
         send_verification_button: ~
+        change_sender_email: ~
         successfully_saved: ~
+        successfully_saved_name: ~
+        set_sender_name: ~
+        change_sender_name: ~
+        change_sender_prompt: ~
         status: ~
         status_verified: ~
         status_error: ~
@@ -206,6 +211,7 @@ es:
         twitter_handle: ~
         update_settings: ~
         automatically_confirmed_no_escrow: ~
+        automatically_confirmed_no_escrow_stripe_info: ~
         automatic_newsletter_frequency: ~
         newsletter_daily: ~
         newsletter_weekly: ~
@@ -218,6 +224,7 @@ es:
         last_community_updates: ~
         you_will_be_redirected_to: ~
         delete_this_marketplace: ~
+        payment_preferences: ~
       manage_members:
         manage_members: ~
         email: ~
@@ -232,7 +239,12 @@ es:
         export_all_as_csv: ~
         save_user_status_error: ~
         ban_user_confirmation: ~
+        unban_user_confirmation: ~
         ban_me_error: ~
+        search: ~
+        search_by_name_email: ~
+        reset_search: ~
+        for_search_terms: ~
       new_layout:
         new_layout: ~
         description_roadmap_new: ~
@@ -305,9 +317,31 @@ es:
           canceled: ~
           initiated: ~
           pending_ext: ~
+          none:
+            free: ~
+          paypal:
+            free: ~
+            pending: ~
+            preauthorized: ~
+            accepted: ~
+            rejected: ~
+            paid: ~
+            confirmed: ~
+            canceled: ~
+            initiated: ~
+            pending_ext: ~
+          stripe:
+            free: ~
+            pending: ~
+            preauthorized: ~
+            accepted: ~
+            rejected: ~
+            paid: ~
+            confirmed: ~
+            canceled: ~
+            initiated: ~
+            pending_ext: ~
         not_available: ~
-      paypal_account:
-        paypal_admin_account: ~
     custom_fields:
       edit:
         edit_listing_field: ~
@@ -365,12 +399,25 @@ es:
       new:
         send_email_to_members: "Envia un mensaje a los miembros"
         send_email_to_members_title: "Envia un mensaje a todos los miembros de esta comunidad"
+        send_email: "Enviar mensaje"
+        send_email_or: ~
+        send_test_email: ~
+        test_sent: ~
+        send_email_article_title: ~
+        send_email_article_text: ~
+        recipients:
+          title: ~
+          options:
+            all_users: ~
+            with_listing: ~
+            with_listing_no_payment: ~
+            with_payment_no_listing: ~
+            no_listing_no_payment: ~
         email_subject: "Asunto del mensaje"
         email_content: "Contenido del mensaje"
         email_content_placeholder: "¿Que quieres decirle a los miembros?"
         email_language: "Idioma de los receptores del mensaje"
         any_language: "Cualquier idioma"
-        send_email: "Enviar mensaje"
         message_will_be_sent_only_to_people_with_this_language: "Nota: el mensaje será enviado unicamente a los miembros que usan %{service_name} en el idioma que eligio."
         email_sent: "Mensaje enviado"
     left_hand_navigation:
@@ -388,6 +435,7 @@ es:
       per_day_availability: ~
       per_night_availability: ~
       pricing_units_disabled_info: ~
+      can_not_find_name: ~
       index:
         listing_shapes: ~
         description: ~
@@ -467,6 +515,8 @@ es:
       integration_info_text: ~
       link_paypal_personal_account_label: ~
       link_paypal_personal_account: ~
+      link_stripe_personal_account: ~
+      link_paypal_and_stripe_personal_account: ~
       personal_payment_preferences_link_text: ~
       read_more_about_paypal: ~
       edit_payment_settings: ~
@@ -479,6 +529,68 @@ es:
       save_settings: ~
       minimum_listing_price_below_tx_fee: ~
       minimum_listing_price_below_min: ~
+    payment_preferences:
+      title: ~
+      general_settings: ~
+      connect_a_payment_provider: ~
+      contact_support: ~
+      no_payments_link_text: ~
+      your_country: ~
+      you_cannot_use_online_payments: ~
+      which_to_choose: ~
+      you_can_use_stripe_or_paypal: ~
+      you_can_use_stripe_only: ~
+      read_more_stripe: ~
+      you_can_use_paypal_only: ~
+      read_more_paypal: ~
+      read_more_about_paypal_and_stripe: ~
+      general_settings_updated: ~
+      transaction_fee_settings_updated: ~
+      choose_popup_text: ~
+      invalid_api_keys: ~
+      missing_api_keys: ~
+      stripe_verified: ~
+      change_settings: ~
+      configure_stripe: ~
+      configure_paypal: ~
+      transaction_fee_settings: ~
+      transaction_fee_save: ~
+      stripe_fee: ~
+      stripe_fee_notice: ~
+      fee_should_be_less_than_minimum_price: ~
+      confirm_disable: ~
+      stripe_connected:
+        title: ~
+        disable: ~
+        disabled: ~
+        enable: ~
+      paypal_connected:
+        title: ~
+        disable: ~
+        disabled: ~
+        enable: ~
+      cannot_enable_gateway: ~
+      cannot_disable_gateway: ~
+      stripe_form:
+        add_your_api_keys: ~
+        how_to_get_these: ~
+        publishable_key_example: ~
+        secret_key_example: ~
+        save_api_keys: ~
+        invalid_secret: ~
+        invalid_publishable: ~
+      index:
+        header: ~
+        info: ~
+        active: ~
+        gateway: ~
+        process: ~
+        commission: ~
+        minimum_price: ~
+        minimum_fee: ~
+        api_verified: ~
+        actions: ~
+        payments_not_enabled: ~
     transaction_types:
       sell: Venta
       rent: Alquilando
@@ -543,11 +655,25 @@ es:
     username_or_email: "Usuario o email"
     what_is_this: "Qué es esto?"
     removed_user: ~
+    payment_fee_info:
+      title: ~
+      title_paypal: ~
+      stripe: ~
+      paypal: ~
+      info: ~
     paypal_fee_info:
       title: ~
       body_text: ~
-      body_with_shipping_text: ~
+      body_text_accept: ~
       link_to_paypal_text: ~
+    paypal_only_fee_info:
+      title: ~
+      body_text: ~
+      link_to_paypal_text: ~
+    stripe_fee_info:
+      title: ~
+      body_text: ~
+      link_to_stripe_text: ~
   conversations:
     accept:
       details: ~
@@ -568,8 +694,12 @@ es:
       you_will_get_label: ~
       total_label: ~
       total_value: ~
+      total_value_paypal: ~
+      total_value_stripe: ~
       paypal_fee_info: ~
+      payment_fee_info: ~
       shipping_price_label: ~
+      stripe-fee_label: ~
     confirm:
       confirm_description: "Si tu pedido ha sido completado debes confirmar que esta hecho. Entonces puedes dar tu opinion a la otra parte."
       cancel_description: "Si tu pedido no ha sido completado, puedes marcar en \"no ha sucedido\". Aun puedes dar tu opinion a la otra parte y contar que sucedio."
@@ -785,7 +915,10 @@ es:
       message_not_displaying_correctly: "¿Tienes problemas para ver este correo?"
       view_it_in_your_browser: "Velo en tu buscador"
       or: o
+      unsubscribe_from_these_emails_info: ~
       unsubscribe_from_these_emails: ~
+      unsubscribe_from_invitation_emails_info: ~
+      unsubscribe_from_invitation_emails: ~
     conversation_status_changed:
       has_accepted_your_offer: "%{accepter} ha aceptado tu oferta considerando la solicitud %{listing}"
       has_accepted_your_request: "%{accepter} ha aceptado tu solicitud de la oferta %{listing}"
@@ -820,6 +953,31 @@ es:
       price_per_unit_type: ~
       quantity: ~
       you_have_received_new_payment: "Has sido pagado  <b> %{payment_sum}</b> por  <b>%{listing_title}</b> %{payer_full_name}. Aquí estatu comprobante."
+    payment_receipt_to_seller:
+      payment_gateway_fee: ~
+      shipping_total: ~
+      product: ~
+      price_payer_paid: ~
+      service_fee: ~
+      you_will_get: ~
+      new_payment: ~
+      price_per_unit_type: ~
+      quantity: ~
+      you_have_received_new_payment: ~
+    payment_receipt_to_payer:
+      receipt_of_payment: ~
+      you_have_made_new_payment: ~
+      product: ~
+      price_per_unit_type: ~
+      duration: ~
+      quantity: ~
+      subtotal: ~
+      total: ~
+      price: ~
+      service_fee: ~
+      stripe_gateway_fee: ~
+      paypal_gateway_fee: ~
+      money_will_be_transferred: ~
     paypal_new_payment:
       paypal_gateway_fee: ~
       shipping_total: ~
@@ -839,6 +997,8 @@ es:
       total: Total
       price: Precio
       service_fee: "Comisión de servicio"
+      stripe_gateway_fee: ~
+      paypal_gateway_fee: ~
       money_will_be_transferred: ~
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name} te ha dado un feedback en %{service_name}"
@@ -877,6 +1037,7 @@ es:
       transaction_requested_by_user: ~
       you_have_time_to_accept: ~
       if_you_do_accept: ~
+      if_you_do_accept_stripe: ~
       if_you_do_not_accept: ~
       click_here_to_reply: ~
     transaction_preauthorized_reminder:
@@ -926,8 +1087,10 @@ es:
       cancel_error: ~
       accept_authorization_error: ~
       reject_authorization_error: ~
+    stripe:
+      generic_error: ~
   error_pages:
-    back_to_kassi_front_page: "Volver a la página principal de %{service_name}"
+    back_to_kassi_front_page: "Volver a la página principal"
     error_404:
       if_you_believe: "Si crees que la dirección es correcta y debiera funcionar, por favor ayúdanos a encontrar el error indicándonos a través del siguiente formulario qué dirección ocasionó el error y qué debiera aparecer en la página."
       page_can_not_be_found: "No se ha podido encontrar la página!"
@@ -1223,8 +1386,10 @@ es:
       feedback_sent_to: "Feedback enviado a %{target_person}"
       feedback_skipped: "Feedback omitido"
       invitation_cannot_be_sent: "No se pudo enviar la invitación"
+      invitation_cannot_unsubscribe: ~
       invitation_limit_reached: ~
       invitation_sent: "Invitación enviada satisfactoriamente"
+      invitation_successfully_unsubscribed: ~
       inviting_new_users_is_not_allowed_in_this_community: "Invitar a nuevos usuarios no está permitido en ésta comunidad de %{service_name}"
       login_again: "Por favor, vuelve a iniciar la sesión"
       login_failed: "No se pudo ingresar. Por favor revisa los datos ingresados"
@@ -1319,6 +1484,8 @@ es:
       notifications: Notificaciones
       profile: "Información de perfil"
       settings: Opciones
+      paypal_payments: ~
+      stripe_payments: ~
       payments: Pagos
   listings:
     bubble_listing_not_visible:
@@ -1415,7 +1582,11 @@ es:
         long_time: "semana, mes, ..."
         after_service_fee_you_will_get: ~
         no_service_fee_you_will_get_paypal_text: ~
+        no_service_fee_you_will_get_payment_text: ~
+        after_service_fee_you_will_get_payment_text: ~
         after_service_fee_you_will_get_paypal_text: ~
+        after_service_fee_you_will_get_stripe_text: ~
+        payment_fee_info_link_text: ~
         paypal_fee_info_link_text: ~
         delivery: ~
         shipping: ~
@@ -1590,6 +1761,17 @@ es:
       invalid_parameters: ~
     transaction_agreement_checkbox:
       read_more: ~
+    stripe_payment:
+      payment: ~
+      pay_with_card: ~
+      address: ~
+      address_country: ~
+      address_name: ~
+      address_city: ~
+      address_state: ~
+      address_street1: ~
+      address_street2: ~
+      address_postal_code: ~
   mapview:
     index:
       all_categories: "Todas las categorías"
@@ -1633,6 +1815,7 @@ es:
     contact_admin_link_text: ~
     you_are_ready_to_accept_payments: ~
     commission: ~
+    not_now: ~
     new:
       payout_info_you_need_to_connect: ~
       payout_info_text: ~
@@ -1679,6 +1862,8 @@ es:
     paypal_permission_granted_summary: ~
   paypal:
     pay_with_paypal: ~
+    checkout_with: ~
+    or_pay_with_paypal: ~
     checkout_with_paypal: ~
     cancel_succesful: ~
     transaction:
@@ -1705,6 +1890,7 @@ es:
       email_is_in_use: "El mail ingresado ya se encuentra registrado."
       email_is_in_use_or_not_allowed: "El e-mail ingresado no está autorizado para entrar a esta comunidad o ya está siendo utilizado. Por favor usa una dirección de correo electrónico que esté asociada con esta comunidad (ver instrucciones más arriba). Si todavía tienes problemas para ingresar, envíanos un comentario usando el link de \"Feedback\" a la izquierda."
       email_not_allowed: "Este e-mail no esta habilitado para esta comunidad. Por favor usa una dirección que esté asociada con esta comunidad. Si todavía no puedes ingresar, envíanos un comentario haciendo clic en el botón de la izquierda."
+      invalid_username_or_email: ~
       email_restriction_instructions:
         one: "Esta comunidad es sólo para %{community_name}. Para unirte necesitas una dirección de email %{allowed_emails}."
         other: "Esta comunidad es sólo para %{community_name}. Para unirte necesitas un email que tenga una de los siguientes direcciones: %{allowed_emails}."
@@ -2013,11 +2199,13 @@ es:
       quantity: ~
       subtotal: ~
       shipping-price: ~
+      stripe-fee: ~
     price_per_quantity: ~
     price: ~
     quantity: ~
     unit_price: ~
     total: ~
+    total_to_pay: ~
   unit:
     day: ~
     days: ~
@@ -2077,3 +2265,87 @@ es:
     page_entries_info:
       multi_page: ~
       multi_page_html: ~
+    person:
+      community_members_entries_info:
+        multi_page: ~
+        multi_page_html: ~
+  stripe_accounts:
+    admin_account_not_connected: ~
+    contact_admin_link_text: ~
+    you_are_ready_to_accept_payments: ~
+    commission: ~
+    pay_with_stripe: ~
+    add_and_pay: ~
+    card_not_stored: ~
+    missing_payment: ~
+    stripe_bank_connected: ~
+    stripe_can_accept: ~
+    stripe_credit_card: ~
+    paypal: ~
+    paypal_connected: ~
+    paypal_can_accept: ~
+    paypal_connected_give_permission: ~
+    form_new:
+      need_info: ~
+      select_country: ~
+      legal_name: ~
+      country: ~
+      birth_date: ~
+      ssn_last_4: ~
+      personal_id_number: ~
+      address_country: ~
+      address_state: ~
+      address_city: ~
+      address_postal_code: ~
+      address_line1: ~
+      tos_link: ~
+      tos_link_title: ~
+      save_details: ~
+      edit: ~
+      cancel: ~
+    form_bank:
+      bank_account_number: ~
+      bank_routing_number: ~
+      bank_routing_1: ~
+      bank_routing_2: ~
+      bank_currency: ~
+      messages:
+        account_number: ~
+        routing_number: ~
+        bank_code: ~
+        branch_code: ~
+        transit_number: ~
+        institution_number: ~
+        format_varies_by_bank: ~
+        bsb: ~
+        error_message: ~
+        clearing_code: ~
+        sort_code: ~
+        must_match: ~
+        a_dash: ~
+        digits: ~
+        digits_or_chars: ~
+    form_verification:
+      personal_id_number: ~
+      document: ~
+      send_verification: ~
+      need_verification: ~
+    form_pin:
+      social_insurance_number: ~
+      social_security_number: ~
+      hong_kong_identity_card: ~
+      singapore_identity_card: ~
+      messages:
+        social_insurance_number: ~
+  payment_settings:
+    title: ~
+    bank_account: ~
+    paypal: ~
+    bank_account_details: ~
+    add_bank_details: ~
+    can_accept_stripe_and_paypal: ~
+    to_accept_paypal: ~
+    connect_paypal: ~
+    wrong_setup: ~
+    invalid_bank_account_number: ~
+    invalid_postal_code: ~

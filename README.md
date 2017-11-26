@@ -16,7 +16,6 @@ Would you like to set up your marketplace in one minute without touching code? [
 - [Upgrade](#upgrade)
 - [Contribute](#contribute)
 - [Release](#release)
-- [Technical roadmap](#technical-roadmap)
 - [Translation](#translation)
 - [Bug tracker](#bug-tracker)
 - [Documentation](#documentation)
@@ -50,10 +49,10 @@ Would you like to set up your marketplace in one minute without touching code? [
 ### Requirements
 
 Before you get started, the following needs to be installed:
-  * **Ruby**. Version 2.3.1 is currently used and we don't guarantee everything works with other versions. If you need multiple versions of Ruby, [RVM](https://rvm.io//) is recommended.
+  * **Ruby**. Version 2.3.4 is currently used and we don't guarantee everything works with other versions. If you need multiple versions of Ruby, [RVM](https://rvm.io//) is recommended.
   * [**RubyGems**](http://rubygems.org/)
   * **Bundler**: `gem install bundler`
-  * **Node**. Version 6.9 is currently used and we don't guarantee everything works with other versions. If you need multiple versions of Node, consider using [n](https://github.com/tj/n) or [nvm](https://github.com/creationix/nvm).
+  * **Node**. Version 7.8 is currently used and we don't guarantee everything works with other versions. If you need multiple versions of Node, consider using [n](https://github.com/tj/n) or [nvm](https://github.com/creationix/nvm).
   * [**Git**](http://help.github.com/git-installation-redirect)
   * **A database**. Only MySQL 5.7 has been tested, so we give no guarantees that other databases (e.g. PostgreSQL) work. You can install MySQL Community Server two ways:
     1. If you are on a Mac, use homebrew: `brew install mysql` (*highly* recommended). Also consider installing the [MySQL Preference Pane](https://dev.mysql.com/doc/refman/5.1/en/osx-installation-prefpane.html) to control MySQL startup and shutdown. It is packaged with the MySQL downloadable installer, but can be easily installed as a stand-alone.
@@ -387,7 +386,18 @@ If you have installation instructions that you would like to share, don't hesita
 
 ## Payments
 
+PayPal and Stripe are the two available payment gateways integrated.
+
 PayPal payments are only available on marketplaces hosted at [Sharetribe.com](https://www.sharetribe.com) due to special permissions needed from PayPal. We hope to add support for PayPal payments to the open source version of Sharetribe in the future.
+
+Stripe can be used in the open-source alternative, as long as your country and currency are supported.
+
+### Enable Stripe
+
+Starting from release 7.2.0, Stripe is enabled. 
+
+Stripe API keys are encrypted and you should the `app_encryption_key` variable from the `config/config.yml` file.
+Stripe can be configured from the admin panel, in the "Payment settings" section.
 
 
 ## Versioning
@@ -422,11 +432,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the steps to contribute.
 ## Release
 
 See [RELEASE.md](RELEASE.md) for information about how to make a new release.
-
-
-## Technical roadmap
-
-For a better high-level understanding of what the Sharetribe core team is working on currently and what it plans to work on next, read the [technical roadmap](TECHNICAL_ROADMAP.md).
 
 
 ## Translation

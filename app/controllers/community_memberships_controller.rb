@@ -70,7 +70,8 @@ class CommunityMembershipsController < ApplicationController
 
       CommunityJoinedJob.perform_later(@current_user, @current_community)
       SendWelcomeEmail.perform_later(@current_user, @current_community)
-      Analytics.record_event(flash, "GaveConsent")
+
+      record_event(flash, "GaveConsent")
 
       flash[:notice] = t("layouts.notifications.you_are_now_member")
 

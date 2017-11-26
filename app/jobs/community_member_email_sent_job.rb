@@ -12,10 +12,10 @@ class CommunityMemberEmailSentJob < ActiveJob::Base
 
   before_perform do |job|
     # Set the correct service name to thread for I18n to pick it
-    ApplicationHelper.store_community_service_name_to_thread_from_community_id(job.arguments.first.id)
+    ApplicationHelper.store_community_service_name_to_thread_from_community_id(job.arguments[2].id)
   end
 
-  def perform(community, sender, recipient, subject, content, locale)
+  def perform(sender, recipient, community, subject, content, locale)
     PersonMailer.community_member_email_from_admin(sender, recipient, community, subject, content, locale)
   end
 

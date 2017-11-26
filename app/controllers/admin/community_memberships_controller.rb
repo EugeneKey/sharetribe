@@ -8,10 +8,19 @@ class Admin::CommunityMembershipsController < Admin::AdminBaseController
 
     respond_to do |format|
       format.html do
-        @memberships = CommunityMembership.where(community_id: @current_community.id, status: "accepted")
+        @memberships = CommunityMembership.where(community_id: @current_community.id, status: ["accepted", "banned"])
                                            .includes(person: :emails)
                                            .paginate(page: params[:page], per_page: 50)
                                            .order("#{sort_column} #{sort_direction}")
+        if params[:q].present?
+          query = <<-SQL
+          community_memberships.person_id IN
+          (SELECT p.id FROM people p LEFT OUTER JOIN emails e ON e.person_id = p.id
+           WHERE p.given_name like ? OR p.family_name like ? OR p.display_name like ? OR e.address like ?)
+          SQL
+          like_q = "%#{params[:q]}%"
+          @memberships = @memberships.where(query, like_q, like_q, like_q, like_q)
+        end
       end
       format.csv do
         all_memberships = CommunityMembership.where(community_id: @community.id)
@@ -48,7 +57,21 @@ class Admin::CommunityMembershipsController < Admin::AdminBaseController
 
     @current_community.close_listings_by_author(membership.person)
 
-    redirect_to admin_community_community_memberships_path(@current_community)
+    if request.xhr?
+      render json: {status: membership.status}
+    else
+      redirect_to admin_community_community_memberships_path(@current_community)
+    end
+  end
+
+  def unban
+    membership = CommunityMembership.find_by(id: params[:id], community_id: @current_community.id)
+    membership.update_attributes(status: "accepted")
+    if request.xhr?
+      render json: {status: membership.status}
+    else
+      redirect_to admin_community_community_memberships_path(@current_community)
+    end
   end
 
   def promote_admin

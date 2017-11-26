@@ -26,9 +26,9 @@ class Admin::GettingStartedGuideController < Admin::AdminBaseController
     render :index, locals: { props: data(page: :filter) }
   end
 
-  def paypal
+  def payment
     @selected_left_navi_link = "getting_started_guide"
-    render :index, locals: { props: data(page: :paypal) }
+    render :index, locals: { props: data(page: :payment) }
   end
 
   def listing
@@ -44,11 +44,11 @@ class Admin::GettingStartedGuideController < Admin::AdminBaseController
   private
 
   def data(page:)
-    listing_shape_name = ListingService::API::Api.shapes.get(community_id: @current_community.id).data.first[:name]
+    listing_shape_name = @current_community.shapes.first[:name]
 
     onboarding_status = Admin::OnboardingWizard.new(@current_community.id).setup_status
     additional_info = {
-      paypal: {
+      payment: {
         additional_info: {
           listing_shape_name: listing_shape_name
         }

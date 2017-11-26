@@ -21,8 +21,7 @@ module FeatureFlagService::Store
       :topbar_v1,
       :searchpage_v1,
       :manage_searchpage,
-      :currency_formatting,
-      :landing_scripts
+      :stripe,
     ].to_set
 
     def initialize(additional_flags:)

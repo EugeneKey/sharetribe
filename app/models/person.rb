@@ -157,7 +157,7 @@ class Person < ApplicationRecord
 
   USERNAME_BLACKLIST = YAML.load_file("#{Rails.root}/config/username_blacklist.yml")
 
-  validates :username, :exclusion => USERNAME_BLACKLIST
+  validates :username, exclusion: USERNAME_BLACKLIST, uniqueness: {scope: :community_id}
 
   has_attached_file :image, :styles => {
                       :medium => "288x288#",
@@ -629,4 +629,13 @@ class Person < ApplicationRecord
     ::Digest::SHA256.hexdigest(str)
   end
 
+  def logger
+    @logger ||= SharetribeLogger.new(:person, logger_metadata.keys).tap { |logger|
+      logger.add_metadata(logger_metadata)
+    }
+  end
+
+  def logger_metadata
+    { person_uuid: uuid }
+  end
 end

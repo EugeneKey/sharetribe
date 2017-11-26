@@ -197,8 +197,10 @@ class PersonMailer < ActionMailer::Base
     @invitation_code_required = invitation.community.join_with_invite_only
     set_up_layout_variables(nil, invitation.community)
     @url_params[:locale] = mail_locale
+    @url_params[:code] = invitation.code
+    @invitation_community = invitation.community.full_name_with_separator(invitation.inviter.locale)
     with_locale(mail_locale, invitation.community.locales.map(&:to_sym), invitation.community.id) do
-      subject = t("emails.invitation_to_kassi.you_have_been_invited_to_kassi", :inviter => PersonViewUtils.person_display_name(invitation.inviter, invitation.community), :community => invitation.community.full_name_with_separator(invitation.inviter.locale))
+      subject = t("emails.invitation_to_kassi.you_have_been_invited_to_kassi", :inviter => PersonViewUtils.person_display_name(invitation.inviter, invitation.community), :community => @invitation_community)
       premailer_mail(:to => invitation.email,
                      :from => community_specific_sender(invitation.community),
                      :subject => subject,
@@ -210,13 +212,23 @@ class PersonMailer < ActionMailer::Base
   def community_member_email(sender, recipient, email_subject, email_content, community)
     @email_type = "email_from_admins"
     set_up_layout_variables(recipient, community, @email_type)
+
+    sender_address = EmailService::API::Api.addresses.get_sender(community_id: community.id).data
+    if sender_address[:type] == :default
+      sender_name = sender.name(community)
+      sender_email = sender.confirmed_notification_email_to
+      reply_to = "\"#{sender_name}\"<#{sender_email}>"
+    else
+      reply_to = sender_address[:smtp_format]
+    end
+
     with_locale(recipient.locale, community.locales.map(&:to_sym), community.id) do
       @email_content = email_content
       @no_recipient_name = true
       premailer_mail(:to => recipient.confirmed_notification_emails_to,
                      :from => community_specific_sender(community),
                      :subject => email_subject,
-                     :reply_to => "\"#{sender.name(community)}\"<#{sender.confirmed_notification_email_to}>")
+                     :reply_to => reply_to)
     end
   end
 

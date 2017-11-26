@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ClassLength
 class TransactionsController < ApplicationController
 
   before_action only: [:show] do |controller|
@@ -6,7 +7,7 @@ class TransactionsController < ApplicationController
 
   before_action only: [:new] do |controller|
     fetch_data(params[:listing_id]).on_success do |listing_id, listing_model, _, process|
-      Analytics.record_event(
+      record_event(
         flash,
         "BuyButtonClicked",
         { listing_id: listing_id,
@@ -45,7 +46,7 @@ class TransactionsController < ApplicationController
       case [process[:process], gateway]
       when matches([:none])
         render_free(listing_model: listing_model, author_model: author_model, community: @current_community, params: transaction_params)
-      when matches([:preauthorize, :paypal])
+      when matches([:preauthorize, :paypal]), matches([:preauthorize, :stripe]), matches([:preauthorize, [:paypal, :stripe]])
         redirect_to initiate_order_path(transaction_params)
       else
         opts = "listing_id: #{listing_id}, payment_gateway: #{gateway}, payment_process: #{process}, booking: #{booking}"
@@ -283,7 +284,7 @@ class TransactionsController < ApplicationController
     if response[:success]
       tx = response_data[:transaction]
 
-      Analytics.record_event(
+      record_event(
         flash,
         "TransactionCreated",
         { listing_id: tx[:listing_id],
@@ -410,7 +411,7 @@ class TransactionsController < ApplicationController
 
   def price_break_down_locals(tx)
     if tx[:payment_process] == :none && tx[:listing_price].cents == 0
-      nil
+        nil
     else
       localized_unit_type = tx[:unit_type].present? ? ListingViewUtils.translate_unit(tx[:unit_type], tx[:unit_tr_key]) : nil
       localized_selector_label = tx[:unit_type].present? ? ListingViewUtils.translate_quantity(tx[:unit_type], tx[:unit_selector_tr_key]) : nil
@@ -430,6 +431,8 @@ class TransactionsController < ApplicationController
         quantity: quantity,
         subtotal: show_subtotal ? tx[:listing_price] * quantity : nil,
         total: Maybe(tx[:payment_total]).or_else(tx[:checkout_total]),
+        seller_gets: Maybe(tx[:payment_total]).or_else(tx[:checkout_total]) - tx[:commission_total],
+        fee: tx[:commission_total],
         shipping_price: tx[:shipping_price],
         total_label: total_label,
         unit_type: tx[:unit_type]

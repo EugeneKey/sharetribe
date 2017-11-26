@@ -83,7 +83,7 @@ en:
         verification_to_post_listings_info_content: "Info text to non-verified users"
         verification_to_post_listings_info_content_description: "You currently require your users to be verified manually by you before they can post listings. Here you can set the default text that is shown to non-verified users when they try to post a new listing."
         verification_to_post_listings_info_content_default: "%{service_name} requires people to be verified manually by admin before they can post listings. You have not yet been verified. Please %{contact_admin_link} to be verified."
-        contact_admin_link_text: "contact the admin"
+        contact_admin_link_text: "contact the %{service_name} team"
         save: "Save settings"
         transaction_agreement: "Transaction agreement"
         transaction_agreement_checkbox: "Require users to accept an agreement before transaction"
@@ -152,7 +152,12 @@ en:
         amazon_ses_notification: "You will receive an email from %{email_sender} to confirm your e-mail address. The email subject is '%{email_subject}'. Follow the instructions to verify your email."
         this_is_how_it_will_look: "This is how it will look:"
         send_verification_button: "Send verification email"
+        change_sender_email: "change sender email"
         successfully_saved: "Sender address saved successfully. The verification email will be sent soon."
+        successfully_saved_name: "Sender name updated successfully."
+        set_sender_name: "Change sender name"
+        change_sender_name: "Change sender name"
+        change_sender_prompt: "%{change_name_link} or %{change_email_link}"
         status: "Status: %{status}"
         status_verified: "Verified - in use"
         status_error: "An error occurred. Please refresh the page."
@@ -221,6 +226,7 @@ en:
         twitter_handle: "Twitter handle (used with tweet button in listing page)"
         update_settings: "Save settings"
         automatically_confirmed_no_escrow: "Order will be automatically marked as completed %{days_dropdown} days after the payment has been made"
+        automatically_confirmed_no_escrow_stripe_info: "For transactions processed by Stripe, payments to providers are delayed until the order is marked as completed. %{learn_more}."
         automatic_newsletter_frequency: "Send automatic newsletter: %{frequency_dropdown}"
         newsletter_daily: Daily
         newsletter_weekly: Weekly
@@ -233,6 +239,7 @@ en:
         last_community_updates: "Please note that after deletion, you and your marketplace users may still receive the last marketplace update emails."
         you_will_be_redirected_to: "After you have deleted your marketplace you will be redirected to %{destination}. You will not be able to access your marketplace anymore."
         delete_this_marketplace: "Delete this marketplace"
+        payment_preferences: "Payment system"
       manage_members:
         manage_members: "Manage users"
         email: Email
@@ -241,13 +248,18 @@ en:
         join_date: Joined
         admin: Admin
         posting_allowed: "Posting allowed"
-        ban_user: "Ban user"
+        ban_user: Ban
         saving_user_status: Saving...
         save_user_status_successful: Saved
         export_all_as_csv: "Export all as CSV"
         save_user_status_error: "Saving failed. Please refresh the page and try again."
         ban_user_confirmation: "This removes the user from the marketplace and prevents them from accessing the site again with this account. Are you sure you want to proceed?"
+        unban_user_confirmation: "This unbans the user in the marketplace and allows them to access the site again with this account. Are you sure you want to proceed?"
         ban_me_error: "You cannot ban yourself."
+        search: Search
+        search_by_name_email: "Search for a name, email or display name"
+        reset_search: "Show all"
+        for_search_terms: "for: %{terms}"
       new_layout:
         new_layout: "New layout"
         description_roadmap_new: "When new layout components are made available for your marketplace, you can choose whether you want to start using the new component or continue using the old one. You can toggle the selection at any point from this page. It's recommended to always be using the new version, as the old components might be phased out at some point. In case a component you're currently using is going to be phased out, you will be contacted in advance."
@@ -320,9 +332,31 @@ en:
           canceled: Canceled
           initiated: "Waiting PayPal payment"
           pending_ext: "Waiting PayPal payment"
+          none:
+            free: Conversation
+          paypal:
+            free: Conversation
+            pending: Pending
+            preauthorized: Preauthorized
+            accepted: Accepted
+            rejected: Rejected
+            paid: Paid
+            confirmed: Confirmed
+            canceled: Canceled
+            initiated: "Waiting PayPal payment"
+            pending_ext: "Waiting PayPal payment"
+          stripe:
+            free: Conversation
+            pending: Pending
+            preauthorized: Preauthorized
+            accepted: Accepted
+            rejected: Rejected
+            paid: Paid
+            confirmed: Confirmed
+            canceled: Canceled
+            initiated: "Waiting Stripe payment"
+            pending_ext: "Waiting Stripe payment"
         not_available: "Not available"
-      paypal_account:
-        paypal_admin_account: "Payment system"
     custom_fields:
       edit:
         edit_listing_field: "Edit listing field '%{field_name}'"
@@ -379,14 +413,27 @@ en:
     emails:
       new:
         send_email_to_members: "Send email to users"
-        send_email_to_members_title: "Send email to all your users"
+        send_email_to_members_title: "Send email to your users"
+        send_email: "Send the email"
+        send_email_or: or
+        send_test_email: "Send a test email to yourself"
+        test_sent: "Test email was sent to your inbox"
+        send_email_article_title: "this article"
+        send_email_article_text: "You can learn more about the user segments in %{article_link}."
+        recipients:
+          title: "Who do you want to email?"
+          options:
+            all_users: "All users"
+            with_listing: "Users who have posted at least one listing"
+            with_listing_no_payment: "Users who have posted at least one listing but haven't added their payment details"
+            with_payment_no_listing: "Users who have added their payment details but haven't posted a listing"
+            no_listing_no_payment: "Users who haven't posted a listing and haven't added their payment details"
         email_subject: "Email subject"
         email_content: "Email content"
         email_content_placeholder: "What do you want to say to your users?"
         email_language: "Language of the email receivers"
         any_language: "Any language"
-        send_email: "Send the email"
-        message_will_be_sent_only_to_people_with_this_language: "Note: the email will be sent only to the users who are using %{service_name} in the language you choose."
+        message_will_be_sent_only_to_people_with_this_language: "The email will be sent only to the users who are using %{service_name} in the language you choose."
         email_sent: "Email sent."
     left_hand_navigation:
       general: General
@@ -403,6 +450,7 @@ en:
       per_day_availability: "\"Per day\" availability"
       per_night_availability: "\"Per night\" availability"
       pricing_units_disabled_info: "Pricing units cannot be used when availability calendar is enabled."
+      can_not_find_name: "Can not find order type with given name: %{name}"
       index:
         listing_shapes: "Order types"
         description: "Order types determine how the order process works in your site. You can decide whether your users are renting or selling, or perhaps just posting announcements and communicating via direct messages."
@@ -494,6 +542,8 @@ en:
       integration_info_text: "The payment system of your marketplace is powered by PayPal. To allow your users to pay using your marketplace, you must connect your PayPal account. Once you have connected your PayPal account, you can choose a minimum transaction size and a possible commission fee."
       link_paypal_personal_account_label: "Are you providing products or services yourself?"
       link_paypal_personal_account: "If so, you will also need to connect your PayPal account to %{personal_payment_preferences_link}."
+      link_stripe_personal_account: "If so, you will also need to add your payout details to %{personal_payment_preferences_link}."
+      link_paypal_and_stripe_personal_account: "If so, you will also need to connect your PayPal or Stripe account to %{personal_payment_preferences_link}."
       personal_payment_preferences_link_text: "your personal marketplace account"
       read_more_about_paypal: "Read more about the payment system"
       edit_payment_settings: "Edit payment settings"
@@ -506,6 +556,72 @@ en:
       save_settings: "Save settings"
       minimum_listing_price_below_tx_fee: "The minimum transaction size has to be greater than or equal to the minimum transaction fee: %{minimum_transaction_fee}."
       minimum_listing_price_below_min: "The minimum transaction size has to be greater than the minimum commission %{minimum_commission}."
+    payment_preferences:
+      title: "Payment system preferences"
+      general_settings: "1. General settings"
+      connect_a_payment_provider: "2. Connect a payment provider"
+      contact_support: "contact support"
+      no_payments_link_text: here
+      your_country: "Your country:"
+      you_cannot_use_online_payments: "You cannot use online payments in %{country_name} with %{currency}. Please choose a different currency or %{support_link} to change your country. You can read more about supported countries and currencies %{help_link}. In the future we might add more payment providers and support more currencies"
+      which_to_choose: "Which one to choose?"
+      you_can_use_stripe_or_paypal: "You can use either Stripe, PayPal or both as your payment providers. %{choose_link}"
+      you_can_use_stripe_only: "You can use Stripe as your payment provider. %{read_more_link}"
+      read_more_stripe: "Read more about Stripe payments."
+      you_can_use_paypal_only: "You can use PayPal as your payment provider. %{read_more_link}"
+      read_more_paypal: "Read more about PayPal payments."
+      read_more_about_paypal_and_stripe: "Read more about online payments, Stripe and PayPal"
+      general_settings_updated: "Payment system general settings updated"
+      transaction_fee_settings_updated: "Transaction fee settings updated"
+      choose_popup_text: |-
+          If you want to allow your users to accept online payments, you need to choose the currency for your marketplace and then connect at least one of the two payment providers supported by Sharetribe: Stripe and PayPal. You can also choose to use both, which means your users will be able to accept payments with either payment method.
+          You can create a new account with either service if you don't have one already. Once you have connected an account, you can choose a possible fee you're charging from each transaction.
+          What's the difference between Stripe and PayPal? Stripe allows you to delay payout to the seller up to 3 months and offers one payment method (credit/debit card). Stripe also allows your providers to receive money directly to their bank account simply by providing their bank details. PayPal provides two payment methods (credit card and PayPal account) and offers a protection program for buyers and sellers. It requires your providers to create a PayPal Business Account to accept payments.
+          If you use Stripe, its fees will be deducted from your transaction fee, so remember to set a high enough minimum fee. If you use PayPal, its fees will be charged from the provider separately, in addition to your transaction fee. Stripe and PayPal have a bit different fee structure. In most cases Stripe's fees are a bit lower.
+      invalid_api_keys: "Invalid Stripe API keys"
+      missing_api_keys: "Missing Stripe API keys"
+      stripe_verified: "Stripe API access verified"
+      change_settings: "Change settings and fees"
+      configure_stripe: "Configure Stripe"
+      configure_paypal: "Configure PayPal"
+      transaction_fee_settings: "Transaction fee settings"
+      transaction_fee_save: Save
+      stripe_fee: "Stripe's fees"
+      stripe_fee_notice: "%{stripe_fee_link} will be deducted from the transaction fee you are charging."
+      fee_should_be_less_than_minimum_price: "Minimum transaction fee must be lower than minimum transaction size"
+      confirm_disable: "Are you sure you want to disable %{gateway}? If you disable it, providers will no longer be able to receive money and buyers will no longer be able to pay through this payment method. If providers haven't configured another payment method, buyers will not be able to buy from them."
+      stripe_connected:
+        title: "Stripe connected"
+        disable: "Disable Stripe"
+        disabled: "Stripe disabled"
+        enable: "Enable Stripe again"
+      paypal_connected:
+        title: "PayPal connected"
+        disable: "Disable PayPal"
+        disabled: "PayPal disabled"
+        enable: "Enable PayPal again"
+      cannot_enable_gateway: "Cannot enable payment gateway %{gateway}."
+      cannot_disable_gateway: "Cannot disable payment gateway %{gateway}."
+      stripe_form:
+        add_your_api_keys: "Add your Stripe API keys"
+        how_to_get_these: "How to get these?"
+        publishable_key_example: "For example: %{api_publishable_key_example}"
+        secret_key_example: "For example: %{api_secret_key_example}"
+        save_api_keys: "Save Stripe API keys"
+        invalid_secret: "That doesn't look like a correct %{secret_key}"
+        invalid_publishable: "That doesn't look like a correct %{publishable_key}"
+      index:
+        header: "Available Payment Settings"
+        info: "You can configure available payment gateways for use in your marketplace. Currently PayPal and Stripe are supported."
+        active: Active
+        gateway: Gateway
+        process: Process
+        commission: Commission
+        minimum_price: Min.price
+        minimum_fee: Min.fee
+        api_verified: "API verified?"
+        actions: Actions
+        payments_not_enabled: "Payments are not enabled for your marketplace"
     transaction_types:
       sell: Selling
       rent: "Renting out"
@@ -570,15 +686,31 @@ en:
     username_or_email: "Email or username"
     what_is_this: "What's this?"
     removed_user: "Removed user"
+    payment_fee_info:
+      title: "Payment processing fee"
+      title_paypal: "PayPal's processing fee"
+      stripe: Stripe
+      paypal: PayPal
+      info: "Payments in %{service_name} are processed by either Stripe or PayPal. They both charge a fee from each payment."
     paypal_fee_info:
       title: "PayPal's payment processing fee"
       body_text: |-
-          PayPal charges a processing fee from each payment. This fee is between 2% and 5% of the total sales price, depending on your monthly sales volume and the country of residence of the buyer. In general, domestic purchases have lower fees than international ones, and higher monthly sales give you a discount on fees.
+          For PayPal payments, %{service_name} charges a commission of %{paypal_commission}%. PayPal's fees are not included in this commission, so in addition to %{service_name} commission, you also need to pay PayPal's fees from each payment processed by PayPal. PayPal's fee is between 2% and 5% of the total sales price, depending on your monthly sales volume and the country of residence of the buyer. In general, domestic purchases have lower fees than international ones, and higher monthly sales give you a discount on fees.
           You can see the exact fees by logging in to your PayPal account and going %{link_to_paypal}. After each purchase you will get a receipt displaying the exact fee.
-      body_with_shipping_text: |-
-          PayPal charges a processing fee from each payment. This fee is between 2% and 5% of the total sales price (including shipping), depending on your monthly sales volume and the country of residence of the buyer. In general, domestic purchases have lower fees than international ones, and higher monthly sales give you a discount on fees.
+      body_text_accept: |-
+          This transaction is processed by PayPal. PayPal charges a processing fee from each payment. This fee is between 2% and 5% of the total sales price, depending on your monthly sales volume and the country of residence of the buyer. In general, domestic purchases have lower fees than international ones, and higher monthly sales give you a discount on fees.
           You can see the exact fees by logging in to your PayPal account and going %{link_to_paypal}. After each purchase you will get a receipt displaying the exact fee.
       link_to_paypal_text: here
+    paypal_only_fee_info:
+      title: "PayPal's payment processing fee"
+      body_text: |-
+          Payments in %{service_name} are processed by PayPal. PayPal charges a processing fee from each payment. This fee is between 2% and 5% of the total sales price, depending on your monthly sales volume and the country of residence of the buyer. In general, domestic purchases have lower fees than international ones, and higher monthly sales give you a discount on fees.
+          You can see the exact fees by logging in to your PayPal account and going %{link_to_paypal}. After each purchase you will get a receipt displaying the exact fee.
+      link_to_paypal_text: here
+    stripe_fee_info:
+      title: "Stripe's payment processing fee"
+      body_text: "For Stripe payments, %{service_name} charges a commission of %{stripe_commission}%. Stripe's fees are included in this commission."
+      link_to_stripe_text: here
   conversations:
     accept:
       details: "Order details"
@@ -599,8 +731,12 @@ en:
       you_will_get_label: "You will get:"
       total_label: "Total:"
       total_value: "%{seller_gets}*"
+      total_value_paypal: "%{seller_gets}*"
+      total_value_stripe: "%{seller_gets}"
       paypal_fee_info: "* Excludes <a id='%{fee_info_link_id}' href='#'>PayPal's payment processing fee</a>"
+      payment_fee_info: "* Excludes <a id='%{fee_info_link_id}' href='#'>payment processing fee</a>"
       shipping_price_label: "Shipping:"
+      stripe-fee_label: "Payment processing fee"
     confirm:
       confirm_description: "If your order has been fulfilled you should confirm it as done. Then you can give feedback to the other party."
       cancel_description: "If your order was not fulfilled, you can mark it as 'disputed'. You can still give feedback to the other party and describe what happened."
@@ -737,7 +873,7 @@ en:
   community_memberships:
     access_denied:
       access_denied: "Access denied"
-      you_are_banned_in_this_community: "The administrator has prevented you from accessing %{service_name}. If you want to contact the admin, you can %{link_to_contact_page}."
+      you_are_banned_in_this_community: "The team has prevented you from accessing %{service_name}. If you want to contact the %{service_name} team, you can %{link_to_contact_page}."
       contact_page_link: "contact them"
     new:
       welcome_fb_user: "Welcome to %{service_name}, %{name}!"
@@ -811,7 +947,10 @@ en:
       message_not_displaying_correctly: "Is this email not displaying correctly?"
       view_it_in_your_browser: "View it in your browser"
       or: or
+      unsubscribe_from_these_emails_info: "You have received this email because you are a member of %{service_name}."
       unsubscribe_from_these_emails: "unsubscribe from these emails"
+      unsubscribe_from_invitation_emails_info: "You have received this email because a member of %{service_name} has invited you to join them."
+      unsubscribe_from_invitation_emails: "Unsubscribe from invitation emails to join %{service_name}"
     conversation_status_changed:
       has_accepted_your_offer: "%{accepter} has accepted your offer %{listing}."
       has_accepted_your_request: "%{accepter} has accepted your request %{listing}."
@@ -827,7 +966,7 @@ en:
       remember_to_confirm: "When the order is fulfilled, remember to mark it as completed. If the order is not fulfilled your have %{days_to_automatic_confirmation} days to cancel it. Otherwise it will be automatically marked as completed."
     invitation_to_kassi:
       hi: Hi!
-      you_have_been_invited_to_kassi: "%{inviter} has invited you to %{service_name}."
+      you_have_been_invited_to_kassi: "%{inviter} has invited you to %{service_name}"
       here_is_a_message_from: "Here is a personal message from %{inviter}:"
       join_now: "Join now"
       invitation_code: "Invitation code: %{code}"
@@ -846,6 +985,31 @@ en:
       price_per_unit_type: "Price per %{unit_type}"
       quantity: "Quantity:"
       you_have_received_new_payment: "You have been paid <b>%{payment_sum}</b> for <b>%{listing_title}</b> by %{payer_full_name}. Here is your receipt."
+    payment_receipt_to_seller:
+      payment_gateway_fee: "Payment processing fee:"
+      shipping_total: "Shipping:"
+      product: "Product:"
+      price_payer_paid: "Price %{payer_full_name} paid:"
+      service_fee: "%{service_name} service fee:"
+      you_will_get: "Total:"
+      new_payment: "You have received a new payment"
+      price_per_unit_type: "Price per %{unit_type}"
+      quantity: "Quantity:"
+      you_have_received_new_payment: "You have been paid <b>%{payment_sum}</b> for <b>%{listing_title}</b> by %{payer_full_name}. Here is your receipt."
+    payment_receipt_to_payer:
+      receipt_of_payment: "Receipt of payment"
+      you_have_made_new_payment: "You have paid <b>%{payment_sum}</b> for <b>%{listing_title}</b> to %{recipient_full_name}. Here is a receipt of the payment."
+      product: Product
+      price_per_unit_type: "Price per %{unit_type}"
+      duration: Duration
+      quantity: Quantity
+      subtotal: Subtotal
+      total: Total
+      price: Price
+      service_fee: "Service fee"
+      stripe_gateway_fee: "Stripe's fee:"
+      paypal_gateway_fee: "PayPal's fee:"
+      money_will_be_transferred: "The money will be transferred to %{recipient_name} when a) you have marked the request completed or b) %{automatic_confirmation_days} days have passed since you paid."
     paypal_new_payment:
       paypal_gateway_fee: "PayPal's fee:"
       shipping_total: "Shipping:"
@@ -865,6 +1029,8 @@ en:
       total: Total
       price: Price
       service_fee: "Service fee"
+      stripe_gateway_fee: "Stripe's fee:"
+      paypal_gateway_fee: "PayPal's fee:"
       money_will_be_transferred: "The money will be transferred to %{recipient_name} when a) you have marked the request completed or b) %{automatic_confirmation_days} days have passed since you paid."
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name} has given you feedback in %{service_name}"
@@ -901,6 +1067,7 @@ en:
       transaction_requested_by_user: "Great news! %{requester} is interested in \"%{listing_title}\" and has authorized payment for this listing."
       you_have_time_to_accept: "You need to accept or reject the request within %{payment_expires_in}. If you accept within this timeframe, the payment will go through. If you don't accept, the request will be automatically rejected and you will not get paid."
       if_you_do_accept: "If you accept the request within this timeframe, you will receive the money immediately to your account."
+      if_you_do_accept_stripe: "If you accept the request within this timeframe, the payment will go through. You will receive the money directly to your bank account after you have delivered %{listing_title} to %{requester}."
       if_you_do_not_accept: "If you reject the request or don't accept it within this timeframe, the transaction will be automatically cancelled, %{requester} will not be charged and you will not get paid."
       click_here_to_reply: "Click here to respond to the request"
     transaction_preauthorized_reminder:
@@ -950,6 +1117,8 @@ en:
       cancel_error: "An error occurred during cancellation. Could not finalize cancel."
       accept_authorization_error: "An error occurred while trying to accept preauthorized Paypal payment. Please, try again."
       reject_authorization_error: "An error occurred while trying to reject preauthorized Paypal payment. Please, try again."
+    stripe:
+      generic_error: "An error occurred during the payment process. Could not finalize your Stripe payment."
   error_pages:
     back_to_kassi_front_page: "Back to the front page"
     error_404:
@@ -1223,7 +1392,7 @@ en:
       sign_up: "Sign up"
     notifications:
       listing_could_not_be_saved: "Listing could not be saved. Please try again. If the problem persists, please %{contact_admin_link}."
-      contact_admin_link_text: "contact the admin"
+      contact_admin_link_text: "contact the %{service_name} team"
       test_welcome_email_delivered_to: "A test email was sent to %{email}."
       something_went_wrong: "Something went wrong"
       community_updated: "Details updated."
@@ -1247,8 +1416,10 @@ en:
       feedback_sent_to: "Feedback sent to %{target_person}."
       feedback_skipped: "Feedback skipped"
       invitation_cannot_be_sent: "Invitation could not be sent"
+      invitation_cannot_unsubscribe: "Cannot unsubscribe from invitation emails"
       invitation_limit_reached: "You were trying to send too many invitations. Daily limit reached."
       invitation_sent: "Invitation sent successfully"
+      invitation_successfully_unsubscribed: "Successfully unsubscribed from invitation emails"
       inviting_new_users_is_not_allowed_in_this_community: "Inviting new users is not allowed."
       login_again: "Please log in again."
       login_failed: "Login failed. Please enter the correct credentials."
@@ -1270,13 +1441,13 @@ en:
       listing_updated_successfully: "Listing updated successfully"
       listing_updated_availability_management_enabled: "Listing updated successfully. Availability management enabled."
       listing_updated_availability_management_disabled: "Listing updated successfully. Availability management disabled."
-      only_kassi_administrators_can_access_this_area: "Only %{service_name} administrators can access this area"
+      only_kassi_administrators_can_access_this_area: "Only the %{service_name} team can access this area"
       only_listing_author_can_close_a_listing: "Only listing author can close a listing"
       only_listing_author_can_edit_a_listing: "Only listing author can edit a listing"
       payment_successful: "Payment successful"
       payment_canceled: "Payment cancelled"
       error_in_payment: "Error in payment. If you didn't complete the payment yet, try again. If you did, please send us feedback."
-      cannot_receive_payment: "The other party can't receive the payment due some error. Please contact the administrators to clarify the situation"
+      cannot_receive_payment: "The other party can't receive the payment due some error. Please contact the %{service_name} team to clarify the situation"
       payment_waiting_for_later_accomplishment: "When you have paid, we'll notify the seller and you will get a receipt in email"
       password_recovery_sent: "Instructions to change your password were sent to your email."
       person_activated: "User activated"
@@ -1347,6 +1518,8 @@ en:
       notifications: Notifications
       profile: "Profile info"
       settings: Settings
+      paypal_payments: "PayPal Payments"
+      stripe_payments: "Stripe Payments"
       payments: Payments
   listings:
     bubble_listing_not_visible:
@@ -1441,9 +1614,13 @@ en:
         mass: "piece, kg, l, m2, ..."
         time: "hour, day, month, ..."
         long_time: "week, month, ..."
-        after_service_fee_you_will_get: "After %{service_name} and payment processor fees you will get %{sum_with_currency}"
+        after_service_fee_you_will_get: "After %{service_name} and a payment processor fees you will get %{sum_with_currency}"
         no_service_fee_you_will_get_paypal_text: "%{paypal_fee_info_link} will be deducted from the price."
-        after_service_fee_you_will_get_paypal_text: "Once someone makes an order, %{service_name} fee (%{sum_with_currency}) and %{paypal_fee_info_link} will be deducted from the price."
+        no_service_fee_you_will_get_payment_text: "%{payment_fee_info_link} will be deducted from the price."
+        after_service_fee_you_will_get_payment_text: "Once someone makes an order, %{service_name} fee (%{sum_with_currency}) and a %{payment_fee_info_link} will be deducted from the price."
+        after_service_fee_you_will_get_paypal_text: "Once someone makes an order, %{service_name} fee (%{sum_with_currency}) and a %{paypal_fee_info_link} will be deducted from the price."
+        after_service_fee_you_will_get_stripe_text: "Once someone makes an order, %{service_name} fee (%{sum_with_currency}) will be deducted from the price."
+        payment_fee_info_link_text: "payment processing fee"
         paypal_fee_info_link_text: "PayPal's payment processing fee"
         delivery: "Delivery method"
         shipping: Shipping
@@ -1539,7 +1716,7 @@ en:
       select_subcategory: "Select subcategory"
       select_transaction_type: "Select listing type"
       you_need_to_fill_payout_details_before_accepting: "You need to fill in payout details before you can post a listing. Go to %{payment_settings_link} to fill in the details."
-      contact_admin_link_text: "contact the administrator"
+      contact_admin_link_text: "contact the %{service_name} team"
       community_not_configured_for_payments: "%{service_name} hasn't been configured for payments, so you cannot post new listings yet. Please %{contact_admin_link} for details."
       payment_settings_link: "payment settings"
       community_not_configured_for_payments_admin: "%{service_name} hasn't been configured for payments, so you cannot post new listings yet. Go to %{payment_settings_link} to fill in the payment details."
@@ -1618,6 +1795,17 @@ en:
       invalid_parameters: "Invalid values for new transaction"
     transaction_agreement_checkbox:
       read_more: View.
+    stripe_payment:
+      payment: Payment
+      pay_with_card: "Pay with credit or debit card"
+      address: "Shipping address"
+      address_country: "Country *"
+      address_name: "First and last names *"
+      address_city: "City *"
+      address_state: "State *"
+      address_street1: "Street address line 1 *"
+      address_street2: "Street address line 2"
+      address_postal_code: "ZIP / Postal code *"
   mapview:
     index:
       all_categories: "All categories"
@@ -1658,13 +1846,14 @@ en:
     paypal_receive_funds_info: "If you see an error when trying to connect your account to %{service_name}, %{upgrade_paypal_account_link}. It's free and easy. If you're an individual, PayPal recommends using your name as the Business name."
     upgrade_paypal_account_link_text: "log in and upgrade your PayPal account to a business account"
     admin_account_not_connected: "Using %{service_name}'s payment system in order to receive payments is not possible since payments have not been set up. Please %{contact_admin_link} for details."
-    contact_admin_link_text: "contact the marketplace administrator"
+    contact_admin_link_text: "contact the %{service_name} team"
     you_are_ready_to_accept_payments: "You are ready to accept payments!"
     commission: "%{commission} %"
+    not_now: "I do not want to connect PayPal account now"
     new:
       payout_info_you_need_to_connect: "In order to accept payments, you need to connect your PayPal account with %{service_name}."
       payout_info_text: "To connect your account, please complete the following steps."
-      contact_admin_link_text: "contact the administrator"
+      contact_admin_link_text: "contact the %{service_name} team"
       admin_account_not_connected: "Connecting your PayPal account is not possible since %{service_name} has not set up payments. Please %{contact_admin_link} for details."
       paypal_account_email: "Connect your PayPal account"
       paypal_account_email_placeholder: "Your PayPal email address"
@@ -1691,7 +1880,7 @@ en:
       billing_agreement_canceled: "The billing agreement was canceled"
       billing_agreement_not_accepted: "You did not accept the billing agreement in PayPal."
       billing_agreement_wrong_account: "PayPal accounts did not match. Please use the same PayPal account that you connected in the first step."
-      something_went_wrong: "Something went wrong. Please try again. If the problem persists, please contact the site administrator."
+      something_went_wrong: "Something went wrong. Please try again. If the problem persists, please contact the %{service_name} team."
       account_not_verified: "You have not verified your PayPal account. You need to go to paypal.com and verify your account before you can continue."
       account_restricted: "Your PayPal account is restricted and cannot be connected. Please log in to paypal.com to find out more or get in touch with PayPal customer support to resolve the issue."
     paypal_account_connected_title: "PayPal account connected"
@@ -1707,6 +1896,8 @@ en:
     paypal_permission_granted_summary: "Permission for transaction fees granted"
   paypal:
     pay_with_paypal: "Proceed to payment"
+    checkout_with: "Checkout with"
+    or_pay_with_paypal: or
     checkout_with_paypal: "Checkout with PayPal"
     cancel_succesful: "PayPal payment succesfully canceled"
     transaction:
@@ -1733,6 +1924,7 @@ en:
       email_is_in_use: "The email you gave is already in use."
       email_is_in_use_or_not_allowed: "This email is not allowed or it is already in use. If you can't get in, contact us."
       email_not_allowed: "This email is not allowed in %{service_name}. Please use an email address that is allowed. If you still cannot get in, contact us."
+      invalid_username_or_email: "The username or email are invalid or already in use"
       email_restriction_instructions:
         one: "The access to %{service_name} is restricted. To join you need a '%{allowed_emails}' email address."
         other: "The access to %{service_name} is restricted. You need an email address that proves that you are entitled to join."
@@ -1749,7 +1941,7 @@ en:
       terms: "terms of use"
       username_is_in_use: "This username is already in use."
       username_is_invalid: "Username is invalid. Allowed characters are letters, numbers and underscore."
-      visible_only_to_you: "visible only to you and the marketplace admin"
+      visible_only_to_you: "visible only to you and the %{service_name} team"
       visible_to_everybody: "visible to everybody"
       create_account_with_facebook: "Sign up with Facebook"
       OR: OR
@@ -2060,11 +2252,13 @@ en:
       quantity: "Quantity:"
       subtotal: "Subtotal:"
       shipping-price: "Shipping:"
+      stripe-fee: "Stripe Fee (estimated):"
     price_per_quantity: "Price per %{unit_type}:"
     price: "Price:"
     quantity: "Quantity: %{quantity}"
     unit_price: "Unit price: %{unit_price}"
     total: "Total:"
+    total_to_pay: "Payment total:"
   unit:
     day: day
     days: days
@@ -2124,7 +2318,7 @@ en:
         one: user
         few: users
         other: users
-      listing_conversation:
+      transaction:
         zero: transactions
         one: transaction
         few: transactions
@@ -2143,3 +2337,95 @@ en:
         other: "Displaying <b>all&nbsp;%{count}</b> %{model}"
       multi_page: "Displaying %{model} %{from} - %{to} of %{count} in total"
       multi_page_html: "Displaying %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> of <b>%{count}</b> in total"
+    person:
+      community_members_entries_info:
+        single_page:
+          zero: "No %{model} found"
+          one: "Displaying %{accepted_count} accepted %{accepted_model} and %{banned_count} banned %{banned_model}"
+          other: "Displaying %{accepted_count} accepted %{accepted_model} and %{banned_count} banned %{banned_model}"
+        single_page_html:
+          zero: "No %{model} found"
+          one: "Displaying <b>%{accepted_count}</b> accepted %{accepted_model} and %{banned_count} banned %{banned_model}"
+          other: "Displaying <b>%{accepted_count}</b> accepted %{accepted_model} and %{banned_count} banned %{banned_model}"
+        multi_page: "Displaying %{model} %{from} - %{to} of %{accepted_count} accepted %{accepted_model} and %{banned_count} banned %{banned_model}"
+        multi_page_html: "Displaying %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> of <b>%{accepted_count}</b> accepted %{accepted_model} and %{banned_count} banned %{banned_model}"
+  stripe_accounts:
+    admin_account_not_connected: "Using %{service_name}'s payment system in order to receive payments is not possible since payments have not been set up. Please %{contact_admin_link} for details."
+    contact_admin_link_text: "contact the %{service_name} team"
+    you_are_ready_to_accept_payments: "You are ready to accept payments!"
+    commission: "%{commission} %"
+    pay_with_stripe: "Pay with Stripe using %{card}"
+    add_and_pay: "Confirm payment"
+    card_not_stored: "Your payment is securely processed by Stripe. %{service_name} does not store your credit/debit card information."
+    missing_payment: "You have open listings but your account is not set up to receive money. To configure your payment preferences, visit %{settings_link}"
+    stripe_bank_connected: "Bank account details configured successfully!"
+    stripe_can_accept: "You are now all set to receive money to your bank account"
+    stripe_credit_card: "Credit card"
+    paypal: PayPal
+    paypal_connected: "PayPal account connected successfully!"
+    paypal_can_accept: "You are now all set to receive money to your PayPal account"
+    paypal_connected_give_permission: "To complete setup and start receiving funds to your PayPal account <%{email}>, please grant permission to charge a transaction fee."
+    form_new:
+      need_info: "We need some information about you to be able to send you money."
+      select_country: "Select country..."
+      legal_name: "Legal name"
+      country: Country
+      birth_date: "Birth date"
+      ssn_last_4: "SSN Last 4"
+      personal_id_number: "Personal ID number"
+      address_country: Country
+      address_state: State
+      address_city: City
+      address_postal_code: "Postal code"
+      address_line1: "Street address"
+      tos_link: "By adding your payout details you accept the %{stripe_link}."
+      tos_link_title: "Stripe Connected Account Agreement"
+      save_details: "Save details"
+      edit: "Edit details"
+      cancel: Cancel
+    form_bank:
+      bank_account_number: "Bank account number"
+      bank_routing_number: "Routing number"
+      bank_routing_1: "Bank code"
+      bank_routing_2: "Branch code"
+      bank_currency: "Bank account currency"
+      messages:
+        account_number: "Account number"
+        routing_number: "Routing number"
+        bank_code: "Bank code"
+        branch_code: "Branch code"
+        transit_number: "Transit number"
+        institution_number: "Institution number"
+        format_varies_by_bank: "Format varies by bank"
+        bsb: BSB
+        error_message: "Invalid format"
+        clearing_code: "Clearing code"
+        sort_code: "Sort code"
+        must_match: "must be in the following format:"
+        a_dash: "a dash"
+        digits: digits
+        digits_or_chars: "digits or A-Z chars"
+    form_verification:
+      personal_id_number: "Personal ID Number"
+      document: "Verification document"
+      send_verification: "Send Verification"
+      need_verification: "Need additional verification"
+    form_pin:
+      social_insurance_number: "Social Insurance Number (SIN)"
+      social_security_number: "Social Security Number (SSN)"
+      hong_kong_identity_card: "Hong Kong Identity Card Number (HKID)"
+      singapore_identity_card: "National Registration Identity Card (NRIC) or Foreign Identification Number (FIN)"
+      messages:
+        social_insurance_number: "must be valid Social Insurance Number (SIN)"
+  payment_settings:
+    title: "Payout preferences"
+    bank_account: "Bank account"
+    paypal: PayPal
+    bank_account_details: "To receive money to your bank account, you need to provide your bank details. Your customers will be able to pay with their credit card."
+    add_bank_details: "Add bank details"
+    can_accept_stripe_and_paypal: "You can receive money to your bank account or your PayPal account."
+    to_accept_paypal: "To receive money to your PayPal account, you need to connect your PayPal account. Your customers will be able to pay with PayPal."
+    connect_paypal: "Connect PayPal account"
+    wrong_setup: "There is something wrong with the payment system setup in this marketplace: the platform has not been registered. Please contact the team to let them know that they should register their platform at Stripe."
+    invalid_bank_account_number: "Please check that your bank account is entered correctly and matches your country."
+    invalid_postal_code: "Invalid postal code for %{country}"

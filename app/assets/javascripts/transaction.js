@@ -36,17 +36,24 @@ window.ST.transaction = window.ST.transaction || {};
     spinner.src = "https://s3.amazonaws.com/sharetribe/assets/ajax-loader-grey.gif";
     spinner.className = "paypal-button-loading-img";
     var $spinner = $(spinner);
-    $form.find(".paypal-button-wrapper").append(spinner);
-    $spinner.hide();
+    $form.find(".payment-button-wrapper").append(spinner);
+    $(".paypal-button-loading-img").hide();
 
     return $spinner;
   }
 
   function toggleSpinner($spinner, show) {
+    var prefix = "";
+    if ($("#payment_type").val() == 'paypal') {
+       prefix = '.paypal-payment ';
+    }
+    if ($("#payment_type").val() == 'stripe') {
+       prefix = '.stripe-payment ';
+    }
     if (show === true) {
-      $spinner.show();
+      $(prefix + ".paypal-button-loading-img").show();
     } else {
-      $spinner.hide();
+      $(".paypal-button-loading-img").hide();
     }
   }
 
@@ -82,7 +89,7 @@ window.ST.transaction = window.ST.transaction || {};
       .flatMapLatest(function() {
         var timeout = Bacon.later(3000, "timeout");
         var response = Bacon.fromCallback(function(callback) {
-          ampClient.logEvent(analyticsEvent[0], analyticsEvent[1], callback);
+          window.ST.analytics.logEvent(analyticsEvent[0], null, null, analyticsEvent[1]);
         });
 
         return timeout.merge(response).take(1);

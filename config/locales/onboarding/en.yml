@@ -9,9 +9,11 @@ en:
             info_image_alt: "A screenshot of homepage with big cover photo"
             add_your_own: "Add cover photo"
             advice:
-              content1: "Check out %{link} on where to find good-looking images that are free to use."
+              content1: "Use %{link_images} or check out %{link} on where to find good-looking images that are free to use."
               content2: "Note: the photo will be resized to %{width}x%{height} pixels. The top and bottom sections of images that are taller will be cropped."
+              link_images: "one of our ready-made images"
               link: "our guide"
+              alt_images: "6 great cover photos ready to use and where to find more"
               alt: "How to get good-looking cover photos, logos, favicon, profiles and listing pictures?"
           filter:
             title: "Step 4: Add listing fields & filters"
@@ -47,9 +49,10 @@ en:
             paypal: "Accept payments"
             listing: "Post your first listing"
             invitation: "Invite users"
-          paypal:
+          payments:
             title: "Step 5: Set up online payments"
-            description_p1: "If you want to allow your providers to accept online payments, you need to connect your PayPal account (you will receive a fee from each transaction). Once connected, you need to choose a minimum transaction size and your transaction fee."
+            description_p1: "If you want to allow your users to pay and accept payments online, and for you to possibly receive commission fees, you will need to connect a payment provider. Sharetribe supports both Stripe and Paypal (%{not_sure_link}). Once connected, you need to choose your transaction fee."
+            not_sure_link: "not sure which one to choose?"
             description_p2: "Alternatively, you can disable online payments for now."
             info_image_alt: "A screenshot from payments page"
             disable_payments: "Disable payments"
@@ -59,6 +62,8 @@ en:
               content: "You can read more about disabling payments from %{disable_payments_link}."
               disable_payments_link: "this article"
               disable_payments_alt: "How to disable payments or add free listings to your marketplace"
+              content_paypal_stripe: "Read more about disabling payments from %{disable_payments_link} or read more about %{stripe_paypal_link}."
+              stripe_paypal_link: "online payments, Stripe and Paypal"
           slogan_and_description:
             title: "Step 2: Add a Slogan & Description"
             description: "The slogan and description help new visitors understand what your marketplace is about. They are the first thing visitors notice when they land on your site, so try to make them compact but descriptive."
@@ -119,9 +124,10 @@ en:
           title: "Looking good!"
           body: "Now let's focus on some functionality. Listing fields and filters give structure to your marketplace and help your customers find what they are looking for."
           button: "Add fields & filters"
-        paypal:
+        payment:
           title: "Well done!"
           body: "Next, set up your marketplace for online payments! To allow your providers to accept payments, you need to connect your PayPal account. Alternatively, you can disable online payments for now."
+          body_stripe: "Next, set up your marketplace for online payments! To allow your providers to accept payments, you need to connect your PayPal or Stripe account. Alternatively, you can disable online payments for now."
           button: "Set up payments"
         listing:
           title: "Good job!"

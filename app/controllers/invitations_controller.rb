@@ -1,27 +1,23 @@
 class InvitationsController < ApplicationController
 
-  before_action do |controller|
+  before_action except: :unsubscribe do |controller|
     controller.ensure_logged_in t("layouts.notifications.you_must_log_in_to_invite_new_users")
   end
 
-  before_action :users_can_invite_new_users
+  before_action :users_can_invite_new_users, except: :unsubscribe
 
   def new
     @selected_tribe_navi_tab = "members"
     @invitation = Invitation.new
     invitation_limit = @current_community.join_with_invite_only ? Invitation.invite_only_invitation_limit : Invitation.invitation_limit
 
-    onboarding_popup_locals = OnboardingViewUtils.popup_locals(
-      flash[:show_onboarding_popup],
-      admin_getting_started_guide_path,
-      Admin::OnboardingWizard.new(@current_community.id).setup_status)
-
+    make_onboarding_popup
     view_locals = {
       invitation_limit: invitation_limit,
       has_admin_rights: @current_user.has_admin_rights?(@current_community)
     }
 
-    render locals: onboarding_popup_locals.merge(view_locals)
+    render locals: view_locals
   end
 
   def create
@@ -30,7 +26,8 @@ class InvitationsController < ApplicationController
       :message
     )
 
-    invitation_emails = invitation_params[:email].split(",").map(&:strip)
+    raw_invitation_emails = invitation_params[:email].split(",").map(&:strip)
+    invitation_emails = Invitation::Unsubscribe.remove_unsubscribed_emails(@current_community, raw_invitation_emails)
 
     unless validate_daily_limit(@current_user.id, invitation_emails.size, @current_community)
       return redirect_to new_invitation_path, flash: { error: t("layouts.notifications.invitation_limit_reached")}
@@ -51,7 +48,7 @@ class InvitationsController < ApplicationController
         state_changed = Admin::OnboardingWizard.new(@current_community.id)
           .update_from_event(:invitation_created, invitation)
         if state_changed
-          report_to_gtm({event: "km_record", km_event: "Onboarding invitation created"})
+          record_event(flash, "km_record", {km_event: "Onboarding invitation created"}, AnalyticService::EVENT_USER_INVITED)
 
           flash[:show_onboarding_popup] = true
         end
@@ -67,6 +64,16 @@ class InvitationsController < ApplicationController
     end
 
     redirect_to new_invitation_path
+  end
+
+  def unsubscribe
+    invitation_unsubscribe = Invitation::Unsubscribe.unsubscribe(params[:code])
+    if invitation_unsubscribe.persisted?
+      flash[:notice] = t("layouts.notifications.invitation_successfully_unsubscribed")
+    else
+      flash[:error] = t("layouts.notifications.invitation_cannot_unsubscribe")
+    end
+    redirect_to landing_page_path
   end
 
   private

@@ -83,7 +83,7 @@ de:
         verification_to_post_listings_info_content: "Infotext für nicht verifizierte Benutzer"
         verification_to_post_listings_info_content_description: "Auf diesem Marktplatz ist es erforderlich, dass man sich vom Administrator verifizieren lässt, bevor man Einträge veröffentlichen darf. Hier kannst du den Standardtext festlegen, der nicht-verifizierten Benutzern angezeigt wird, wenn sie versuchen, einen neuen Eintrag zu erstellen."
         verification_to_post_listings_info_content_default: "Auf diesem Marktplatz ist es erforderlich, dass man sich vom Administrator verifizieren lässt, bevor man Einträge veröffentlichen darf. Du bist noch nicht verifiziert. Bitte %{contact_admin_link}, um dich verifizieren zu lassen."
-        contact_admin_link_text: "Administrator kontaktieren"
+        contact_admin_link_text: "Administrator von %{service_name} kontaktieren"
         save: "Einstellungen speichern"
         transaction_agreement: "Die Allgemeinen Geschäftsbedingungen (AGBs)"
         transaction_agreement_checkbox: "Benutzer müssen die Allgemeinen Geschäftsbedingungen vor der Transaktion akzeptieren"
@@ -152,7 +152,12 @@ de:
         amazon_ses_notification: "Du wirst eine E-mail von %{email_sender} erhalten, für die Bestätigung deiner E-mail. Der Betreff von dieser E-mail ist '%{email_subject}'. Bitte folge die Anweisungen in dieser E-mail um deine E-mail-Adresse zu bestätigen."
         this_is_how_it_will_look: "So wird es aussehen:"
         send_verification_button: "Sende Verifizierungsmail"
+        change_sender_email: "Absender Email Adresse ändern"
         successfully_saved: "Absender Adresse erfolgreich gespeichert. Die Verifizierungsmail wird demnächst verschickt."
+        successfully_saved_name: "Absender Email Adresse erfolgreich geändert."
+        set_sender_name: "Absender Email Adresse ändern"
+        change_sender_name: "Absender Email Adresse ändern"
+        change_sender_prompt: "%{change_name_link} oder %{change_email_link}"
         status: "Status: %{status}"
         status_verified: "Verifiziert - In Verwendung"
         status_error: "Ein Fehler ist aufgetreten. Bitte lade die Seite neu."
@@ -221,6 +226,7 @@ de:
         twitter_handle: "Twittername (wird mit dem Tweet-Button auf der Angebotsseite verwendet)"
         update_settings: "Einstellungen speichern"
         automatically_confirmed_no_escrow: "Der Auftrag wird automatisch als \"erledigt\" %{days_dropdown} Tage nach der Bezahlung markiert."
+        automatically_confirmed_no_escrow_stripe_info: "Kreditkartenzahlungen über Stripe werden erst auf das Anbieter-Bankkonto übertragen, sobald der Käufer die Transaktion als \"erledigt\" gekennzeichnet hat.%{learn_more}."
         automatic_newsletter_frequency: "Newsletter automatisch verschicken: %{frequency_dropdown}"
         newsletter_daily: Täglich
         newsletter_weekly: Wöchentlich
@@ -233,6 +239,7 @@ de:
         last_community_updates: "Bitte achte darauf, dass Du und die Nutzer Deines Marktplatzes können noch die letzten Update-E-Mails von deinem Marktplatz empfangen."
         you_will_be_redirected_to: "Nachdem Du Deinen Marktplatz gelöscht hast wirst Du zu %{destination} umgeleitet. Du hast dann keinen Zugriff mehr zu Deinem Marktplatz."
         delete_this_marketplace: "Diesen Marktplatz löschen"
+        payment_preferences: Zahlungssystem
       manage_members:
         manage_members: "Benutzer verwalten"
         email: E-Mail
@@ -241,13 +248,18 @@ de:
         join_date: Beigetreten
         admin: Administrator
         posting_allowed: "Veröffentlichen von Einträgen erlaubt"
-        ban_user: "Nutzer sperren"
+        ban_user: Sperren
         saving_user_status: Speichern...
         save_user_status_successful: Gespeichert
         export_all_as_csv: "Exportiere Alles als CSV Datei"
         save_user_status_error: "Speichern fehlgeschlagen. Bitte erneuere die Seite und versuch es noch einmal."
         ban_user_confirmation: "Dies entfernt den Benutzer von der Community und wird einen erneuten Zugriff mit diesem Account auf die Seite verhindern. Bist du sicher, dass du fortfahren möchtest?"
+        unban_user_confirmation: "Damit wird der Benutzer des Marktplatzes entsperrt und erhält wieder Zugang zu seinem Konto. Möchtest Du fortfahren?"
         ban_me_error: "Du kannst dich nicht selber sperren."
+        search: Suchen
+        search_by_name_email: "Nach einem Nahmen, einer E-Mail Adresse, oder einem Anzeigenamen suchen"
+        reset_search: "Alle anzeigen"
+        for_search_terms: "für: %{terms}"
       new_layout:
         new_layout: "Neues Layout"
         description_roadmap_new: "Sobald neue Layout-Komponenten für deinen Marktplatz verfügbar sind, kannst du wählen, ob du die neue Komponente verwenden möchtest, oder ob du weiterhin die alte verwenden willst. Du kannst die Auswahl auf dieser Seite jederzeit ändern. Es ist empfohlen, jederzeit die neuen Komponente zu verwenden, denn die alten Komponente können in der Zukunft auslaufen. Wenn eine Komponente, die du verwendest, auslaufen wird, werden wir jedoch dir im Voraus natürlich eine Nachricht schicken."
@@ -312,17 +324,39 @@ de:
         status:
           free: Unterhaltung
           pending: Ausstehend
-          preauthorized: Vorauthorisiert
+          preauthorized: Vorautorisiert
           accepted: Akzeptiert
           rejected: Abgelehnt
           paid: Bezahlt
           confirmed: Bestätigt
-          canceled: Storniert
+          canceled: Abgebrochen
           initiated: "Warten auf die Paypal Zahlung"
           pending_ext: "Warten auf die Paypal Zahlung"
+          none:
+            free: Unterhaltung
+          paypal:
+            free: Unterhaltung
+            pending: Ausstehend
+            preauthorized: Vorautorisiert
+            accepted: Akzeptiert
+            rejected: Abgelehnt
+            paid: Bezahlt
+            confirmed: Bestätigt
+            canceled: Abgebrochen
+            initiated: "Warte auf PayPal-Zahlung"
+            pending_ext: "Warte auf PayPal-Zahlung"
+          stripe:
+            free: Unterhaltung
+            pending: Ausstehend
+            preauthorized: Vorautorisiert
+            accepted: Akzeptiert
+            rejected: Abgelehnt
+            paid: Bezahlt
+            confirmed: Bestätigt
+            canceled: Abgebrochen
+            initiated: "Warte auf Stripe-Bezahlung"
+            pending_ext: "Warte auf Stripe-Bezahlung"
         not_available: "nicht verfügbar"
-      paypal_account:
-        paypal_admin_account: Zahlungssystem
     custom_fields:
       edit:
         edit_listing_field: "Eintragsfeld '%{field_name}' bearbeiten"
@@ -380,13 +414,26 @@ de:
       new:
         send_email_to_members: "Sende eine E-Mail an alle Mitglieder"
         send_email_to_members_title: "Sende eine E-Mail an alle Mitglieder"
+        send_email: "E-Mail senden"
+        send_email_or: oder
+        send_test_email: "Eine Test-E-Mail zu dir selber schicken"
+        test_sent: "Die Test-E-Mail wurde zu deiner E-Mail-Adresse geschickt"
+        send_email_article_title: "diesen Artikel"
+        send_email_article_text: "Du kannst %{article_link} lesen, um mehr über Nutzersegmente zu erfahren."
+        recipients:
+          title: "Wem willst du eine E-Mail schicken?"
+          options:
+            all_users: "Alle Benutzer"
+            with_listing: "Benutzer, die mindestens einen Eintrag erstellt haben"
+            with_listing_no_payment: "Benutzer, die mindestens einen Eintrag erstellt haben, aber ihre Zahlungsdaten nicht eingetragen haben"
+            with_payment_no_listing: "Benutzer, die ihre Zahlungsdaten eingetragen haben, aber keine Einträge erstellt haben"
+            no_listing_no_payment: "Benutzer, die keine Einträge erstellt haben, und ihre Zahlungsdaten auch nicht eingetragen haben"
         email_subject: "E-Mail Betreff"
         email_content: E-Mail-Inhalt
         email_content_placeholder: "Was willst du den Mitgliedern mitteilen?"
         email_language: "Sprache der E-Mail-Empfänger"
         any_language: "Beliebige Sprache"
-        send_email: "E-Mail senden"
-        message_will_be_sent_only_to_people_with_this_language: "Merke: Die E-Mail wird nur an Mitglieder von %{service_name} verschickt, die die Sprache sprechen, die du gewählt hast."
+        message_will_be_sent_only_to_people_with_this_language: "Die E-Mail wird nur an Mitglieder von %{service_name} verschickt, die auch die Sprache, die du gewählt hast, gewählt haben."
         email_sent: "E-Mail gesendet."
     left_hand_navigation:
       general: Allgemein
@@ -403,6 +450,7 @@ de:
       per_day_availability: "\"Pro Tag\" Verfügbarkeit"
       per_night_availability: "\"Pro Nacht\" Verfügbarkeit"
       pricing_units_disabled_info: "Preiseinheiten können nicht verwendet werden wenn der Terminkalender eingeschaltet ist."
+      can_not_find_name: "Keine Auftragsart mit dem folgenden Namen gefunden: %{name}"
       index:
         listing_shapes: Auftragsarten
         description: "Auftragsarten bestimmen wie der Auftragsprozess auf deiner Seite funktioniert. Du kannst bestimmen ob deine Nutzer vermieten oder verkaufen, oder nur einfach Einträge veröffentlichen und danach miteinander mithilfe von Nachrichten kommunizieren."
@@ -491,10 +539,12 @@ de:
       marketplace_paypal_integration: Zahlungseinstellungen
       preferences_updated: "Zahlungseinstellungen aktualisiert"
       contact_support_link_text: "kontaktiere Support"
-      integration_info_text: "Bezahlungen auf Sharetribe sind durch PayPal durchgeleitet. Um deinen Kunden die Bezahlung auf Ihrem Marktplatz zu ermöglichen musst du dein PayPal-Konto verbinden. Nachdem du dein PayPal-Konto verbunden hast, kannst du den Mindestbetrag einer Transaktion einrichten sowie eine mögliche Vermittlungsgebühr."
+      integration_info_text: "Bezahlungen auf deinem Marktplatz werden über PayPal durchgeführt. Um deinen Kunden die Bezahlung auf deinem Marktplatz zu ermöglichen musst du dein PayPal-Konto verbinden. Nachdem du dein PayPal-Konto verbunden hast, kannst du den Mindestbetrag einer Transaktion einrichten sowie eine mögliche Vermittlungsgebühr."
       link_paypal_personal_account_label: "Bietest du selbst Produkte oder Dienstleistungen an?"
       link_paypal_personal_account: "Wenn ja, dann musst Du auch Dein PayPal Konto mit %{personal_payment_preferences_link} verbinden."
-      personal_payment_preferences_link_text: "Deinem Konto"
+      link_stripe_personal_account: "Wenn ja, dann musst du auch dein Stripe-Konto mit %{personal_payment_preferences_link} verbinden."
+      link_paypal_and_stripe_personal_account: "Wenn ja, dann musst du auch dein PayPal- oder Stripe-Konto mit %{personal_payment_preferences_link} verbinden."
+      personal_payment_preferences_link_text: "deinem Konto"
       read_more_about_paypal: "Mehr über das Zahlungssystem lesen"
       edit_payment_settings: "Zahlungseinstellungen bearbeiten"
       supported_currencies_information_text: "Der Zahlungssystem von Sharetribe unterstützt 24 Währungen. Wenn deine Währung nicht auf der Liste ist, bitte %{contact_support_link}. Wenn du die Währung des Marktplatzes wechselst, werden bestehende Anzeigen die alte Währung behalten. Du musst diese Anzeigen manuell bearbeiten so dass sie die neue Währung bekommen."
@@ -506,6 +556,72 @@ de:
       save_settings: "Einstellungen speichern"
       minimum_listing_price_below_tx_fee: "Der Mindestbetrag einer Transaktion muss größer oder gleich Mindestgebühr für die Transaktion sein: %{minimum_transaction_fee}."
       minimum_listing_price_below_min: "Die Mindestmenge der Transaktion muss größer als die Mindestprovision %{minimum_commission} sein."
+    payment_preferences:
+      title: Zahlungseinstellungen
+      general_settings: "1. Allgemeine Einstellungen"
+      connect_a_payment_provider: "2. Ein Zahlungssystem verbinden"
+      contact_support: "Support kontaktieren"
+      no_payments_link_text: hier
+      your_country: "Dein Land:"
+      you_cannot_use_online_payments: "Du kannst Online-Zahlungen in %{country_name} mit der Währung %{currency} nicht verwenden. Bitte wähle eine andere Währung oder %{support_link}, um dein Land zu ändern. Du kannst mehr über die unterstützten Ländern und Währungen %{help_link} lesen. Wir werden möglicherweise in der Zukunft mehr Zahlungsanbieter und Währungen unterstützen."
+      which_to_choose: "Wie soll ich wählen?"
+      you_can_use_stripe_or_paypal: "Du kannst entweder Stripe, Paypal, oder beides als Zahlungsanbieter verwenden. %{choose_link}"
+      you_can_use_stripe_only: "Du kannst Stripe als Zahlungsanbieter verwenden. %{read_more_link}"
+      read_more_stripe: "Mehr über Stripe-Zahlungen lesen."
+      you_can_use_paypal_only: "Du kannst PayPal als Zahlungsanbieter verwenden. %{read_more_link}"
+      read_more_paypal: "Mehr über PayPal-Zahlungen lesen."
+      read_more_about_paypal_and_stripe: "Mehr über Online-Zahlungen, Stripe und PayPal lesen"
+      general_settings_updated: "Allgemeine Einstellungen des Zahlungssystems aktualisiert"
+      transaction_fee_settings_updated: "Einstellungen für Transaktionsgebühre aktualisiert"
+      choose_popup_text: |-
+          Wenn du es deinen Kunden erlauben willst, Online Zahlungen entgegenzunehmen, musst du die Währung für deinen Marktplatz wählen, und danach entweder Stripe or PayPal verbinden. Du kannst auch beides wählen; damit können deine Kunden die Entscheidung treffen, welches System sie verwenden möchten.
+          Du kannst ein neues Konto mit beiden Systemen eröffnen, falls du noch keins hast. Nachdem du ein Konto verbunden hast, kannst du eine Transaktionsgebühr feststellen.
+          Der Unterschied zwischen PayPal und Stripe? Stripe erlaubt das Verzögern der Zahlung bis zu 3 Monaten, und bietet eine Zahlungsmethode (Kredit/Debitkarte). Mit Stripe können deine Verkäufer auch Geld direkt auf ihre Bankkonten bekommen, wenn sie ihre Kontodetails eingeben. PayPal bietet zwei Zahlungsmethoden (Kreditkarte und PayPal Konto) und bietet Käufer/Verkäuferschutz. Es ist nötig, ein Business Konto auf PayPal einzurichten, um Kreditkartenzahlungen entgegenzunehmen.
+          Wenn du Stripe verwendest, werden die Gebühren von Stripe von deiner Transaktionsgebühr abgezogen, also bitte bestimmen sie eine Transaktionsgebühr, die hoch genug ist. Wenn du PayPal verwendest, werden die Gebühren von PayPal direkt von dem Verkäufer abgezogen, sowie deine Transaktionsgebühr. Stripe und PayPal haben auch verschiedene Gebühren. In der Regel sind die Gebühren von Stripe normalerweise etwas günstiger.
+      invalid_api_keys: "Ungültige Stripe API Keys"
+      missing_api_keys: "Fehlende Stripe API Keys"
+      stripe_verified: "Stripe API Zugang bestätigt"
+      change_settings: "Einstellungen ändern"
+      configure_stripe: "Stripe konfigurieren"
+      configure_paypal: "PayPal konfigurieren"
+      transaction_fee_settings: "Einstellungen für Transaktionsgebühre"
+      transaction_fee_save: Speichern
+      stripe_fee: Stripe-Gebühren
+      stripe_fee_notice: "%{stripe_fee_link} werden von deiner Transaktionsgebühr abgezogen."
+      fee_should_be_less_than_minimum_price: "Der Mindestgebühr muss weniger als der Mindestbetrag einer Transaktion sein"
+      confirm_disable: "Bist du sicher, dass du %{gateway} deaktivieren willst? Wenn du es deaktivierst, können Verkäufer und Käufer es nicht mehr verwenden, um Geld zu empfangen oder zu bezahlen. Wenn ein Verkäufer keine alternative Bezahlungsmethode eingerichtet hat, können Käufer nicht mehr von ihnen kaufen."
+      stripe_connected:
+        title: "Stripe verbunden"
+        disable: "Stripe deaktivieren"
+        disabled: "Stripe deaktiviert"
+        enable: "Stripe erneut aktivieren"
+      paypal_connected:
+        title: "PayPal verbunden"
+        disable: "PayPal deaktivieren"
+        disabled: "PayPal deaktiviert"
+        enable: "PayPal erneut aktivieren"
+      cannot_enable_gateway: "Das Aktivieren von %{gateway} ist fehlgeschlagen."
+      cannot_disable_gateway: "Das Deaktivieren von %{gateway} ist fehlgeschlagen."
+      stripe_form:
+        add_your_api_keys: "Deine Stripe API Keys hinzufügen"
+        how_to_get_these: "Wie bekomme ich sie?"
+        publishable_key_example: "Zum Beispiel: %{api_publishable_key_example}"
+        secret_key_example: "Zum Beispiel: %{api_secret_key_example}"
+        save_api_keys: "Stripe API Keys speichern"
+        invalid_secret: "Das sieht nicht aus wie eine richtige %{secret_key}"
+        invalid_publishable: "Das sieht nicht aus wie eine richtige %{publishable_key}"
+      index:
+        header: "Verfügbare Zahlungseinstellungen"
+        info: "Du kannst bestimmen, welche Zahlungssysteme auf deinem Marktplatz verfügbar sind. Zur Zeit werden PayPal und Stripe unterstützt."
+        active: Aktiv
+        gateway: Zahlungssystem
+        process: Prozess
+        commission: Transaktionsgebühr
+        minimum_price: "Min. Preis"
+        minimum_fee: "Min. Gebühr"
+        api_verified: "API Bestätigt?"
+        actions: Aktionen
+        payments_not_enabled: "Zahlungen sind nicht für diesen Marktplatz aktiviert"
     transaction_types:
       sell: Verkaufen
       rent: Vermieten
@@ -570,15 +686,31 @@ de:
     username_or_email: "E-Mail oder Benutzername"
     what_is_this: "Was ist das?"
     removed_user: "Entfernter Benutzer"
+    payment_fee_info:
+      title: Zahlungsbearbeitungsgebühr
+      title_paypal: PayPal-Zahlungsbearbeitungsgebühr
+      stripe: Stripe
+      paypal: PayPal
+      info: "Zahlungen auf %{service_name} werden über die Zahlungsdienstleister Stripe oder PayPal verarbeitet. Beide Dienstleister erheben Zahlungsbearbeitungsgebühren bei jeder Transaktion."
     paypal_fee_info:
       title: PayPal-Zahlungsbearbeitungsgebühr
       body_text: |-
-          PayPal erhebt eine Transaktionsgebühr auf jede Zahlung. Diese Gebühr liegt zwischen 2% und 5% der Transaktionssumme, je nach monatlichem Umsatz und Land des Käufers.
-          Wenn Du Dich bei Deinem Paypal Account anmeldest, erhältst Du unter dieser Adresse %{link_to_paypal} mehr Informationen auch zu internationalen Zahlungen. Nach jeder Transaktion bekommst Du einen Beleg mit der exakten Gebühr.
-      body_with_shipping_text: |-
-          PayPal erhebt eine Transaktionsgebühr auf jede Zahlung. Diese Gebühr liegt zwischen 2% und 5% der Transaktionssumme, je nach monatlichem Umsatz und Land des Käufers.
-          Wenn Du Dich bei Deinem Paypal Account anmeldest, erhälst Du unter dieser Adresse %{link_to_paypal} mehr Informationen auch zu internationalen Zahlungen. Nach jeder Transaktion bekommst Du einen Beleg mit der exakten Gebühr.
+          Für jede Zahlung über PayPal erhebt %{service_name} eine Vermittlungsprovision in Höhe von %{paypal_commission}%. Die PayPal Gebühren sind nicht in der Vermittlungsprovision enthalten, diese musst du zusätzlich zu der Vermittlungsprovisionen von %{service_name} zahlen.
+          Wenn du dich bei deinem Paypal Account anmeldest, erhältst du unter dieser Adresse %{link_to_paypal} mehr Informationen auch zu internationalen Zahlungen. Nach jeder Transaktion bekommst du einen Beleg mit der exakten Gebühr.
+      body_text_accept: |-
+          Diese Zahlung wird durch PayPal verarbeitet. PayPal erhebt eine Transaktionsgebühr auf jede Zahlung. Diese Gebühr liegt zwischen 2% und 5% der Transaktionssumme, je nach monatlichem Umsatz und Land des Käufers. Normalerweise ist es günstiger, inländische Käufe zu tätigen, und größere monatliche Transaktionsvolumen bedeuten einen Rabatt.
+          Wenn du dich bei deinem Paypal Account anmeldest, erhälst du unter dieser Adresse %{link_to_paypal} mehr Informationen auch zu internationalen Zahlungen. Nach jeder Transaktion bekommst du einen Beleg mit der exakten Gebühr.
       link_to_paypal_text: hier
+    paypal_only_fee_info:
+      title: "Zahlungsbearbeitungsgebühr von PayPal"
+      body_text: |-
+          Die Zahlungen auf %{service_name} werden durch PayPal verarbeitet. PayPal erhebt eine Transaktionsgebühr auf jede Zahlung. Diese Gebühr liegt zwischen 2% und 5% der Transaktionssumme, je nach monatlichem Umsatz und Land des Käufers. Normalerweise ist es günstiger, inländische Käufe zu tätigen, und größere monatliche Transaktionsvolumen bedeuten einen Rabatt.
+          Wenn du dich bei deinem Paypal Account anmeldest, erhälst du unter dieser Adresse %{link_to_paypal} mehr Informationen auch zu internationalen Zahlungen. Nach jeder Transaktion bekommst du einen Beleg mit der exakten Gebühr.
+      link_to_paypal_text: hier
+    stripe_fee_info:
+      title: "Zahlungsbearbeitungsgebühr von Stripe"
+      body_text: "Bei Zahlungen auf %{service_name}, die über Stripe abgewickelt werden, entstehen neben den Vermittlungsprovisionen (%{stripe_commission}%) keine zusätzlichen Transaktionskosten für dich."
+      link_to_stripe_text: hier
   conversations:
     accept:
       details: Auftragsdetails
@@ -599,8 +731,12 @@ de:
       you_will_get_label: "Du wirst erhalten:"
       total_label: "Summe:"
       total_value: "%{seller_gets}*"
+      total_value_paypal: "%{seller_gets}*"
+      total_value_stripe: "%{seller_gets}"
       paypal_fee_info: "* Ohne <a id='%{fee_info_link_id}' href='#'>PayPal-Zahlungsbearbeitungsgebühr</a>"
+      payment_fee_info: "* <a id='%{fee_info_link_id}' href='#'>Zahlungsbearbeitungsgebühr</a> nicht inklusive"
       shipping_price_label: "Versand:"
+      stripe-fee_label: Zahlungsbearbeitungsgebühr
     confirm:
       confirm_description: "Deine Anfrage wurde aufgenommen, du solltest sie bestätigen nachdem du fertig bist. Dann kannst du den Anderen bewerten."
       cancel_description: "Wenn deine Anfrage nicht erfüllt wurde, dann markiere sie als \"noch nicht erledigt\". Du kannst dem anderen trotzdem Feedback geben und beschreiben, was passiert ist."
@@ -737,7 +873,7 @@ de:
   community_memberships:
     access_denied:
       access_denied: "Zugriff verweigert"
-      you_are_banned_in_this_community: "Der Administrator hat verhindert, dass du auf %{service_name} zugreifen kannst. Wenn du den Administrator kontaktieren möchtest, kannst du %{link_to_contact_page} senden."
+      you_are_banned_in_this_community: "Der Administrator hat verhindert, dass du auf %{service_name} zugreifen kannst. Wenn du den Administrator von %{service_name} kontaktieren möchtest, kannst du %{link_to_contact_page} senden."
       contact_page_link: Feedback
     new:
       welcome_fb_user: "Willkommen bei %{service_name}, %{name}!"
@@ -799,7 +935,7 @@ de:
       show_thread: "Unterhaltung anzeigen"
     confirmation_instructions:
       confirmation_instructions_signature: "Liebe Grüße, <br/> das %{service_name} Team"
-      need_to_confirm: "Klicke unten, um deine E-Mail-Adresse zu bestätigen und %{service_name} zu beitreten."
+      need_to_confirm: "Klicke unten, um deine E-Mail-Adresse zu bestätigen und %{service_name} beizutreten."
       confirmation_link_text: "Meine E-Mail-Adresse bestätigen"
       or_paste_link: "Alternativ kannst du den folgenden Link in die Adresszeile deines Browsers kopieren:"
     common:
@@ -811,7 +947,10 @@ de:
       message_not_displaying_correctly: "Wird diese E-Mail nicht richtig dargestellt?"
       view_it_in_your_browser: "Sieh es dir in deinem Browser an"
       or: oder
+      unsubscribe_from_these_emails_info: "Du erhältst diese Email, weil Du ein Mitglied von %{service_name} bist."
       unsubscribe_from_these_emails: "bestelle diese E-Mails ab"
+      unsubscribe_from_invitation_emails_info: "Du erhältst diese Email, weil ein Mitglied von %{service_name} Dich eingeladen hat beizutreten."
+      unsubscribe_from_invitation_emails: "Email-Einladungen von %{service_name} abbestellen."
     conversation_status_changed:
       has_accepted_your_offer: "%{accepter} hat dein Angebot %{listing} akzeptiert."
       has_accepted_your_request: "%{accepter} hat deine Anfrage %{listing} akzeptiert."
@@ -827,7 +966,7 @@ de:
       remember_to_confirm: "Wenn der Auftrag erfüllt ist, denke daran, ihn als erledigt zu markieren. Wenn der Auftrag noch nicht erfüllt ist, hast du %{days_to_automatic_confirmation} Tage, um ihn abzubrechen. Sonst wird er automatisch als erledigt markiert."
     invitation_to_kassi:
       hi: Hallo!
-      you_have_been_invited_to_kassi: "%{inviter} hat Dich eingeladen, %{service_name} zu benutzen."
+      you_have_been_invited_to_kassi: "%{inviter} hat dich eingeladen, %{service_name} zu benutzen"
       here_is_a_message_from: "Persönliche Nachricht von %{inviter}:"
       join_now: "Jetzt Mitglied werden"
       invitation_code: "Einladungscode %{code}"
@@ -845,7 +984,32 @@ de:
       new_payment: "Du hast eine neue Zahlung erhalten"
       price_per_unit_type: "Preis pro %{unit_type}"
       quantity: "Anzahl:"
-      you_have_received_new_payment: "Du hast eine Zahlung in Höhe von %{payment_sum} für %{listing_title} durch %{payer_full_name} erhalten. Hier ist Deine Quittung."
+      you_have_received_new_payment: "Für die Buchung von %{payer_full_name} für <b>%{listing_title}</b> von  <b>%{payment_sum}</b> hast du eine Zahlung erhalten. Hier ist die Quittung dazu."
+    payment_receipt_to_seller:
+      payment_gateway_fee: "Zahlungsbearbeitungsgebühr:"
+      shipping_total: "Versand:"
+      product: "Produkt:"
+      price_payer_paid: "Betrag bezahlt von %{payer_full_name}:"
+      service_fee: "%{service_name} Servicegebühr:"
+      you_will_get: "Summe:"
+      new_payment: "Du hast eine neue Zahlung erhalten"
+      price_per_unit_type: "Preis pro %{unit_type}"
+      quantity: "Anzahl:"
+      you_have_received_new_payment: "Du hast eine Zahlung in Höhe von <b>%{payment_sum}</b> für <b>%{listing_title}</b> durch %{payer_full_name} erhalten. Hier ist deine Quittung."
+    payment_receipt_to_payer:
+      receipt_of_payment: Zahlungsbestätigung
+      you_have_made_new_payment: "Du hast <b>%{payment_sum}</b> bezahlt für <b>%{listing_title}</b> an %{recipient_full_name}. Hier ist eine Quittung für deine Zahlung."
+      product: Produkt
+      price_per_unit_type: "Preis pro %{unit_type}"
+      duration: Dauer
+      quantity: Menge
+      subtotal: Zwischensumme
+      total: Summe
+      price: Preis
+      service_fee: Servicegebühr
+      stripe_gateway_fee: "Gebühr von Stripe:"
+      paypal_gateway_fee: "Gebühr von PayPal:"
+      money_will_be_transferred: "Das Geld wird an %{recipient_name} übertragen werden, wenn a) du die Anfrage als abgeschlossen markiert hast, oder b) %{automatic_confirmation_days} Tage sind vergangen, seit du bezahlt hast."
     paypal_new_payment:
       paypal_gateway_fee: "PayPal's Gebühr:"
       shipping_total: "Versand:"
@@ -865,6 +1029,8 @@ de:
       total: Gesamtbetrag
       price: Preis
       service_fee: Servicegebühr
+      stripe_gateway_fee: "Gebühr von Stripe:"
+      paypal_gateway_fee: "Gebühr von PayPal:"
       money_will_be_transferred: "Das Geld wird an %{recipient_name} übertragen werden, wenn a) Du die Anfrage als abgeschlossen markiert hast, oder b) %{automatic_confirmation_days} Tage sind vergangen, seit du bezahlt hast."
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name} hat dich auf %{service_name} bewertet"
@@ -901,6 +1067,7 @@ de:
       transaction_requested_by_user: "Gute Nachrichten! %{requester} hat \"%{listing_title}\" angefragt und eine Zahlung autorisiert."
       you_have_time_to_accept: "Du musst die Anfrage innerhalb von %{payment_expires_in} akzeptieren oder ablehnen. Wenn Du innerhalb dieses Zeitrahmens akzeptierst, wird die Zahlung durchgehen. Wenn Du nicht zustimmst, wird die Anfrage automatisch abgelehnt, und Du wirst nicht bezahlt."
       if_you_do_accept: "Wenn du die Anfrage innerhalb dieses Zeitrahmens akzeptierst, wirst du das Geld sofort auf dein Konto bekommen."
+      if_you_do_accept_stripe: "Wenn du die Anfrage innerhalb von diesem Zeitraum akzeptierst, wird die Zahlung erfolgreich bearbeitet. Das Geld wird zu deinem Bankkonto überwiesen, nachdem du %{listing_title} zu %{requester} geliefert hast."
       if_you_do_not_accept: "Wenn du die Anfrage ablehnst, oder sie nicht innerhalb dieses Zeitrahmens akzeptierst, wird die Transaktion automatisch abgebrochen, %{requester} wird nicht belastet, und du bekommst das Geld nicht."
       click_here_to_reply: "Klicke hier, um auf die Anfrage zu antworten"
     transaction_preauthorized_reminder:
@@ -920,7 +1087,7 @@ de:
       you_are_receiving_this_because: "Du hast diese Benachrichtigung erhalten, weil du %{author_name} folgst."
       view_listing: "Eintrag ansehen"
     new_member_notification:
-      new_member_has_joined: "Ein neuer Mitglied ist %{community} beigetreten. Es kann sein, dass sie noch ihre E-Mail-Adresse bestätigen müssen."
+      new_member_has_joined: "Ein neues Mitglied ist %{community} beigetreten. Es kann sein, dass sie noch ihre E-Mail-Adresse bestätigen müssen."
       this_is_automatic_message: "Diese Nachricht wurde automatisch an alle Administratoren von %{community} geschickt."
       person_name: "Name:"
       person_email: "E-mail:"
@@ -950,6 +1117,8 @@ de:
       cancel_error: "Während der Stornierung ist ein Fehler aufgetreten. Der Abbruch konnte nicht abgeschlossen werden."
       accept_authorization_error: "Bei dem Versuch, eine vorab autorisierte PayPal-Zahlung zu akzeptieren, ist ein Fehler aufgetreten. Bitte versuche es erneut."
       reject_authorization_error: "Bei dem Versuch, eine vorab autorisierte PayPal Zahlung abzulehnen, ist ein Fehler aufgetreten. Bitte versuche es erneut."
+    stripe:
+      generic_error: "Während des Zahlungsvorgangs ist ein Fehler aufgetreten. Die Stripe Zahlung konnte nicht abgeschlossen werden."
   error_pages:
     back_to_kassi_front_page: "Zurück zur Startseite"
     error_404:
@@ -1223,7 +1392,7 @@ de:
       sign_up: Registrieren
     notifications:
       listing_could_not_be_saved: "Der Eintrag konnte nicht gespeichert werden. Bitte versuche es noch einmal. Wenn das Problem fortbesteht, %{contact_admin_link}."
-      contact_admin_link_text: "Administrator kontaktieren"
+      contact_admin_link_text: "Administrator von %{service_name} kontaktieren"
       test_welcome_email_delivered_to: "Eine Test-Mail wurde gesendet an %{email}."
       something_went_wrong: "Da ist etwas schief gelaufen"
       community_updated: "Die Informationen wurden aktualisiert."
@@ -1247,8 +1416,10 @@ de:
       feedback_sent_to: "Feedback an %{target_person} gesendet."
       feedback_skipped: "Bewertung übersprungen"
       invitation_cannot_be_sent: "Einladung konnte nicht gesendet werden"
+      invitation_cannot_unsubscribe: "Abbestellung der Email-Einladungen nicht möglich."
       invitation_limit_reached: "Du hast zu viele Einladungen verschickt. Das Tageslimit ist erreicht."
       invitation_sent: "Einladung erfolgreich gesendet"
+      invitation_successfully_unsubscribed: "Email-Einladungen erfolgreich abbestellt."
       inviting_new_users_is_not_allowed_in_this_community: "Neue Benutzer einzuladen, ist nicht gestattet."
       login_again: "Bitte melde Dich erneut an."
       login_failed: "Anmeldung fehlgeschlagen. Bitte gib die korrekten Anmeldedaten ein."
@@ -1270,13 +1441,13 @@ de:
       listing_updated_successfully: "Eintrag wurde erfolgreich aktualisiert"
       listing_updated_availability_management_enabled: "Eintrag wurde erfolgreich aktualisiert. Verfügbarkeitsverwaltung aktiviert."
       listing_updated_availability_management_disabled: "Eintrag wurde erfolgreich aktualisiert. Verfügbarkeitsverwaltung deaktiviert."
-      only_kassi_administrators_can_access_this_area: "Nur  %{service_name} Administratoren können diesen Bereich aufrufen"
+      only_kassi_administrators_can_access_this_area: "Nur %{service_name} Administratoren können diesen Bereich aufrufen"
       only_listing_author_can_close_a_listing: "Nur der erstellende Anbieter kann ein Angebot deaktivieren"
       only_listing_author_can_edit_a_listing: "Nur Autoren eines Eintrags können den Eintrag bearbeiten"
       payment_successful: "erfolgreiche Bezahlung"
       payment_canceled: "Zahlung abgebrochen"
       error_in_payment: "Es gab Probleme mit der Zahlung. Wenn du die Zahlung noch nicht ausgeführt hast, versuche es bitte noch einmal. Falls die Zahlung ausgeführt wurde, kontaktiere uns bitte."
-      cannot_receive_payment: "Aufgrund eines Fehlers kann die andere Partei keine Zahlung erhalten. Bitte kontaktiere den Administrator, um die Situation zu klären"
+      cannot_receive_payment: "Aufgrund eines Fehlers kann die andere Partei keine Zahlung erhalten. Bitte kontaktiere den Administrator von %{service_name}, um die Situation zu klären"
       payment_waiting_for_later_accomplishment: "Wenn du bezahlt hast, informieren wir den Zahlungsempfänger, und du erhältst einen Beleg via E-Mail"
       password_recovery_sent: "Anweisungen zum Ändern deines Passworts wurden an deine E-Mail-Adresse gesendet."
       person_activated: "Benutzer aktiviert"
@@ -1347,6 +1518,8 @@ de:
       notifications: Benachrichtigungen
       profile: Profil-Info
       settings: Einstellungen
+      paypal_payments: "PayPal Zahlungen"
+      stripe_payments: "Stripe Zahlungen"
       payments: Zahlungen
   listings:
     bubble_listing_not_visible:
@@ -1441,9 +1614,13 @@ de:
         mass: "Stück, kg, l, m2"
         time: "Stunde, Tag, Monat,..."
         long_time: "Woche, Monat..."
-        after_service_fee_you_will_get: "Nach Abzug der %{service_name} Servicegebühr, wirst du %{sum_with_currency} erhalten"
+        after_service_fee_you_will_get: "Nach Abzug der %{service_name} Servicegebühr und der Gebühren des Zahlungssystems, wirst du %{sum_with_currency} erhalten"
         no_service_fee_you_will_get_paypal_text: "%{paypal_fee_info_link} wird vom Preis abgezogen."
-        after_service_fee_you_will_get_paypal_text: "Bei einer erfolgreichen Transaktion werden %{service_name} Gebühr (%{sum_with_currency}) und %{paypal_fee_info_link} vom Preis abgezogen."
+        no_service_fee_you_will_get_payment_text: "%{payment_fee_info_link} wird vom Preis abgezogen."
+        after_service_fee_you_will_get_payment_text: "Bei jedem Kauf wird die %{service_name} Gebühr (%{sum_with_currency}) und gegebenenfalls eine %{payment_fee_info_link} von dem Preis abgezogen."
+        after_service_fee_you_will_get_paypal_text: "Bei jedem Kauf wird die %{service_name} Gebühr (%{sum_with_currency}) und gegebenenfalls eine %{paypal_fee_info_link} von dem Preis abgezogen."
+        after_service_fee_you_will_get_stripe_text: "Wenn jemand den Auftrag kauft, wird die Gebühr von %{service_name} (%{sum_with_currency}) vom Betrag abgezogen."
+        payment_fee_info_link_text: Zahlungsbearbeitungsgebühr
         paypal_fee_info_link_text: PayPal-Zahlungsbearbeitungsgebühr
         delivery: Lieferart
         shipping: Versand
@@ -1539,7 +1716,7 @@ de:
       select_subcategory: "Unterkategorie auswählen"
       select_transaction_type: "Eintragstyp auswählen"
       you_need_to_fill_payout_details_before_accepting: "Du musst die Zahlungsdetails ausfüllen, bevor du ein Angebot erstellen kannst. Gehe zu %{payment_settings_link}, um die Angaben einzutragen."
-      contact_admin_link_text: "Bitte kontaktiere den Administrator"
+      contact_admin_link_text: "kontaktiere den Administrator von %{service_name}"
       community_not_configured_for_payments: "%{service_name} wurde nicht für Zahlungen konfiguriert, deswegen kannst Du keine Angebote veröffentlichen. Bitte kontaktiere %{contact_admin_link} für Einzelheiten."
       payment_settings_link: Zahlungseinstellungen
       community_not_configured_for_payments_admin: "%{service_name} wurde nicht für Zahlungen konfiguriert, deswegen kannst Du keine Angebote veröffentlichen. Gehe zu %{payment_settings_link} um die Zahlungsangaben einzutragen."
@@ -1618,6 +1795,17 @@ de:
       invalid_parameters: "Ungültige Werte für neue Transaktion"
     transaction_agreement_checkbox:
       read_more: Anzeigen.
+    stripe_payment:
+      payment: Zahlung
+      pay_with_card: "Mit Kredit- oder Debit-Karte zahlen"
+      address: Versandadresse
+      address_country: "Land *"
+      address_name: "Vor- und Nachnamen *"
+      address_city: "Stadt *"
+      address_state: "Staat *"
+      address_street1: "Strasse Adresszeile 1"
+      address_street2: "Strasse Adresszeile 2"
+      address_postal_code: "Postleitzahl *"
   mapview:
     index:
       all_categories: "Alle Kategorien"
@@ -1658,13 +1846,14 @@ de:
     paypal_receive_funds_info: "Wenn du einen Fehler beim Versuch siehst, dein PayPal Konto mit %{service_name} zu verbinden, solltest du %{upgrade_paypal_account_link}. Das ist kostenlos und einfach. Wenn du ein Einzelunternehmer bist, empfiehlt PayPal einfach deinen Namen als Geschäftsnamen zu verwenden."
     upgrade_paypal_account_link_text: "dich anmelden und auf ein Geschäftskonto umstellen"
     admin_account_not_connected: "Die Nutzung des Zahlungssystem von %{service_name} zum Empfang von Zahlungen ist nicht möglich, da es noch nicht konfiguriert wurde. Bitte %{contact_admin_link} für Details."
-    contact_admin_link_text: "kontaktiere den Administrator"
+    contact_admin_link_text: "kontaktiere den Administrator von %{service_name}"
     you_are_ready_to_accept_payments: "Du bist bereit, Zahlungen entgegenzunehmen!"
     commission: "%{commission} %"
+    not_now: "Ich möchte jetzt kein PayPal Konto verbinden"
     new:
       payout_info_you_need_to_connect: "Um Zahlungen entgegenzunehmen musst du dein PayPal-Konto mit %{service_name} verbinden."
       payout_info_text: "Bitte führe die folgenden Schritte aus, um dein Konto zu verbinden."
-      contact_admin_link_text: "Bitte kontaktiere den Administrator"
+      contact_admin_link_text: "kontaktiere den Administrator von %{service_name}"
       admin_account_not_connected: "Du kannst dein PayPal-Konto nicht verbinden, denn %{service_name} ist nicht für Zahlungen eingerichtet. Bitte %{contact_admin_link} für Einzelheiten."
       paypal_account_email: "Verbinde dein PayPal Konto"
       paypal_account_email_placeholder: "Deine PayPal E-Mail Adresse"
@@ -1691,7 +1880,7 @@ de:
       billing_agreement_canceled: "Die Zahlungsvereinbarung wurde zurückgezogen."
       billing_agreement_not_accepted: "Du hast die Zahlungsvereinbarung von PayPal nicht akzeptiert."
       billing_agreement_wrong_account: "Die PayPal-Konten stimmen nicht überein. Bitte benutze das gleiche PayPal-Konto, das Du im ersten Schritt verbunden hast."
-      something_went_wrong: "Da lief was falsch. Bitte versuche es erneut. Wenn das Problem weiterhin besteht, kontaktiere bitte den Website-Administrator."
+      something_went_wrong: "Da lief was falsch. Bitte versuche es erneut. Wenn das Problem weiterhin besteht, kontaktiere bitte den Administrator von %{service_name}."
       account_not_verified: "Du hast dein PayPal-Konto nicht verifiziert. Du musst dein Konto bei paypal.com überprüfen und bestätigen, bevor du fortfahren kannst."
       account_restricted: "Dein PayPal-Konto ist eingeschränkt und kann nicht verbunden werden. Bitte melde dich bei paypal.com an, um mehr darüber zu erfahren, was das bedeutet oder nimm Kontakt mit dem PayPal Kundendienstauf, um das Problem zu lösen."
     paypal_account_connected_title: "PayPal Konto verbunden"
@@ -1707,6 +1896,8 @@ de:
     paypal_permission_granted_summary: "Erlaubnis für Buchungsgebühren erteilt"
   paypal:
     pay_with_paypal: "Weiter zur Zahlung"
+    checkout_with: "Bezahlen mit"
+    or_pay_with_paypal: oder
     checkout_with_paypal: "Mit PayPal bezahlen"
     cancel_succesful: "PayPal Zahlung erfolgreich abgebrochen."
     transaction:
@@ -1733,6 +1924,7 @@ de:
       email_is_in_use: "Die angegebene E-Mail-Adresse wird bereits genutzt."
       email_is_in_use_or_not_allowed: "Diese E-Mail-Adresse ist nicht erlaubt oder bereits in Verwendung. Wenn Du Dich nicht anmelden kannst, kontaktiere uns bitte."
       email_not_allowed: "Diese E-Mail-Adresse ist für %{service_name} nicht gültig. Bitte verwende eine erlaubte Adresse. Wenn du dann immer noch keinen Zugang haben solltest, schicke uns eine Nachricht."
+      invalid_username_or_email: "Der Benutzername oder die E-Mail-Adresse ist ungültig oder wird bereits verwendet"
       email_restriction_instructions:
         one: "Der Zugang zu %{service_name} ist beschränkt. Um beitreten zu können, brauchst du eine '%{allowed_emails}' E-Mail-Adresse. "
         other: "Der Zugang zu %{service_name} ist beschränkt. Um beitreten zu können, brauchst du eine E-Mail-Adresse, die belegt, dass deine Teilnahme erlaubt ist."
@@ -1749,7 +1941,7 @@ de:
       terms: Nutzungsbedingungen
       username_is_in_use: "Dieser Benutzername wird bereits verwendet."
       username_is_invalid: "Der Benutzername ist ungültig. Erlaubte Zeichen sind Buchstaben (keine Umlaute), Ziffern und Unterstriche."
-      visible_only_to_you: "nur für dich und den Admin des Marktplatzes sichtbar"
+      visible_only_to_you: "nur für dich und den Admin von %{service_name} sichtbar"
       visible_to_everybody: "für jeden sichtbar"
       create_account_with_facebook: "Mit Facebook registrieren"
       OR: ODER
@@ -2060,11 +2252,13 @@ de:
       quantity: "Anzahl:"
       subtotal: "Zwischensumme:"
       shipping-price: "Versandkosten:"
+      stripe-fee: "Stripe Gebühr (geschätzt):"
     price_per_quantity: "Preis pro %{unit_type}"
     price: "Preis:"
     quantity: "Anzahl: %{quantity}"
     unit_price: "Preis pro Einheit: %{unit_price}"
     total: "Summe:"
+    total_to_pay: "Summe:"
   unit:
     day: Tag
     days: Tage
@@ -2123,10 +2317,10 @@ de:
         zero: Benutzer
         one: Benutzer
         other: Benutzer
-      listing_conversation:
-        zero: Buchungen
-        one: Buchung
-        other: Buchungen
+      transaction:
+        zero: Transaktionen
+        one: Transaktion
+        other: Transaktionen
     previous_label: "&#8592; Zurück"
     next_label: "Vor &#8594;"
     page_gap: "&hellip;"
@@ -2141,3 +2335,95 @@ de:
         other: "<b>all&nbsp;%{count}</b> %{model} werden angezeigt"
       multi_page: "%{model} %{from} wird dargestellt - %{to} von %{count} gesamt"
       multi_page_html: "%{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> von <b>%{count}</b> gesamt wird dargestellt"
+    person:
+      community_members_entries_info:
+        single_page:
+          zero: "Keine %{model} gefunden"
+          one: "%{accepted_count} aktive %{accepted_model} und %{banned_count} gesperrte %{banned_model} werden angezeigt. "
+          other: "%{accepted_count} aktive %{accepted_model} und %{banned_count} gesperrte %{banned_model} werden angezeigt. "
+        single_page_html:
+          zero: "Keine %{model} gefunden"
+          one: "<b>%{accepted_count}</b> aktive %{accepted_model} und %{banned_count} gesperrte %{banned_model} werden angezeigt."
+          other: "<b>%{accepted_count}</b> aktive %{accepted_model} und %{banned_count} gesperrte %{banned_model} werden angezeigt."
+        multi_page: "%{model} %{from} - %{to} von %{accepted_count} aktiven %{accepted_model}n und %{banned_count} gesperrten %{banned_model}n werden angezeigt."
+        multi_page_html: "%{model} <b>%{from}&nbsp;-%nbsp;%{to}</b> von <b>%{accepted_count}</b> aktiven %{accepted_model}n und %{banned_count} gesperrten %{banned_model}n werden angezeigt."
+  stripe_accounts:
+    admin_account_not_connected: "Die Nutzung des Zahlungssystem von %{service_name} zum Empfang von Zahlungen ist nicht möglich, da es noch nicht konfiguriert wurde. Bitte %{contact_admin_link} für Details."
+    contact_admin_link_text: "kontaktiere den Administrator von %{service_name}"
+    you_are_ready_to_accept_payments: "Du bist bereit, Zahlungen entgegenzunehmen!"
+    commission: "%{commission} %"
+    pay_with_stripe: "Mit Stripe bezahlen, mit der Karte %{card}"
+    add_and_pay: "Zahlung bestätigen"
+    card_not_stored: "Deine Zahlung wird geschützt durch Stripe verarbeitet. %{service_name} speichert keinerlei Informationen über deine Kreditkarte."
+    missing_payment: "Du hast offene Angebote, aber du hast die Zahlungseinstellungen für dein Konto nicht eingerichtet. Um die Einstellungen einzurichten, gehe zu %{settings_link}"
+    stripe_bank_connected: "Kontodetails erfolgreich eingerichtet!"
+    stripe_can_accept: "Du bist bereit, Zahlungen mit Kreditkarten entgegenzunehmen"
+    stripe_credit_card: Kreditkarte
+    paypal: PayPal
+    paypal_connected: "PayPal-Konto erfolgreich verbunden!"
+    paypal_can_accept: "Du bist bereit, PayPal-Zahlungen entgegenzunehmen"
+    paypal_connected_give_permission: "Als letztes, bitte erteile eine Genehmigung für das Abheben der Transaktionsgebühr, um Geld auf das PayPal Konto <%{email}> bekommen zu können."
+    form_new:
+      need_info: "Wir brauchen einige Informationen über dich, um dir Geld überweisen zu können."
+      select_country: "Land wählen..."
+      legal_name: "Gesetzlicher Name"
+      country: Land
+      birth_date: Geburtsdatum
+      ssn_last_4: "Sozialversicherungsnummer, letzte 4 Ziffern"
+      personal_id_number: Personalausweisnummer
+      address_country: Land
+      address_state: Staat
+      address_city: Stadt
+      address_postal_code: Postleitzahl
+      address_line1: Adresse
+      tos_link: "Durch das Hinzufügen deiner Zahlungsdetails akzeptierst du %{stripe_link}."
+      tos_link_title: "Vereinbarung über durch Connect verbundene Konten von Stripe"
+      save_details: "Details speichern"
+      edit: "Details bearbeiten"
+      cancel: Abbrechen
+    form_bank:
+      bank_account_number: Kontonummer
+      bank_routing_number: Bankleitzahl
+      bank_routing_1: Bankleitzahl
+      bank_routing_2: Branch/Filialcode
+      bank_currency: "Währung des Bankkontos"
+      messages:
+        account_number: Kontonummer
+        routing_number: Bankleitzahl
+        bank_code: Bankleitzahl
+        branch_code: Branch/Filialcode
+        transit_number: Transit-Nummer
+        institution_number: Institutsnummer
+        format_varies_by_bank: "Format ist abhängig von der Bank"
+        bsb: BSB-Nummer
+        error_message: "Ungültiges Format"
+        clearing_code: Bankleitzahl
+        sort_code: Bankleitzahl
+        must_match: "muss wie folgendes eingegeben werden:"
+        a_dash: Strich
+        digits: Ziffern
+        digits_or_chars: "Ziffern oder Buchstaben A-Z"
+    form_verification:
+      personal_id_number: Personalausweisnummer
+      document: Nachweis-Dokument
+      send_verification: "Verifizierungen zuschicken"
+      need_verification: "Zusätzliche Verifizierung benötigt"
+    form_pin:
+      social_insurance_number: "Social Insurance Number (SIN; Sozialversicherungsnummer)"
+      social_security_number: "Social Security Number (SSN; Sozialversicherungsnummer)"
+      hong_kong_identity_card: "Hong Kong Identity Card Number (HKID; Hong Kong Personalausweisnummer)"
+      singapore_identity_card: "National Registration Identity Card (NRIC; Personalausweisnummer) oder Foreign Identification Number (Ausländeridentifikationsnummer)"
+      messages:
+        social_insurance_number: "muss eine gültige Social Insurance Number (SIN; Sozialversicherungsnummer) sein"
+  payment_settings:
+    title: Auszahlungseinstellungen
+    bank_account: Bankkonto
+    paypal: PayPal
+    bank_account_details: "Um Kreditkartenzahlungen von Kunden empfangen zu können, musst du deine Kontodetails hier hinterlegen."
+    add_bank_details: "Bankdetails hinzufügen"
+    can_accept_stripe_and_paypal: "Du kannst deinen Kunden Kreditkartenzahlungen, PayPal-Zahlungen oder beides anbieten."
+    to_accept_paypal: "Um PayPal Zahlungen von Kunden empfangen zu können, musst du dein PayPal Konto hier verknüpfen."
+    connect_paypal: "PayPal-Konto verknüpfen"
+    wrong_setup: "Etwas ist schief gegangen mit dem Zahlungssystem dieses Marktplatzes: Plattform wurde nicht registriert. Bitte kontaktiere die Marktplatz-Administratoren und erzähle ihnen, dass sie ihre Plattform bei Stripe registrieren sollten."
+    invalid_bank_account_number: "Bitte sicherstellen, dass dein Bankkonto ist richtig eingetragen und mit deinem Land zustimmt."
+    invalid_postal_code: "Ungültige Postleitzahl für %{country}"

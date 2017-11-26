@@ -4,7 +4,7 @@ module NavigationHelpers
   #   When /^I go to (.+)$/ do |page_name|
   #
   # step definition in web_steps.rb
-  # rubocop:disable CyclomaticComplexity
+  # rubocop:disable CyclomaticComplexity, Metrics/MethodLength
   def path_to(page_name)
     case page_name
 
@@ -62,6 +62,8 @@ module NavigationHelpers
       "#{person_path(@logged_in_user, :locale => "en")}/settings"
     when /the account settings page/
       "#{person_path(@logged_in_user, :locale => "en")}/settings/account"
+    when /the notifications settings page/
+      notifications_person_settings_path(person_id: @logged_in_user.username)
     when /the about page$/
       about_infos_path(:locale => "en")
     when /the feedback page$/
@@ -86,6 +88,14 @@ module NavigationHelpers
       admin_community_transactions_path(:community_id => @current_community.id)
     when /the getting started guide for admins/
       admin_getting_started_guide_path
+    when /^the admin view of payment preferences of community "(.*)"$/i
+      admin_payment_preferences_path(locale: "en")
+    when /the order types admin page/
+      admin_listing_shapes_path
+    when /the edit "(.*)" order type admin page/
+      edit_admin_listing_shape_path(id: $1)
+    when /the unsubscribe link with code "(.*)" from invitation email to join community/
+      unsubscribe_invitations_path(code: $1)
     else
       begin
         page_name =~ /the (.*) page/
@@ -97,7 +107,7 @@ module NavigationHelpers
       end
     end
   end
-  # rubocop:enable CyclomaticComplexity
+  # rubocop:enable CyclomaticComplexity, Metrics/MethodLength
 end
 
 World(NavigationHelpers)

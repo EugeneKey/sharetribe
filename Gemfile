@@ -143,6 +143,9 @@ group :development do
   gem 'capistrano-sidekiq', '~> 0.20.0', require: false
 end
 
+# Writing and deploying cron jobs
+gem 'whenever', require: false
+
 group :test do
   gem 'capybara', '~> 2.6.2'
   gem "rspec-rails", '~> 3.6.0'

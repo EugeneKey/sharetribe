@@ -27,6 +27,7 @@ require 'capistrano/sidekiq'
 require 'capistrano/sidekiq/monit' #to require monit tasks # Only for capistrano3
 
 require 'thinking_sphinx/capistrano'
+require 'thinking_sphinx_monit/capistrano'
 
 require 'whenever/capistrano'
 

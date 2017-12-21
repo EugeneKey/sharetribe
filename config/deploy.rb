@@ -50,26 +50,16 @@ namespace :deploy do
     end
   end
 
-  desc 'Initial Deploy'
-  task :initial do
-    on roles(:app) do
-      before 'deploy:restart', 'puma:start'
-      invoke 'deploy'
-    end
-  end
-
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      invoke 'thinking_sphinx:index'
-      invoke 'thinking_sphinx:restart'
-    end
-  end
-
   before :starting,     :check_revision
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
-  after  :finishing,    :restart
+
+  before :updating, 'thinking_sphinx:stop'
+  after  :published, 'thinking_sphinx:start'
+
+  before 'thinking_sphinx:start', 'thinking_sphinx:index'
+  before 'thinking_sphinx:stop', 'thinking_sphinx_monit:unmonitor'
+  after  'thinking_sphinx:start', 'thinking_sphinx_monit:monitor'
 
 end
 

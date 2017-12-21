@@ -18,6 +18,8 @@ set :puma_error_log,  "#{release_path}/log/puma.access.log"
 set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
+set :puma_threads,    [0, 16]
+set :puma_workers,    0
 
 set :nginx_server_name, 'name.com'
 

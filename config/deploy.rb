@@ -9,8 +9,6 @@ set :nvm_map_bins, %w{node npm yarn}
 set :repo_url,        'git@github.com:EugeneKey/sharetribe-with-sidekiq.git'
 set :application,     'sharetribe'
 set :user,            'ubuntu'
-set :puma_threads,    [4, 16]
-set :puma_workers,    0
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

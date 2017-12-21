@@ -393,6 +393,10 @@ default: &default_settings
   show_landing_page_admin: false
   custom_landing_page_marketing_site_url: "https://www.example.com/landingpage/"
 
+  # Redis cache
+  redis_url: # "redis://localhost:6379/1"
+  redis_expires_in: 240
+
   #######
   # Fonts
   #######
@@ -454,7 +458,7 @@ default: &default_settings
   stripe_publishable_key_pattern: "pk_test_.{24}"
 
   # Stripe allows to hold funds up to 90 days
-  # (85 and not 90 or 89 as a security, also because timezones are not 
+  # (85 and not 90 or 89 as a security, also because timezones are not
   # managed and transactions are automatically marked as completed)
   stripe_max_booking_date: 85
 
@@ -462,7 +466,7 @@ default: &default_settings
   # Sharetribe supports only managed accounts, and two payment modes:
   #
   # :separate    - Separate charges and transfers, payment goes to admin account, with delayed transfer to seller
-  # :destination - Destination charges, payment goes to admin account, with instant partial transfer to seller  
+  # :destination - Destination charges, payment goes to admin account, with instant partial transfer to seller
   #
   # By default :destination mode is used
   stripe_charges_mode: :destination

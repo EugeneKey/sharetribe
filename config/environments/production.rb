@@ -68,6 +68,13 @@ Rails.application.configure do
          namespace: "cache",
          expires_in: ENV["redis_expires_in"] || 240 # default, 4 hours in minutes
        }]
+    elsif APP_CONFIG.redis_url.present?
+      Readthis.fault_tolerant = true
+      [:readthis_store, {
+         redis: { url: APP_CONFIG.redis_url, driver: :hiredis },
+         namespace: "cache",
+         expires_in: APP_CONFIG.redis_expires_in || 240 # default, 4 hours in minutes
+       }]
     else
       [:dalli_store, (ENV["MEMCACHIER_GREEN_SERVERS"] || "").split(","), {
          username: ENV["MEMCACHIER_GREEN_USERNAME"],

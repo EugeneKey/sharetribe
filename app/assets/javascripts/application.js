@@ -38,7 +38,7 @@
 //= require jquery.fileupload-image
 //= require autosize
 
-//= require jquery.fancybox.min.js
+//= require jquery.fancybox.js
 
 //= require selectize-standalone.js
 //= require datepicker/bootstrap-datepicker.js

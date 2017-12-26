@@ -143,6 +143,8 @@ group :development do
   gem 'capistrano-sidekiq', '~> 0.20.0', require: false
 end
 
+gem 'thinking-sphinx-monit'
+
 # Writing and deploying cron jobs
 gem 'whenever', require: false
 

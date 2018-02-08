@@ -17,6 +17,7 @@ class CreateMemberEmailBatchJob < ActiveJob::Base
 
   def perform(sender, current_community, subject, content, locale, mode)
     recipient_ids(mode, current_community).each do |recipient_id|
+      recipient = Person.where(id: recipient_id).first
       CommunityMemberEmailSentJob.perform_later(
                                   sender,
                                   recipient,

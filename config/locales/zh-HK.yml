@@ -317,6 +317,7 @@ zh-HK:
           initiated_by: 發起人
           other_party: 其他參與者
         status:
+          conversation: ~
           free: 對話
           pending: 等待中
           preauthorized: 已預先授權
@@ -352,6 +353,17 @@ zh-HK:
             initiated: ~
             pending_ext: ~
         not_available: ~
+      conversations:
+        conversations: ~
+        headers:
+          started_from: ~
+          status: ~
+          started: ~
+          last_activity: ~
+          initiated_by: ~
+          other_party: ~
+        participants: ~
+        profile: ~
     custom_fields:
       edit:
         edit_listing_field: ~
@@ -430,6 +442,11 @@ zh-HK:
         any_language: 任何語言
         message_will_be_sent_only_to_people_with_this_language: "注意：電子郵件只會以你選擇的語言發送給使用%{service_name}的用戶。"
         email_sent: 郵件已發送
+        to_improve_email_deliverability: ~
+        email_subject_text: ~
+        firstname_cannot_be_removed: ~
+        hello_firstname: ~
+        hello_firstname_text: ~
     left_hand_navigation:
       general: ~
       users_and_transactions: ~
@@ -442,6 +459,7 @@ zh-HK:
       read_more: ~
       read_more_availability_management: ~
       allow_providers_to_manage_availability: ~
+      per_hour_availability: ~
       per_day_availability: ~
       per_night_availability: ~
       pricing_units_disabled_info: ~
@@ -966,6 +984,7 @@ zh-HK:
       price_per_unit_type: "每%{unit_type}的價格"
       quantity: 數量：
       you_have_received_new_payment: "你已經為<b>%{listing_title}</b>支付了<b>%{payment_sum}</b>給%{payer_full_name}。這是你的收據。"
+      listing_per_unit_title: ~
     payment_receipt_to_seller:
       payment_gateway_fee: ~
       shipping_total: ~
@@ -1013,6 +1032,7 @@ zh-HK:
       stripe_gateway_fee: ~
       paypal_gateway_fee: ~
       money_will_be_transferred: "以下兩種情況發生時，款項將被轉帳至%{recipient_name}： a) 你標記請求為完成後；或 b) 在你付款%{automatic_confirmation_days}天後。"
+      listing_per_unit_title: ~
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name}已在%{service_name}對您作出評價。"
       you_can_give_feedback_to: "您還未對%{name}作出評價。"
@@ -1407,7 +1427,7 @@ zh-HK:
       account_creation_successful: "%{person_name}，歡迎來到%{service_name}！"
       account_deleted: 你的帳戶已被删除
       login_successful: "歡迎您,%{person_name}！"
-      logout_successful: "您已退出了%{service_name}，歡迎電次使用我們的服務！"
+      logout_successful: "您已退出了%{service_name}，歡迎再次使用我們的服務！"
       news_item_created: 已建立的文章
       news_item_creation_failed: 文章建立失敗
       news_item_update_failed: 文章更新失敗
@@ -1687,6 +1707,10 @@ zh-HK:
       how_paypal_works: PayPal如何運作
       payment_help: 付款說明
       unable_load_availability: ~
+      booking_date: ~
+      select_one: ~
+      start_time: ~
+      end_time: ~
     new:
       listing: 訊息
       selected_category: "類別：%{category}"
@@ -2129,6 +2153,7 @@ zh-HK:
   date:
     formats:
       long_with_abbr_day_name: ~
+    first_day_of_week: ~
   datepicker:
     days:
       sunday: ~
@@ -2188,6 +2213,7 @@ zh-HK:
       short: "%e %b %Y %I:%M%p"
       shorter: "%e %b %Ｈ:%M"
       short_date: ~
+      hours_only: "%H:%M"
   timestamps:
     day_ago: "%{count} 天前"
     days_ago: "%{count} 天前"
@@ -2208,10 +2234,13 @@ zh-HK:
       booked_nights: ~
       price_per_day: ~
       price_per_night: ~
+      price_per_hour: ~
+      price_per_unit: ~
       quantity: ~
       subtotal: ~
       shipping-price: ~
       stripe-fee: ~
+      start_end_time: ~
     price_per_quantity: ~
     price: "總共:"
     quantity: ~
@@ -2227,6 +2256,10 @@ zh-HK:
         availability:
           something_went_wrong: ~
           saving_failed: ~
+        working_hours:
+          required: ~
+          overlaps: ~
+          covers: ~
       pricing_units:
         piece: ~
         hour: ~
@@ -2239,6 +2272,13 @@ zh-HK:
       confirm_discarding_unsaved_availability_changes_explanation: ~
       confirm_discarding_unsaved_availability_changes_question: ~
       edit_listing_availability: ~
+      working_hours:
+        default_schedule: ~
+        i_am_available_on: ~
+        start_time: ~
+        end_time: ~
+        add_another_time_slot: ~
+        save: ~
     no_listings:
       sorry: ~
       try_other_search_terms: ~

@@ -307,6 +307,7 @@ lv:
           initiated_by: ~
           other_party: ~
         status:
+          conversation: ~
           free: ~
           pending: ~
           preauthorized: ~
@@ -342,6 +343,17 @@ lv:
             initiated: ~
             pending_ext: ~
         not_available: ~
+      conversations:
+        conversations: ~
+        headers:
+          started_from: ~
+          status: ~
+          started: ~
+          last_activity: ~
+          initiated_by: ~
+          other_party: ~
+        participants: ~
+        profile: ~
     custom_fields:
       edit:
         edit_listing_field: ~
@@ -420,6 +432,11 @@ lv:
         any_language: "Jebkāda valoda"
         message_will_be_sent_only_to_people_with_this_language: ~
         email_sent: Nosūtīts
+        to_improve_email_deliverability: ~
+        email_subject_text: ~
+        firstname_cannot_be_removed: ~
+        hello_firstname: ~
+        hello_firstname_text: ~
     left_hand_navigation:
       general: ~
       users_and_transactions: ~
@@ -432,6 +449,7 @@ lv:
       read_more: ~
       read_more_availability_management: ~
       allow_providers_to_manage_availability: ~
+      per_hour_availability: ~
       per_day_availability: ~
       per_night_availability: ~
       pricing_units_disabled_info: ~
@@ -910,10 +928,10 @@ lv:
       message_not_displaying_correctly: ~
       view_it_in_your_browser: "Apskatīt savā interneta pārlūkā."
       or: vai
-      unsubscribe_from_these_emails_info: ~
+      unsubscribe_from_these_emails_info: "Jūs saņemat šo e-pastu jo jūs esat %{service_name} dalībnieks"
       unsubscribe_from_these_emails: ~
-      unsubscribe_from_invitation_emails_info: ~
-      unsubscribe_from_invitation_emails: ~
+      unsubscribe_from_invitation_emails_info: "Jūs saņemat šo e-pastu jo %{service_name} dalībnieks uzaicināja jūs pievienoties"
+      unsubscribe_from_invitation_emails: "Atrakstīties no uzaicinājuma e-pastiem lai pievienoties %{service_name}"
     conversation_status_changed:
       has_accepted_your_offer: "%{accepter} ir apstiprinājums jūsu piedāvājumu %{listing}"
       has_accepted_your_request: "%{accepter} ir apstiprinājis jūsu pieprasījumu%{listing}"
@@ -948,6 +966,7 @@ lv:
       price_per_unit_type: ~
       quantity: ~
       you_have_received_new_payment: ~
+      listing_per_unit_title: ~
     payment_receipt_to_seller:
       payment_gateway_fee: ~
       shipping_total: ~
@@ -995,6 +1014,7 @@ lv:
       stripe_gateway_fee: ~
       paypal_gateway_fee: ~
       money_will_be_transferred: ~
+      listing_per_unit_title: ~
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name} ir iesniedzis jums atsauksmi %{service_name}"
       you_can_give_feedback_to: "Jūs vēl neesat novertējis lietotāju %{name}"
@@ -1379,10 +1399,10 @@ lv:
       feedback_sent_to: "Atsauksme pievienota personai %{target_person}"
       feedback_skipped: "Atsauksme izlaista"
       invitation_cannot_be_sent: "Ielūgumu nevar nosūtīt"
-      invitation_cannot_unsubscribe: ~
+      invitation_cannot_unsubscribe: "Nav iespēja atrakstīties no uzaicinājuma e-pastiem"
       invitation_limit_reached: ~
       invitation_sent: "Ielūgums veiksmīgi nosūtīts"
-      invitation_successfully_unsubscribed: ~
+      invitation_successfully_unsubscribed: "Veiksmīgi atrakstījāties no uzaicinājuma e-pastiem"
       inviting_new_users_is_not_allowed_in_this_community: ~
       login_again: ~
       login_failed: ~
@@ -1666,6 +1686,10 @@ lv:
       how_paypal_works: ~
       payment_help: ~
       unable_load_availability: ~
+      booking_date: ~
+      select_one: ~
+      start_time: ~
+      end_time: ~
     new:
       listing: ~
       selected_category: "Kategorija: %{category}"
@@ -2106,6 +2130,7 @@ lv:
   date:
     formats:
       long_with_abbr_day_name: ~
+    first_day_of_week: ~
   datepicker:
     days:
       sunday: Svētdiena
@@ -2165,6 +2190,7 @@ lv:
       short: ~
       shorter: ~
       short_date: ~
+      hours_only: "%H:%M"
   timestamps:
     day_ago: "%{count} diena atpakaļ"
     days_ago: "%{count} dienas atpakaļ"
@@ -2187,10 +2213,13 @@ lv:
       booked_nights: ~
       price_per_day: ~
       price_per_night: ~
+      price_per_hour: ~
+      price_per_unit: ~
       quantity: ~
       subtotal: ~
       shipping-price: ~
       stripe-fee: ~
+      start_end_time: ~
     price_per_quantity: ~
     price: ~
     quantity: ~
@@ -2206,6 +2235,10 @@ lv:
         availability:
           something_went_wrong: ~
           saving_failed: ~
+        working_hours:
+          required: ~
+          overlaps: ~
+          covers: ~
       pricing_units:
         piece: ~
         hour: ~
@@ -2218,6 +2251,13 @@ lv:
       confirm_discarding_unsaved_availability_changes_explanation: ~
       confirm_discarding_unsaved_availability_changes_question: ~
       edit_listing_availability: ~
+      working_hours:
+        default_schedule: ~
+        i_am_available_on: ~
+        start_time: ~
+        end_time: ~
+        add_another_time_slot: ~
+        save: ~
     no_listings:
       sorry: ~
       try_other_search_terms: ~

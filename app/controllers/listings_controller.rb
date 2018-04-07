@@ -150,8 +150,10 @@ class ListingsController < ApplicationController
         @listing.reorder_listing_images(params, @current_user.id)
         notify_about_new_listing
 
-        if shape[:availability] == :booking
-          redirect_to listing_path(@listing, anchor: 'manage-availability'), status: 303
+        if shape.booking?
+          anchor = shape.booking_per_hour? ? 'manage-working-hours' : 'manage-availability'
+          @listing.working_hours_new_set(force_create: true) if shape.booking_per_hour?
+          redirect_to listing_path(@listing, anchor: anchor, listing_just_created: true), status: 303
         else
           redirect_to @listing, status: 303
         end
@@ -211,6 +213,9 @@ class ListingsController < ApplicationController
     @listing.upsert_field_values!(params.to_unsafe_hash[:custom_fields])
 
     if update_successful
+      if shape.booking_per_hour? && !@listing.per_hour_ready
+        @listing.working_hours_new_set(force_create: true)
+      end
       if @listing.location
         location_params = ListingFormViewUtils.permit_location_params(params)
         @listing.location.update_attributes(location_params)
@@ -472,8 +477,14 @@ class ListingsController < ApplicationController
   end
 
   def create_booking(shape, listing_uuid)
-    if APP_CONFIG.harmony_api_in_use && shape.present? && shape[:availability] == 'booking'
-      create_bookable(@current_community.uuid_object, listing_uuid, @current_user.uuid_object).success
+    if shape.present?
+      if shape.booking_per_hour?
+        true
+      elsif APP_CONFIG.harmony_api_in_use && shape.booking?
+        create_bookable(@current_community.uuid_object, listing_uuid, @current_user.uuid_object).success
+      else
+        true
+      end
     else
       true
     end

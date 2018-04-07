@@ -307,6 +307,7 @@ ar:
           initiated_by: البداية
           other_party: "جهة أخرى"
         status:
+          conversation: محادثه
           free: محادثة
           pending: "قيد الإنتظار"
           preauthorized: مخول
@@ -342,6 +343,17 @@ ar:
             initiated: "انتظار دفع سترب"
             pending_ext: "انتظار دفع سترب"
         not_available: "غير متوفر"
+      conversations:
+        conversations: "أظهر المحادثات"
+        headers:
+          started_from: "بدأت من"
+          status: الحاله
+          started: بدأت
+          last_activity: "آخر نشاط"
+          initiated_by: البداية
+          other_party: "الجهة الأخرى"
+        participants: "‎%{author}‎ مع ‎%{starter}‎ :المحادثه"
+        profile: "الشخصي ‎%{author}‎‎ ملف"
     custom_fields:
       edit:
         edit_listing_field: "‎%{field_name}‎ تعديل حقل الإعلان"
@@ -420,6 +432,11 @@ ar:
         any_language: "أي لغة"
         message_will_be_sent_only_to_people_with_this_language: "حسب اللغة التي تختارها سترسل الرسالة لمستخدمي ‎%{service_name}‎"
         email_sent: "تم إرسال الرسالة"
+        to_improve_email_deliverability: ~
+        email_subject_text: ~
+        firstname_cannot_be_removed: ~
+        hello_firstname: ~
+        hello_firstname_text: ~
     left_hand_navigation:
       general: عام
       users_and_transactions: "المستخدمين والعمليات"
@@ -432,6 +449,7 @@ ar:
       read_more: ~
       read_more_availability_management: ~
       allow_providers_to_manage_availability: ~
+      per_hour_availability: ~
       per_day_availability: "متاح باليوم"
       per_night_availability: "متاح بالليلة"
       pricing_units_disabled_info: "لا يمكن استخدام وحدات الأسعار عندما يكون التقويم مفعل."
@@ -967,6 +985,7 @@ ar:
       price_per_unit_type: "‎%{unit_type}‎ السعر بـ"
       quantity: "الكمية:"
       you_have_received_new_payment: ~
+      listing_per_unit_title: ~
     payment_receipt_to_seller:
       payment_gateway_fee: ~
       shipping_total: ~
@@ -1014,6 +1033,7 @@ ar:
       stripe_gateway_fee: ~
       paypal_gateway_fee: ~
       money_will_be_transferred: ~
+      listing_per_unit_title: ~
     new_testimonial:
       has_given_you_feedback_in_kassi: "‎‎%{service_name}‎ قام بإعطاء رأيه في ‎%{name}‎"
       you_can_give_feedback_to: "‎%{name}‎ لم تقم بإعطاء رأيك عن"
@@ -1689,6 +1709,10 @@ ar:
       how_paypal_works: ~
       payment_help: "المساعدة في عملية الدفع"
       unable_load_availability: "تعذر تحميل المعلومات. رجاء قم بالمحاولة مرة أخرى لاحقا."
+      booking_date: ~
+      select_one: ~
+      start_time: ~
+      end_time: ~
     new:
       listing: إعلان
       selected_category: "‎%{category}‎ :قسم"
@@ -2131,6 +2155,7 @@ ar:
   date:
     formats:
       long_with_abbr_day_name: ~
+    first_day_of_week: ~
   datepicker:
     days:
       sunday: الأحد
@@ -2190,6 +2215,7 @@ ar:
       short: ~
       shorter: "%b %e at %H:%M"
       short_date: ~
+      hours_only: "%H:%M"
   timestamps:
     day_ago: "يوم ‎%{count}‎ قبل"
     days_ago: "أيام ‎%{count}‎ قبل"
@@ -2244,10 +2270,13 @@ ar:
       booked_nights: "احجز ليلة:"
       price_per_day: "السعر باليوم:"
       price_per_night: "السعر بالليلة:"
+      price_per_hour: ~
+      price_per_unit: ~
       quantity: "الكمية:"
       subtotal: "المجموع الفرعي:"
       shipping-price: "الشحن:"
       stripe-fee: ~
+      start_end_time: ~
     price_per_quantity: ":‎%{unit_type}‎ السعر بـ"
     price: "السعر:"
     quantity: "‎%{quantity}‎ :الكمية"
@@ -2263,6 +2292,10 @@ ar:
         availability:
           something_went_wrong: "يتعذر عرض المعلومات المتوفرة. يرجى إعادة تهيئة الصفحة مرة أخرى"
           saving_failed: "لم نستطع حفظ تغييرات التوفر حاليا يرجى إعادة تهيئة الصفحة مرة أخرى"
+        working_hours:
+          required: ~
+          overlaps: متداخله
+          covers: تغطي
       pricing_units:
         piece: قطعة
         hour: ساعة
@@ -2275,6 +2308,13 @@ ar:
       confirm_discarding_unsaved_availability_changes_explanation: "لديك معلومات تغييرت لم يتم حفظها لمعلومات التوفر. إذا أردت المتابعة فإن هذه التغيرات لن تحفظ"
       confirm_discarding_unsaved_availability_changes_question: "هل أنت متأكد من تجاهل التغييرات؟"
       edit_listing_availability: "تحرير توفر الإعلان"
+      working_hours:
+        default_schedule: ~
+        i_am_available_on: ~
+        start_time: ~
+        end_time: ~
+        add_another_time_slot: ~
+        save: ~
     no_listings:
       sorry: "نعتذر، لا يوجد إعلانات في هذا البحث"
       try_other_search_terms: "حاول البحث في شيء آخر؟"

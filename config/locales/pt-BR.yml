@@ -3,7 +3,7 @@ pt-BR:
     currency:
       format:
         separator: ","
-        delimiter: " "
+        delimiter: "."
         format: "%u%n"
   admin:
     categories:
@@ -322,6 +322,7 @@ pt-BR:
           initiated_by: Iniciante
           other_party: "Outra parte"
         status:
+          conversation: ~
           free: "Mensagem livre"
           pending: Pendente
           preauthorized: "Pagamento efetuado com sucesso"
@@ -357,6 +358,17 @@ pt-BR:
             initiated: ~
             pending_ext: ~
         not_available: Indisponível
+      conversations:
+        conversations: ~
+        headers:
+          started_from: ~
+          status: ~
+          started: ~
+          last_activity: ~
+          initiated_by: ~
+          other_party: ~
+        participants: ~
+        profile: ~
     custom_fields:
       edit:
         edit_listing_field: "Alterar anúncio '%{field_name}'"
@@ -435,6 +447,11 @@ pt-BR:
         any_language: "Qualquer idioma"
         message_will_be_sent_only_to_people_with_this_language: "Nota: o e-mail será enviado apenas aos usuários que utilizam a %{service_name} no idioma que você escolheu."
         email_sent: "E-mail enviado."
+        to_improve_email_deliverability: ~
+        email_subject_text: "Nova mensagem da Equipe %{service_name}"
+        firstname_cannot_be_removed: ~
+        hello_firstname: "Oi Firstname,"
+        hello_firstname_text: "Oi %{person},"
     left_hand_navigation:
       general: Geral
       users_and_transactions: "Usuários & transações"
@@ -447,6 +464,7 @@ pt-BR:
       read_more: "Leia mais sobre o gerenciamento automático de disponibilidade."
       read_more_availability_management: "Leia mais sobre gerenciamento de disponibilidade."
       allow_providers_to_manage_availability: "Permitir que os seus fornecedores gerenciem sua disponibilidade a partir de um calendário"
+      per_hour_availability: ~
       per_day_availability: "Disponibilidade \"por dia\""
       per_night_availability: "Disponibilidade \"por noite\""
       pricing_units_disabled_info: "As unidades de preço não podem ser usadas quando o calendário de disponibilidade está ativado."
@@ -683,7 +701,7 @@ pt-BR:
     what_is_this: "O que é isso?"
     removed_user: "Usuário removido"
     payment_fee_info:
-      title: ~
+      title: "Taxa de processamento do pagamento"
       title_paypal: ~
       stripe: ~
       paypal: ~
@@ -696,11 +714,11 @@ pt-BR:
       body_text_accept: ~
       link_to_paypal_text: aqui
     paypal_only_fee_info:
-      title: ~
+      title: "Taxa de processamento do pagamento do PayPal"
       body_text: ~
       link_to_paypal_text: ~
     stripe_fee_info:
-      title: ~
+      title: "Taxa de processamento do pagamento do Stripe"
       body_text: ~
       link_to_stripe_text: ~
   conversations:
@@ -728,7 +746,7 @@ pt-BR:
       paypal_fee_info: "* Exclui <a id='%{fee_info_link_id}' href='#'> pagamento da taxa de processamento do PayPal</a>"
       payment_fee_info: ~
       shipping_price_label: "Envio:"
-      stripe-fee_label: ~
+      stripe-fee_label: "Taxa de processamento do pagamento"
     confirm:
       confirm_description: "Se o seu pedido foi aceito, você deve confirmá-lo como concluído. Então você pode dar um feedback para a outra parte."
       cancel_description: "Se o seu pedido não foi efetuado, você pode marcá-lo como \"não efetuado\". Você ainda pode dar um feedback para a outra parte e descrever o que aconteceu."
@@ -939,9 +957,9 @@ pt-BR:
       message_not_displaying_correctly: "Este e-mail não está sendo exibido corretamente?"
       view_it_in_your_browser: "Visualizar no seu navegador."
       or: ou
-      unsubscribe_from_these_emails_info: ~
+      unsubscribe_from_these_emails_info: "Você recebeu um novo pagamento este e-mail por ser membro do %{service_name}"
       unsubscribe_from_these_emails: "cancelar o recebimento desses e-mails"
-      unsubscribe_from_invitation_emails_info: ~
+      unsubscribe_from_invitation_emails_info: "Você recebeu um novo pagamento este e-mail por que um membro do %{service_name} convidou você."
       unsubscribe_from_invitation_emails: ~
     conversation_status_changed:
       has_accepted_your_offer: "%{accepter} aceitou sua oferta %{listing}"
@@ -977,28 +995,29 @@ pt-BR:
       price_per_unit_type: "Preço por %{unit_type}"
       quantity: "Quantidade:"
       you_have_received_new_payment: "Você recebeu <b>%{payment_sum}</b> por <b>%{listing_title}</b> de %{payer_full_name}. Veja o recibo."
+      listing_per_unit_title: ~
     payment_receipt_to_seller:
-      payment_gateway_fee: ~
+      payment_gateway_fee: "Taxa de processamento do pagamento:"
       shipping_total: ~
-      product: ~
-      price_payer_paid: ~
-      service_fee: ~
+      product: "Produto:"
+      price_payer_paid: "Preço pago por %{payer_full_name} :"
+      service_fee: "Taxa de serviço de %{service_name}:"
       you_will_get: ~
-      new_payment: ~
+      new_payment: "Você recebeu um novo pagamento"
       price_per_unit_type: ~
       quantity: ~
-      you_have_received_new_payment: ~
+      you_have_received_new_payment: "Você recebeu <b>%{payment_sum}</b> por <b>%{listing_title}</b> de %{payer_full_name}. Veja o recibo."
     payment_receipt_to_payer:
       receipt_of_payment: ~
       you_have_made_new_payment: ~
-      product: ~
+      product: Produto
       price_per_unit_type: ~
       duration: ~
       quantity: ~
       subtotal: ~
       total: ~
-      price: ~
-      service_fee: ~
+      price: Preço
+      service_fee: "Taxa de serviço"
       stripe_gateway_fee: ~
       paypal_gateway_fee: ~
       money_will_be_transferred: ~
@@ -1024,6 +1043,7 @@ pt-BR:
       stripe_gateway_fee: ~
       paypal_gateway_fee: ~
       money_will_be_transferred: "O dinheiro será transferido para %{recipient_name} quando a) você tenha marcado o pedido como concluído ou b) %{automatic_confirmation_days} dias se passaram desde que você pagou."
+      listing_per_unit_title: ~
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name} te avaliou %{service_name}"
       you_can_give_feedback_to: "Você ainda não avaliou %{name}"
@@ -1057,8 +1077,8 @@ pt-BR:
     transaction_preauthorized:
       subject: "%{requester} solicitou e autorizou o pagamento de %{listing_title}"
       transaction_requested_by_user: "%{requester} solicitou e pagou por \"%{listing_title}\""
-      you_have_time_to_accept: "Você precisa aceitar ou rejeitar o pedido no prazo de %{payment_expires_in}. Se você aceita vender, dentro deste prazo, o pagamento vai ser enviado para sua conta. Se você não aceitar, o pedido será rejeitado automaticamente e você não vai ser pago."
-      if_you_do_accept: "Se você aceitar o pedido, dentro deste prazo, o pagamento vserá enviado para sua conta."
+      you_have_time_to_accept: "Você precisa aceitar ou rejeitar o pedido no prazo de %{payment_expires_in}."
+      if_you_do_accept: "Se você aceitar o pedido, dentro deste prazo, o pagamento será enviado para sua conta."
       if_you_do_accept_stripe: ~
       if_you_do_not_accept: "Se você rejeitar o pedido ou não o aceitar nesse prazo, a transação será automaticamente cancelada, %{requester} não será cobrado e você não receberá o pagamento."
       click_here_to_reply: "Clique aqui para responder ao pedido"
@@ -1476,7 +1496,7 @@ pt-BR:
       you_have_already_given_feedback_about_this_event: "Você já deixou sua opinião sobre este evento"
       you_are_now_member: "Seja bem-vindo ao %{service_name}!"
       you_are_already_member: "Você já é membro da %{service_name}. Bem-vindo(a) de volta!"
-      you_must_log_in_to_create_new_listing: "Você deve conectar a sua conta para %{service_name} para criar um novo anúncio. Se você não tem uma conta, você pode %{sign_up_link}."
+      you_must_log_in_to_create_new_listing: "Você deve estar conectado à plataforma %{service_name} para poder criar um novo anúncio. Se você não tem uma conta, você pode %{sign_up_link}."
       additional_email_confirmed_dashboard: "Seu e-mail está confirmado."
       you_must_log_in_to_give_feedback: "Você deve conectar para escrever uma avaliação"
       you_must_log_in_to_invite_new_users: "Você deve se conectar para convidar novos usuários a %{service_name}"
@@ -1612,7 +1632,7 @@ pt-BR:
         after_service_fee_you_will_get_payment_text: ~
         after_service_fee_you_will_get_paypal_text: "Desse valor será deduzida uma taxa de (%{sum_with_currency}) cobrada pelo %{service_name} e a %{paypal_fee_info_link}."
         after_service_fee_you_will_get_stripe_text: ~
-        payment_fee_info_link_text: ~
+        payment_fee_info_link_text: "taxa de processamento do pagamento"
         paypal_fee_info_link_text: "Taxa de processamento do pagamento do PayPal"
         delivery: "Forma de entrega"
         shipping: Envio
@@ -1699,6 +1719,10 @@ pt-BR:
       how_paypal_works: "Como o Paypal Trabalha"
       payment_help: "Ajuda com o pagamento"
       unable_load_availability: "Não foi possível carregar as informações de disponibilidade. Por favor, tente novamente mais tarde."
+      booking_date: ~
+      select_one: ~
+      start_time: ~
+      end_time: ~
     new:
       listing: anúncio
       selected_category: "Categoria: %{category}"
@@ -1880,7 +1904,7 @@ pt-BR:
     paypal_account_connected_title: "Conta PayPal conectada"
     paypal_account_connected: "A conta PayPal <%{email}> foi conectada com o %{service_name}."
     change_account: "Mudar conta"
-    missing: "Você têm anúncios ativos mas não pode receber pagamentos porque sua conta no PayPal ainda não foi configurada. Por favor conecte sua conta do PayPal em %{settings_link}, você também também precisa dar permissão para que %{service_name} cobre taxa de transação."
+    missing: "Você tem anúncios ativos mas não pode receber pagamentos porque sua conta no PayPal ainda não foi configurada. Por favor conecte sua conta do PayPal em %{settings_link}, você também também precisa dar permissão para que %{service_name} cobre taxa de transação."
     from_your_payment_settings_link_text: "configurações de pagamento"
     redirect_message: "Estamos redirecionando você para o PayPal. Se nada acontecer, clique %{redirect_link}"
     redirect_link_text: aqui
@@ -2144,6 +2168,7 @@ pt-BR:
   date:
     formats:
       long_with_abbr_day_name: "%a, %d de %b de %Y"
+    first_day_of_week: ~
   datepicker:
     days:
       sunday: Domingo
@@ -2203,6 +2228,7 @@ pt-BR:
       short: "%e. %b %Y hora %H:%M"
       shorter: "%e %b as %H:%M"
       short_date: "%b %e  %Y"
+      hours_only: "%H:%M"
   timestamps:
     day_ago: "%{count} dia atrás"
     days_ago: "%{count} dias atrás"
@@ -2243,10 +2269,13 @@ pt-BR:
         other: "Noites reservadas:"
       price_per_day: "Preço por dia:"
       price_per_night: "Preço por noite:"
+      price_per_hour: ~
+      price_per_unit: ~
       quantity: "Quantidade:"
       subtotal: "Sub-total:"
       shipping-price: "Envio:"
       stripe-fee: ~
+      start_end_time: ~
     price_per_quantity: "Preço por %{unit_type}:"
     price: "Preço:"
     quantity: "Quantidade: %{quantity}"
@@ -2262,6 +2291,10 @@ pt-BR:
         availability:
           something_went_wrong: "Não é possível exibir informações de disponibilidade. Tente recarregar a página."
           saving_failed: "Não é possível salvar as alterações de disponibilidade. Tente recarregar a página."
+        working_hours:
+          required: ~
+          overlaps: ~
+          covers: ~
       pricing_units:
         piece: fração
         hour: hora
@@ -2274,6 +2307,13 @@ pt-BR:
       confirm_discarding_unsaved_availability_changes_explanation: "Você tem alterações ainda não salvas nas suas informações de disponibilidade. Se você continuar, essas alterações serão perdidas."
       confirm_discarding_unsaved_availability_changes_question: "Tem certeza de que deseja descartar suas alterações?"
       edit_listing_availability: "Editar a disponibilidade do anúncio"
+      working_hours:
+        default_schedule: ~
+        i_am_available_on: ~
+        start_time: ~
+        end_time: ~
+        add_another_time_slot: ~
+        save: ~
     no_listings:
       sorry: "Lamentamos, mas não foi possível encontrar nenhum anúncio para a sua pesquisa."
       try_other_search_terms: "Que tal tentar outras expressões em sua busca?"
@@ -2337,7 +2377,7 @@ pt-BR:
     pay_with_stripe: ~
     add_and_pay: ~
     card_not_stored: ~
-    missing_payment: ~
+    missing_payment: "Você tem anúncios ativos mas sua conta ainda não foi configurada para receber pagamentos. Para configurar o recebimento de pagamentos, visite %{settings_link}"
     stripe_bank_connected: ~
     stripe_can_accept: ~
     stripe_credit_card: ~

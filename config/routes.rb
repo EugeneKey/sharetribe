@@ -54,6 +54,11 @@ Rails.application.routes.draw do
   namespace :int_api do
     post "/create_trial_marketplace" => "marketplaces#create"
     post "/prospect_emails" => "marketplaces#create_prospect_email"
+    resources :listings, only: [], defaults: { format: :json } do
+      member do
+        post :update_working_time_slots
+      end
+    end
   end
 
   # Harmony Proxy
@@ -143,7 +148,8 @@ Rails.application.routes.draw do
     get "/listing_bubble/:id" => "listings#listing_bubble", :as => :listing_bubble
     get "/listing_bubble_multiple/:ids" => "listings#listing_bubble_multiple", :as => :listing_bubble_multiple
     get '/:person_id/settings/payments' => 'payment_settings#index', :as => :person_payment_settings
-    post '/:person_id/settings/payments' => 'payment_settings#update', :as => :update_person_payment_settings
+    post '/:person_id/settings/payments' => 'payment_settings#create', :as => :create_person_payment_settings
+    put '/:person_id/settings/payments' => 'payment_settings#update', :as => :update_person_payment_settings
     get '/:person_id/settings/payments/paypal_account' => 'paypal_accounts#index', :as => :paypal_account_settings_payment
 
     # community membership related actions
@@ -268,6 +274,7 @@ Rails.application.routes.draw do
 
         end
         resources :transactions, controller: :community_transactions, only: :index
+        resources :conversations, controller: :community_conversations, only: [:index, :show]
         resources :emails
         resources :community_memberships do
           member do

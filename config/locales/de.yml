@@ -254,7 +254,7 @@ de:
         export_all_as_csv: "Exportiere Alles als CSV Datei"
         save_user_status_error: "Speichern fehlgeschlagen. Bitte erneuere die Seite und versuch es noch einmal."
         ban_user_confirmation: "Dies entfernt den Benutzer von der Community und wird einen erneuten Zugriff mit diesem Account auf die Seite verhindern. Bist du sicher, dass du fortfahren möchtest?"
-        unban_user_confirmation: "Damit wird der Benutzer des Marktplatzes entsperrt und erhält wieder Zugang zu seinem Konto. Möchtest Du fortfahren?"
+        unban_user_confirmation: "Damit wird der Benutzer des Marktplatzes entsperrt und erhält wieder Zugang zu seinem Konto. Möchtest du fortfahren?"
         ban_me_error: "Du kannst dich nicht selber sperren."
         search: Suchen
         search_by_name_email: "Nach einem Nahmen, einer E-Mail Adresse, oder einem Anzeigenamen suchen"
@@ -322,6 +322,7 @@ de:
           initiated_by: Starter
           other_party: "Anderer Beteiligter"
         status:
+          conversation: Unterhaltung
           free: Unterhaltung
           pending: Ausstehend
           preauthorized: Vorautorisiert
@@ -357,6 +358,17 @@ de:
             initiated: "Warte auf Stripe-Bezahlung"
             pending_ext: "Warte auf Stripe-Bezahlung"
         not_available: "nicht verfügbar"
+      conversations:
+        conversations: "Unterhaltungen anzeigen"
+        headers:
+          started_from: "Gestartet aus"
+          status: Status
+          started: Gestartet
+          last_activity: "Neueste Aktivität"
+          initiated_by: "Begonnen von"
+          other_party: "Anderer Beteiligter"
+        participants: "Unterhaltung: %{starter} mit %{author}"
+        profile: "%{author}s Profil"
     custom_fields:
       edit:
         edit_listing_field: "Eintragsfeld '%{field_name}' bearbeiten"
@@ -413,7 +425,7 @@ de:
     emails:
       new:
         send_email_to_members: "Sende eine E-Mail an alle Mitglieder"
-        send_email_to_members_title: "Sende eine E-Mail an alle Mitglieder"
+        send_email_to_members_title: "Sende E-Mail an alle Mitglieder"
         send_email: "E-Mail senden"
         send_email_or: oder
         send_test_email: "Eine Test-E-Mail zu dir selber schicken"
@@ -435,6 +447,11 @@ de:
         any_language: "Beliebige Sprache"
         message_will_be_sent_only_to_people_with_this_language: "Die E-Mail wird nur an Mitglieder von %{service_name} verschickt, die auch die Sprache, die du gewählt hast, gewählt haben."
         email_sent: "E-Mail gesendet."
+        to_improve_email_deliverability: "Zur Verbesserung der Email Zustellbarkeit wird der Email Betreff automatisch generiert und kann nicht geändert werden."
+        email_subject_text: "Eine neue Nachricht vom %{service_name} Team"
+        firstname_cannot_be_removed: "Vorname kann nicht entfernt werden. Es wird der tatsächliche Vorname des jeweiligen Empfängers eingesetzt."
+        hello_firstname: "Hallo Vorname,"
+        hello_firstname_text: "Hallo %{person},"
     left_hand_navigation:
       general: Allgemein
       users_and_transactions: "Benutzer & Transaktionen"
@@ -447,6 +464,7 @@ de:
       read_more: "Mehr über automatische Verfügbarkeitsverwaltung lesen."
       read_more_availability_management: "Mehr über Verfügbarkeitsverwaltung lesen."
       allow_providers_to_manage_availability: "Erlaube den Verkäufern, ihre Verfügbarkeit mit Hilfe eines Kalenders zu verwalten"
+      per_hour_availability: "\"Pro Stunde\" Verfügbarkeit"
       per_day_availability: "\"Pro Tag\" Verfügbarkeit"
       per_night_availability: "\"Pro Nacht\" Verfügbarkeit"
       pricing_units_disabled_info: "Preiseinheiten können nicht verwendet werden wenn der Terminkalender eingeschaltet ist."
@@ -811,7 +829,7 @@ de:
     status:
       payment_errored: "Zahlung nicht erfolgreich. Bitte versuche es erneut!"
       payment_errored_starter: "Zahlung nicht erfolgreich. Bitte versuche es erneut. Wenn das Problem weiter besteht, wende dich bitte an unseren Kundenservice."
-      payment_errored_author: "Zahlung nicht erfolgreich. Bitte kontaktiere %{starter_name} und bitte ihn die Zahlung erneut zu versuchen."
+      payment_errored_author: "Zahlung nicht erfolgreich. Bitte kontaktiere %{starter_name} und bitte ihn/sie die Zahlung erneut zu versuchen."
       cancel_payed_transaction: Abbruch
       feedback_given: "Bewertung abgegeben"
       feedback_skipped: "Keine Bewertung abgegeben"
@@ -947,10 +965,10 @@ de:
       message_not_displaying_correctly: "Wird diese E-Mail nicht richtig dargestellt?"
       view_it_in_your_browser: "Sieh es dir in deinem Browser an"
       or: oder
-      unsubscribe_from_these_emails_info: "Du erhältst diese Email, weil Du ein Mitglied von %{service_name} bist."
+      unsubscribe_from_these_emails_info: "Du erhältst diese Email, weil du ein Mitglied von %{service_name} bist."
       unsubscribe_from_these_emails: "bestelle diese E-Mails ab"
-      unsubscribe_from_invitation_emails_info: "Du erhältst diese Email, weil ein Mitglied von %{service_name} Dich eingeladen hat beizutreten."
-      unsubscribe_from_invitation_emails: "Email-Einladungen von %{service_name} abbestellen."
+      unsubscribe_from_invitation_emails_info: "Du erhältst diese Email, weil ein Mitglied von %{service_name} dich eingeladen hat beizutreten."
+      unsubscribe_from_invitation_emails: "Email-Einladungen von %{service_name} abbestellen"
     conversation_status_changed:
       has_accepted_your_offer: "%{accepter} hat dein Angebot %{listing} akzeptiert."
       has_accepted_your_request: "%{accepter} hat deine Anfrage %{listing} akzeptiert."
@@ -984,7 +1002,8 @@ de:
       new_payment: "Du hast eine neue Zahlung erhalten"
       price_per_unit_type: "Preis pro %{unit_type}"
       quantity: "Anzahl:"
-      you_have_received_new_payment: "Für die Buchung von %{payer_full_name} für <b>%{listing_title}</b> von  <b>%{payment_sum}</b> hast du eine Zahlung erhalten. Hier ist die Quittung dazu."
+      you_have_received_new_payment: "Für die Buchung von %{payer_full_name} für <b>%{listing_title}</b> von <b>%{payment_sum}</b> hast du eine Zahlung erhalten. Hier ist die Quittung dazu."
+      listing_per_unit_title: "%{title}, pro %{unit_type}"
     payment_receipt_to_seller:
       payment_gateway_fee: "Zahlungsbearbeitungsgebühr:"
       shipping_total: "Versand:"
@@ -1032,6 +1051,7 @@ de:
       stripe_gateway_fee: "Gebühr von Stripe:"
       paypal_gateway_fee: "Gebühr von PayPal:"
       money_will_be_transferred: "Das Geld wird an %{recipient_name} übertragen werden, wenn a) Du die Anfrage als abgeschlossen markiert hast, oder b) %{automatic_confirmation_days} Tage sind vergangen, seit du bezahlt hast."
+      listing_per_unit_title: "%{title}, pro %{unit_type}"
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name} hat dich auf %{service_name} bewertet"
       you_can_give_feedback_to: "Du hast %{name} noch nicht bewertet."
@@ -1273,7 +1293,7 @@ de:
       message: "Eine persönliche Nachricht"
       send_invitation: "Einladung senden"
       add_email_addresses_description: "Füge die E-Mail-Adressen der Leute, die du einladen möchtest, in das obere Feld ein. Wenn du mehrere E-Mail-Adressen hinzufügst, unterteile sie mit einem Komma."
-      add_lots_of_email_addresses: "Wenn Du sehr viele Einladungen verschicken möchtest, solltest Du lieber ein Email-Tool verwenden. Lies %{this_article_link}, um mehr über geeignete Email-Dienste zu erfahren."
+      add_lots_of_email_addresses: "Wenn du sehr viele Einladungen verschicken möchtest, solltest du lieber ein Email-Tool verwenden. Lies %{this_article_link}, um mehr über geeignete Email-Dienste zu erfahren."
       this_article_link: "diesen Artikel"
       invitation_emails_field_placeholder: "freund1@beispiel.com, freund2@beispiel.com, ..."
       invitation_message_field_placeholder: "Ich bin diesem tollen Marktplatz beigetreten. Das solltest du auch tun!"
@@ -1361,7 +1381,7 @@ de:
       select_language: "Sprache auswählen"
     infos:
       about: Info
-      how_to_use: "Wie es funktioniert"
+      how_to_use: "So funktioniert's"
       info_about_kassi: "Informationen über %{service_name}"
       news: News
       register_details: "Impressum & Datenschutz"
@@ -1416,7 +1436,7 @@ de:
       feedback_sent_to: "Feedback an %{target_person} gesendet."
       feedback_skipped: "Bewertung übersprungen"
       invitation_cannot_be_sent: "Einladung konnte nicht gesendet werden"
-      invitation_cannot_unsubscribe: "Abbestellung der Email-Einladungen nicht möglich."
+      invitation_cannot_unsubscribe: "Abbestellung der Email-Einladungen nicht möglich"
       invitation_limit_reached: "Du hast zu viele Einladungen verschickt. Das Tageslimit ist erreicht."
       invitation_sent: "Einladung erfolgreich gesendet"
       invitation_successfully_unsubscribed: "Email-Einladungen erfolgreich abbestellt."
@@ -1707,6 +1727,10 @@ de:
       how_paypal_works: "Wie PayPal funktioniert"
       payment_help: "Hilfe beim Bezahlen"
       unable_load_availability: "Verfügbarkeitsinformationen konnte nicht geladen werden. Bitte versuche es nochmal später erneut."
+      booking_date: Buchungsdatum
+      select_one: "Bitte auswählen"
+      start_time: Startzeit
+      end_time: Endzeit
     new:
       listing: Eintrag
       selected_category: "Kategorie: %{category}"
@@ -2150,6 +2174,7 @@ de:
   date:
     formats:
       long_with_abbr_day_name: "%a, %d %b, %Y"
+    first_day_of_week: 0
   datepicker:
     days:
       sunday: Sonntag
@@ -2209,6 +2234,7 @@ de:
       short: "%e %b %Y at %H:%M"
       shorter: "%e %b at %H:%M"
       short_date: "%e %b %Y"
+      hours_only: "%H:%M"
   timestamps:
     day_ago: "Vor %{count} Tag"
     days_ago: "Vor %{count} Tagen"
@@ -2223,7 +2249,7 @@ de:
     years_ago: "Vor %{count} Jahren"
     days_since:
       one: "%{count} Tag"
-      other: "%{count} Tage"
+      other: "%{count} Tagen"
     time_to:
       seconds:
         one: "%{count} Sekunde"
@@ -2247,12 +2273,21 @@ de:
       booked_nights_label:
         one: "Gebuchte Nacht:"
         other: "Gebuchte Nächte:"
+      booked_hours_label:
+        one: "Gebuchte Stunde:"
+        other: "Gebuchte Stunden:"
       price_per_day: "Preis pro Tag:"
       price_per_night: "Preis pro Nacht:"
+      price_per_hour: "Preis pro Stunde:"
+      price_per_unit: "Preis pro Einheit:"
       quantity: "Anzahl:"
       subtotal: "Zwischensumme:"
       shipping-price: "Versandkosten:"
       stripe-fee: "Stripe Gebühr (geschätzt):"
+      duration_in_hours:
+        one: "(Eine Stunde)"
+        other: "(%{count} Stunden)"
+      start_end_time: "%{start_time} bis %{end_time}"
     price_per_quantity: "Preis pro %{unit_type}"
     price: "Preis:"
     quantity: "Anzahl: %{quantity}"
@@ -2268,6 +2303,10 @@ de:
         availability:
           something_went_wrong: "Wir können die Verfügbarkeitsinformationen nicht anzeigen. Bitte versuche, die Seite erneut zu laden."
           saving_failed: "Wir können die Änderungen an der Verfügbarkeit nicht speichern. Bitte versuche, die Seite erneut zu laden."
+        working_hours:
+          required: Pflichteingabe
+          overlaps: überschneidet
+          covers: beinhaltet
       pricing_units:
         piece: Stück
         hour: Stunde
@@ -2280,6 +2319,13 @@ de:
       confirm_discarding_unsaved_availability_changes_explanation: "Einige Änderungen zu der Verfügbarkeit wurden noch nicht gespeichert. Beim Fortsetzen gehen diese Änderungen verloren."
       confirm_discarding_unsaved_availability_changes_question: "Bist du sicher, dass du diese Änderungen verwerfen willst?"
       edit_listing_availability: "Verfügbarkeit der Anzeige bearbeiten"
+      working_hours:
+        default_schedule: Standardplan
+        i_am_available_on: "Ich bin verfügbar am..."
+        start_time: Startzeit
+        end_time: Endzeit
+        add_another_time_slot: "+ Weitere Zeitfenster hinzufügen"
+        save: Speichern
     no_listings:
       sorry: "Verzeihung, aber wir konnten keine Anzeigen mit deinen Suchkriterien finden."
       try_other_search_terms: "Vielleicht könntest du andere Suchkriterien verwenden?"

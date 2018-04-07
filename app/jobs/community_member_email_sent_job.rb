@@ -15,8 +15,8 @@ class CommunityMemberEmailSentJob < ActiveJob::Base
     ApplicationHelper.store_community_service_name_to_thread_from_community_id(job.arguments[2].id)
   end
 
-  def perform(sender, recipient, community, subject, content, locale)
-    PersonMailer.community_member_email_from_admin(sender, recipient, community, subject, content, locale)
+  def perform(sender, recipient, community, content, locale, test_to_yourself)
+    PersonMailer.community_member_email_from_admin(sender, recipient, community, content, locale, test_to_yourself)
   end
 
 end

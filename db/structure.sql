@@ -78,8 +78,14 @@ CREATE TABLE `bookings` (
   `end_on` date DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
+  `start_time` datetime DEFAULT NULL,
+  `end_time` datetime DEFAULT NULL,
+  `per_hour` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `index_bookings_on_transaction_id` (`transaction_id`) USING BTREE
+  KEY `index_bookings_on_transaction_id` (`transaction_id`) USING BTREE,
+  KEY `index_bookings_on_per_hour` (`per_hour`),
+  KEY `index_bookings_on_start_time` (`start_time`),
+  KEY `index_bookings_on_end_time` (`end_time`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `categories`;
@@ -354,10 +360,12 @@ CREATE TABLE `conversations` (
   `updated_at` datetime DEFAULT NULL,
   `last_message_at` datetime DEFAULT NULL,
   `community_id` int(11) DEFAULT NULL,
+  `starting_page` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_conversations_on_community_id` (`community_id`) USING BTREE,
   KEY `index_conversations_on_last_message_at` (`last_message_at`) USING BTREE,
-  KEY `index_conversations_on_listing_id` (`listing_id`) USING BTREE
+  KEY `index_conversations_on_listing_id` (`listing_id`) USING BTREE,
+  KEY `index_conversations_on_starting_page` (`starting_page`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `custom_field_names`;
@@ -523,7 +531,7 @@ CREATE TABLE `feedbacks` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `content` text,
   `author_id` varchar(255) DEFAULT NULL,
-  `url` varchar(255) DEFAULT NULL,
+  `url` varchar(2048) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `is_handled` int(11) DEFAULT '0',
@@ -682,6 +690,21 @@ CREATE TABLE `listing_units` (
   KEY `index_listing_units_on_listing_shape_id` (`listing_shape_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `listing_working_time_slots`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `listing_working_time_slots` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `listing_id` int(11) DEFAULT NULL,
+  `week_day` int(11) DEFAULT NULL,
+  `from` varchar(255) DEFAULT NULL,
+  `till` varchar(255) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_listing_working_time_slots_on_listing_id` (`listing_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `listings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -730,6 +753,7 @@ CREATE TABLE `listings` (
   `shipping_price_cents` int(11) DEFAULT NULL,
   `shipping_price_additional_cents` int(11) DEFAULT NULL,
   `availability` varchar(32) DEFAULT 'none',
+  `per_hour_ready` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_listings_on_uuid` (`uuid`),
   KEY `index_listings_on_new_category_id` (`category_id`) USING BTREE,
@@ -2191,10 +2215,18 @@ INSERT INTO `schema_migrations` (version) VALUES
 ('20170613153960'),
 ('20170613153961'),
 ('20170613153965'),
+('20170616114938'),
 ('20170626065542'),
 ('20170801125553'),
 ('20170814125622'),
 ('20170817035830'),
-('20171107063241');
-
+('20171023070523'),
+('20171107063241'),
+('20171117062422'),
+('20171128122539'),
+('20171129152027'),
+('20171207073027'),
+('20171207075640'),
+('20180108061342'),
+('20180108093607');
 

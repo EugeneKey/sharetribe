@@ -25,6 +25,10 @@ Given /^the price of that listing is (\d+)\.(\d+) (EUR|USD)(?: per (.*?))?$/ do 
   @listing.update_attribute(:unit_type, unit_type) unless unit_type.nil?
 end
 
+Given(/^that listing is free$/) do
+  @listing.update_attribute(:price, nil)
+end
+
 Given /^that listing is closed$/ do
   @listing.update_attribute(:open, false)
 end
@@ -184,3 +188,47 @@ When(/^I set location to be New York/) do
     "
   )
 end
+
+Then(/^I should see working hours form with changes$/) do
+  expect(page).to have_css('.working-hours-form.has-changes')
+end
+
+Then(/^I should see working hours form without changes$/) do
+  expect(page).to have_css('.working-hours-form.no-changes')
+end
+
+When(/^I add new working hours time slot for day "(.*?)"$/) do |day|
+  within "#week-day-#{day}" do
+    find('.addMore a').click
+  end
+end
+
+Then(/^I should see working hours save button finished$/) do
+  expect(page).to have_css('.working-hours-form .save-button.save-finished')
+end
+
+Given(/^that listing availability is booking$/) do
+  @listing.update_attributes(availability: :booking, quantity_selector: 'number')
+end
+
+Given(/^that listing has default working hours$/) do
+  @listing.working_hours_new_set
+  @listing.save
+end
+
+Given(/^that listing have booking at "(.*?)" from "(.*?)" till "(.*?)"$/) do |date, from, till|
+  start_time = "#{date} #{from}"
+  end_time = "#{date} #{till}"
+  community = Community.find(@listing.community_id)
+  transaction = FactoryGirl.create(:transaction, community: community, listing: @listing, current_state: 'paid')
+  FactoryGirl.create(:booking, tx: transaction, start_time: start_time, end_time: end_time, per_hour: true)
+end
+
+Then(/^(?:|I )should not see payment logos$/) do
+  expect(page).not_to have_css('.submit-payment-form-link')
+end
+
+Then(/^(?:|I )should see payment logos$/) do
+  expect(page).to have_css('.submit-payment-form-link')
+end
+

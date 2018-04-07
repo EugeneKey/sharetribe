@@ -323,6 +323,7 @@ hu:
           initiated_by: Kezdő
           other_party: "Egyéb party"
         status:
+          conversation: ~
           free: Üzenetváltás
           pending: Folyamatban
           preauthorized: "Előzetesen engedélyezett"
@@ -358,6 +359,17 @@ hu:
             initiated: ~
             pending_ext: ~
         not_available: "Nem elérhető"
+      conversations:
+        conversations: ~
+        headers:
+          started_from: ~
+          status: ~
+          started: ~
+          last_activity: ~
+          initiated_by: ~
+          other_party: ~
+        participants: ~
+        profile: ~
     custom_fields:
       edit:
         edit_listing_field: "Mező szerkesztése %{field_name}"
@@ -436,6 +448,11 @@ hu:
         any_language: "Egyéb nyelvek"
         message_will_be_sent_only_to_people_with_this_language: "Figyelem: Az e-mail csak azoknak a felhasználóknak lesz elküldve akik az ön által kiválasztott nyelven használják a %{service_name} oldalát."
         email_sent: "E-mail elküldve"
+        to_improve_email_deliverability: ~
+        email_subject_text: ~
+        firstname_cannot_be_removed: ~
+        hello_firstname: ~
+        hello_firstname_text: ~
     left_hand_navigation:
       general: Általános
       users_and_transactions: "Felhasználók & tranzakciók"
@@ -448,6 +465,7 @@ hu:
       read_more: "Még több információ az automatikus elérhetőség menedzsmentről"
       read_more_availability_management: "Még több információ az elérhetőség menedzsmentről"
       allow_providers_to_manage_availability: "Engedélyezi hogy a szolgáltatók a naptár funkció segítségével szerkeszthessék az elérhetőségüket."
+      per_hour_availability: ~
       per_day_availability: "Naponta elérhető"
       per_night_availability: "Éjszakánként elérhető"
       pricing_units_disabled_info: "A Pricing unit nem használható ha a naptár funkció aktiválva van"
@@ -978,6 +996,7 @@ hu:
       price_per_unit_type: "Ár: %{unit_type}"
       quantity: "Mennyiség:"
       you_have_received_new_payment: "%{payer_full_name} fizetett a <b>%{listing_title}</b> hirdetésben szereplő tételért, <b>%{payment_sum}</b> összeget. Itt van róla a bizonylat."
+      listing_per_unit_title: ~
     payment_receipt_to_seller:
       payment_gateway_fee: ~
       shipping_total: ~
@@ -1025,6 +1044,7 @@ hu:
       stripe_gateway_fee: ~
       paypal_gateway_fee: ~
       money_will_be_transferred: "Az összeg akkor utalódik %{recipient_name} számára amennyiben a) ön a rendelést teljesítettnek jelölte vagy b) %{automatic_confirmation_days} nap eltelt amióta ön fizetett."
+      listing_per_unit_title: ~
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name} értékelte Önt itt: %{service_name}"
       you_can_give_feedback_to: "Ön még nem értékelte a következő usert: %{name}"
@@ -1702,6 +1722,10 @@ hu:
       how_paypal_works: "Hogyan működik a PayPal"
       payment_help: "Segítség a fizetéshez"
       unable_load_availability: "Nem tudtuk betölteni az elérhetőségre vonatkozó információt. Kérem próbálkozzon később!"
+      booking_date: ~
+      select_one: ~
+      start_time: ~
+      end_time: ~
     new:
       listing: Hirdetés
       selected_category: "Kategória: %{category}"
@@ -2146,6 +2170,7 @@ hu:
   date:
     formats:
       long_with_abbr_day_name: "%a, %b %d, %Y"
+    first_day_of_week: ~
   datepicker:
     days:
       sunday: Vasárnap
@@ -2205,6 +2230,7 @@ hu:
       short: "hónap nap, év %H:%perc-kor"
       shorter: "hónap nap %H:%perc-kor"
       short_date: "%b %e, %Y"
+      hours_only: "%H:%M"
   timestamps:
     day_ago: "%{count} napja"
     days_ago: "%{count} napja"
@@ -2238,10 +2264,13 @@ hu:
         other: "Lefoglalt éjszakák:"
       price_per_day: "Napi díja"
       price_per_night: "Ár éjszakánként:"
+      price_per_hour: ~
+      price_per_unit: ~
       quantity: "Mennyisége:"
       subtotal: "Végösszeg:"
       shipping-price: "Szállítás:"
       stripe-fee: ~
+      start_end_time: ~
     price_per_quantity: "Ár %{unit_type}:"
     price: "Ár:"
     quantity: "Mennyiség: %{quantity}"
@@ -2257,6 +2286,10 @@ hu:
         availability:
           something_went_wrong: "Nem tudunk elérhetőséggel kapcsolatos információt megjeleníteni. Kérem próbálja meg frissíteni az oldalt."
           saving_failed: "Nem tudtuk elmenti az elérhetőséggel kapcsolatos változtatásokat. Kérem próbálja meg frissíteni az oldalt."
+        working_hours:
+          required: ~
+          overlaps: ~
+          covers: ~
       pricing_units:
         piece: darab
         hour: óra
@@ -2269,6 +2302,13 @@ hu:
       confirm_discarding_unsaved_availability_changes_explanation: "Az elérhetőséggel kapcsolatos információk nem mindegyike került mentésre. Amennyiben most folytatja, ezek a változtatások elvesznek."
       confirm_discarding_unsaved_availability_changes_question: "Biztos abban hogy elveti a változtatásokat?"
       edit_listing_availability: "Lista elem elérhetőségének szerkesztése"
+      working_hours:
+        default_schedule: ~
+        i_am_available_on: ~
+        start_time: ~
+        end_time: ~
+        add_another_time_slot: ~
+        save: ~
     no_listings:
       sorry: "Sajnáljuk, de nem található hirdetés az ön által beállított keresés alapján."
       try_other_search_terms: "Próbálta már más kifejezéseket használva?"

@@ -190,12 +190,12 @@ sl:
         users_can_invite_new_users: ~
         private: ~
         require_verification_to_post_listings: ~
-        search_preferences: ~
-        default_search_type: ~
-        keyword_search: ~
+        search_preferences: "Nastavitve iskanja"
+        default_search_type: "Vrsta iskanja: %{select_search_type}"
+        keyword_search: "Iskanje po ključnih besedah:"
         keyword_and_location_search: ~
-        location_search: ~
-        select_distance_unit: ~
+        location_search: "Iskanje lokacije"
+        select_distance_unit: "Pokaži v razdalji %{distance_units_selector}"
         km: ~
         miles: ~
         show_only_nearby: ~
@@ -307,6 +307,7 @@ sl:
           initiated_by: ~
           other_party: ~
         status:
+          conversation: ~
           free: ~
           pending: ~
           preauthorized: ~
@@ -342,6 +343,17 @@ sl:
             initiated: ~
             pending_ext: ~
         not_available: ~
+      conversations:
+        conversations: ~
+        headers:
+          started_from: ~
+          status: ~
+          started: ~
+          last_activity: ~
+          initiated_by: ~
+          other_party: ~
+        participants: ~
+        profile: ~
     custom_fields:
       edit:
         edit_listing_field: ~
@@ -363,8 +375,8 @@ sl:
           this_field_is_required_checkbox: ~
         search_filter:
           search_filter: ~
-          date_cant_be_filtered: ~
-          text_cant_be_filtered: ~
+          date_cant_be_filtered: "Za datumsko polje ni na voljo nobenega filtra."
+          text_cant_be_filtered: "Filter besedila ni na voljo. Glavno iskanje besedila išče iz besedilnih polj."
       index:
         listing_fields: "Polja & filtri objav"
         listing_fields_help: ~
@@ -420,6 +432,11 @@ sl:
         any_language: ~
         message_will_be_sent_only_to_people_with_this_language: ~
         email_sent: ~
+        to_improve_email_deliverability: ~
+        email_subject_text: ~
+        firstname_cannot_be_removed: ~
+        hello_firstname: ~
+        hello_firstname_text: ~
     left_hand_navigation:
       general: ~
       users_and_transactions: ~
@@ -432,6 +449,7 @@ sl:
       read_more: ~
       read_more_availability_management: ~
       allow_providers_to_manage_availability: ~
+      per_hour_availability: ~
       per_day_availability: ~
       per_night_availability: ~
       pricing_units_disabled_info: ~
@@ -611,8 +629,8 @@ sl:
     edit_page: "Uredi to stran"
     default_community_slogan: ~
     default_community_description: ~
-    cancel: ~
-    fields_that_are_mandatory: ~
+    cancel: Prekliči
+    fields_that_are_mandatory: "Polja označena z zvezdico (*) so obvezna."
     or: ali
     password: Geslo
     service_name: ~
@@ -620,7 +638,7 @@ sl:
       request: ~
       offer: ~
       borrow: ~
-      buy: ~
+      buy: Nakup
       give_away: ~
       lend: ~
       receive: ~
@@ -715,7 +733,7 @@ sl:
       days: ~
       price_per_day: ~
     index:
-      loading_more_messages: ~
+      loading_more_messages: "Naloži več sporočil."
       message_partitive: ~
       messages_partitive: sporočila
       no_received_messages: "Ni sporočil"
@@ -735,7 +753,7 @@ sl:
       message_content_not_available: ~
     message:
       accepted_request: ~
-      received_payment: ~
+      received_payment: "sprejeta zahteva, prejeto plačilo za %{sum}"
       accepted_offer: ~
       rejected_request: ~
       rejected_offer: ~
@@ -746,7 +764,7 @@ sl:
       paid: ~
       payment_preauthorized: ~
     new:
-      message: ~
+      message: Sporočilo
       message_to: ~
       optional_message_to: ~
       send_message: "Pošlji sporočilo"
@@ -754,7 +772,7 @@ sl:
       this_message_is_private: ~
       you_will_get_notified_of_acceptance: ~
       you_will_get_notified: ~
-      title: ~
+      title: Naslov
       send_message_to_user: ~
       about_listing: ~
       author_has_to_accept_request: ~
@@ -762,7 +780,7 @@ sl:
       in_response_to_listing: "o objavi"
       message_sent_by: ~
       message_sent_to: ~
-      send_reply: ~
+      send_reply: "Pošlji odgovor"
       write_a_reply: ~
       conversation_about_listing: ~
       conversation_with_user: ~
@@ -797,7 +815,7 @@ sl:
       waiting_for_current_user_to_deliver_listing: ~
       waiting_for_listing_author_to_deliver_listing: ~
       request_accepted: ~
-      request_rejected: ~
+      request_rejected: Zavrnjeno
       request_confirmed: ~
       request_canceled: ~
       request_paid: ~
@@ -948,6 +966,7 @@ sl:
       price_per_unit_type: ~
       quantity: ~
       you_have_received_new_payment: ~
+      listing_per_unit_title: ~
     payment_receipt_to_seller:
       payment_gateway_fee: ~
       shipping_total: ~
@@ -995,6 +1014,7 @@ sl:
       stripe_gateway_fee: ~
       paypal_gateway_fee: ~
       money_will_be_transferred: ~
+      listing_per_unit_title: ~
     new_testimonial:
       has_given_you_feedback_in_kassi: ~
       you_can_give_feedback_to: ~
@@ -1157,7 +1177,7 @@ sl:
     create_new_marketplace: ~
     contact_us: Kontakt
     profile: Profil
-    manage_listings: "Uredi svoje objave"
+    manage_listings: "Upravljanje seznamov"
     invite: "Povabi nove člane"
     login: Prijava
     signup: Registracija
@@ -1244,7 +1264,7 @@ sl:
     list_item:
       review: ~
       reviews: ~
-      distance_away: ~
+      distance_away: "%{distance} %{distance_unit} stran"
     news_item:
       show_less: ~
       show_more: ~
@@ -1279,7 +1299,7 @@ sl:
       default_content: "Tukaj lahko najdeš informacije, kako deluje %{marketplace_name}."
   landing_page:
     hero:
-      search: ~
+      search: Išči
       signup: Registracija
       search_placeholder: ~
       search_location_placeholder: ~
@@ -1666,6 +1686,10 @@ sl:
       how_paypal_works: ~
       payment_help: ~
       unable_load_availability: ~
+      booking_date: ~
+      select_one: ~
+      start_time: ~
+      end_time: ~
     new:
       listing: ~
       selected_category: "Kategorija: %{category}"
@@ -1728,7 +1752,7 @@ sl:
       shipping_price_additional: ~
       pickup: ~
       pickup_no_price: ~
-      youtube_video_player: ~
+      youtube_video_player: "YouTube video predvajalnik"
     unit_types:
       piece: ~
       hour: ~
@@ -2106,6 +2130,7 @@ sl:
   date:
     formats:
       long_with_abbr_day_name: ~
+    first_day_of_week: ~
   datepicker:
     days:
       sunday: ~
@@ -2165,6 +2190,7 @@ sl:
       short: ~
       shorter: ~
       short_date: ~
+      hours_only: "%H:%M"
   timestamps:
     day_ago: ~
     days_ago: "%{count} dni nazaj"
@@ -2183,10 +2209,13 @@ sl:
       booked_nights: ~
       price_per_day: ~
       price_per_night: ~
+      price_per_hour: ~
+      price_per_unit: ~
       quantity: ~
       subtotal: ~
       shipping-price: ~
       stripe-fee: ~
+      start_end_time: ~
     price_per_quantity: ~
     price: ~
     quantity: ~
@@ -2202,6 +2231,10 @@ sl:
         availability:
           something_went_wrong: ~
           saving_failed: ~
+        working_hours:
+          required: ~
+          overlaps: ~
+          covers: ~
       pricing_units:
         piece: ~
         hour: ~
@@ -2214,6 +2247,13 @@ sl:
       confirm_discarding_unsaved_availability_changes_explanation: ~
       confirm_discarding_unsaved_availability_changes_question: ~
       edit_listing_availability: ~
+      working_hours:
+        default_schedule: ~
+        i_am_available_on: ~
+        start_time: ~
+        end_time: ~
+        add_another_time_slot: ~
+        save: ~
     no_listings:
       sorry: ~
       try_other_search_terms: ~

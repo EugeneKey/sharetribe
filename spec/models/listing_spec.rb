@@ -46,6 +46,7 @@
 #  shipping_price_cents            :integer
 #  shipping_price_additional_cents :integer
 #  availability                    :string(32)       default("none")
+#  per_hour_ready                  :boolean          default(FALSE)
 #
 # Indexes
 #
@@ -160,5 +161,21 @@ describe Listing, type: :model do
       expect(@listing).to be_valid
     end
 
+  end
+
+  context 'manage availability per hour' do
+    let(:community) { FactoryGirl.create(:community) }
+    let(:listing) { FactoryGirl.create(:listing, community_id: community.id, listing_shape_id: 123) }
+
+    it '#working_hours_periods_grouped_by_day' do
+      listing.working_hours_new_set
+      listing.save
+      periods = listing.working_hours_periods_grouped_by_day(Time.zone.parse('2017-11-13'), Time.zone.parse('2017-11-19'))
+      expect(periods.keys).to eq ["2017-11-13", "2017-11-14", "2017-11-15", "2017-11-16", "2017-11-17"]
+      ["2017-11-13", "2017-11-14", "2017-11-15", "2017-11-16", "2017-11-17"].each do |date|
+        expect(periods[date].first.start_time.to_s).to eq "#{date} 09:00:00 UTC"
+        expect(periods[date].first.end_time.to_s).to eq "#{date} 17:00:00 UTC"
+      end
+    end
   end
 end

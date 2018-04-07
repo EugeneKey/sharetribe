@@ -240,5 +240,15 @@ end
 
 Given /^this community has transaction agreement in use$/ do
   @current_community.transaction_agreement_in_use = true
+  customization = @current_community.community_customizations.where(locale: 'en').first
+  customization.update_columns(
+    transaction_agreement_label: 'Transaction Agreement Label',
+    transaction_agreement_content: 'Transaction Agreement Content'
+  )
   @current_community.save!
+end
+
+Given /^community "(.*?)" has feature flag "(.*?)" enabled$/ do |community, feature_flag|
+  community = Community.where(ident: community).first
+  FeatureFlagService::API::Api.features.enable(community_id: community.id, features: [feature_flag.to_sym])
 end

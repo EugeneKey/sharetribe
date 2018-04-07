@@ -10,22 +10,10 @@ class Admin::EmailsController < Admin::AdminBaseController
   def create
     content = params[:email][:content].gsub(/[”“]/, '"') if params[:email][:content] # Fix UTF-8 quotation marks
     if params[:test_email] == '1'
-      CommunityMemberEmailSentJob.perform_later(
-                                      @current_user,
-                                      @current_user,
-                                      @current_community,
-                                      "[TEST] "+params[:email][:subject].to_s,
-                                      content,
-                                      params[:email][:locale])
+      CommunityMemberEmailSentJob.perform_later(@current_user, @current_user, @current_community, content, params[:email][:locale], true)
       render body: t("admin.emails.new.test_sent"), layout: false
     else
-      CreateMemberEmailBatchJob.perform_later(
-                                @current_user,
-                                @current_community,
-                                params[:email][:subject],
-                                content,
-                                params[:email][:locale],
-                                params[:email][:recipients])
+      CreateMemberEmailBatchJob.perform_later(@current_user, @current_community, content, params[:email][:locale], params[:email][:recipients])
       flash[:notice] = t("admin.emails.new.email_sent")
       redirect_to :action => :new
     end

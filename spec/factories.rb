@@ -107,7 +107,7 @@ FactoryGirl.define do
     description("test")
     build_association(:author)
     category { TestHelpers::find_or_build_category("item") }
-    valid_until 3.months.from_now
+    valid_until { Time.current + 3.months }
     times_viewed 0
     privacy "public"
     listing_shape_id 123
@@ -424,5 +424,32 @@ FactoryGirl.define do
   factory :invitation_unsubscribe, class: 'Invitation::Unsubscribe' do
     build_association(:community)
     email 'sherry@example.com'
+  end
+
+  factory :paypal_ipn_message do
+    body       { { abc: 123 } }
+    status     nil
+  end
+
+  factory :paypal_payment do
+    community_id      123
+    transaction_id    321
+    payer_id          'ABC'
+    receiver_id       'DEF'
+    merchant_id       'ZZZ'
+    currency          'EUR'
+    payment_status    'pending'
+    commission_status 'pending'
+  end
+
+  factory :listing_working_time_slot, class: 'Listing::WorkingTimeSlot' do
+    listing_id 123
+  end
+
+  factory :billing_agreement do
+    build_association(:paypal_account)
+    billing_agreement_id  'zzz'
+    paypal_username_to    'eloise.smith'
+    request_token         'ddd'
   end
 end

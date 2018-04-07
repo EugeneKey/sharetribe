@@ -15,16 +15,10 @@ class CreateMemberEmailBatchJob < ActiveJob::Base
     ApplicationHelper.store_community_service_name_to_thread_from_community_id(job.arguments[1].id)
   end
 
-  def perform(sender, current_community, subject, content, locale, mode)
+  def perform(sender, current_community, content, locale, mode)
     recipient_ids(mode, current_community).each do |recipient_id|
       recipient = Person.where(id: recipient_id).first
-      CommunityMemberEmailSentJob.perform_later(
-                                  sender,
-                                  recipient,
-                                  current_community,
-                                  subject,
-                                  content,
-                                  locale)
+      CommunityMemberEmailSentJob.perform_later(sender, recipient, current_community, content, locale)
     end
   end
 

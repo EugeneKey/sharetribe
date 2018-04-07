@@ -143,11 +143,16 @@ class ShapeService
       if opts[:availability] == 'booking'
         if opts[:units].length != 1
           Result::Error.new("Only one unit is allowed if booking availability is in use. Was: #{opts[:units].inspect}")
-        elsif !['day', 'night'].include?(opts[:units].first[:unit_type])
+        elsif !enabled_units.include?(opts[:units].first[:unit_type])
           Result::Error.new("Only day or night unit is allowed if booking availability is in use. Was: #{opts[:units].inspect}")
         end
       end
 
     error || Result::Success.new(opts)
+  end
+
+  def enabled_units
+    units = ['day', 'night', 'hour']
+    units
   end
 end

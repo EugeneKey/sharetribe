@@ -37,6 +37,7 @@
 //= require jquery.fileupload-validate
 //= require jquery.fileupload-image
 //= require autosize
+//= require regenerator-runtime/runtime
 
 //= require jquery.fancybox.js
 

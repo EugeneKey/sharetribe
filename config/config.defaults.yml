@@ -474,6 +474,15 @@ default: &default_settings
   # Used to encrypt Stripe api keys
   app_encryption_key:
 
+  ##########################################
+  # Admin (sharetribe.com internal)
+  ##########################################
+
+  # Enable end-user analytics tracking configuration
+  # in admin panel. Open source users should instead use
+  # the use_google_tag_manager: false
+  admin_enable_tracking_config: false
+
 production: &production_settings
   <<: *default_settings
 
@@ -569,3 +578,5 @@ test:
   # Add your test keys to run features/stripe/stripe.feature
   feature_stripe_publishable_key: pk_test_123456789012345678901234
   feature_stripe_private_key: sk_test_123456789012345678901234
+
+  admin_enable_tracking_config: true

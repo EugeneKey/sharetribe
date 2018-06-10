@@ -205,10 +205,10 @@ class HomepageController < ApplicationController
   end
 
   def location_search_params(params, keyword_search_in_use)
-    marketplace_configuration = MarketplaceService::API::Api.configurations.get(community_id: @current_community.id).data
+    marketplace_configuration = @current_community.configuration
 
     distance = params[:distance_max].to_f
-    distance_system = marketplace_configuration ? marketplace_configuration[:distance_unit] : nil
+    distance_system = marketplace_configuration ? marketplace_configuration[:distance_unit].to_sym : nil
     distance_unit = distance_system == :metric ? :km : :miles
     limit_search_distance = marketplace_configuration ? marketplace_configuration[:limit_search_distance] : true
     distance_limit = [distance, APP_CONFIG[:external_search_distance_limit_min].to_f].max if limit_search_distance

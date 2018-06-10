@@ -260,6 +260,7 @@ pt-BR:
         search_by_name_email: ~
         reset_search: ~
         for_search_terms: ~
+        this_makes_the_user_an_admin: ~
       new_layout:
         new_layout: "Novo layout"
         description_roadmap_new: ~
@@ -283,6 +284,7 @@ pt-BR:
         invalid_facebook_connect_id: "ID do cliente deve conter apenas números."
         facebook_connect_secret: "Segredo do cliente Facebook (client secret)"
         invalid_facebook_connect_secret: "Segredo do cliente deve conter apenas números e letras de A a F."
+        enable_facebook_login: ~
         save: "Salvar definições"
       analytics:
         analytics: Analytics
@@ -290,6 +292,10 @@ pt-BR:
         google_analytics_key_info_text: "ID de rastreamento da sua conta do \"Google Analytics\"."
         google_analytics_key_info_text_with_instructions: "ID de acompanhamento da sua conta do \"Google Analytics\". %{instructions_link}."
         google_analytics_instructions_link_text: "Leia mais sobre como conectar com o \"Google Analytics\""
+        sharetribe_analytics: ~
+        sharetribe_analytics_info_text_with_instructions: ~
+        sharetribe_analytics_instructions_link_text: ~
+        end_user_analytics: ~
         save: "Salvar configurações"
       menu_links:
         menu_links: "Menu links"
@@ -311,6 +317,7 @@ pt-BR:
         invalid_post_listing_button_label: "Forneça um texto válido para o botão \"Publicar um novo anúncio\""
       transactions:
         export_all_as_csv: "Exporte tudo como CSV"
+        processing_export: ~
         transactions: "Ver transações"
         headers:
           conversation: "Criou a conversa"
@@ -369,6 +376,21 @@ pt-BR:
           other_party: ~
         participants: ~
         profile: ~
+      testimonials:
+        testimonials: ~
+        no_testimonials_found: ~
+        displaying_xx_reviews: ~
+        headers:
+          transaction: ~
+          author: ~
+          receiver: ~
+          status: ~
+          grade: ~
+          note: ~
+        status:
+          waiting: ~
+          skipped: ~
+          published: ~
     custom_fields:
       edit:
         edit_listing_field: "Alterar anúncio '%{field_name}'"
@@ -638,11 +660,17 @@ pt-BR:
         payments_not_enabled: ~
     transaction_types:
       sell: Vendendo
+      sell_w_online_payment: ~
+      sell_wo_online_payment: ~
       rent: Alugando
+      rent_w_online_payment: ~
+      rent_wo_online_payment: ~
       give: Doar
       lend: Empréstimo
       swap: Troca
       service: Oferta
+      service_w_online_payment: ~
+      service_wo_online_payment: ~
       request: Solicitando
       inquiry: Inquérito
       share_for_free: Gratuito
@@ -702,10 +730,9 @@ pt-BR:
     removed_user: "Usuário removido"
     payment_fee_info:
       title: "Taxa de processamento do pagamento"
-      title_paypal: ~
       stripe: ~
       paypal: ~
-      info: ~
+      info: "Pagamentos em %{service_name} são processados pelo portal de pagamentos listado abaixo. %{service_name} irá cobrar uma comissão, dependendo do portal de pagamento. O portal de pagamento poderá também cobrar uma taxa por cada pagamento, conforme descrito abaixo."
     paypal_fee_info:
       title: "Taxa de processamento do pagamento do PayPal"
       body_text: |-
@@ -713,13 +740,9 @@ pt-BR:
           Você pode ver as taxas exatas fazendo login em sua conta do PayPal e indo para %{link_to_paypal}. Após cada compra você receberá um recibo exibindo a taxa exata.
       body_text_accept: ~
       link_to_paypal_text: aqui
-    paypal_only_fee_info:
-      title: "Taxa de processamento do pagamento do PayPal"
-      body_text: ~
-      link_to_paypal_text: ~
     stripe_fee_info:
       title: "Taxa de processamento do pagamento do Stripe"
-      body_text: ~
+      body_text: "Para pagamentos Stripe, o %{service_name} cobra uma comissão de %{stripe_commission}. A taxa minima por transação é de %{minimum_transaction_fee}. As taxas dos pagamentos Stripe estão incluídas na comissão."
       link_to_stripe_text: ~
   conversations:
     accept:
@@ -792,6 +815,9 @@ pt-BR:
       canceled_offer: "cancelou a oferta"
       paid: "pago %{sum}"
       payment_preauthorized: "Pagamento autorizado: %{sum}"
+      stripe:
+        held_payment: ~
+        confirmed_request: ~
     new:
       message: Mensagem
       message_to: "Mensagem para %{author_name}"
@@ -864,6 +890,8 @@ pt-BR:
           intl: "Aguardando você aceitar o pagamento PayPal"
           unknown_reason: "O pagamento está pendente. Conecte-se na sua conta PayPal para ver mais detalhes."
           verify: "Aguardando você verificar sua conta PayPal"
+      stripe:
+        waiting_confirmation_from_requester: ~
     status_link:
       accept_offer: "Aceitar oferta"
       accept_request: "Aceitar solicitação"
@@ -933,6 +961,8 @@ pt-BR:
       has_marked_request_as_canceled: "%{other_party_full_name} cancelou o pedido '%{request}'. Você ainda pode dar um feedback para %{other_party_given_name}."
       giving_feedback_is_good_idea: "Dar feedback é sempre uma boa ideia. Se tudo correu bem, você deve deixar que os outros saibam que %{other_party_given_name} pode ser confiável. Se houve algum problema, é bom mencioná-lo também."
       give_feedback_to: "Dar uma opinião sobre %{other_party_given_name}"
+      stripe:
+        has_marked_request_as_confirmed: ~
     transaction_automatically_confirmed:
       subject: "Pedido concluído automaticamente - lembre-se de dar feedback"
       we_have_marked_request_as_confirmed: "Marcamos o pedido '%{request}' concluído. O pedido foi concluído automaticamente porque %{days_passed} dias se passaram desde que foi aceito."
@@ -957,10 +987,10 @@ pt-BR:
       message_not_displaying_correctly: "Este e-mail não está sendo exibido corretamente?"
       view_it_in_your_browser: "Visualizar no seu navegador."
       or: ou
-      unsubscribe_from_these_emails_info: "Você recebeu um novo pagamento este e-mail por ser membro do %{service_name}"
+      unsubscribe_from_these_emails_info: "Voce recebeu este e-mail por ser membro do  %{service_name}"
       unsubscribe_from_these_emails: "cancelar o recebimento desses e-mails"
-      unsubscribe_from_invitation_emails_info: "Você recebeu um novo pagamento este e-mail por que um membro do %{service_name} convidou você."
-      unsubscribe_from_invitation_emails: ~
+      unsubscribe_from_invitation_emails_info: "Voce recebeu este e-mail porque um membro do portal %{service_name} convidou você."
+      unsubscribe_from_invitation_emails: "Clique aqui para cancelar o recebimento de futuros convites a partir do portal %{service_name}"
     conversation_status_changed:
       has_accepted_your_offer: "%{accepter} aceitou sua oferta %{listing}"
       has_accepted_your_request: "%{accepter} aceitou sua solicitação %{listing}"
@@ -1007,6 +1037,8 @@ pt-BR:
       price_per_unit_type: ~
       quantity: ~
       you_have_received_new_payment: "Você recebeu <b>%{payment_sum}</b> por <b>%{listing_title}</b> de %{payer_full_name}. Veja o recibo."
+      stripe:
+        you_have_received_new_payment: ~
     payment_receipt_to_payer:
       receipt_of_payment: ~
       you_have_made_new_payment: ~
@@ -1044,6 +1076,8 @@ pt-BR:
       paypal_gateway_fee: ~
       money_will_be_transferred: "O dinheiro será transferido para %{recipient_name} quando a) você tenha marcado o pedido como concluído ou b) %{automatic_confirmation_days} dias se passaram desde que você pagou."
       listing_per_unit_title: ~
+      stripe:
+        you_have_made_new_payment: ~
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name} te avaliou %{service_name}"
       you_can_give_feedback_to: "Você ainda não avaliou %{name}"
@@ -1131,6 +1165,8 @@ pt-BR:
       reject_authorization_error: "Ocorreu um erro ao tentar rejeitar pagamento pré-autorizado Paypal. Por favor, tente novamente."
     stripe:
       generic_error: ~
+      accept_authorization_error: ~
+      reject_authorization_error: ~
   error_pages:
     back_to_kassi_front_page: "Voltar para a página inicial"
     error_404:
@@ -1525,6 +1561,7 @@ pt-BR:
         one: "O site sairá do ar para manutenção em %{count} minuto"
         other: "O site sairá do ar para manutenção em %{count} minutos"
       automatically_logged_out_please_sign_in: "Você foi desconectado automaticamente. Por favor faça o login novamente."
+      stripe_you_account_balance_is_not_0: ~
     settings:
       account: Conta
       notifications: Notificações
@@ -1630,10 +1667,7 @@ pt-BR:
         no_service_fee_you_will_get_paypal_text: "%{paypal_fee_info_link} irá deduzir do preço."
         no_service_fee_you_will_get_payment_text: ~
         after_service_fee_you_will_get_payment_text: ~
-        after_service_fee_you_will_get_paypal_text: "Desse valor será deduzida uma taxa de (%{sum_with_currency}) cobrada pelo %{service_name} e a %{paypal_fee_info_link}."
-        after_service_fee_you_will_get_stripe_text: ~
         payment_fee_info_link_text: "taxa de processamento do pagamento"
-        paypal_fee_info_link_text: "Taxa de processamento do pagamento do PayPal"
         delivery: "Forma de entrega"
         shipping: Envio
         shipping_price: "Taxa de envio"
@@ -1817,7 +1851,7 @@ pt-BR:
       payment: ~
       pay_with_card: ~
       address: ~
-      address_country: ~
+      address_country: País
       address_name: ~
       address_city: ~
       address_state: ~
@@ -1929,7 +1963,7 @@ pt-BR:
       deactivate: Desativar
     help_texts:
       feedback_description_title: Reposta
-      help_invitation_code_title: "Você precisa de um convite para se juntar a"
+      help_invitation_code_title: "Você precisa de um convite para participar"
       terms_title: "%{service_name} termos de uso"
       invite_only_help_text: "Selecione esta opção se você quiser que novos membros só possam entrar se forem convidados por um membro existente."
       invite_only_help_text_title: "Apenas convidados"
@@ -1948,7 +1982,8 @@ pt-BR:
         other: "O acesso a %{service_name} é restrito. Para entrar, você deve ter um e-mail autorizado."
       family_name: Sobrenome
       given_name: Nome
-      i_accept_the: "Eu aceito os"
+      i_accept_the_terms_and_privacy: "Eu aceito os %{terms} e %{privacy}"
+      admin_emails_consent: "Eu aceito receber e-mails ocasionais do time da %{service_name} e entendo que posso mudar de ideia a qualquer momento."
       invalid_invitation_code: "O código de convite não é válido."
       invitation_code: "Código do convite "
       not_required: ", não necessaria"
@@ -1957,6 +1992,7 @@ pt-BR:
       show_my_name_to_others: "Mostrar o meu nome completo aos utilizadores de %{service_name}"
       sign_up: "Criar uma conta no %{service_name}"
       terms: "termos de uso"
+      privacy: privacidade
       username_is_in_use: "Este nome de usuário já está em uso."
       username_is_invalid: "Nome de usuário é inválido. Os caracteres permitidos são letras, números e sublinhado."
       visible_only_to_you: "visível apenas para você e para o administrador do mercado virtual"
@@ -2061,6 +2097,7 @@ pt-BR:
       delete_personal_information: "Se você excluir sua conta, suas informações pessoais (nome, número de telefone, endereço, e-mail, foto do perfil, etc.) serão excluídas permanentemente e não poderão ser recuperadas. Todos os anúncios que você criou serão removidos. Você não será capaz de reativar a sua conta."
       delete_information_others_involved: "Informações onde outros membros estão envolvidos (conversas com outras pessoas, transações que você fez, avaliações que você tenha feito dos outros, etc) não serão removidas quando você excluir sua conta. No entanto, seu nome não será mais exibido junto a essas informações."
       unfinished_transactions: "Sua conta não pode ser excluída porque você tem transações em andamento. Por favor, conclua todas as transações antes de excluir a sua conta."
+      only_admin: ~
       new_password: "Nova senha"
       save: Salvar
       these_fields_are_shown_only_to_you: "Seu nome de usuário é mostrado no seu perfil a menos que você tenha dado o seu nome. Outras informações só é mostrado a você."
@@ -2378,23 +2415,26 @@ pt-BR:
     add_and_pay: ~
     card_not_stored: ~
     missing_payment: "Você tem anúncios ativos mas sua conta ainda não foi configurada para receber pagamentos. Para configurar o recebimento de pagamentos, visite %{settings_link}"
-    stripe_bank_connected: ~
-    stripe_can_accept: ~
+    stripe_bank_connected: "Dados bancários configurados com sucesso!"
+    stripe_can_accept: "Está pronto para receber dinheiro na sua conta bancária"
     stripe_credit_card: ~
     paypal: ~
     paypal_connected: ~
     paypal_can_accept: ~
     paypal_connected_give_permission: ~
     form_new:
-      need_info: ~
-      select_country: ~
+      need_info: "Precisamos de alguma informação para poder enviar-lhe o seu dinheiro."
+      select_country: "Selecione o país..."
       legal_name: ~
-      country: ~
-      birth_date: ~
+      first_name: ~
+      last_name: ~
+      country: País
+      birth_date: "Data de nascimento"
       ssn_last_4: ~
       personal_id_number: ~
-      address_country: ~
+      address_country: País
       address_state: ~
+      address_province: ~
       address_city: ~
       address_postal_code: ~
       address_line1: ~
@@ -2409,6 +2449,7 @@ pt-BR:
       bank_routing_1: ~
       bank_routing_2: ~
       bank_currency: ~
+      update_also_bank_account: ~
       messages:
         account_number: ~
         routing_number: ~
@@ -2433,19 +2474,20 @@ pt-BR:
     form_pin:
       social_insurance_number: ~
       social_security_number: ~
+      ssn_last_4: ~
       hong_kong_identity_card: ~
       singapore_identity_card: ~
       messages:
         social_insurance_number: ~
   payment_settings:
-    title: ~
-    bank_account: ~
+    title: "Preferências de pagamento"
+    bank_account: "Conta bancária"
     paypal: ~
-    bank_account_details: ~
+    bank_account_details: "Para receber dinheiro na sua conta bancária por favor indique-nos os seus dados de conta. Os seus clientes poderão pagar com cartão de crédito."
     add_bank_details: ~
-    can_accept_stripe_and_paypal: ~
-    to_accept_paypal: ~
-    connect_paypal: ~
+    can_accept_stripe_and_paypal: "Pode receber dinheiro na sua conta bancária ou na sua conta PayPal"
+    to_accept_paypal: "Para receber dinheiro na sua conta PayPal, precisa de conectar a sua conta PayPal. Os seus clientes poderao efectuar pagamentos com PayPal."
+    connect_paypal: "Conectar a sua conta PayPal"
     wrong_setup: ~
     invalid_bank_account_number: ~
     invalid_postal_code: ~

@@ -270,6 +270,7 @@ pl:
         search_by_name_email: ~
         reset_search: ~
         for_search_terms: ~
+        this_makes_the_user_an_admin: ~
       new_layout:
         new_layout: "Nowy układ"
         description_roadmap_new: "Kiedy nowy elementy układu graficznego będą dostępne dla Twojej platformy, możesz wybrać czy chcesz zacząć używać nowego elementu, czy pozostać przy starym. Możesz zmienić ten wybór zawsze na tej stronie. Rekomenduje się zawsze używanie nowych wersji, gdyż stare mogą stać się niepasujące w pewnym momencie. W przypadku gdy element, którego używasz stanie się niepasujący zostaniesz powiadomiony z wyprzedzeniem."
@@ -293,6 +294,7 @@ pl:
         invalid_facebook_connect_id: "Id klienta powinno zawierać wyłącznie liczby."
         facebook_connect_secret: "Tajny klucz klienta Facebook"
         invalid_facebook_connect_secret: "Tajny klucz klienta powinien zawierać wyłącznie liczby oraz litery od a do f"
+        enable_facebook_login: ~
         save: "Zapisz ustawienia"
       analytics:
         analytics: Analizy
@@ -300,6 +302,10 @@ pl:
         google_analytics_key_info_text: "ID śledzenia Twojego konta Google Analytics"
         google_analytics_key_info_text_with_instructions: "ID śledzenia Twojego konta Google Analytics. %{instructions_link}"
         google_analytics_instructions_link_text: "Czytaj więcej na temat połączenia Google Analytics"
+        sharetribe_analytics: ~
+        sharetribe_analytics_info_text_with_instructions: ~
+        sharetribe_analytics_instructions_link_text: ~
+        end_user_analytics: ~
         save: "Zapisz ustawienia"
       menu_links:
         menu_links: "Linki menu"
@@ -321,6 +327,7 @@ pl:
         invalid_post_listing_button_label: "Proszę podaj poprawny tekst dla guzika \"Opublikuj nową ofertę\""
       transactions:
         export_all_as_csv: "Wyeksportuj wszystko do CSV"
+        processing_export: ~
         transactions: "Zobacz transakcje"
         headers:
           conversation: "Wątek konwersacji"
@@ -379,6 +386,21 @@ pl:
           other_party: ~
         participants: ~
         profile: ~
+      testimonials:
+        testimonials: ~
+        no_testimonials_found: ~
+        displaying_xx_reviews: ~
+        headers:
+          transaction: ~
+          author: ~
+          receiver: ~
+          status: ~
+          grade: ~
+          note: ~
+        status:
+          waiting: ~
+          skipped: ~
+          published: ~
     custom_fields:
       edit:
         edit_listing_field: "Edytuje pole %{field_name} oferty"
@@ -656,11 +678,17 @@ pl:
         payments_not_enabled: ~
     transaction_types:
       sell: Sprzedawanie
+      sell_w_online_payment: ~
+      sell_wo_online_payment: ~
       rent: Wynajmowanie
+      rent_w_online_payment: ~
+      rent_wo_online_payment: ~
       give: Rozdawanie
       lend: Pożyczanie
       swap: Wymienianie
       service: Oferowanie
+      service_w_online_payment: ~
+      service_wo_online_payment: ~
       request: Żądanie
       inquiry: Ogłoszenie
       share_for_free: "Współdzielone za darmo"
@@ -720,7 +748,6 @@ pl:
     removed_user: "Użytkownik usunięty"
     payment_fee_info:
       title: ~
-      title_paypal: ~
       stripe: ~
       paypal: ~
       info: ~
@@ -731,10 +758,6 @@ pl:
           Możesz sprawdzić dokładny poziom opłat logując się na swoje konto PayPal i idąc na %{link_to_paypal}. Po każdej transakcji dostaniesz rachunek pokazujący dokładną wartość opłaty.
       body_text_accept: ~
       link_to_paypal_text: tutaj
-    paypal_only_fee_info:
-      title: ~
-      body_text: ~
-      link_to_paypal_text: ~
     stripe_fee_info:
       title: ~
       body_text: ~
@@ -810,6 +833,9 @@ pl:
       canceled_offer: "anulowano ofertę"
       paid: "zapłacono %{sum}"
       payment_preauthorized: "Płatność zautoryzowana: %{sum}"
+      stripe:
+        held_payment: ~
+        confirmed_request: ~
     new:
       message: Wiadomość
       message_to: "Wiadomość do %{author_name}"
@@ -882,6 +908,8 @@ pl:
           intl: "Oczekiwanie aż zaakceptujesz płatność PayPal"
           unknown_reason: "Płatność oczekuje na realizację. Zaloguj się na swoje konto PayPal aby zobaczyć więcej szczegółów."
           verify: "Oczekiwanie aż zweryfikujesz swoje konto PayPal"
+      stripe:
+        waiting_confirmation_from_requester: ~
     status_link:
       accept_offer: "Zaakceptuj ofertę"
       accept_request: "Zaakceptuj zapytanie"
@@ -951,6 +979,8 @@ pl:
       has_marked_request_as_canceled: "%{other_party_full_name} anulował zamówienie na %{request}. Wciąż możesz przekazać opinię do %{other_party_given_name}."
       giving_feedback_is_good_idea: "Przekazywanie opinii jest zawsze dobrym pomysłem. Jeżeli wszystko poszło dobrze, daj znać innym, że %{other_party_given_name} jest warty zaufania. Jeżeli napotkałeś jakieś problemy, dobrze zaznaczyć to także."
       give_feedback_to: "Przekaż opinię do %{other_party_given_name}"
+      stripe:
+        has_marked_request_as_confirmed: ~
     transaction_automatically_confirmed:
       subject: "Zamówienie automatycznie zakończone - pamiętaj, aby przekazać recenzję"
       we_have_marked_request_as_confirmed: "Oznaczyliśmy zlecenie dotyczące %{request} jako zrealizowane. Zostało ono automatycznie oznaczone jako zrealizowane, ponieważ minęło %{days_passed} dni od jego akceptacji."
@@ -1025,6 +1055,8 @@ pl:
       price_per_unit_type: ~
       quantity: ~
       you_have_received_new_payment: ~
+      stripe:
+        you_have_received_new_payment: ~
     payment_receipt_to_payer:
       receipt_of_payment: ~
       you_have_made_new_payment: ~
@@ -1062,6 +1094,8 @@ pl:
       paypal_gateway_fee: ~
       money_will_be_transferred: "Pieniądze zostaną przesłane do %{recipient_name} kiedy: a) zaznaczysz zlecenie jako zrealizowane lub b) minie %{automatic_confirmation_days} dni od kiedy dokonałeś płatności."
       listing_per_unit_title: ~
+      stripe:
+        you_have_made_new_payment: ~
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name} przekazał Tobie opinię w %{service_name}"
       you_can_give_feedback_to: "Jeszcze nie przekazałeś opinii do %{name}"
@@ -1149,6 +1183,8 @@ pl:
       reject_authorization_error: "Wystąpił błąd podczas próby odrzucenia preautoryzowanej płatności PayPal. Proszę spróbować ponownie."
     stripe:
       generic_error: ~
+      accept_authorization_error: ~
+      reject_authorization_error: ~
   error_pages:
     back_to_kassi_front_page: "Wróć do strony głównej"
     error_404:
@@ -1545,6 +1581,7 @@ pl:
         many: "Strona stanie się niedostępna ze względów serwisowych za %{count} minut"
         other: "Strona stanie się niedostępna ze względów serwisowych za %{count} minut"
       automatically_logged_out_please_sign_in: "Zostałeś automatycznie wylogowany. Proszę zaloguj się ponownie."
+      stripe_you_account_balance_is_not_0: ~
     settings:
       account: Konto
       notifications: Powiadomienia
@@ -1650,10 +1687,7 @@ pl:
         no_service_fee_you_will_get_paypal_text: "%{paypal_fee_info_link} będzie odjęte od ceny."
         no_service_fee_you_will_get_payment_text: ~
         after_service_fee_you_will_get_payment_text: ~
-        after_service_fee_you_will_get_paypal_text: "opłata serwisowa %{service_name} (%{sum_with_currency}) oraz %{paypal_fee_info_link} będą odjęte od ceny."
-        after_service_fee_you_will_get_stripe_text: ~
         payment_fee_info_link_text: ~
-        paypal_fee_info_link_text: "Opłata za obsługę płatności PayPal"
         delivery: "Metoda dostawy"
         shipping: Transport
         shipping_price: "Koszt transportu"
@@ -1968,7 +2002,8 @@ pl:
         other: "Dostęp do %{service_name} jest ograniczony. Potrzebujesz adresu email, który potwierdzi, że jesteś uprawniony, aby dołączyć."
       family_name: Nazwisko
       given_name: Imię
-      i_accept_the: Akceptuję
+      i_accept_the_terms_and_privacy: ~
+      admin_emails_consent: ~
       invalid_invitation_code: "Kod zaproszenia jest niepoprawny"
       invitation_code: "Kod zaproszenia"
       not_required: ", nie wymagane"
@@ -1977,6 +2012,7 @@ pl:
       show_my_name_to_others: "Pokaż moje prawdziwe imię do innych użytkowników %{service_name}"
       sign_up: "Stwórz nowe konto w %{service_name}"
       terms: "zasady użytkowania"
+      privacy: ~
       username_is_in_use: "Ta nazwa użytkownika jest już w użyciu."
       username_is_invalid: "Nazwa użytkownika nie jest poprawna. Dozwolone znaki to litery, cyfry i podkreślnik."
       visible_only_to_you: "widoczne tylko dla Ciebie i administratora platformy"
@@ -2081,6 +2117,7 @@ pl:
       delete_personal_information: "Jeśli usuniesz swoje konto, Twoje informacje osobiste (imię, telefon, adres, e-mail, zdjęcie profilowe itp.) zostaną usunięte na stałe i nie będzie można ich odzyskać. Wszystkie oferty jakie stworzyłeś zostaną także usunięte. Nie będziesz mógł odzyskać swojego konta."
       delete_information_others_involved: "Informacje w których zaangażowani są inni użytkownicy (konwersacje z innymi, przeprowadzone transakcje, udzielone opinie itp.) nie są usuwane, gdy usuwasz swoje konto. Jednakże Twoje imię nie będzie wyświetlane przy tych informacjach."
       unfinished_transactions: "Twoje konto nie może zostać usunięte, ponieważ masz aktywne transakcje. Zakończ wszystkie swoje transakcje zanim usuniesz konto."
+      only_admin: ~
       new_password: "Nowe hasło"
       save: Zapisz
       these_fields_are_shown_only_to_you: "Nazwa użytkownika jest wyświetlana w Twoim profilu, chyba, że podałeś swoje imię. Inne informacje są widoczne tylko dla Ciebie."
@@ -2429,12 +2466,15 @@ pl:
       need_info: ~
       select_country: ~
       legal_name: ~
+      first_name: ~
+      last_name: ~
       country: ~
       birth_date: ~
       ssn_last_4: ~
       personal_id_number: ~
       address_country: ~
       address_state: ~
+      address_province: ~
       address_city: ~
       address_postal_code: ~
       address_line1: ~
@@ -2449,6 +2489,7 @@ pl:
       bank_routing_1: ~
       bank_routing_2: ~
       bank_currency: ~
+      update_also_bank_account: ~
       messages:
         account_number: ~
         routing_number: ~
@@ -2473,6 +2514,7 @@ pl:
     form_pin:
       social_insurance_number: ~
       social_security_number: ~
+      ssn_last_4: ~
       hong_kong_identity_card: ~
       singapore_identity_card: ~
       messages:

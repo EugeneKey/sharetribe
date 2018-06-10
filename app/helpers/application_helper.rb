@@ -64,6 +64,11 @@ module ApplicationHelper
     haml_concat add_links_and_br_tags_for_email(capture_haml(&block)).html_safe
   end
 
+  #  Transforms URLs to links
+  def text_with_url_links(&block)
+    haml_concat add_links(capture_haml(&block)).html_safe
+  end
+
   def small_avatar_thumb(person, avatar_html_options={})
     avatar_thumb(:thumb, person, avatar_html_options)
   end
@@ -246,7 +251,10 @@ module ApplicationHelper
 
   def add_links(text)
     pattern = /[\.)]*$/
-    text.gsub(/https?:\/\/\S+/) { |link_url| link_to(link_url.gsub(pattern,""), link_url.gsub(pattern,""), class: "truncated-link") + link_url.match(pattern)[0]}
+    text.gsub(/\b(https?:\/\/|www\.)\S+/i) do |link_url|
+      site_url = (link_url.starts_with?("www.") ? "http://" + link_url : link_url)
+      link_to(link_url.gsub(pattern,""), site_url.gsub(pattern,""), class: "truncated-link") + link_url.match(pattern)[0]
+    end
   end
 
   # general method for making urls as links and line breaks as <br /> tags
@@ -382,6 +390,13 @@ module ApplicationHelper
         :icon_class => icon_class("chat_bubble"),
         :path => admin_community_conversations_path(@current_community, sort: "last_activity", direction: "desc"),
         :name => "conversations"
+      },
+      {
+        :topic => :manage,
+        :text => t("admin.communities.testimonials.testimonials"),
+        :icon_class => icon_class("like"),
+        :path => admin_community_testimonials_path(@current_community),
+        :name => "testimonials"
       },
       {
         :topic => :configure,
@@ -647,7 +662,7 @@ module ApplicationHelper
   end
 
   def search_mode
-    FeatureFlagHelper.location_search_available ? MarketplaceService::API::Api.configurations.get(community_id: @current_community.id).data[:main_search] : :keyword
+    FeatureFlagHelper.location_search_available ? @current_community.configuration&.main_search&.to_sym : :keyword
   end
 
   def landing_page_path

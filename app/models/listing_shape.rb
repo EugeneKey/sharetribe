@@ -30,7 +30,6 @@ class ListingShape < ApplicationRecord
     AVAILABILITY_BOOKING = 'booking'.freeze
   ].freeze
 
-
   belongs_to :community
   belongs_to :transaction_process
   has_and_belongs_to_many :categories, -> { order("sort_priority") }, join_table: "category_listing_shapes"
@@ -39,6 +38,7 @@ class ListingShape < ApplicationRecord
   scope :exist, -> { where(deleted: false) }
   scope :exist_ordered, -> { exist.includes(:listing_units).order("listing_shapes.sort_priority") }
   scope :by_name, ->(name){ where(name: name) }
+  scope :by_process_none, -> { joins(:transaction_process).merge(TransactionProcess.process_none) }
 
   validates :name_tr_key, :action_button_tr_key, :transaction_process_id, presence: true
   validates :price_enabled, :shipping_enabled, inclusion: [true, false]

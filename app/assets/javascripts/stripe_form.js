@@ -185,13 +185,12 @@ window.ST.stripe_form_i18n = {
   };
 
   var removeSpaces = function() {
-    var removeSpacesInputs = [".bank-account-number input:enabled", ".bank-routing-number input",
-      ".bank-routing-1 input", ".bank-routing-2 input"];
-    for (var index in removeSpacesInputs) {
-      var input = $(removeSpacesInputs[index]);
-      var value = input.val().replace(/\s+/g, '');
-      input.val(value);
-    }
+    $('.bank-account-number, .bank-routing-number, .bank-routing-1, .bank-routing-2')
+      .find('input:enabled').each(function() {
+        var input = $(this),
+          value = input.val().replace(/\s+/g, '').toUpperCase();
+        input.val(value);
+      });
   };
 
   module.initStripeBankForm = function(options) {
@@ -229,6 +228,9 @@ window.ST.stripe_form_i18n = {
         $(".country-dependent").hide();
       }
       update_bank_number_form(country);
+      if (options.update) {
+        $('input[stripe-bank-account-ready]').prop('disabled', true);
+      }
     });
     $("#stripe_account_form_address_country").trigger('change');
     $("#stripe-account-form").validate({
@@ -238,6 +240,14 @@ window.ST.stripe_form_i18n = {
         stripeToken(options, function() {
           form.submit();
         });
+      }
+    });
+    $('#update_also_bank_account').on('change', function() {
+      var inputs = $('input[stripe-bank-account-ready]');
+      if ($(this).is(':checked')) {
+        inputs.filter(':visible').prop('disabled', false);
+      } else {
+        inputs.prop('disabled', true);
       }
     });
   };
@@ -264,7 +274,7 @@ window.ST.stripe_form_i18n = {
       }
       if(re) {
         var rx = new RegExp("^"+re+"$");
-        var testValue = value.replace(/\s+/g, '');
+        var testValue = value.replace(/\s+/g, '').toUpperCase();
         return rx.test(testValue);
       }
       return this.optional(element) || $(element).val();
@@ -328,9 +338,6 @@ var stripeToken = (function() {
   var _ref = _asyncToGenerator(
     /*#__PURE__*/ regeneratorRuntime.mark(function _callee(options, callback) {
       var country,
-        names,
-        space,
-        legalNames,
         firstName,
         lastName,
         data,
@@ -349,11 +356,8 @@ var stripeToken = (function() {
             switch ((_context.prev = _context.next)) {
               case 0:
                 (country = getValue("address_country")),
-                  (names = getValue("legal_name")),
-                  (space = /\s+/),
-                  (legalNames = names ? names.split(space) : []),
-                  (firstName = legalNames[0]),
-                  (lastName = legalNames[1]);
+                  (firstName = getValue("first_name")),
+                  (lastName = getValue("last_name"));
                 data = {
                   legal_entity: {
                     type: "individual"
@@ -380,14 +384,11 @@ var stripeToken = (function() {
                   },
                   personal_id_number: ["US", "CA", "HK", "SG"].includes(country)
                     ? getValue("personal_id_number")
-                    : null
+                    : null,
+                  ssn_last_4: country == "US" ? getValue("ssn_last_4") : null
                 };
 
-                if (options.update) {
-                  $.extend(data.legal_entity, address);
-                } else {
-                  $.extend(data.legal_entity, address, person);
-                }
+                $.extend(data.legal_entity, address, person);
 
                 (verificationEl = $("#stripe_account_form_document")),
                   (verify = verificationEl.length > 0),

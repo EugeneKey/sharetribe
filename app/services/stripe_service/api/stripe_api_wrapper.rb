@@ -144,7 +144,8 @@ class StripeService::API::StripeApiWrapper
             country:        account_info[:bank_country],
             account_holder_name: account_info[:bank_holder_name],
             account_holder_type: 'individual'
-          }.merge(routing)
+          }.merge(routing),
+          default_for_currency: true
         }
 
         stripe_account.external_accounts.create(data)
@@ -273,6 +274,13 @@ class StripeService::API::StripeApiWrapper
     def test_mode?(community)
       with_stripe_payment_config(community) do |payment_settings|
         Stripe.api_key =~ /^sk_test/
+      end
+    end
+
+    def delete_account(community:, account_id:)
+      with_stripe_payment_config(community) do |payment_settings|
+        account = Stripe::Account.retrieve(account_id)
+        account.delete
       end
     end
   end

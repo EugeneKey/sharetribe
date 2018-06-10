@@ -245,6 +245,7 @@ hr:
         search_by_name_email: "Tražite ime, email ili korisničko ime"
         reset_search: ~
         for_search_terms: ~
+        this_makes_the_user_an_admin: ~
       new_layout:
         new_layout: "Novi prikaz"
         description_roadmap_new: ~
@@ -268,6 +269,7 @@ hr:
         invalid_facebook_connect_id: "Client id bi trebao sadržavati samo brojeve."
         facebook_connect_secret: "Facebook client secret"
         invalid_facebook_connect_secret: "Client secret bi trebao sadržavati samo brojeve i slova od a do f."
+        enable_facebook_login: ~
         save: "Spremite postavke"
       analytics:
         analytics: Analitika
@@ -275,6 +277,10 @@ hr:
         google_analytics_key_info_text: "Praćenje IDa vašeg Google Analytics računa"
         google_analytics_key_info_text_with_instructions: "Praćenje IDa vašeg Google Analytics računa. %{instructions_link}."
         google_analytics_instructions_link_text: "Pročitajte više o povezivanju Google Analyticsa"
+        sharetribe_analytics: ~
+        sharetribe_analytics_info_text_with_instructions: ~
+        sharetribe_analytics_instructions_link_text: ~
+        end_user_analytics: ~
         save: "Spremiti postavke"
       menu_links:
         menu_links: "Linkovi izbornika"
@@ -296,6 +302,7 @@ hr:
         invalid_post_listing_button_label: "Molimo predajte ispravan tekst za \"Kreiraj novi oglas\" gumb"
       transactions:
         export_all_as_csv: "Izvezi kao CSV"
+        processing_export: ~
         transactions: "Pogledati transakcije"
         headers:
           conversation: "Tema razgovora"
@@ -354,6 +361,21 @@ hr:
           other_party: ~
         participants: ~
         profile: "%{author} profil"
+      testimonials:
+        testimonials: ~
+        no_testimonials_found: ~
+        displaying_xx_reviews: ~
+        headers:
+          transaction: ~
+          author: ~
+          receiver: ~
+          status: ~
+          grade: ~
+          note: ~
+        status:
+          waiting: ~
+          skipped: ~
+          published: ~
     custom_fields:
       edit:
         edit_listing_field: "Izmijeni oglasno polje '%{field_name}'"
@@ -611,11 +633,17 @@ hr:
         payments_not_enabled: ~
     transaction_types:
       sell: Prodaja
+      sell_w_online_payment: ~
+      sell_wo_online_payment: ~
       rent: Iznajmljivanje
+      rent_w_online_payment: ~
+      rent_wo_online_payment: ~
       give: Darivanje
       lend: Posudba
       swap: Razmjena
       service: Ponuda
+      service_w_online_payment: ~
+      service_wo_online_payment: ~
       request: Potražnja
       inquiry: ~
       share_for_free: "Besplatno dijeljenje"
@@ -675,7 +703,6 @@ hr:
     removed_user: "Uklonjeni korisnik"
     payment_fee_info:
       title: ~
-      title_paypal: ~
       stripe: ~
       paypal: ~
       info: ~
@@ -684,10 +711,6 @@ hr:
       body_text: ~
       body_text_accept: ~
       link_to_paypal_text: ovdje
-    paypal_only_fee_info:
-      title: ~
-      body_text: ~
-      link_to_paypal_text: ~
     stripe_fee_info:
       title: ~
       body_text: ~
@@ -763,6 +786,9 @@ hr:
       canceled_offer: "otkazali ponudu"
       paid: "plaćeno %{sum}"
       payment_preauthorized: ~
+      stripe:
+        held_payment: ~
+        confirmed_request: ~
     new:
       message: Poruka
       message_to: "Poruka za %{author_name}"
@@ -835,6 +861,8 @@ hr:
           intl: "Čekamo da odobrite PayPal plaćanje"
           unknown_reason: "Plaćanje je u tijeku. Ulogirjate se u vaš PayPal račun kako bi vidjeli više detalja."
           verify: "Čekamo da verificirate vaš PayPal korisnički račun"
+      stripe:
+        waiting_confirmation_from_requester: ~
     status_link:
       accept_offer: "Prihvati ponudu"
       accept_request: "Prihvati zahtjev"
@@ -904,6 +932,8 @@ hr:
       has_marked_request_as_canceled: ~
       giving_feedback_is_good_idea: "Pružanje povratne informacije je uvijek dobra ideja. Ako je sve dobro prošlo, obznanite i ostalima da je %{other_party_given_name} pouzdan partner. Ako je bilo problema u procesu, bilo bi dobro spomenuti i njih."
       give_feedback_to: "Pružite povratnu informaciju %{other_party_given_name}"
+      stripe:
+        has_marked_request_as_confirmed: ~
     transaction_automatically_confirmed:
       subject: ~
       we_have_marked_request_as_confirmed: ~
@@ -978,6 +1008,8 @@ hr:
       price_per_unit_type: ~
       quantity: ~
       you_have_received_new_payment: ~
+      stripe:
+        you_have_received_new_payment: ~
     payment_receipt_to_payer:
       receipt_of_payment: ~
       you_have_made_new_payment: ~
@@ -1015,6 +1047,8 @@ hr:
       paypal_gateway_fee: ~
       money_will_be_transferred: "Novac će biti prebačen na %{recipient_name} kada a) označite zahtjev kao dovršen ili b) %{automatic_confirmation_days} dana je prošlo otkad ste platili."
       listing_per_unit_title: ~
+      stripe:
+        you_have_made_new_payment: ~
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name} vam je ostavio povratnu informaciju u %{service_name}"
       you_can_give_feedback_to: "Niste još ocijenili %{name}."
@@ -1102,6 +1136,8 @@ hr:
       reject_authorization_error: "Greška se dogodila prilikom pokušaja otkazivanja preautoriziranog PayPal plaćanja. Molimo pokušajte ponovno."
     stripe:
       generic_error: ~
+      accept_authorization_error: ~
+      reject_authorization_error: ~
   error_pages:
     back_to_kassi_front_page: "Natrag na naslovnu stranicu"
     error_404:
@@ -1498,6 +1534,7 @@ hr:
         many: "Web stranica ce biti nedostupna zbog održavanja u roku od %{count}minuta"
         other: "Web stranica ce biti nedostupna zbog održavanja u roku od %{count} minuta"
       automatically_logged_out_please_sign_in: "Automatski ste odjavljeni. Molimo ponovno se prijavite."
+      stripe_you_account_balance_is_not_0: ~
     settings:
       account: "Korisnički račun"
       notifications: Obavijesti
@@ -1603,10 +1640,7 @@ hr:
         no_service_fee_you_will_get_paypal_text: ~
         no_service_fee_you_will_get_payment_text: ~
         after_service_fee_you_will_get_payment_text: ~
-        after_service_fee_you_will_get_paypal_text: ~
-        after_service_fee_you_will_get_stripe_text: ~
         payment_fee_info_link_text: ~
-        paypal_fee_info_link_text: ~
         delivery: "Način dostave"
         shipping: Isporuka
         shipping_price: "Naknada za isporuku"
@@ -1916,7 +1950,8 @@ hr:
       invalid_username_or_email: ~
       family_name: Prezime
       given_name: Ime
-      i_accept_the: Prihvaćam
+      i_accept_the_terms_and_privacy: ~
+      admin_emails_consent: ~
       invalid_invitation_code: "Kod pozivnice nije točan."
       invitation_code: "Kod pozivnice"
       not_required: ", nije potrebno"
@@ -1925,6 +1960,7 @@ hr:
       show_my_name_to_others: "Pokažite moje prave ime prema %{service_name} korisnicima"
       sign_up: "Kreirajte novi %{service_name} korisnički račun"
       terms: "Uvjeti korištenja"
+      privacy: ~
       username_is_in_use: "Korisničko ime je već u upotrebi."
       username_is_invalid: "Korisničko ime je neispravno. Dozvoljeni znakovi su slova, brojevi i donja crta."
       visible_only_to_you: ~
@@ -2029,6 +2065,7 @@ hr:
       delete_personal_information: "Ako izbrišete svoj račun, vaše osobne informacije (ime, broj telefona, adresa, email, profilna slika i slično) će biti zauvijek izbrisane i neće se moći povratiti. Svi oglasi koje ste postavili će biti uklonjeni. Nećete moći ponovno aktivirati vaš račun."
       delete_information_others_involved: "Informacije u koje su uključeni ostali članovi (razgovori sa drugim ljudima, dovršene transakcije, recenzije koje ste dali drugima i slično) neće biti uklonjene kada izbrišete svoj račun. Iako, vaše ime neće više biti vidljivo do ovih informacija."
       unfinished_transactions: "Vaš račun ne može biti izbrisan jer imate transakcije u tijeku. Molimo dovršite sve transakcije prije brisanja vašeg računa."
+      only_admin: ~
       new_password: "Nova lozinka"
       save: Spremiti
       these_fields_are_shown_only_to_you: "Korisničko ime je prikazano u Vašem profilu osim ako niste upisali Vaše ime. Ostale informacije su prikazane samo Vama."
@@ -2322,12 +2359,15 @@ hr:
       need_info: ~
       select_country: ~
       legal_name: ~
+      first_name: ~
+      last_name: ~
       country: ~
       birth_date: ~
       ssn_last_4: ~
       personal_id_number: ~
       address_country: ~
       address_state: ~
+      address_province: ~
       address_city: ~
       address_postal_code: ~
       address_line1: ~
@@ -2342,6 +2382,7 @@ hr:
       bank_routing_1: ~
       bank_routing_2: ~
       bank_currency: ~
+      update_also_bank_account: ~
       messages:
         account_number: ~
         routing_number: ~
@@ -2366,6 +2407,7 @@ hr:
     form_pin:
       social_insurance_number: ~
       social_security_number: ~
+      ssn_last_4: ~
       hong_kong_identity_card: ~
       singapore_identity_card: ~
       messages:

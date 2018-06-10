@@ -85,6 +85,11 @@ FactoryGirl.define do
   end
 
   factory :person, aliases: [:author, :receiver, :recipient, :payer, :sender, :follower] do
+    transient do
+      member_of nil
+      member_is_admin false
+    end
+
     id
     is_admin 0
     community_id 1
@@ -98,6 +103,13 @@ FactoryGirl.define do
 
     has_many :emails do |person|
       FactoryGirl.build(:email, person: person)
+    end
+
+    after(:create) do |person, evaluator|
+      if evaluator.member_of
+        person.create_community_membership(community: evaluator.member_of,
+                                           admin: evaluator.member_is_admin)
+      end
     end
   end
 
@@ -129,6 +141,10 @@ FactoryGirl.define do
     community_uuid { community.uuid } # raw UUID
     starter_uuid { starter.uuid } # raw UUID
     listing_author_uuid { listing.author.uuid } # raw UUID
+    payment_process :none
+    delivery_method "none"
+    payment_gateway :none
+    availability "none"
   end
 
   factory :conversation do
@@ -189,6 +205,7 @@ FactoryGirl.define do
     slogan "Test slogan"
     description "Test description"
     currency "EUR"
+    build_association(:marketplace_configurations, as: :configuration)
 
     has_many(:community_customizations) do |community|
       FactoryGirl.build(:community_customization, community: community)
@@ -368,6 +385,7 @@ FactoryGirl.define do
   end
 
   factory :transaction_process do
+    community_id     1
     process          'preauthorize'
     author_is_seller true
   end
@@ -451,5 +469,26 @@ FactoryGirl.define do
     billing_agreement_id  'zzz'
     paypal_username_to    'eloise.smith'
     request_token         'ddd'
+  end
+
+  factory :stripe_payment do
+    community_id      123
+    transaction_id    321
+    payer_id          "AAA"
+    receiver_id       "BBB"
+    status            "paid"
+    sum_cents         200
+    commission_cents  100
+    currency          "EUR"
+    stripe_charge_id  "CCC"
+    stripe_transfer_id nil
+    fee_cents         0
+    real_fee_cents    31
+    subtotal_cents    200
+  end
+
+  factory :stripe_account do
+    community_id      123
+    person_id         "ABC"
   end
 end

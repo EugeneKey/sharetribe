@@ -14,8 +14,8 @@ class AutomaticBookingConfirmationJob < ActiveJob::Base
 
   def perform(transaction, user, community)
 
-    if MarketplaceService::Transaction::Query.can_transition_to?(transaction.id, :confirmed)
-      MarketplaceService::Transaction::Command.transition_to(transaction.id, :confirmed)
+    if TransactionService::StateMachine.can_transition_to?(transaction.id, :confirmed)
+      TransactionService::StateMachine.transition_to(transaction.id, :confirmed)
       MailCarrier.deliver_now(PersonMailer.booking_transaction_automatically_confirmed(transaction, community))
     end
   end

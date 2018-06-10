@@ -251,6 +251,7 @@ pt-PT:
         search_by_name_email: ~
         reset_search: ~
         for_search_terms: ~
+        this_makes_the_user_an_admin: ~
       new_layout:
         new_layout: ~
         description_roadmap_new: ~
@@ -274,6 +275,7 @@ pt-PT:
         invalid_facebook_connect_id: ~
         facebook_connect_secret: ~
         invalid_facebook_connect_secret: ~
+        enable_facebook_login: ~
         save: ~
       analytics:
         analytics: ~
@@ -281,6 +283,10 @@ pt-PT:
         google_analytics_key_info_text: ~
         google_analytics_key_info_text_with_instructions: ~
         google_analytics_instructions_link_text: ~
+        sharetribe_analytics: ~
+        sharetribe_analytics_info_text_with_instructions: ~
+        sharetribe_analytics_instructions_link_text: ~
+        end_user_analytics: ~
         save: ~
       menu_links:
         menu_links: ~
@@ -302,6 +308,7 @@ pt-PT:
         invalid_post_listing_button_label: ~
       transactions:
         export_all_as_csv: ~
+        processing_export: ~
         transactions: ~
         headers:
           conversation: ~
@@ -360,6 +367,21 @@ pt-PT:
           other_party: ~
         participants: ~
         profile: ~
+      testimonials:
+        testimonials: ~
+        no_testimonials_found: ~
+        displaying_xx_reviews: ~
+        headers:
+          transaction: ~
+          author: ~
+          receiver: ~
+          status: ~
+          grade: ~
+          note: ~
+        status:
+          waiting: ~
+          skipped: ~
+          published: ~
     custom_fields:
       edit:
         edit_listing_field: "Alterar anúncio '%{field_name}'"
@@ -629,11 +651,17 @@ pt-PT:
         payments_not_enabled: ~
     transaction_types:
       sell: ~
+      sell_w_online_payment: ~
+      sell_wo_online_payment: ~
       rent: ~
+      rent_w_online_payment: ~
+      rent_wo_online_payment: ~
       give: ~
       lend: ~
       swap: ~
       service: ~
+      service_w_online_payment: ~
+      service_wo_online_payment: ~
       request: ~
       inquiry: ~
       share_for_free: ~
@@ -693,7 +721,6 @@ pt-PT:
     removed_user: "Utilizador removido"
     payment_fee_info:
       title: ~
-      title_paypal: ~
       stripe: ~
       paypal: ~
       info: ~
@@ -701,10 +728,6 @@ pt-PT:
       title: ~
       body_text: ~
       body_text_accept: ~
-      link_to_paypal_text: ~
-    paypal_only_fee_info:
-      title: ~
-      body_text: ~
       link_to_paypal_text: ~
     stripe_fee_info:
       title: ~
@@ -781,6 +804,9 @@ pt-PT:
       canceled_offer: ~
       paid: ~
       payment_preauthorized: ~
+      stripe:
+        held_payment: ~
+        confirmed_request: ~
     new:
       message: Mensagem
       message_to: ~
@@ -853,6 +879,8 @@ pt-PT:
           intl: ~
           unknown_reason: ~
           verify: ~
+      stripe:
+        waiting_confirmation_from_requester: ~
     status_link:
       accept_offer: "Aceitar oferta"
       accept_request: "Aceitar pedido"
@@ -918,10 +946,12 @@ pt-PT:
       here_is_a_message_from: ~
       request_marked_as_confirmed: "Ordem concluída - não se esqueça de dar feedback"
       request_marked_as_canceled: "Ordem cancelada"
-      has_marked_request_as_confirmed: ~
+      has_marked_request_as_confirmed: "%{other_party_full_name} marcou a ordem de '%{request}' como terminada. Já pode dar o seu feedback a %{other_party_given_name}."
       has_marked_request_as_canceled: ~
       giving_feedback_is_good_idea: ~
       give_feedback_to: ~
+      stripe:
+        has_marked_request_as_confirmed: "%{other_party_full_name} marcou a ordem de '%{request}' como terminada. O pagamento por esta ordem será agora transferido para a sua conta bancária. Já pode dar o seu feedback a %{other_party_given_name}."
     transaction_automatically_confirmed:
       subject: ~
       we_have_marked_request_as_confirmed: ~
@@ -996,6 +1026,8 @@ pt-PT:
       price_per_unit_type: ~
       quantity: ~
       you_have_received_new_payment: ~
+      stripe:
+        you_have_received_new_payment: ~
     payment_receipt_to_payer:
       receipt_of_payment: ~
       you_have_made_new_payment: ~
@@ -1033,6 +1065,8 @@ pt-PT:
       paypal_gateway_fee: ~
       money_will_be_transferred: ~
       listing_per_unit_title: ~
+      stripe:
+        you_have_made_new_payment: ~
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name} deu-lhe uma opinião sobre %{service_name}"
       you_can_give_feedback_to: "Ainda não deu uma opinião a %{name}"
@@ -1120,6 +1154,8 @@ pt-PT:
       reject_authorization_error: ~
     stripe:
       generic_error: ~
+      accept_authorization_error: ~
+      reject_authorization_error: ~
   error_pages:
     back_to_kassi_front_page: "Voltar à pagina inicial"
     error_404:
@@ -1510,6 +1546,7 @@ pt-PT:
       listing_author_payment_details_missing: ~
       images_are_processing: "Estamos a processar as suas imagens. Estarão visíveis dentro de um ou dois minutos."
       automatically_logged_out_please_sign_in: ~
+      stripe_you_account_balance_is_not_0: ~
     settings:
       account: Conta
       notifications: "Notificações "
@@ -1615,10 +1652,7 @@ pt-PT:
         no_service_fee_you_will_get_paypal_text: ~
         no_service_fee_you_will_get_payment_text: ~
         after_service_fee_you_will_get_payment_text: ~
-        after_service_fee_you_will_get_paypal_text: ~
-        after_service_fee_you_will_get_stripe_text: ~
         payment_fee_info_link_text: ~
-        paypal_fee_info_link_text: ~
         delivery: ~
         shipping: ~
         shipping_price: ~
@@ -1931,7 +1965,8 @@ pt-PT:
         other: "O acesso ao %{service_name} é restrito. Precisa de um endereço de email que mostre que está autorizado a aderir."
       family_name: Apelido
       given_name: Nome
-      i_accept_the: "Aceito os"
+      i_accept_the_terms_and_privacy: ~
+      admin_emails_consent: ~
       invalid_invitation_code: "O código de convite não é válido."
       invitation_code: "Código de convite"
       not_required: ", não necessaria"
@@ -1940,6 +1975,7 @@ pt-PT:
       show_my_name_to_others: "Mostrar o meu nome completo aos utilizadores do %{service_name}"
       sign_up: "Criar uma conta no %{service_name}"
       terms: "Termos de utilização"
+      privacy: ~
       username_is_in_use: "Este nome de utilizador já está em uso."
       username_is_invalid: "Nome de utilizador é inválido. Os caracteres permitidos são letras, números e sublinhado."
       visible_only_to_you: "visível apenas para si e para o administrador do mercado virtual"
@@ -2044,6 +2080,7 @@ pt-PT:
       delete_personal_information: "Se apagar a sua conta, as suas informações pessoais (nome, número de telefone, endereço, email, foto do perfil, etc.) serão apagadas permanentemente e não poderão ser recuperadas. Todos os anúncios que criou serão removidos. Não será possível reativar a conta."
       delete_information_others_involved: "Informação em que outros membros estejam envolvidos (conversas com outras pessoas, transações que realizou, avaliações que tenha feito dos outros, etc) não será removida quando apagar a sua conta. No entanto, o seu nome não aparecerá mais junto dessa informação."
       unfinished_transactions: ~
+      only_admin: ~
       new_password: "Nova palavra-passe"
       save: Salvar
       these_fields_are_shown_only_to_you: "Seu nome de utilizador é mostrado no seu perfil a menos que você tenha dado o seu nome. Outras informações só é mostrado a você."
@@ -2345,12 +2382,15 @@ pt-PT:
       need_info: ~
       select_country: ~
       legal_name: ~
+      first_name: ~
+      last_name: ~
       country: ~
       birth_date: ~
       ssn_last_4: ~
       personal_id_number: ~
       address_country: ~
       address_state: ~
+      address_province: ~
       address_city: ~
       address_postal_code: ~
       address_line1: ~
@@ -2365,6 +2405,7 @@ pt-PT:
       bank_routing_1: ~
       bank_routing_2: ~
       bank_currency: ~
+      update_also_bank_account: ~
       messages:
         account_number: ~
         routing_number: ~
@@ -2389,17 +2430,18 @@ pt-PT:
     form_pin:
       social_insurance_number: ~
       social_security_number: ~
+      ssn_last_4: ~
       hong_kong_identity_card: ~
       singapore_identity_card: ~
       messages:
         social_insurance_number: ~
   payment_settings:
-    title: ~
+    title: "Preferências de pagamento"
     bank_account: ~
     paypal: ~
     bank_account_details: ~
     add_bank_details: ~
-    can_accept_stripe_and_paypal: ~
+    can_accept_stripe_and_paypal: "Pode receber dinheiro na sua conta bancária ou na sua conta PayPal."
     to_accept_paypal: ~
     connect_paypal: ~
     wrong_setup: ~

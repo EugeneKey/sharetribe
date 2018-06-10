@@ -255,6 +255,7 @@ th-TH:
         search_by_name_email: ~
         reset_search: ~
         for_search_terms: ~
+        this_makes_the_user_an_admin: ~
       new_layout:
         new_layout: ~
         description_roadmap_new: ~
@@ -278,6 +279,7 @@ th-TH:
         invalid_facebook_connect_id: รหัสลูกค้าควรมีแต่ตัวเลขเท่านั้น
         facebook_connect_secret: "รหัสลับของลูกค้า Facebook"
         invalid_facebook_connect_secret: "รหัสลับลูกค้าควรมีเฉพาะตัวเลขและตัวอักษรจาก A ถึง F"
+        enable_facebook_login: ~
         save: บันทึกการตั้งค่า
       analytics:
         analytics: การวิเคราะห์ข้อมูลหรือสถิติ
@@ -285,6 +287,10 @@ th-TH:
         google_analytics_key_info_text: "รหัสการติดตามของบัญชี Google Analytics"
         google_analytics_key_info_text_with_instructions: ~
         google_analytics_instructions_link_text: ~
+        sharetribe_analytics: ~
+        sharetribe_analytics_info_text_with_instructions: ~
+        sharetribe_analytics_instructions_link_text: ~
+        end_user_analytics: ~
         save: บันทึกการตั้งค่า
       menu_links:
         menu_links: ลิงค์เมนู
@@ -306,6 +312,7 @@ th-TH:
         invalid_post_listing_button_label: ~
       transactions:
         export_all_as_csv: ~
+        processing_export: ~
         transactions: แสดงรายการทางบัญชี
         headers:
           conversation: บทสนทนา
@@ -364,6 +371,21 @@ th-TH:
           other_party: ~
         participants: ~
         profile: ~
+      testimonials:
+        testimonials: ~
+        no_testimonials_found: ~
+        displaying_xx_reviews: ~
+        headers:
+          transaction: ~
+          author: ~
+          receiver: ~
+          status: ~
+          grade: ~
+          note: ~
+        status:
+          waiting: ~
+          skipped: ~
+          published: ~
     custom_fields:
       edit:
         edit_listing_field: "แก้ไขข้อมูลรายการ '%{field_name}'"
@@ -625,11 +647,17 @@ th-TH:
         payments_not_enabled: ~
     transaction_types:
       sell: ขาย
+      sell_w_online_payment: ~
+      sell_wo_online_payment: ~
       rent: ให้เช่า
+      rent_w_online_payment: ~
+      rent_wo_online_payment: ~
       give: ให้เปล่า
       lend: ให้ยืม
       swap: แลก
       service: ให้ข้อเสนอ
+      service_w_online_payment: ~
+      service_wo_online_payment: ~
       request: ต้องการ
       inquiry: ประกาศ
       share_for_free: แบ่งปันฟรี
@@ -689,7 +717,6 @@ th-TH:
     removed_user: ~
     payment_fee_info:
       title: ~
-      title_paypal: ~
       stripe: ~
       paypal: ~
       info: ~
@@ -699,10 +726,6 @@ th-TH:
           PayPal คิดค่าธรรมเนียมในการประมวลผลจากการชำระเงินแต่ละครั้ง ค่าธรรมเนียมนี้อยู่ระหว่าง 2% และ 5% ของราคาขายทั้งหมด (รวมค่าจัดส่ง) ขึ้นอยู่กับปริมาณการขายรายเดือนของคุณ และประเทศที่พำนักของผู้ซื้อ โดยทั่วไป การซื้อสินค้าในประเทศมีค่าใช้จ่ายต่ำกว่าต่างประเทศ และยิ่งยอดขายรายเดือนสูงเท่าไหร่ ส่วนลดค่าธรรมเนียมก็จะน้อยลงตามสัดส่วน
           คุณสามารถดูค่าธรรมเนียมที่ถูกต้อง โดยการเข้าสู่บัญชี PayPal ของคุณ และไปยัง %{link_to_paypal} หลังจากการซื้อขายแต่ละครั้ง คุณจะได้รับใบเสร็จรับเงินแสดงค่าธรรมเนียมในแต่ละรายการ
       body_text_accept: ~
-      link_to_paypal_text: ~
-    paypal_only_fee_info:
-      title: ~
-      body_text: ~
       link_to_paypal_text: ~
     stripe_fee_info:
       title: ~
@@ -779,6 +802,9 @@ th-TH:
       canceled_offer: ยกเลิกข้อเสนอ
       paid: "ชำระเงิน %{sum}"
       payment_preauthorized: "การชำระเงินได้รับอนุญาตแล้ว: %{sum}"
+      stripe:
+        held_payment: ~
+        confirmed_request: ~
     new:
       message: ข้อความ
       message_to: "ข้อความถึง %{author_name}"
@@ -851,6 +877,8 @@ th-TH:
           intl: "กำลังรอให้คุณยอมรับการชำระเงิน PayPal"
           unknown_reason: ~
           verify: "กำลังรอให้คุณตรวจสอบบัญชี PayPal ของคุณ"
+      stripe:
+        waiting_confirmation_from_requester: ~
     status_link:
       accept_offer: ยอมรับข้อเสนอ
       accept_request: ตอบรับออเดอร์
@@ -920,6 +948,8 @@ th-TH:
       has_marked_request_as_canceled: "%{other_party_full_name}ได้ยกเลิกเกี่ยวกับ%{request} คุณยังคงสามารถให้ความคิดเห็นแก่%{other_party_given_name}ได้"
       giving_feedback_is_good_idea: "การให้ข้อเสนอแนะมักเป็นสิ่งที่ดี หากทุกอย่างเป็นไปด้วยดี คุณควรช่วยให้คนอื่นรู้ว่า %{other_party_given_name} สามารถเชื่อถือได้ หากมีปัญหาใด ๆ ก็การดีที่จะพูดถึง ปัญหาเหล่านั้นเช่นกัน"
       give_feedback_to: "ให้ความคิดเห็นแก่%{other_party_given_name}"
+      stripe:
+        has_marked_request_as_confirmed: ~
     transaction_automatically_confirmed:
       subject: "การสั่งซื้อเสร็จสมบูรณ์โดยอัตโนมัติ - อย่าลืมที่จะให้ความคิดเห็น"
       we_have_marked_request_as_confirmed: "เราได้ทำเครื่องหมายในการสั่งซื้อ '%{request}' เสร็จแล้ว การสั่งซื้อเสร็จสมบูรณ์โดยอัตโนมัติเนื่องจากผ่านมาแล้ว %{days_passed} วันนับตั้งแต่คำขอได้รับการยอมรับ"
@@ -994,6 +1024,8 @@ th-TH:
       price_per_unit_type: ~
       quantity: ~
       you_have_received_new_payment: ~
+      stripe:
+        you_have_received_new_payment: ~
     payment_receipt_to_payer:
       receipt_of_payment: ~
       you_have_made_new_payment: ~
@@ -1031,6 +1063,8 @@ th-TH:
       paypal_gateway_fee: ~
       money_will_be_transferred: "เงินจะถูกโอนไปยัง %{recipient_name} เมื่อ ก.) คุณได้ทำเครื่องหมายให้คำขอเสร็จสมบูรณ์ หรือ ข.) คุณจ่ายเงินมาแล้ว %{automatic_confirmation_days} วัน"
       listing_per_unit_title: ~
+      stripe:
+        you_have_made_new_payment: ~
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name} ได้ให้ข้อเสนอแนะแก่คุณใน %{service_name}"
       you_can_give_feedback_to: "คุณยังไม่ได้ให้ข้อเสนอแนะแก่ %{name}"
@@ -1118,6 +1152,8 @@ th-TH:
       reject_authorization_error: ~
     stripe:
       generic_error: ~
+      accept_authorization_error: ~
+      reject_authorization_error: ~
   error_pages:
     back_to_kassi_front_page: กลับไปหน้าแรก
     error_404:
@@ -1508,6 +1544,7 @@ th-TH:
       listing_author_payment_details_missing: "โปรดติดต่อผู้ขายโดยการกดปุ่ม 'ติดต่อ' ด้านล่าง ผู้ขายจำเป็นต้องอัพเดทรายละเอียดการชำระเงินของตนเพื่อที่จะรับเงิน"
       images_are_processing: ~
       automatically_logged_out_please_sign_in: "คุณใช้งานเกินระยะเวลาที่กำหนด โปรดเข้าสู่ระบบอีกครั้งเพื่อดำเนินการต่อ"
+      stripe_you_account_balance_is_not_0: ~
     settings:
       account: บัญชี
       notifications: แจ้งเตือน
@@ -1613,10 +1650,7 @@ th-TH:
         no_service_fee_you_will_get_paypal_text: ~
         no_service_fee_you_will_get_payment_text: ~
         after_service_fee_you_will_get_payment_text: ~
-        after_service_fee_you_will_get_paypal_text: "ค่าบริการของ %{service_name} (%{sum_with_currency}) และ %{paypal_fee_info_link} จะถูกหักออกจากราคานี้"
-        after_service_fee_you_will_get_stripe_text: ~
         payment_fee_info_link_text: ~
-        paypal_fee_info_link_text: "ค่าดำเนินการของ PayPal"
         delivery: วิธีการส่งสินค้า
         shipping: จัดส่ง
         shipping_price: ค่าจัดส่ง
@@ -1928,7 +1962,8 @@ th-TH:
         other: "การเข้าถึงไปยัง %{service_name} ถูกจำกัด  คุณจำเป็นต้องมีที่อยู่อีเมล '%{allowed_emails}' เพื่อที่จะเข้าร่วม"
       family_name: นามสกุล
       given_name: ชื่อ
-      i_accept_the: ฉันยอมรับ
+      i_accept_the_terms_and_privacy: ~
+      admin_emails_consent: ~
       invalid_invitation_code: รหัสเชิญไม่ถูกต้อง
       invitation_code: รหัสเชิญ
       not_required: ", ไม่จำเป็น"
@@ -1937,6 +1972,7 @@ th-TH:
       show_my_name_to_others: "แสดงชื่อจริงของฉันแก่ผู้ใช้ %{service_name}"
       sign_up: "สร้างบัญชีใหม่ใน %{service_name}"
       terms: ข้อกำหนดการใช้งาน
+      privacy: ~
       username_is_in_use: ชื่อผู้ใช้ได้ถูกใช้ไปแล้ว
       username_is_invalid: "ชื่อผู้ใช้ไม่ถูกต้อง ตัวอักษร ตัวเลข และเส้นใต้เท่านั้นที่สามารถใช้ได้"
       visible_only_to_you: "ปรากฎให้เห็นเฉพาะกับคุณ และผู้ดูแลระบบตลาด"
@@ -2041,6 +2077,7 @@ th-TH:
       delete_personal_information: "หากคุณลบบัญชีของคุณ ข้อมูลส่วนบุคคลของคุณ (ชื่อ , หมายเลขโทรศัพท์, ที่อยู่, อีเมล์, ภาพโปรไฟล์ ฯลฯ) จะถูกลบออกอย่างถาวร และไม่สามารถกู้คืนได้ รายการทั้งหมดที่คุณได้สร้างขึ้นจะถูกลบออก คุณจะไม่สามารถเปิดใช้งานบัญชีของคุณได้อีก"
       delete_information_others_involved: "ข้อมูลที่สมาชิกคนอื่น ๆ มีส่วนเกี่ยวข้อง (บทสนทนากับคนอื่น ๆ, การทำธุรกรรมที่คุณได้ทำ, ความเห็นที่คุณให้กับคนอื่น ๆ ฯลฯ) จะไม่ถูกลบ เมื่อคุณลบบัญชีของคุณ อย่างไรก็ตาม ชื่อของคุณจะไม่ถูกแสดง ในข้อมูลเหล่านั้น"
       unfinished_transactions: ~
+      only_admin: ~
       new_password: รหัสผ่านใหม่
       save: บันทึก
       these_fields_are_shown_only_to_you: "ชื่อผู้ใช้จะปรากฏในโปรไฟล์ของคุณ นอกจากคุณจะให้ชื่อของคุณเอง ข้อมูลอื่น ๆ จะแสดงให้เห็นเฉพาะกับคุณ"
@@ -2348,12 +2385,15 @@ th-TH:
       need_info: ~
       select_country: ~
       legal_name: ~
+      first_name: ~
+      last_name: ~
       country: ~
       birth_date: ~
       ssn_last_4: ~
       personal_id_number: ~
       address_country: ~
       address_state: ~
+      address_province: ~
       address_city: ~
       address_postal_code: ~
       address_line1: ~
@@ -2368,6 +2408,7 @@ th-TH:
       bank_routing_1: ~
       bank_routing_2: ~
       bank_currency: ~
+      update_also_bank_account: ~
       messages:
         account_number: ~
         routing_number: ~
@@ -2392,6 +2433,7 @@ th-TH:
     form_pin:
       social_insurance_number: ~
       social_security_number: ~
+      ssn_last_4: ~
       hong_kong_identity_card: ~
       singapore_identity_card: ~
       messages:

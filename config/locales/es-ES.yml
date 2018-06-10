@@ -260,6 +260,7 @@ es-ES:
         search_by_name_email: "Buscar por nombre, dirección o nombre personalizado"
         reset_search: "Mostrar todos"
         for_search_terms: "relacionados con: %{terms}"
+        this_makes_the_user_an_admin: "Esto hará a este usuario un administrador. Deberías de dejarle saber sus responsabilidades y pedirle que revisen los términos de uso de Sharetribe al igual que los de tu marketplace. ¿Estás seguro de querer continuar?"
       new_layout:
         new_layout: "Nuevo diseño"
         description_roadmap_new: "Cuando hay nuevos componentes de diseño disponibles, puedes elegir entre usar un nuevo componente o continuar usando el viejo. Puedes cambiar la selección en cualquier momento, en esta pagina. Es recomendable siempre usar el componente más nuevo, ya que los componentes viejos podrán ser removidos en el futuro. En caso de que estés usando algún componente que vayamos a remover, te contactaremos por adelantado."
@@ -283,6 +284,7 @@ es-ES:
         invalid_facebook_connect_id: "La ID de cliente debe incluir sólo números"
         facebook_connect_secret: "Facebook client secret"
         invalid_facebook_connect_secret: "Client secret debe incluir sólo números y letras desde la A a la F."
+        enable_facebook_login: "Permitir a los usuarios conectarse con su cuenta de Facebook"
         save: "Guardar configuración"
       analytics:
         analytics: Analytics
@@ -290,6 +292,10 @@ es-ES:
         google_analytics_key_info_text: "Tracking ID de tu cuenta de Google Analytics."
         google_analytics_key_info_text_with_instructions: "Tracking ID de tu cuenta de Google Analytics.%{instructions_link}"
         google_analytics_instructions_link_text: "Leer más sobre la conexión con Google Analytics."
+        sharetribe_analytics: "Análisis de Sharetribe"
+        sharetribe_analytics_info_text_with_instructions: "Para mejorar los servicios y el soporte de Sharetribe, rastreamos la actividad de los miembros del marketplace. No recolectamos información personal y no compartimos la información que obtenemos del rastreo afuera del equipo de Sharetribe. Este rastreo se puede deshabilitar por completo. %{instructions_link}"
+        sharetribe_analytics_instructions_link_text: "Leer más acerca de los análisis de Sharetribe"
+        end_user_analytics: "Permitir a Sharetribe el rastrear la actividad de los miembros para poder mejorar los servicios de Sharetribe"
         save: "Guardar configuración"
       menu_links:
         menu_links: "Menú de enlaces"
@@ -311,6 +317,7 @@ es-ES:
         invalid_post_listing_button_label: "Proporciona un texto válido para el botón de \"Publicar Anuncio\""
       transactions:
         export_all_as_csv: "Exportar todos en formato CSV"
+        processing_export: "Procesando la exportación a CSV..."
         transactions: "Ver transacciones"
         headers:
           conversation: Conversación
@@ -369,6 +376,21 @@ es-ES:
           other_party: "Otro usuario"
         participants: "Conversación: %{starter} con %{author}"
         profile: "Perfil de %{author}"
+      testimonials:
+        testimonials: "Ver reseñas"
+        no_testimonials_found: "No hay feedback"
+        displaying_xx_reviews: "Mostrando <b>%{count}</b> feedbacks en las transacciones %{tx_from} - %{tx_to} de <b>%{all_count}</b> feedbacks en total"
+        headers:
+          transaction: Transacción
+          author: Autor
+          receiver: Receptor
+          status: Estatus
+          grade: Calificación
+          note: Texto
+        status:
+          waiting: "Esperando reseña"
+          skipped: Omitida
+          published: Publicada
     custom_fields:
       edit:
         edit_listing_field: "Editar campo '%{field_name}'"
@@ -642,11 +664,17 @@ es-ES:
         payments_not_enabled: "Pagos en línea no están habilitados para tu comunidad"
     transaction_types:
       sell: Venta
+      sell_w_online_payment: "Venta con pagos en línea"
+      sell_wo_online_payment: "Venta sin pagos en línea"
       rent: Alquilando
+      rent_w_online_payment: "Renta con pagos en línea"
+      rent_wo_online_payment: "Renta sin pagos en línea"
       give: Regalando
       lend: Prestando
       swap: Intercambio
       service: Oferta
+      service_w_online_payment: "Oferta con pagos en línea"
+      service_wo_online_payment: "Oferta sin pagos en línea"
       request: Solicitando
       inquiry: Anuncio
       share_for_free: "Compartido gratuitamente"
@@ -705,29 +733,22 @@ es-ES:
     what_is_this: "¿Qué es esto?"
     removed_user: "Usuario eliminado"
     payment_fee_info:
-      title: "Cuota de procesamiento de pago"
-      title_paypal: "Cuota de procesamiento de PayPal"
+      title: "Comisión y cuota de procesamiento de pago"
       stripe: Stripe
       paypal: PayPal
-      info: "Los pagos en %{service_name} son procesados por Stripe o PayPal. Cualquiera de los dos sistemas cobra una cuota por cada pago."
+      info: "Los pagos en %{service_name} son procesados la plataforma de pagos que se nombra abajo. %{service_name} cobra una comisión que depende de la plataforma usada. La plataforma de pagos puede cobrar una comisión adicional."
     paypal_fee_info:
       title: "Comisión de procesamiento de pago de PayPal"
       body_text: |-
-          Para pagos con PayPal, %{service_name} cobra una comisión de %{paypal_commission}%. Las cuotas adicionales de PayPal no están incluidas en esta comisión, así que además de la comisión de %{service_name}, también deberás pagar las cuota de PayPal por cada pago procesado por PayPal. Esta cuota es de entre el 2% y el 5% del precio total de venta, dependiendo del volumen total de ventas y del país de residencia del comprador. En general, las cuotas para pagos domésticos son menores que para pagos internacionales y un mayor volumen de ventas te da descuentos en las cuotas.
+          Para pagos con PayPal, %{service_name} cobra una comisión de %{paypal_commission}%. La cuota mínima por transacción es %{minimum_transaction_fee}. Las cuotas adicionales de PayPal no están incluidas en esta comisión, así que además de la comisión de %{service_name}, también deberás pagar las cuota de PayPal por cada pago procesado por PayPal. Esta cuota es de entre el 2% y el 5% del precio total de venta, dependiendo del volumen total de ventas y del país de residencia del comprador. En general, las cuotas para pagos domésticos son menores que para pagos internacionales y un mayor volumen de ventas te da descuentos en las cuotas.
           Puedes ver las cuotas exactas al conectarte a tu cuenta de PayPal y yendo a %{link_to_paypal}. Después de cada venta recibirás un recibo con la cuota exacta.
       body_text_accept: |-
           Esta transacción será procesada por PayPal. PayPal cobra una cuota de procesamiento por cada pago. Esta cuota es de entre el 2% y el 5% del precio total de venta, dependiendo del volumen total de ventas y del país de residencia del comprador. En general, las cuotas para pagos domésticos son menores que para pagos internacionales y un mayor volumen de ventas te da descuentos en las cuotas.
           Puedes ver las cuotas exactas al conectarte a tu cuenta de PayPal y yendo a %{link_to_paypal}. Después de cada venta recibirás un recibo con la cuota exacta.
       link_to_paypal_text: aquí
-    paypal_only_fee_info:
-      title: "Cuota de procesamiento de pago de PayPal"
-      body_text: |-
-          Los pagos en %{service_name} son procesados por PayPal. PayPal cobra una cuota de procesamiento por cada pago. Esta cuota es de entre el 2% y el 5% del precio total de venta, dependiendo del volumen total de ventas y del país de residencia del comprador. En general, las cuotas para pagos domésticos son menores que para pagos internacionales y un mayor volumen de ventas te da descuentos en las cuotas.
-          Puedes ver las cuotas exactas al conectarte a tu cuenta de PayPal y yendo a %{link_to_paypal}. Después de cada venta recibirás un recibo con la cuota exacta.
-      link_to_paypal_text: aquí
     stripe_fee_info:
       title: "Cuota de procesamiento de pago de Stripe"
-      body_text: "Para pagos por medio de Stripe, %{service_name} carga una cuota de %{stripe_commission}%. Las cuotas de Stripe están incluidas en esta cuota/comisión."
+      body_text: "Para pagos por medio de Stripe, %{service_name} cobra una comisión de %{stripe_commission}%. La cuota mínima por transacción es de %{minimum_transaction_fee}. Las cuotas de Stripe están incluidas en esta cuota/comisión."
       link_to_stripe_text: aquí
   conversations:
     accept:
@@ -800,6 +821,9 @@ es-ES:
       canceled_offer: "canceló la oferta"
       paid: "pagó %{sum}"
       payment_preauthorized: "Pago autorizado: %{sum}"
+      stripe:
+        held_payment: "Aceptó la transacción. El pago por %{sum} está siendo guardado por %{service_name} hasta que la orden sea marcada como completada."
+        confirmed_request: "Marcó la orden como completada. El dinero ha sido transferido a la cuenta de banco de %{author_name} or será transferido pronto."
     new:
       message: Mensaje
       message_to: "Mensaje para %{author_name}"
@@ -872,6 +896,8 @@ es-ES:
           intl: "Estamos esperando a que aceptes el pago de PayPal"
           unknown_reason: "El pago está pendiente. Conéctate a tu cuenta de PayPal para ver más detalles."
           verify: "Estamos esperando a que verifiques tu cuenta de PayPal"
+      stripe:
+        waiting_confirmation_from_requester: "Esperando a que %{requester_name} marqué la orden como completada. Una vez que la orden sea marcada como completada, el dinero se moverá a tu cuenta de banco."
     status_link:
       accept_offer: "Aceptar oferta"
       accept_request: "Aceptar solicitud"
@@ -941,6 +967,8 @@ es-ES:
       has_marked_request_as_canceled: "%{other_party_full_name} canceló la solicitud sobre '%{request}'. Aún así puedes dar una valoración a %{other_party_given_name}."
       giving_feedback_is_good_idea: "Dar una valoración es siempre una buena idea. Si todo salió bien, deberías contar a otros que %{other_party_given_name} es de confianza. Si hubo algún problema, también es bueno que lo menciones."
       give_feedback_to: "Dar valoración a %{other_party_given_name}"
+      stripe:
+        has_marked_request_as_confirmed: "%{other_party_full_name} ha marcado la orden de '%{request}' como completada. El dinero por esta transacción se ha transferido a tu cuenta de banco. Puedes ahora dejar una valoración a %{other_party_given_name}."
     transaction_automatically_confirmed:
       subject: "Solicitud completada automáticamente - Recuerda dar una valoración"
       we_have_marked_request_as_confirmed: "Hemos marcado tu solicitud sobre '%{request}' como completada de forma automática ya que han pasado %{days_passed} días desde que fue aceptada."
@@ -1015,6 +1043,8 @@ es-ES:
       price_per_unit_type: "Precio por %{unit_type}"
       quantity: "Cantidad:"
       you_have_received_new_payment: "Has recibido un pago de <b>%{payment_sum}</b> por <b>%{listing_title}</b> de parte de %{payer_full_name}. Aquí está tu recibo."
+      stripe:
+        you_have_received_new_payment: "La cantidad de <b>%{payment_sum}</b> ha sido pagada para <b>%{listing_title}</b> por %{payer_full_name}. El dinero esta siendo retenido por %{service_name} hasta que la orden sea marcada como completada. Aquí está tu recibo."
     payment_receipt_to_payer:
       receipt_of_payment: "Recibo de pago"
       you_have_made_new_payment: "Has pagado <b>%{payment_sum}</b> por <b>%{listing_title}</b> a %{recipient_full_name}. Aquí tienes el recibo de pago."
@@ -1052,6 +1082,8 @@ es-ES:
       paypal_gateway_fee: "Cuota de PayPal:"
       money_will_be_transferred: "El dinero será transferido a %{recipient_name} cuando a) hayas marcado la solicitud como completada o b) %{automatic_confirmation_days} días hayan pasado desde que hiciste el pago."
       listing_per_unit_title: "%{title}, por %{unit_type}"
+      stripe:
+        you_have_made_new_payment: "Has pagado <b>%{payment_sum}</b> por <b>%{listing_title}</b>. El dinero está siendo retenido por %{service_name}. El dinero sera enviado a %{recipient_full_name} una vez que hayas marcado la orden como completada. Aquí está tu recibo de pago"
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name} te ha dado una valoración en %{service_name}"
       you_can_give_feedback_to: "Aún no le has dado valoración a %{name}."
@@ -1085,7 +1117,7 @@ es-ES:
     transaction_preauthorized:
       subject: "%{requester} está interesado en y autorizado el pago por %{listing_title} en %{service_name}"
       transaction_requested_by_user: "Buenas noticias! %{requester} está interesado en \"%{listing_title}\" y ya ha autorizado el pago por este anuncio."
-      you_have_time_to_accept: "Debes aceptar o rechazar la solicitud dentro de %{payment_expires_in}. Si aceptas dentro de este periodo, el pago será procesado. Si no aceptas, la solicitud se rechazará automáticamente y no recibirás el pago."
+      you_have_time_to_accept: "Debes aceptar o rechazar la solicitud dentro de %{payment_expires_in}."
       if_you_do_accept: "Si aceptas la transacción durante este tiempo, recibirás el dinero inmediatamente en tu cuenta."
       if_you_do_accept_stripe: "Si aceptas la solicitud dentro de este periodo, el pago será completado. Recibirás el dinero directamente en tu cuenta de banco después de que hayas completado %{listing_title} para %{requester}."
       if_you_do_not_accept: "Si rechazas la transacción o no aceptas la oferta durante este tiempo, la transacción se cancelará automáticamente, no se le cobrará a %{requester} y no recibirás el pago."
@@ -1138,7 +1170,9 @@ es-ES:
       accept_authorization_error: "Ha ocurrido un error al intentar aceptar el pago preautorizado con PayPal. Por favor, inténtalo de nuevo."
       reject_authorization_error: "Ha ocurrido un error al rechazar el pago pre-autorizado de PayPal. Por favor, inténtalo de nuevo."
     stripe:
-      generic_error: "Ocurrió un error al procesar el pago. No se pudo finalizar el pago Stripe."
+      generic_error: "Ocurrió un error al procesar el pago. No se pudo finalizar el pago con Stripe."
+      accept_authorization_error: "Ocurrió un error al intentar aceptar el pago preautorizado con Stripe. Por favor inténtalo nuevamente."
+      reject_authorization_error: "Ocurrió un error al intentar rechazar el pago preautorizado con Stripe. Por favor inténtalo nuevamente."
   error_pages:
     back_to_kassi_front_page: "Volver a la página principal"
     error_404:
@@ -1384,7 +1418,7 @@ es-ES:
       how_to_use: "Cómo funciona"
       info_about_kassi: "Información acerca de %{service_name}"
       news: Novedades
-      register_details: Privacidad
+      register_details: "Política de Privacidad"
       terms: "Términos y Condiciones de Uso"
     logged_in:
       admin: Administrador
@@ -1533,6 +1567,7 @@ es-ES:
         one: "La página estará fuera de servicio por mantenimiento en %{count} minuto"
         other: "La página estará fuera de servicio por mantenimiento en %{count} minutos"
       automatically_logged_out_please_sign_in: "Por favor, inicia sesión de nuevo, ya que tu sesión ha caducado."
+      stripe_you_account_balance_is_not_0: "El balance de tu cuenta no es 0 y por lo tanto no puede ser eliminada. Esto puede significar que tienes transacciones esperando a ser completadas o que hay dinero esperando a ser transferido a tu cuenta de banco. Por favor contacta al equipo de %{service_name} si tienes alguna duda."
     settings:
       account: Cuenta
       notifications: Notificaciones
@@ -1637,11 +1672,8 @@ es-ES:
         after_service_fee_you_will_get: "Después de la comisión de %{service_name} y los costos de procesamiento de pago, recibirás %{sum_with_currency}"
         no_service_fee_you_will_get_paypal_text: "La %{paypal_fee_info_link} será deducida del precio."
         no_service_fee_you_will_get_payment_text: "%{payment_fee_info_link} se reducirá del precio."
-        after_service_fee_you_will_get_payment_text: "Cuando alguien haga una orden, la comisión de %{service_name} (%{sum_with_currency}) y una %{payment_fee_info_link} se deducirán del precio."
-        after_service_fee_you_will_get_paypal_text: "La comisión de %{service_name} (%{sum_with_currency}) y la %{paypal_fee_info_link} serán deducidas del precio."
-        after_service_fee_you_will_get_stripe_text: "Cuando alguien haga una orden, la comisión de %{service_name} (%{sum_with_currency}) se deducirá del precio."
-        payment_fee_info_link_text: "cuota de procesamiento de pago"
-        paypal_fee_info_link_text: "comisión de procesamiento de pago de PayPal"
+        after_service_fee_you_will_get_payment_text: "Cuando alguien haga una orden, la %{payment_fee_info_link} se deducirán de esta cantidad."
+        payment_fee_info_link_text: "comisión de %{service_name} y la cuota de procesamiento de pago"
         delivery: "Método de envío"
         shipping: Envío
         shipping_price: "Costos de envío"
@@ -1954,7 +1986,8 @@ es-ES:
         other: "El acceso a %{service_name} está restringido. Para unirte necesitas una dirección de correo electrónico que sea válida en esta comunidad."
       family_name: Apellido
       given_name: "Nombre:"
-      i_accept_the: "Acepto los"
+      i_accept_the_terms_and_privacy: "Acepto los %{terms} y la %{privacy}"
+      admin_emails_consent: "Acepto recibir correos del equipo de %{service_name} y entiendo que puedo cambiar de parecer en cualquier momento"
       invalid_invitation_code: "El código de invitación no es válido."
       invitation_code: "Código de invitación:"
       not_required: ", no es necesario"
@@ -1963,6 +1996,7 @@ es-ES:
       show_my_name_to_others: "Mostrar mi nombre real a otros usuarios de %{service_name}"
       sign_up: "Crear una nueva cuenta en %{service_name}"
       terms: "Términos de uso"
+      privacy: "política de privacidad"
       username_is_in_use: "El nombre de usuario ingresado ya está en uso."
       username_is_invalid: "Nombre de usuario no es válido. Los carácteres permitidos son letras, números y guión bajo."
       visible_only_to_you: "visible solamente para ti y el equipo de %{service_name}"
@@ -2064,9 +2098,10 @@ es-ES:
       delete_account_confirmation_popup: "¿Estás seguro de querer eliminar tu cuenta de forma permanente? También eliminaras toda la información relacionada con tu cuenta. Si lo haces, ya no podrás volver atrás."
       email_addresses: "Direcciones de email"
       new_email: "Nueva Dirección de Correo Electrónico"
-      delete_personal_information: "Si eliminas tu cuenta, tu información personal (nombre, número de teléfono, dirección, email, imagen de perfil, etc.) se eliminará permanentemente y no podrá ser recuperada. Todas las publicaciones que has creado se eliminarán del portal. No serás capaz de reactivar tu cuenta."
+      delete_personal_information: "Si eliminas tu cuenta, tu información personal (nombre, número de teléfono, dirección, email, imagen de perfil, etc.) se eliminará permanentemente y no podrá ser recuperada. Todas las publicaciones que has creado se eliminarán del portal. No serás capaz de reactivar tu cuenta. Tu nombre de usuario se hará disponible para otros miembros que se registren en %{service_name}."
       delete_information_others_involved: "La información en la que están involucrados otros miembros (conversaciones con otra gente, transacciones que has realizado, revisiones que has dado a otros, etc) no se eliminarán cuando canceles tu cuenta. No obstante, tu nombre no aparecerá visualizado en esa información."
       unfinished_transactions: "Tu cuenta no puede ser eliminada porque tienes transacciones en marcha. Por favor, completa todas las transacciones antes de eliminar tu cuenta."
+      only_admin: "No puedes eliminar tu cuenta porque eres el único administrador del marketplace."
       new_password: "Nueva contraseña"
       save: Guardar
       these_fields_are_shown_only_to_you: "El nombre del usuario se muestra en tu perfil a menos que hayas proporcionado tu nombre. Cualquier otra información sólo está disponible para ti."
@@ -2086,7 +2121,7 @@ es-ES:
         status_confirmed: Confirmado
         status_pending: Pendiente
     notifications:
-      email_from_admins: "Quiero recibir correos de los administradores de forma ocasional."
+      email_from_admins: "Acepto recibir correos del equipo de %{service_name}"
       i_want_to_get_email_notification_when: "Quiero recibir una notificación por correo electrónico cuando..."
       newsletters: "Correos de los administradores"
       community_updates: "Actualizaciones de la comunidad"
@@ -2168,7 +2203,7 @@ es-ES:
       this_will_be_shown_in_profile: "La valoración que tú des será visible para otros usuarios en la página del perfil de %{person}. Esto ayudará a los otros miembros de esta comunidad a evaluar si %{person} es una persona confiable."
       positive: Positiva
       negative: Negativa
-      default_textual_feedback: "Recibido sin problemas, muchas gracias."
+      default_textual_feedback: "Todo perfecto, muchas gracias."
     testimonial:
       about_listing: "sobre el anuncio"
   date:
@@ -2305,8 +2340,8 @@ es-ES:
           saving_failed: "No hemos podido guardar los cambios sobre disponibilidad. Intenta cargar la página nuevamente."
         working_hours:
           required: obligatorio
-          overlaps: ~
-          covers: ~
+          overlaps: interpone
+          covers: cubre
       pricing_units:
         piece: pieza
         hour: hora
@@ -2413,12 +2448,15 @@ es-ES:
       need_info: "Necesitamos un poco de información sobre ti para poder enviarte dinero."
       select_country: "Selecciona un país..."
       legal_name: "Nombre legal"
+      first_name: Nombre
+      last_name: Apellido(s)
       country: País
       birth_date: "Fecha de nacimiento"
       ssn_last_4: "Últimos 4 dígitos del SSN"
       personal_id_number: "Numero personal de ID"
       address_country: País
       address_state: Estado
+      address_province: Provincia
       address_city: Ciudad
       address_postal_code: "Código postal"
       address_line1: Dirección
@@ -2433,6 +2471,7 @@ es-ES:
       bank_routing_1: "Código del banco"
       bank_routing_2: "Código de la sucursal"
       bank_currency: "Divisa de la cuenta del banco"
+      update_also_bank_account: "Modificar la cuenta de banco también"
       messages:
         account_number: "Número de cuenta"
         routing_number: "Número de ruta/routing"
@@ -2455,9 +2494,10 @@ es-ES:
       send_verification: "Enviar verificación"
       need_verification: "Necesita verificación adicional"
     form_pin:
-      social_insurance_number: "Número de seguridad social (Social Insurance Number)"
+      social_insurance_number: "Social Insurance Number (SIN)"
       social_security_number: "Número de seguridad social (Social Security Number)"
-      hong_kong_identity_card: "Número de identificación de Hong Kong (Hong Kong Identity Card Number)"
+      ssn_last_4: "Número de Seguridad Social (últimos 4 dígitos)"
+      hong_kong_identity_card: "Hong Kong Identity Card Number (HKID)"
       singapore_identity_card: "Tarjeta de Identidad de Registro Nacional (NRIC) o Número de Identificación Extranjero (FIN)"
       messages:
         social_insurance_number: "debe ser un número de seguridad social (SIN) válido"

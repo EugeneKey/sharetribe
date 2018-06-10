@@ -265,6 +265,7 @@ sk-SK:
         search_by_name_email: ~
         reset_search: ~
         for_search_terms: ~
+        this_makes_the_user_an_admin: ~
       new_layout:
         new_layout: "Nový vzhľad"
         description_roadmap_new: ~
@@ -288,6 +289,7 @@ sk-SK:
         invalid_facebook_connect_id: "Klientské číslo by malo obsahovať iba čísla."
         facebook_connect_secret: "Heslo pre prihlásenie cez Facebook"
         invalid_facebook_connect_secret: "Heslo by malo obsahovať iba číslice a písmená od A do F."
+        enable_facebook_login: ~
         save: "Uložiť nastavenia"
       analytics:
         analytics: "Google Analytics"
@@ -295,6 +297,10 @@ sk-SK:
         google_analytics_key_info_text: "Sledovacie číslo Vašeho Google Analytics účtu"
         google_analytics_key_info_text_with_instructions: "Sledovacie číslo Vašeho Google Analytics účtu.%{instructions_link}."
         google_analytics_instructions_link_text: "Čítať viac o pripojení Google Analytics"
+        sharetribe_analytics: ~
+        sharetribe_analytics_info_text_with_instructions: ~
+        sharetribe_analytics_instructions_link_text: ~
+        end_user_analytics: ~
         save: "Uložiť nastavenia"
       menu_links:
         menu_links: "Menu odkazy"
@@ -316,6 +322,7 @@ sk-SK:
         invalid_post_listing_button_label: "Prosím zadajte platný text pre tlačítko \"Pridať nový inzerát\""
       transactions:
         export_all_as_csv: "Exportovať všetko do CSV"
+        processing_export: ~
         transactions: "Zobraziť platby"
         headers:
           conversation: "Vlákno konverzácie"
@@ -374,6 +381,21 @@ sk-SK:
           other_party: ~
         participants: ~
         profile: ~
+      testimonials:
+        testimonials: ~
+        no_testimonials_found: ~
+        displaying_xx_reviews: ~
+        headers:
+          transaction: ~
+          author: ~
+          receiver: ~
+          status: ~
+          grade: ~
+          note: ~
+        status:
+          waiting: ~
+          skipped: ~
+          published: ~
     custom_fields:
       edit:
         edit_listing_field: "Upraviť pole inzerátu '%{field_name}'"
@@ -647,11 +669,17 @@ sk-SK:
         payments_not_enabled: ~
     transaction_types:
       sell: Predám
+      sell_w_online_payment: ~
+      sell_wo_online_payment: ~
       rent: Prenajmem
+      rent_w_online_payment: ~
+      rent_wo_online_payment: ~
       give: Darujem
       lend: Požičiam
       swap: Vymením
       service: Ponúkam
+      service_w_online_payment: ~
+      service_wo_online_payment: ~
       request: Žiadam
       inquiry: Oznamy
       share_for_free: "Zdielanie zdarma"
@@ -711,7 +739,6 @@ sk-SK:
     removed_user: "Odstránený užívateľ"
     payment_fee_info:
       title: ~
-      title_paypal: ~
       stripe: ~
       paypal: ~
       info: ~
@@ -722,10 +749,6 @@ sk-SK:
           Po prihlásení do Vašeho PayPal účtu si môžete nájsť presné poplatky, viď %{link_to_paypal}. Z každého vykonaného nákupu obdržíte potvrdenie s presným poplatkom.
       body_text_accept: ~
       link_to_paypal_text: tu
-    paypal_only_fee_info:
-      title: ~
-      body_text: ~
-      link_to_paypal_text: ~
     stripe_fee_info:
       title: ~
       body_text: ~
@@ -801,6 +824,9 @@ sk-SK:
       canceled_offer: "zrušil ponuku"
       paid: "zaplatil %{sum}"
       payment_preauthorized: "Platba schválená: %{sum}"
+      stripe:
+        held_payment: ~
+        confirmed_request: ~
     new:
       message: Správa
       message_to: "Správa užívateľovi %{author_name}"
@@ -873,6 +899,8 @@ sk-SK:
           intl: "Čaká sa, kým prijmete Paypal platbu"
           unknown_reason: "Platba sa vykonáva. Prihláste sa prosím do Vašeho PayPal účtu pre viac informácií."
           verify: "Čaká sa až overíte svoj PayPal účet"
+      stripe:
+        waiting_confirmation_from_requester: ~
     status_link:
       accept_offer: "Akceptovať ponuku."
       accept_request: "Akceptovať žiadosť."
@@ -942,6 +970,8 @@ sk-SK:
       has_marked_request_as_canceled: "Užívateľ %{other_party_full_name} zrušil objednávku %{request}. Stále môžete ohodnotiť užívateľa %{other_party_given_name}."
       giving_feedback_is_good_idea: "Hodnotenie je vždy užitočné. Pokiaľ všetko prebehlo v poriadku, mali by ste ostatným dať vedieť, že užívateľ %{other_party_given_name} je dôveryhodný. Je dobré zanechať hodnotenie aj v prípade zlej skúsenosti."
       give_feedback_to: "Zanechať hodnotenie pre %{other_party_given_name}"
+      stripe:
+        has_marked_request_as_confirmed: ~
     transaction_automatically_confirmed:
       subject: "Objednávka bola automaticky vybavená - nezabudnite poskytnúť spätnú väzbu"
       we_have_marked_request_as_confirmed: "Žiadosť %{request} bola označená ako vybavená. Žiadosť bola automaticky dokončená pretože uplynulo %{days_passed} dní od doby, keď bola žiadosť prijatá."
@@ -1016,6 +1046,8 @@ sk-SK:
       price_per_unit_type: ~
       quantity: ~
       you_have_received_new_payment: ~
+      stripe:
+        you_have_received_new_payment: ~
     payment_receipt_to_payer:
       receipt_of_payment: ~
       you_have_made_new_payment: ~
@@ -1053,6 +1085,8 @@ sk-SK:
       paypal_gateway_fee: ~
       money_will_be_transferred: "Peniaze budú prevedené užívateľovi %{recipient_name}, a) pokiaľ označíte žiadosť ako vybavenú nebo b) pokiaľ uplynulo %{automatic_confirmation_days} dní od dňa, kedy ste zaplatili."
       listing_per_unit_title: ~
+      stripe:
+        you_have_made_new_payment: ~
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name} Vám dal spätnú väzbu %{service_name}"
       you_can_give_feedback_to: "Ešte ste nedali spätnú väzbu %{name}"
@@ -1142,6 +1176,8 @@ sk-SK:
       reject_authorization_error: "Došlo k chybe pri pokuse o odmietnutie dopredu schválenej PayPal platby. Prosíme, skúste to znovu."
     stripe:
       generic_error: ~
+      accept_authorization_error: ~
+      reject_authorization_error: ~
   error_pages:
     back_to_kassi_front_page: "Späť na titulnú stránku."
     error_404:
@@ -1537,6 +1573,7 @@ sk-SK:
         few: "Webová stánka bude pre údržbu v offline režime %{count} minúty"
         other: "Webová stánka bude pre údržbu v offline režime %{count} minút"
       automatically_logged_out_please_sign_in: "Boli ste automaticky odhlásený. Prosím prihláste sa znovu."
+      stripe_you_account_balance_is_not_0: ~
     settings:
       account: Účet
       notifications: Oznámenia
@@ -1642,10 +1679,7 @@ sk-SK:
         no_service_fee_you_will_get_paypal_text: "%{paypal_fee_info_link} bude odčítaný z ceny."
         no_service_fee_you_will_get_payment_text: ~
         after_service_fee_you_will_get_payment_text: ~
-        after_service_fee_you_will_get_paypal_text: "%{service_name} poplatok (%{sum_with_currency}) a %{paypal_fee_info_link} bude odčítaný z ceny."
-        after_service_fee_you_will_get_stripe_text: ~
         payment_fee_info_link_text: ~
-        paypal_fee_info_link_text: "PayPal poplatok za spracovanie platby"
         delivery: "Metóda doručenia"
         shipping: Doprava
         shipping_price: "Poplatok za dopravu"
@@ -1959,7 +1993,8 @@ sk-SK:
         other: "Prístup do %{service_name} je obmezený. Budete potrebovať e-mailovú adresu, vďaka ktorej sa budete môcť prihlásiť."
       family_name: Priezvisko
       given_name: Meno
-      i_accept_the: Akceptujem
+      i_accept_the_terms_and_privacy: ~
+      admin_emails_consent: ~
       invalid_invitation_code: "Kód pozvánky je neplatný."
       invitation_code: "Kód pozvánky"
       not_required: "nie je požadované"
@@ -1968,6 +2003,7 @@ sk-SK:
       show_my_name_to_others: "Zobraziť skutočné meno používateľom %{service_name}"
       sign_up: "Vytvoriť nový %{service_name} účet"
       terms: "Podmienky používania"
+      privacy: ~
       username_is_in_use: "Požívateľské meno je už používané."
       username_is_invalid: "Používateľské meno je neplatné. Povolené sú len písmená, číslice a podčiarkovníky."
       visible_only_to_you: "viditeľné iba pre Vás a pre admin použivateľa"
@@ -2072,6 +2108,7 @@ sk-SK:
       delete_personal_information: "Pokiaľ zmažete Váš účet, Vaše osobné údaje (meno, telefónne číslo, adresa, e-mail, profilová foto atď.) budú permanentne odstránené a nebude ich možné obnoviť. Všetky Vaše inzeráty budú odstránené a už nebude možné reaktivovať Váš účet."
       delete_information_others_involved: "informácie, ktoré sa týkajú ostatných členov (konverzácie s ďalšími ľudmi, uskutočnené transakcie, Vami poskytnutá spätná väzba atď.), nebudú odstránené v prípade zmazania účtu. Vaše meno sa už pri týchto informáciách nebude zobrazovať."
       unfinished_transactions: "Váš účet nemôže byť zmazaný, pretože stále máte prebiehajúce transakcie. Prosíme, dokončite všetky transakcie predtým, než zmažete Váš účet."
+      only_admin: ~
       new_password: "Nové heslo"
       save: Uložiť
       these_fields_are_shown_only_to_you: "Užívateľské meno sa zobrazuje v profile iba, keď bolo zadané meno. Ostatné informácie sa zobrazujú iba Vám."
@@ -2410,12 +2447,15 @@ sk-SK:
       need_info: ~
       select_country: ~
       legal_name: ~
+      first_name: ~
+      last_name: ~
       country: ~
       birth_date: ~
       ssn_last_4: ~
       personal_id_number: ~
       address_country: ~
       address_state: ~
+      address_province: ~
       address_city: ~
       address_postal_code: ~
       address_line1: ~
@@ -2430,6 +2470,7 @@ sk-SK:
       bank_routing_1: ~
       bank_routing_2: ~
       bank_currency: ~
+      update_also_bank_account: ~
       messages:
         account_number: ~
         routing_number: ~
@@ -2454,6 +2495,7 @@ sk-SK:
     form_pin:
       social_insurance_number: ~
       social_security_number: ~
+      ssn_last_4: ~
       hong_kong_identity_card: ~
       singapore_identity_card: ~
       messages:

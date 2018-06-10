@@ -71,6 +71,10 @@ class CommunityMembershipsController < ApplicationController
       CommunityJoinedJob.perform_later(@current_user, @current_community)
       SendWelcomeEmail.perform_later(@current_user, @current_community)
 
+      # Record user's email preference
+      @current_user.preferences["email_from_admins"] = (params[:form][:admin_emails_consent] == "on")
+      @current_user.save
+
       record_event(flash, "GaveConsent")
 
       flash[:notice] = t("layouts.notifications.you_are_now_member")

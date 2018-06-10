@@ -260,6 +260,7 @@ de:
         search_by_name_email: "Nach einem Nahmen, einer E-Mail Adresse, oder einem Anzeigenamen suchen"
         reset_search: "Alle anzeigen"
         for_search_terms: "für: %{terms}"
+        this_makes_the_user_an_admin: "Das macht den Nutzer zu einem Administrator. Du solltest den Nutzer über seinen Verantwortung informieren und auf die Sharetribe Nutzungsbedingungen hinweisen. Möchtest Du fortfahren?"
       new_layout:
         new_layout: "Neues Layout"
         description_roadmap_new: "Sobald neue Layout-Komponenten für deinen Marktplatz verfügbar sind, kannst du wählen, ob du die neue Komponente verwenden möchtest, oder ob du weiterhin die alte verwenden willst. Du kannst die Auswahl auf dieser Seite jederzeit ändern. Es ist empfohlen, jederzeit die neuen Komponente zu verwenden, denn die alten Komponente können in der Zukunft auslaufen. Wenn eine Komponente, die du verwendest, auslaufen wird, werden wir jedoch dir im Voraus natürlich eine Nachricht schicken."
@@ -283,6 +284,7 @@ de:
         invalid_facebook_connect_id: "Die Client-ID sollte nur aus Nummern bestehen."
         facebook_connect_secret: "Facebook Client-Geheimnis"
         invalid_facebook_connect_secret: "Der App-Secret sollte nur aus Nummern und Buchstaben a-f bestehen."
+        enable_facebook_login: "Nutzern erlauben, sich mit ihrem Facebook Account anzumelden"
         save: "Einstellungen speichern"
       analytics:
         analytics: Analytics
@@ -290,6 +292,10 @@ de:
         google_analytics_key_info_text: "Tracking ID deines Google Analytics Kontos."
         google_analytics_key_info_text_with_instructions: "Tracking ID deines Google Analytics Kontos. %{instructions_link}"
         google_analytics_instructions_link_text: "Mehr über die Anbindung von Google Analytics hier lesen."
+        sharetribe_analytics: "Sharetribe Analytics"
+        sharetribe_analytics_info_text_with_instructions: "Um den Sharetribe Service und Support zu verbessern, werden die Aktivitäten der Marktplatz Mitglieder aufgezeichnet. Es werden keine persönlichen Informationen gesammelt und die Daten werden keinen weiteren Parteien außerhalb des Sharetribe Teams bereitgestellt. %{instructions_link}"
+        sharetribe_analytics_instructions_link_text: "Mehr über Sharetribe Analytics erfahren."
+        end_user_analytics: "Sharetribe die Aufzeichnung von Mitglieder Aktivitäten zur Verbesserung des Sharetribe Services erlauben."
         save: "Einstellungen speichern"
       menu_links:
         menu_links: Menü-Links
@@ -311,6 +317,7 @@ de:
         invalid_post_listing_button_label: "Bitte einen gültigen Text für die \"Neuen Eintrag erstellen\" Taste eingeben."
       transactions:
         export_all_as_csv: "Exportiere Alles als CSV Datei"
+        processing_export: "CSV Export wird erstellt..."
         transactions: "Transaktionen anzeigen"
         headers:
           conversation: Unterhaltungsverlauf
@@ -369,6 +376,21 @@ de:
           other_party: "Anderer Beteiligter"
         participants: "Unterhaltung: %{starter} mit %{author}"
         profile: "%{author}s Profil"
+      testimonials:
+        testimonials: "Bewertungen ansehen"
+        no_testimonials_found: "Keine Bewertungen gefunden."
+        displaying_xx_reviews: "<b>%{count}</b> Bewertungen werden angezeigt, unter Transaktionen %{tx_from} - %{tx_to} von insgesamt <b>%{all_count}</b> Transaktionen."
+        headers:
+          transaction: Transaktion
+          author: Author
+          receiver: Empfänger
+          status: Status
+          grade: Note
+          note: Hinweis
+        status:
+          waiting: "Bewertung ausstehend"
+          skipped: Übersprungen
+          published: Veröffentlicht
     custom_fields:
       edit:
         edit_listing_field: "Eintragsfeld '%{field_name}' bearbeiten"
@@ -602,7 +624,7 @@ de:
       change_settings: "Einstellungen ändern"
       configure_stripe: "Stripe konfigurieren"
       configure_paypal: "PayPal konfigurieren"
-      transaction_fee_settings: "Einstellungen für Transaktionsgebühre"
+      transaction_fee_settings: "Einstellungen für Transaktionsgebühren"
       transaction_fee_save: Speichern
       stripe_fee: Stripe-Gebühren
       stripe_fee_notice: "%{stripe_fee_link} werden von deiner Transaktionsgebühr abgezogen."
@@ -642,11 +664,17 @@ de:
         payments_not_enabled: "Zahlungen sind nicht für diesen Marktplatz aktiviert"
     transaction_types:
       sell: Verkaufen
+      sell_w_online_payment: "Online Zahlungen für Verkäufe nutzen"
+      sell_wo_online_payment: "Keine Online Zahlungen für Verkäufe nutzen"
       rent: Vermieten
+      rent_w_online_payment: "Online Zahlungen für Vermietungen nutzen"
+      rent_wo_online_payment: "Keine Online Zahlungen für Vermietungen nutzen"
       give: "Umsonst abzugeben"
       lend: Verleihen
       swap: Tauschen
       service: Angebot
+      service_w_online_payment: "Angebot mit Online Zahlungen"
+      service_wo_online_payment: "Angebot ohne Online Zahlungen"
       request: Anfragen
       inquiry: Anfrage
       share_for_free: "Kostenlos teilen"
@@ -705,29 +733,22 @@ de:
     what_is_this: "Was ist das?"
     removed_user: "Entfernter Benutzer"
     payment_fee_info:
-      title: Zahlungsbearbeitungsgebühr
-      title_paypal: PayPal-Zahlungsbearbeitungsgebühr
+      title: "Provision und Zahlungsbearbeitungsgebühr"
       stripe: Stripe
       paypal: PayPal
-      info: "Zahlungen auf %{service_name} werden über die Zahlungsdienstleister Stripe oder PayPal verarbeitet. Beide Dienstleister erheben Zahlungsbearbeitungsgebühren bei jeder Transaktion."
+      info: "Zahlungen auf %{service_name} werden über die Zahlungsdienstleister Stripe (Kredit-/Debitkarte) oder PayPal abgewickelt. %{service_name} erhebt abhängig vom Zahlungsdienstleister eine Vermittlungsprovision. Der Zahlungsdienstleister erhebt ebenfalls eine Gebühr für jede Transaktion."
     paypal_fee_info:
       title: PayPal-Zahlungsbearbeitungsgebühr
       body_text: |-
-          Für jede Zahlung über PayPal erhebt %{service_name} eine Vermittlungsprovision in Höhe von %{paypal_commission}%. Die PayPal Gebühren sind nicht in der Vermittlungsprovision enthalten, diese musst du zusätzlich zu der Vermittlungsprovisionen von %{service_name} zahlen.
-          Wenn du dich bei deinem Paypal Account anmeldest, erhältst du unter dieser Adresse %{link_to_paypal} mehr Informationen auch zu internationalen Zahlungen. Nach jeder Transaktion bekommst du einen Beleg mit der exakten Gebühr.
+          Für jede über PayPal durchgeführte Zahlung erhebt %{service_name} eine Vermittlungsprovision von %{paypal_commission}%. Die Mindestprovision für jede Transaktion beträgt %{minimum_transaction_fee}. Die PayPal Gebühren sind nicht in der Vermittlungsprovision enthalten, diese musst du zusätzlich zu der Vermittlungsprovisionen von %{service_name} zahlen. Abhängig von Deinem monatlichen Verkaufsvolumen und dem Herkunftsland des Käufers, liegt die PayPal Gebühr zwischen 2% und 5% des Verkaufspreises. In der Regel liegen die Gebühren für inländische Verkäufe unter denen für Verkäufe ins Ausland und höhere monatliche Verkaufsvolumen führen zu ermäßigten Gebühren. 
+          Wenn du dich bei deinem Paypal Account anmeldest, erhältst du unter dieser Adresse %{link_to_paypal} Informationen zu den Gebühren. Nach jeder Transaktion bekommst du einen Beleg mit der exakten Gebühr.
       body_text_accept: |-
           Diese Zahlung wird durch PayPal verarbeitet. PayPal erhebt eine Transaktionsgebühr auf jede Zahlung. Diese Gebühr liegt zwischen 2% und 5% der Transaktionssumme, je nach monatlichem Umsatz und Land des Käufers. Normalerweise ist es günstiger, inländische Käufe zu tätigen, und größere monatliche Transaktionsvolumen bedeuten einen Rabatt.
           Wenn du dich bei deinem Paypal Account anmeldest, erhälst du unter dieser Adresse %{link_to_paypal} mehr Informationen auch zu internationalen Zahlungen. Nach jeder Transaktion bekommst du einen Beleg mit der exakten Gebühr.
       link_to_paypal_text: hier
-    paypal_only_fee_info:
-      title: "Zahlungsbearbeitungsgebühr von PayPal"
-      body_text: |-
-          Die Zahlungen auf %{service_name} werden durch PayPal verarbeitet. PayPal erhebt eine Transaktionsgebühr auf jede Zahlung. Diese Gebühr liegt zwischen 2% und 5% der Transaktionssumme, je nach monatlichem Umsatz und Land des Käufers. Normalerweise ist es günstiger, inländische Käufe zu tätigen, und größere monatliche Transaktionsvolumen bedeuten einen Rabatt.
-          Wenn du dich bei deinem Paypal Account anmeldest, erhälst du unter dieser Adresse %{link_to_paypal} mehr Informationen auch zu internationalen Zahlungen. Nach jeder Transaktion bekommst du einen Beleg mit der exakten Gebühr.
-      link_to_paypal_text: hier
     stripe_fee_info:
       title: "Zahlungsbearbeitungsgebühr von Stripe"
-      body_text: "Bei Zahlungen auf %{service_name}, die über Stripe abgewickelt werden, entstehen neben den Vermittlungsprovisionen (%{stripe_commission}%) keine zusätzlichen Transaktionskosten für dich."
+      body_text: "Für Zahlungen, die über Stripe abgewickelt werden, erhebt %{service_name} eine Vermittlungsprovision von %{stripe_commission}%. Die Mindestprovision für jede Transaktion beträgt %{minimum_transaction_fee}. Die Stripe Gebühren sind bereits darin enthalten."
       link_to_stripe_text: hier
   conversations:
     accept:
@@ -800,6 +821,9 @@ de:
       canceled_offer: "Angebot abgebrochen"
       paid: "bezahlt %{sum}"
       payment_preauthorized: "Zahlung wurde autorisiert: %{sum}"
+      stripe:
+        held_payment: "Die Anfrage wurde akzeptiert. Die Zahlung in Höhe von %{sum} wird von %{service_name} verwahrt bis der Auftrag als erledigt markiert wird."
+        confirmed_request: "Hat den Auftrag als erledigt markiert. Die Zahlung wurde oder wird in Kürze auf das Bankkonto von %{author_name} transferiert."
     new:
       message: Nachricht
       message_to: "Nachricht an %{author_name}"
@@ -872,6 +896,8 @@ de:
           intl: "Warten darauf, dass du die PayPal-Zahlung akzeptierst"
           unknown_reason: "Zahlung ausstehend. Melde dich in deinem PayPal-Konto an, um mehr Details zu sehen."
           verify: "Warten, dass du dein PayPal Konto bestätigst"
+      stripe:
+        waiting_confirmation_from_requester: "Warten bis %{requester_name} den Auftrag als erledigt markiert hat. Sobald der Auftrag als erledigt markiert wurde, erfolgt der Transfer der Zahlung auf Dein Bankkonto."
     status_link:
       accept_offer: "Angebot annehmen"
       accept_request: "Anfrage annehmen"
@@ -941,6 +967,8 @@ de:
       has_marked_request_as_canceled: "%{other_party_full_name} hat deine Anfrage '%{request}' abgelehnt. Du kannst trotzdem %{other_party_given_name} Feedback geben."
       giving_feedback_is_good_idea: "Feedback zu geben, ist immer eine gute Idee. Wenn alles gut war, solltest du es andere wissen lassen, dass %{other_party_given_name} vertraut werden kann. Wenn es Probleme gab, dann ist es gut, dies auch zu erwähnen."
       give_feedback_to: "Gib %{other_party_given_name} ein Feedback"
+      stripe:
+        has_marked_request_as_confirmed: "%{other_party_full_name} hat den Auftrag \"%{request}\" als erledigt markiert. Die Überweisung der Zahlung auf Dein Bankkonto für diese Transaktion wurde soeben angestoßen. Du kannst %{other_party_given_name} nun ein Feedback geben."
     transaction_automatically_confirmed:
       subject: "Anfrage wurde automatisch abgeschlossen - bitte denk daran, Feedback zu geben."
       we_have_marked_request_as_confirmed: "Wir haben die Anfrage zu '%{request}' als erledigt markiert. Der Auftrag wurde automatisch erledigt, weil %{days_passed} Tage vergangen sind, seit der Antrag angenommen wurde."
@@ -1015,6 +1043,8 @@ de:
       price_per_unit_type: "Preis pro %{unit_type}"
       quantity: "Anzahl:"
       you_have_received_new_payment: "Du hast eine Zahlung in Höhe von <b>%{payment_sum}</b> für <b>%{listing_title}</b> durch %{payer_full_name} erhalten. Hier ist deine Quittung."
+      stripe:
+        you_have_received_new_payment: "Der Betrag in Höhe von <b>%{payment_sum}</b> für <b>%{listing_title}</b> wurde von %{payer_full_name} gezahlt. Das Geld wird solange von %{service_name} geblockt, bis der Auftrag als erledigt markiert wird. Als Anlage erhältst Du Deinen Beleg."
     payment_receipt_to_payer:
       receipt_of_payment: Zahlungsbestätigung
       you_have_made_new_payment: "Du hast <b>%{payment_sum}</b> bezahlt für <b>%{listing_title}</b> an %{recipient_full_name}. Hier ist eine Quittung für deine Zahlung."
@@ -1030,7 +1060,7 @@ de:
       paypal_gateway_fee: "Gebühr von PayPal:"
       money_will_be_transferred: "Das Geld wird an %{recipient_name} übertragen werden, wenn a) du die Anfrage als abgeschlossen markiert hast, oder b) %{automatic_confirmation_days} Tage sind vergangen, seit du bezahlt hast."
     paypal_new_payment:
-      paypal_gateway_fee: "PayPal's Gebühr:"
+      paypal_gateway_fee: "PayPal Gebühr:"
       shipping_total: "Versand:"
     braintree_new_payment:
       product: "Produkt:"
@@ -1052,6 +1082,8 @@ de:
       paypal_gateway_fee: "Gebühr von PayPal:"
       money_will_be_transferred: "Das Geld wird an %{recipient_name} übertragen werden, wenn a) Du die Anfrage als abgeschlossen markiert hast, oder b) %{automatic_confirmation_days} Tage sind vergangen, seit du bezahlt hast."
       listing_per_unit_title: "%{title}, pro %{unit_type}"
+      stripe:
+        you_have_made_new_payment: "Du hast <b>%{payment_sum}</b> für <b>%{listing_title}</b> gezahlt. Das Geld wird vorübergehend von %{service_name} bewahrt. Sobald du den Auftrag als erledigt markiert hast, wird das Geld an %{recipient_full_name} überwiesen. Als Anlage erhältst du deinen Zahlungsbeleg."
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name} hat dich auf %{service_name} bewertet"
       you_can_give_feedback_to: "Du hast %{name} noch nicht bewertet."
@@ -1085,7 +1117,7 @@ de:
     transaction_preauthorized:
       subject: "%{requester} hat %{listing_title} angefragt und eine Zahlung autorisiert auf %{service_name}"
       transaction_requested_by_user: "Gute Nachrichten! %{requester} hat \"%{listing_title}\" angefragt und eine Zahlung autorisiert."
-      you_have_time_to_accept: "Du musst die Anfrage innerhalb von %{payment_expires_in} akzeptieren oder ablehnen. Wenn Du innerhalb dieses Zeitrahmens akzeptierst, wird die Zahlung durchgehen. Wenn Du nicht zustimmst, wird die Anfrage automatisch abgelehnt, und Du wirst nicht bezahlt."
+      you_have_time_to_accept: "Du musst die Anfrage innerhalb von %{payment_expires_in} akzeptieren oder ablehnen."
       if_you_do_accept: "Wenn du die Anfrage innerhalb dieses Zeitrahmens akzeptierst, wirst du das Geld sofort auf dein Konto bekommen."
       if_you_do_accept_stripe: "Wenn du die Anfrage innerhalb von diesem Zeitraum akzeptierst, wird die Zahlung erfolgreich bearbeitet. Das Geld wird zu deinem Bankkonto überwiesen, nachdem du %{listing_title} zu %{requester} geliefert hast."
       if_you_do_not_accept: "Wenn du die Anfrage ablehnst, oder sie nicht innerhalb dieses Zeitrahmens akzeptierst, wird die Transaktion automatisch abgebrochen, %{requester} wird nicht belastet, und du bekommst das Geld nicht."
@@ -1139,6 +1171,8 @@ de:
       reject_authorization_error: "Bei dem Versuch, eine vorab autorisierte PayPal Zahlung abzulehnen, ist ein Fehler aufgetreten. Bitte versuche es erneut."
     stripe:
       generic_error: "Während des Zahlungsvorgangs ist ein Fehler aufgetreten. Die Stripe Zahlung konnte nicht abgeschlossen werden."
+      accept_authorization_error: "Es ist ein Fehler während der Authorisierung der Stripe Zahlung aufgetreten. Bitte erneut versuchen."
+      reject_authorization_error: "Es ist ein Fehler während der Ablehnung der Stripe Zahlung aufgetreten. Bitte erneut versuchen."
   error_pages:
     back_to_kassi_front_page: "Zurück zur Startseite"
     error_404:
@@ -1533,6 +1567,7 @@ de:
         one: "Die Webseite geht offline für Wartungsarbeiten in %{count} Minute."
         other: "Die Webseite geht offline für Wartungsarbeiten in %{count} Minuten."
       automatically_logged_out_please_sign_in: "Du wurdest automatisch ausgeloggt. Bitte melde dich erneut an."
+      stripe_you_account_balance_is_not_0: "Dein Kontostand beträgt nicht 0 und kann daher nicht gelöscht werden. Möglicherweise müssen Transaktionen noch beendet werden oder Geld auf Dein Bankkonto überwiesen werden. Bitte kontaktiere das %{service_name} Team, um mehr zu erfahren."
     settings:
       account: Konto
       notifications: Benachrichtigungen
@@ -1637,11 +1672,8 @@ de:
         after_service_fee_you_will_get: "Nach Abzug der %{service_name} Servicegebühr und der Gebühren des Zahlungssystems, wirst du %{sum_with_currency} erhalten"
         no_service_fee_you_will_get_paypal_text: "%{paypal_fee_info_link} wird vom Preis abgezogen."
         no_service_fee_you_will_get_payment_text: "%{payment_fee_info_link} wird vom Preis abgezogen."
-        after_service_fee_you_will_get_payment_text: "Bei jedem Kauf wird die %{service_name} Gebühr (%{sum_with_currency}) und gegebenenfalls eine %{payment_fee_info_link} von dem Preis abgezogen."
-        after_service_fee_you_will_get_paypal_text: "Bei jedem Kauf wird die %{service_name} Gebühr (%{sum_with_currency}) und gegebenenfalls eine %{paypal_fee_info_link} von dem Preis abgezogen."
-        after_service_fee_you_will_get_stripe_text: "Wenn jemand den Auftrag kauft, wird die Gebühr von %{service_name} (%{sum_with_currency}) vom Betrag abgezogen."
-        payment_fee_info_link_text: Zahlungsbearbeitungsgebühr
-        paypal_fee_info_link_text: PayPal-Zahlungsbearbeitungsgebühr
+        after_service_fee_you_will_get_payment_text: "Bei jedem Kauf wird die %{payment_fee_info_link} vom Preis einbehalten."
+        payment_fee_info_link_text: "%{service_name} Vermittlungsprovision und ggf. eine Zahlungsbearbeitungsgebühr"
         delivery: Lieferart
         shipping: Versand
         shipping_price: Versandkostenpauschale
@@ -1954,7 +1986,8 @@ de:
         other: "Der Zugang zu %{service_name} ist beschränkt. Um beitreten zu können, brauchst du eine E-Mail-Adresse, die belegt, dass deine Teilnahme erlaubt ist."
       family_name: Nachname
       given_name: Vorname
-      i_accept_the: "Ich akzeptiere die"
+      i_accept_the_terms_and_privacy: "Ich akzeptiere die %{privacy} und %{terms}"
+      admin_emails_consent: "Ich bin damit einverstanden, gelegentlich Emails vom %{service_name} Team zu erhalten und habe zur Kenntnis genommen, dass ich es mir jederzeit anders überlegen kann."
       invalid_invitation_code: "Der Einladungs-Code ist ungültig."
       invitation_code: Einladungscode
       not_required: ", nicht erforderlich"
@@ -1963,6 +1996,7 @@ de:
       show_my_name_to_others: "Anderen %{service_name} Benutzern meinen richtigen Namen anzeigen"
       sign_up: "Ein neues Konto bei %{service_name} erstellen"
       terms: Nutzungsbedingungen
+      privacy: Datenschutz
       username_is_in_use: "Dieser Benutzername wird bereits verwendet."
       username_is_invalid: "Der Benutzername ist ungültig. Erlaubte Zeichen sind Buchstaben (keine Umlaute), Ziffern und Unterstriche."
       visible_only_to_you: "nur für dich und den Admin von %{service_name} sichtbar"
@@ -2065,8 +2099,9 @@ de:
       email_addresses: E-Mail-Adressen
       new_email: "Neue E-Mail-Adresse"
       delete_personal_information: "Wenn Du Dein Konto löschst, werden Deine persönlichen Daten (Name, Telefonnummer, Adresse, E-Mail, Profilbild, etc.) endgültig gelöscht und können nicht wiederhergestellt werden. Alle Angebote, die Du erstellt hast, werden entfernt. Du wirst nicht in der Lage sein, Dein Konto zu reaktivieren."
-      delete_information_others_involved: "Informationen, wo andere Mitglieder beteiligt sind (Unterhaltungen mit anderen Menschen, Transaktionen, die Du vorgenommen hast, Reviews die Du an andere gegeben haben, usw.) werden nicht entfernt, wenn Du Dein Konto löschst. Allerdings wird dein Name nicht mehr neben diesen Informationen angezeigt werden."
+      delete_information_others_involved: "Informationen, an denen andere Mitglieder beteiligt sind (Unterhaltungen mit anderen Menschen, Transaktionen, die Du durchgeführt hast, Bewertungen, die Du vorgenommen hast usw.) werden nicht entfernt, wenn Du Dein Konto löschst. Allerdings wird dein Name nicht mehr neben diesen Informationen angezeigt werden."
       unfinished_transactions: "Dein Konto kann nicht gelöscht werden, weil Du laufende Transaktionen hast. Bitte schließe alle Transaktionen vor dem Löschen Deines Kontos ab."
+      only_admin: "Dein Konto kann nicht gelöscht werden, da Du der einzige Administrator in dem Marktplatz bist."
       new_password: "Neues Passwort"
       save: Speichern
       these_fields_are_shown_only_to_you: "Dein Benutzername wird dir in deinem Profil angezeigt, es sei denn, du hast deinen Namen angegeben. Andere Informationen sind nur für dich sichtbar."
@@ -2102,7 +2137,7 @@ de:
       email_when_conversation_rejected: "...jemand mein Angebot oder meine Anfrage ablehnt"
       email_about_completed_transactions: "...jemand mein Angebot oder meine Anfrage als erledigt markiert"
       email_about_new_payments: "...ich eine neue Zahlung erhalte"
-      email_about_new_listings_by_followed_people: "... jemand dem ich folge, veröffentlicht einen neuen Eintrag"
+      email_about_new_listings_by_followed_people: "... jemand dem ich folge, einen neuen Eintrag veröffentlicht"
       unsubscribe_succesful: "Abbestellen erfolgreich"
       unsubscribe_info_text: "Du wirst keine dieser E-Mails mehr erhalten. Überprüfe deine %{settings_link} und wähle die E-Mails aus, die du empfangen möchtest von %{service_name} oder gehe zurück zu %{homepage_link}."
       settings_link: Einstellungen
@@ -2413,12 +2448,15 @@ de:
       need_info: "Wir brauchen einige Informationen über dich, um dir Geld überweisen zu können."
       select_country: "Land wählen..."
       legal_name: "Gesetzlicher Name"
+      first_name: Vorname
+      last_name: Nachname
       country: Land
       birth_date: Geburtsdatum
       ssn_last_4: "Sozialversicherungsnummer, letzte 4 Ziffern"
       personal_id_number: Personalausweisnummer
       address_country: Land
       address_state: Staat
+      address_province: Bundesland
       address_city: Stadt
       address_postal_code: Postleitzahl
       address_line1: Adresse
@@ -2433,6 +2471,7 @@ de:
       bank_routing_1: Bankleitzahl
       bank_routing_2: Branch/Filialcode
       bank_currency: "Währung des Bankkontos"
+      update_also_bank_account: "Bankkonto ebenfalls aktualisieren"
       messages:
         account_number: Kontonummer
         routing_number: Bankleitzahl
@@ -2457,6 +2496,7 @@ de:
     form_pin:
       social_insurance_number: "Social Insurance Number (SIN; Sozialversicherungsnummer)"
       social_security_number: "Social Security Number (SSN; Sozialversicherungsnummer)"
+      ssn_last_4: "Die letzten 4 Ziffern der Sozialversicherungsnummer (SVNR)"
       hong_kong_identity_card: "Hong Kong Identity Card Number (HKID; Hong Kong Personalausweisnummer)"
       singapore_identity_card: "National Registration Identity Card (NRIC; Personalausweisnummer) oder Foreign Identification Number (Ausländeridentifikationsnummer)"
       messages:

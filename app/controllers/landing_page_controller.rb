@@ -123,9 +123,6 @@ class LandingPageController < ActionController::Metal
     begin
       structure = CLP::LandingPageStore.load_structure(cid, preview_version)
 
-      # Uncomment to use static data instead of dynamic from DB
-      # structure = JSON.parse(CustomLandingPage::ExampleData::DATA_STR)
-
       # Tell robots to not index and to not follow any links
       headers["X-Robots-Tag"] = "none"
 
@@ -261,6 +258,7 @@ class LandingPageController < ActionController::Metal
       facebook_locale: facebook_locale(locale),
       facebook_connect_id: c.facebook_connect_id,
       google_maps_key: MarketplaceHelper.google_maps_key(c.id),
+      end_user_analytics: c.end_user_analytics,
       google_analytics_key: c.google_analytics_key }
   end
 

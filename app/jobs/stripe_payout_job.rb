@@ -12,7 +12,9 @@ class StripePayoutJob < ActiveJob::Base
   end
 
   def perform(transaction, community)
-    tx = TransactionService::Transaction.query transaction.id
+    tx = Transaction.find(transaction_id)
     StripeService::API::Api.payments.payout(tx)
+  rescue => exception
+    error(self, exception)
   end
 end

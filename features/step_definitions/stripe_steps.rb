@@ -36,7 +36,7 @@ Then("I expect transaction with Stripe test to pass") do
   onboarding_wizard.dismiss_dialog
 
   # Page::Listing.fill_in_booking_dates always selects a two day period
-  expected_price = listing_price * 2
+  expected_price = listing_price
 
   # Member buys the listing
   login.logout_and_login_as(member[:username], member[:password])
@@ -56,3 +56,12 @@ Then("I expect transaction with Stripe test to pass") do
 
   expect(page).to have_content("Completed")
 end
+
+Then("Stripe API refuse to delete the account") do
+  account = double(:StripeAccount)
+  allow(account).to receive(:delete).and_raise(StandardError.new('Stripe error'))
+  api = double(:StripeAccountApi)
+  allow(api).to receive(:retrieve).with(anything).and_return(account)
+  stub_const('Stripe::Account', api)
+end
+

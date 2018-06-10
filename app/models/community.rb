@@ -89,6 +89,7 @@
 #  small_cover_photo_processing               :boolean
 #  favicon_processing                         :boolean
 #  deleted                                    :boolean
+#  end_user_analytics                         :boolean          default(TRUE)
 #
 # Indexes
 #
@@ -131,6 +132,8 @@ class Community < ApplicationRecord
   has_many :custom_dropdown_fields, -> { where("type = 'DropdownField'") }, :class_name => "CustomField", :dependent => :destroy
   has_many :custom_numeric_fields, -> { where("type = 'NumericField'") }, :class_name => "NumericField", :dependent => :destroy
   has_many :marketplace_sender_emails
+
+  has_one :configuration, class_name: 'MarketplaceConfigurations'
 
   after_create :initialize_settings
 
@@ -571,7 +574,7 @@ class Community < ApplicationRecord
   #
   # There is a method `payment_type` is community service. Use that instead.
   def payments_in_use?
-    MarketplaceService::Community::Query.payment_type(id).present?
+    active_payment_types.present?
   end
 
   def self.all_with_custom_fb_login
@@ -608,6 +611,18 @@ class Community < ApplicationRecord
     attrs = super(options)
     uuid = UUIDUtils.parse_raw(attrs["uuid"])
     attrs.merge({"uuid" => uuid.to_s})
+  end
+
+  # FIXME-RF not the best place
+  def active_payment_types
+    supported = []
+    supported << :paypal if PaypalHelper.paypal_active?(self.id)
+    supported << :stripe if StripeHelper.stripe_active?(self.id)
+    supported.size > 1 ? supported : supported.first
+  end
+
+  def is_person_only_admin(person)
+    admins.count == 1 && admins.first == person
   end
 
   private

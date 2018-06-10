@@ -58,12 +58,12 @@ module FeatureTests
         listing.fill_in_booking_dates
         listing.click_request
 
-        expect(page).to have_content("Request #{title}")
+        expect(page).to have_content("Buy #{title}")
         listing_book.fill_in_message("Snowman ☃ sells: #{title}")
 
         if expected_price.present?
           # listing.fill_in_booking_dates always selects a two day period
-          expect(page).to have_content("(2 days)")
+          # expect(page).to have_content("(2 days)")
           expect(listing_book.total_value).to have_content("$#{expected_price}")
         end
 
@@ -104,7 +104,8 @@ module FeatureTests
 
         # Transaction conversation page
         expect(page).to have_content("Waiting for you to mark the order completed")
-        page.click_link("accepted the request, received payment for")
+        page.find(:xpath, '//a[contains(., "accepted the request")]').click
+
         page.click_link("Mark completed")
 
         choose("Skip feedback")
@@ -121,7 +122,7 @@ module FeatureTests
 
         # Transaction conversation page
         expect(page).to have_content("Waiting for you to give feedback")
-        page.click_link("marked the order as completed")
+        page.find(:xpath, '//a[contains(., "marked the order as completed")]').click
         page.click_link("Skip feedback")
         expect(page).to have_content("Feedback skipped")
       end

@@ -260,6 +260,7 @@ en:
         search_by_name_email: "Search for a name, email or display name"
         reset_search: "Show all"
         for_search_terms: "for: %{terms}"
+        this_makes_the_user_an_admin: "This makes the user an admin. You should notify the user about their responsibilities and that they should review the Sharetribe terms of use. Are you sure you want to proceed?"
       new_layout:
         new_layout: "New layout"
         description_roadmap_new: "When new layout components are made available for your marketplace, you can choose whether you want to start using the new component or continue using the old one. You can toggle the selection at any point from this page. It's recommended to always be using the new version, as the old components might be phased out at some point. In case a component you're currently using is going to be phased out, you will be contacted in advance."
@@ -283,6 +284,7 @@ en:
         invalid_facebook_connect_id: "Client id should contain only numbers."
         facebook_connect_secret: "Facebook client secret"
         invalid_facebook_connect_secret: "Client secret should contain only numbers and letters from a to f."
+        enable_facebook_login: "Allow users to log in with their Facebook account"
         save: "Save settings"
       analytics:
         analytics: Analytics
@@ -290,6 +292,10 @@ en:
         google_analytics_key_info_text: "Tracking ID of your Google Analytics account."
         google_analytics_key_info_text_with_instructions: "Tracking ID of your Google Analytics account. %{instructions_link}."
         google_analytics_instructions_link_text: "Read more about connecting Google Analytics"
+        sharetribe_analytics: "Sharetribe analytics"
+        sharetribe_analytics_info_text_with_instructions: "To improve Sharetribe's services and support, Sharetribe tracks marketplace members activity. Personal data is not collected and this information is not shared outside the Sharetribe team. This tracking can be disabled entirely. %{instructions_link}"
+        sharetribe_analytics_instructions_link_text: "Read more about Sharetribe's analytics."
+        end_user_analytics: "Allow Sharetribe to track members activity in order to improve Sharetribe's services"
         save: "Save settings"
       menu_links:
         menu_links: "Menu links"
@@ -311,6 +317,7 @@ en:
         invalid_post_listing_button_label: "Please provide a valid text for \"Post a new listing\" button"
       transactions:
         export_all_as_csv: "Export all as CSV"
+        processing_export: "Processing export to CSV..."
         transactions: "View transactions"
         headers:
           conversation: "Conversation thread"
@@ -369,6 +376,21 @@ en:
           other_party: "Other party"
         participants: "Conversation: %{starter} with %{author}"
         profile: "%{author}'s Profile"
+      testimonials:
+        testimonials: "View reviews"
+        no_testimonials_found: "No reviews found"
+        displaying_xx_reviews: "Displaying <b>%{count}</b> reviews in transactions %{tx_from} - %{tx_to} of <b>%{all_count}</b> reviews in total"
+        headers:
+          transaction: Transaction
+          author: Author
+          receiver: Receiver
+          status: Status
+          grade: Grade
+          note: Note
+        status:
+          waiting: "Waiting for review"
+          skipped: Skipped
+          published: Published
     custom_fields:
       edit:
         edit_listing_field: "Edit listing field '%{field_name}'"
@@ -642,11 +664,17 @@ en:
         payments_not_enabled: "Payments are not enabled for your marketplace"
     transaction_types:
       sell: Selling
+      sell_w_online_payment: "Selling with online payment"
+      sell_wo_online_payment: "Selling without online payment"
       rent: "Renting out"
+      rent_w_online_payment: "Renting out with online payment"
+      rent_wo_online_payment: "Renting out without online payment"
       give: "Giving away"
       lend: Lending
       swap: Swapping
       service: Offering
+      service_w_online_payment: "Offering with online payment"
+      service_wo_online_payment: "Offering without online payment"
       request: Requesting
       inquiry: Announcement
       share_for_free: "Sharing for free"
@@ -705,29 +733,22 @@ en:
     what_is_this: "What's this?"
     removed_user: "Removed user"
     payment_fee_info:
-      title: "Payment processing fee"
-      title_paypal: "PayPal's processing fee"
+      title: "Commission and Payment processing fee"
       stripe: Stripe
       paypal: PayPal
-      info: "Payments in %{service_name} are processed by either Stripe or PayPal. They both charge a fee from each payment."
+      info: "Payments in %{service_name} are processed by the payment gateway listed below. %{service_name} will charge a commission depending on the payment gateway. The payment gateway may also charge a fee for each payment, as described below."
     paypal_fee_info:
       title: "PayPal's payment processing fee"
       body_text: |-
-          For PayPal payments, %{service_name} charges a commission of %{paypal_commission}%. PayPal's fees are not included in this commission, so in addition to %{service_name} commission, you also need to pay PayPal's fees from each payment processed by PayPal. PayPal's fee is between 2% and 5% of the total sales price, depending on your monthly sales volume and the country of residence of the buyer. In general, domestic purchases have lower fees than international ones, and higher monthly sales give you a discount on fees.
+          For PayPal payments, %{service_name} charges a commission of %{paypal_commission}%. The minimum transaction fee per transaction is %{minimum_transaction_fee}. PayPal's fees are not included in this commission, so in addition to %{service_name} commission, you will also pay PayPal's fees for each. PayPal's fee is between 2% and 5% of the total sales price, depending on your monthly sales volume and the country of residence of the buyer. In general, domestic purchases have lower fees than international ones, and higher monthly sales give you a discount on fees.
           You can see the exact fees by logging in to your PayPal account and going %{link_to_paypal}. After each purchase you will get a receipt displaying the exact fee.
       body_text_accept: |-
           This transaction is processed by PayPal. PayPal charges a processing fee from each payment. This fee is between 2% and 5% of the total sales price, depending on your monthly sales volume and the country of residence of the buyer. In general, domestic purchases have lower fees than international ones, and higher monthly sales give you a discount on fees.
           You can see the exact fees by logging in to your PayPal account and going %{link_to_paypal}. After each purchase you will get a receipt displaying the exact fee.
       link_to_paypal_text: here
-    paypal_only_fee_info:
-      title: "PayPal's payment processing fee"
-      body_text: |-
-          Payments in %{service_name} are processed by PayPal. PayPal charges a processing fee from each payment. This fee is between 2% and 5% of the total sales price, depending on your monthly sales volume and the country of residence of the buyer. In general, domestic purchases have lower fees than international ones, and higher monthly sales give you a discount on fees.
-          You can see the exact fees by logging in to your PayPal account and going %{link_to_paypal}. After each purchase you will get a receipt displaying the exact fee.
-      link_to_paypal_text: here
     stripe_fee_info:
       title: "Stripe's payment processing fee"
-      body_text: "For Stripe payments, %{service_name} charges a commission of %{stripe_commission}%. Stripe's fees are included in this commission."
+      body_text: "For Stripe payments, %{service_name} charges a commission of %{stripe_commission}%. The minimum commission per transaction is %{minimum_transaction_fee}. Stripe's fees are included in this commission."
       link_to_stripe_text: here
   conversations:
     accept:
@@ -800,6 +821,9 @@ en:
       canceled_offer: "canceled the offer"
       paid: "paid %{sum}"
       payment_preauthorized: "Payment authorized: %{sum}"
+      stripe:
+        held_payment: "Accepted the request. Payment for %{sum} is being held by %{service_name} until the order is marked as completed."
+        confirmed_request: "Marked the order as completed. The payment has now been transferred to %{author_name} bank account or will be transferred soon."
     new:
       message: Message
       message_to: "Message to %{author_name}"
@@ -872,6 +896,8 @@ en:
           intl: "Waiting for you to accept the PayPal payment"
           unknown_reason: "Payment is pending. Log in to your PayPal account to see more details."
           verify: "Waiting for you to verify your PayPal account"
+      stripe:
+        waiting_confirmation_from_requester: "Waiting for %{requester_name} to mark the order completed. Once the order is marked as completed, the payment will be released to your bank account."
     status_link:
       accept_offer: "Accept offer"
       accept_request: "Accept request"
@@ -941,6 +967,8 @@ en:
       has_marked_request_as_canceled: "%{other_party_full_name} has canceled the order about '%{request}'. You can still give feedback to %{other_party_given_name}."
       giving_feedback_is_good_idea: "Giving feedback is always a good idea. If everything went well, you should let others know that %{other_party_given_name} can be trusted. If there were any problems, it's good to mention those as well."
       give_feedback_to: "Give feedback to %{other_party_given_name}"
+      stripe:
+        has_marked_request_as_confirmed: "%{other_party_full_name} has marked the order about '%{request}' completed. The payment for this transaction has now been released to your bank account. You can now give feedback to %{other_party_given_name}."
     transaction_automatically_confirmed:
       subject: "Order automatically completed - remember to give feedback"
       we_have_marked_request_as_confirmed: "We have marked the order about '%{request}' completed. The order was automatically completed because %{days_passed} days have passed since the request was accepted."
@@ -1015,6 +1043,8 @@ en:
       price_per_unit_type: "Price per %{unit_type}"
       quantity: "Quantity:"
       you_have_received_new_payment: "You have been paid <b>%{payment_sum}</b> for <b>%{listing_title}</b> by %{payer_full_name}. Here is your receipt."
+      stripe:
+        you_have_received_new_payment: "The amount of <b>%{payment_sum}</b> has been paid for <b>%{listing_title}</b> by %{payer_full_name}. The money is being held by %{service_name} until the order is marked as completed. Here is your receipt."
     payment_receipt_to_payer:
       receipt_of_payment: "Receipt of payment"
       you_have_made_new_payment: "You have paid <b>%{payment_sum}</b> for <b>%{listing_title}</b> to %{recipient_full_name}. Here is a receipt of the payment."
@@ -1052,6 +1082,8 @@ en:
       paypal_gateway_fee: "PayPal's fee:"
       money_will_be_transferred: "The money will be transferred to %{recipient_name} when a) you have marked the request completed or b) %{automatic_confirmation_days} days have passed since you paid."
       listing_per_unit_title: "%{title}, per %{unit_type}"
+      stripe:
+        you_have_made_new_payment: "You have paid <b>%{payment_sum}</b> for <b>%{listing_title}</b>. The money is being held by %{service_name} and will be released to %{recipient_full_name} once you mark the order as completed. Here is a receipt of the payment."
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name} has given you feedback in %{service_name}"
       you_can_give_feedback_to: "You haven't yet given feedback to %{name}."
@@ -1085,7 +1117,7 @@ en:
     transaction_preauthorized:
       subject: "%{requester} is interested and has authorized payment for %{listing_title} published in %{service_name}"
       transaction_requested_by_user: "Great news! %{requester} is interested in \"%{listing_title}\" and has authorized payment for this listing."
-      you_have_time_to_accept: "You need to accept or reject the request within %{payment_expires_in}. If you accept within this timeframe, the payment will go through. If you don't accept, the request will be automatically rejected and you will not get paid."
+      you_have_time_to_accept: "You need to accept or reject the request within %{payment_expires_in}."
       if_you_do_accept: "If you accept the request within this timeframe, you will receive the money immediately to your account."
       if_you_do_accept_stripe: "If you accept the request within this timeframe, the payment will go through. You will receive the money directly to your bank account after you have delivered %{listing_title} to %{requester}."
       if_you_do_not_accept: "If you reject the request or don't accept it within this timeframe, the transaction will be automatically cancelled, %{requester} will not be charged and you will not get paid."
@@ -1139,6 +1171,8 @@ en:
       reject_authorization_error: "An error occurred while trying to reject preauthorized Paypal payment. Please, try again."
     stripe:
       generic_error: "An error occurred during the payment process. Could not finalize your Stripe payment."
+      accept_authorization_error: "An error occurred while trying to accept preauthorized Stripe payment. Please, try again."
+      reject_authorization_error: "An error occurred while trying to reject preauthorized Stripe payment. Please, try again."
   error_pages:
     back_to_kassi_front_page: "Back to the front page"
     error_404:
@@ -1163,7 +1197,7 @@ en:
       kassi_does_not_currently_work_without_javascript: "%{service_name} does not work properly without javascript. Try to enable javascript from your browser's preferences and then reload this page again."
       contact_us: "contact us"
       send_feedback: "Send message"
-      your_feedback_to_admins: "Your message to %{service_name} team"
+      your_feedback_to_admins: "Your message to the %{service_name} team"
     send: Send
     your_email_address: "Your email address"
   errors:
@@ -1352,11 +1386,11 @@ en:
     no_tribe:
       inbox: Inbox
       settings: Settings
-      feedback: "Contact %{service_name} team"
+      feedback: "Contact the %{service_name} team"
     application:
       join_this_community: "Join marketplace"
       read_more: "Read more"
-      feedback: "Your message to %{service_name} team"
+      feedback: "Your message to the %{service_name} team"
       dont_use_to_contact_support: "We noticed you're an admin of %{service_name}. This form is what your users use to contact you. You cannot use this form to contact Sharetribe support. You can do that via the support widget in the bottom right corner of the admin panel instead."
       feedback_forum: "feedback forum"
       feedback_handle: Feedback
@@ -1384,7 +1418,7 @@ en:
       how_to_use: "How it works"
       info_about_kassi: "Information about %{service_name}"
       news: News
-      register_details: Privacy
+      register_details: "Privacy Policy"
       terms: "Terms of use"
     logged_in:
       admin: Admin
@@ -1533,6 +1567,7 @@ en:
         one: "The website will be offline for maintenance in %{count} minute"
         other: "The website will be offline for maintenance in %{count} minutes"
       automatically_logged_out_please_sign_in: "You have been automatically logged out. Please log in again."
+      stripe_you_account_balance_is_not_0: "You account balance is not 0 so it cannot be deleted. This might mean that you have transactions waiting to be completed or that there is money waiting to be paid out to your bank account. Please contact the %{service_name} team to learn more."
     settings:
       account: Account
       notifications: Notifications
@@ -1637,11 +1672,8 @@ en:
         after_service_fee_you_will_get: "After %{service_name} and payment processor fees you will get %{sum_with_currency}"
         no_service_fee_you_will_get_paypal_text: "%{paypal_fee_info_link} will be deducted from the price."
         no_service_fee_you_will_get_payment_text: "%{payment_fee_info_link} will be deducted from the price."
-        after_service_fee_you_will_get_payment_text: "Once someone makes an order, %{service_name} fee (%{sum_with_currency}) and a %{payment_fee_info_link} will be deducted from the price."
-        after_service_fee_you_will_get_paypal_text: "Once someone makes an order, %{service_name} fee (%{sum_with_currency}) and a %{paypal_fee_info_link} will be deducted from the price."
-        after_service_fee_you_will_get_stripe_text: "Once someone makes an order, %{service_name} fee (%{sum_with_currency}) will be deducted from the price."
-        payment_fee_info_link_text: "payment processing fee"
-        paypal_fee_info_link_text: "PayPal's payment processing fee"
+        after_service_fee_you_will_get_payment_text: "Once someone makes an order, you'll receive this amount minus %{payment_fee_info_link}"
+        payment_fee_info_link_text: "%{service_name} fee and a payment processing fee"
         delivery: "Delivery method"
         shipping: Shipping
         shipping_price: "Shipping fee"
@@ -1954,7 +1986,8 @@ en:
         other: "The access to %{service_name} is restricted. You need an email address that proves that you are entitled to join."
       family_name: "Last name"
       given_name: "First name"
-      i_accept_the: "I accept the"
+      i_accept_the_terms_and_privacy: "I accept the %{terms} and %{privacy}"
+      admin_emails_consent: "I accept to receive occasional emails from the %{service_name} team and understand that I can change my mind at any time"
       invalid_invitation_code: "The invitation code is not valid."
       invitation_code: "Invitation code"
       not_required: ", not required"
@@ -1962,7 +1995,8 @@ en:
       password_again: "Confirm password"
       show_my_name_to_others: "Show my real name to other %{service_name} users"
       sign_up: "Create a new %{service_name} account"
-      terms: "terms of use"
+      terms: "Terms of Use"
+      privacy: "Privacy Policy"
       username_is_in_use: "This username is already in use."
       username_is_invalid: "Username is invalid. Allowed characters are letters, numbers and underscore."
       visible_only_to_you: "visible only to you and the %{service_name} team"
@@ -2064,9 +2098,10 @@ en:
       delete_account_confirmation_popup: "Are you sure you really want to delete your user account and permanently lose all data related to it? Account deletion cannot be reversed."
       email_addresses: "Email addresses"
       new_email: "New email address"
-      delete_personal_information: "If you delete your account, your personal information (name, phone number, address, email, profile picture, etc.) will be deleted permanently and can't be recovered. All the listings you have created will be removed. You won't be able to reactivate your account."
+      delete_personal_information: "If you delete your account, your personal information (name, phone number, address, email, profile picture, etc.) will be deleted permanently and can't be recovered. All the listings you have created will be removed. You won't be able to reactivate your account. Your username will become available for others to register on %{service_name}."
       delete_information_others_involved: "Information where other members are involved (conversations with other people, transactions you've made, reviews you've given to others, etc) is not removed when you delete your account. However, your name will no longer be displayed next to this information."
       unfinished_transactions: "Your account can't be deleted because you have ongoing transactions. Please complete all transactions before deleting your account."
+      only_admin: "Your account can't be deleted because you are the only administrator of the marketplace."
       new_password: "New password"
       save: Save
       these_fields_are_shown_only_to_you: "Username is shown in your profile unless you have given your name. Other information is only shown to you."
@@ -2086,7 +2121,7 @@ en:
         status_confirmed: Confirmed
         status_pending: Pending
     notifications:
-      email_from_admins: "I'm willing to receive occasional emails from the administrators"
+      email_from_admins: "I accept to receive occasional emails from the %{service_name} team"
       i_want_to_get_email_notification_when: "I want to get an email notification when..."
       newsletters: "Emails from administrators"
       community_updates: Newsletters
@@ -2415,12 +2450,15 @@ en:
       need_info: "We need some information about you to be able to send you money."
       select_country: "Select country..."
       legal_name: "Legal name"
+      first_name: "First name"
+      last_name: "Last name"
       country: Country
       birth_date: "Birth date"
       ssn_last_4: "SSN Last 4"
       personal_id_number: "Personal ID number"
       address_country: Country
       address_state: State
+      address_province: Province
       address_city: City
       address_postal_code: "Postal code"
       address_line1: "Street address"
@@ -2435,6 +2473,7 @@ en:
       bank_routing_1: "Bank code"
       bank_routing_2: "Branch code"
       bank_currency: "Bank account currency"
+      update_also_bank_account: "Update also Bank account"
       messages:
         account_number: "Account number"
         routing_number: "Routing number"
@@ -2459,6 +2498,7 @@ en:
     form_pin:
       social_insurance_number: "Social Insurance Number (SIN)"
       social_security_number: "Social Security Number (SSN)"
+      ssn_last_4: "Last 4 digits of Social Security Number (SSN)"
       hong_kong_identity_card: "Hong Kong Identity Card Number (HKID)"
       singapore_identity_card: "National Registration Identity Card (NRIC) or Foreign Identification Number (FIN)"
       messages:

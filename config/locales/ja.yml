@@ -255,6 +255,7 @@ ja:
         search_by_name_email: ~
         reset_search: ~
         for_search_terms: ~
+        this_makes_the_user_an_admin: ~
       new_layout:
         new_layout: ~
         description_roadmap_new: ~
@@ -278,6 +279,7 @@ ja:
         invalid_facebook_connect_id: ユーザーIDは数字のみで構成されています
         facebook_connect_secret: フェイスプックユーザーの秘密
         invalid_facebook_connect_secret: フェイスプックユーザーの秘密は、数字とアルファベットaからｆを含むものです。
+        enable_facebook_login: ~
         save: 設定を保存する
       analytics:
         analytics: アナリティクス
@@ -285,6 +287,10 @@ ja:
         google_analytics_key_info_text: "Google アナリティクスアカウントの トラッキング コード"
         google_analytics_key_info_text_with_instructions: "お持ちのGoogle アナリティクスのトラッキング コード。%{instructions_link}。"
         google_analytics_instructions_link_text: "Google アナリティクスを接続についてさらに読む"
+        sharetribe_analytics: ~
+        sharetribe_analytics_info_text_with_instructions: ~
+        sharetribe_analytics_instructions_link_text: ~
+        end_user_analytics: ~
         save: 設定を保存する
       menu_links:
         menu_links: メニューにリンクを追加
@@ -306,6 +312,7 @@ ja:
         invalid_post_listing_button_label: ~
       transactions:
         export_all_as_csv: CSVで全て出力
+        processing_export: ~
         transactions: お支払い履歴の表示
         headers:
           conversation: 会話のスレッド
@@ -364,6 +371,21 @@ ja:
           other_party: ~
         participants: ~
         profile: ~
+      testimonials:
+        testimonials: ~
+        no_testimonials_found: ~
+        displaying_xx_reviews: ~
+        headers:
+          transaction: ~
+          author: ~
+          receiver: ~
+          status: ~
+          grade: ~
+          note: ~
+        status:
+          waiting: ~
+          skipped: ~
+          published: ~
     custom_fields:
       edit:
         edit_listing_field: "「%{field_name}」項目を編集する"
@@ -627,11 +649,17 @@ ja:
         payments_not_enabled: ~
     transaction_types:
       sell: 売ります
+      sell_w_online_payment: ~
+      sell_wo_online_payment: ~
       rent: 貸します
+      rent_w_online_payment: ~
+      rent_wo_online_payment: ~
       give: あげます
       lend: 無料で貸します
       swap: 交換したいです
       service: オファーします
+      service_w_online_payment: ~
+      service_wo_online_payment: ~
       request: リクエストします
       inquiry: 質問します
       share_for_free: 無料でシェアします
@@ -691,7 +719,6 @@ ja:
     removed_user: ユーザは削除されました
     payment_fee_info:
       title: ~
-      title_paypal: ~
       stripe: ~
       paypal: ~
       info: ~
@@ -702,10 +729,6 @@ ja:
           %{link_to_paypal}から、具体的な手数料についてご確認いただけます。各お支払い後お支払い手数料が記載された領収書が発行されます。
       body_text_accept: ~
       link_to_paypal_text: こちら
-    paypal_only_fee_info:
-      title: ~
-      body_text: ~
-      link_to_paypal_text: ~
     stripe_fee_info:
       title: ~
       body_text: ~
@@ -781,6 +804,9 @@ ja:
       canceled_offer: キャンセルされたオファー
       paid: "%{sum}をお支払いしました"
       payment_preauthorized: "%{sum}のお支払い手続きが完了しました"
+      stripe:
+        held_payment: ~
+        confirmed_request: ~
     new:
       message: メッセージ
       message_to: "%{author_name}さんへメッセージ"
@@ -853,6 +879,8 @@ ja:
           intl: あなたのPayPalのお支払い承認待ち
           unknown_reason: お支払いは承認待ちの状態です。今一度、PayPalアカウントにログインして詳細をご確認ください。
           verify: あなたのPayPalアカウントの確認待ち
+      stripe:
+        waiting_confirmation_from_requester: ~
     status_link:
       accept_offer: オファーを承認する
       accept_request: リクエストを受け入れる
@@ -922,6 +950,8 @@ ja:
       has_marked_request_as_canceled: "%{other_party_full_name}さんは%{request}についてのリクエストをキャンセルしました。%{other_party_given_name}さんにご意見・ご提案を出すことが出来ます。"
       giving_feedback_is_good_idea: "レビューを書くことは、いつでもポジティブな面があります。もし全体的に満足できたサービスであった場合は、%{other_party_given_name}さんが信頼できる方であると、他の皆さんにお知らせするのが良いでしょう。仮に問題が発生していた場合であっても、その情報はきっと、今後その方のサービス向上のために役立つでしょう。"
       give_feedback_to: "%{other_party_given_name}さんへレビューを書く"
+      stripe:
+        has_marked_request_as_confirmed: ~
     transaction_automatically_confirmed:
       subject: "リクエストは自動的に完了しました - レビューを書くのを忘れないでください"
       we_have_marked_request_as_confirmed: "%{request}のリクエストが承認されてから%{days_passed}日経過しましたので、自動的に取引完了の処理が行われました。"
@@ -996,6 +1026,8 @@ ja:
       price_per_unit_type: ~
       quantity: ~
       you_have_received_new_payment: ~
+      stripe:
+        you_have_received_new_payment: ~
     payment_receipt_to_payer:
       receipt_of_payment: ~
       you_have_made_new_payment: ~
@@ -1033,6 +1065,8 @@ ja:
       paypal_gateway_fee: ~
       money_will_be_transferred: "a) あなたがリクエストを完了しステータスを変更したとき、あるいは b) あなたがお支払い後、%{automatic_confirmation_days}日が経過したとき、お代金は%{recipient_name}さんの口座に送金されます。"
       listing_per_unit_title: ~
+      stripe:
+        you_have_made_new_payment: ~
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name}さんは%{service_name}であなたにレビューを書きました"
       you_can_give_feedback_to: "%{name}さんにまだレビューを書いていません。"
@@ -1120,6 +1154,8 @@ ja:
       reject_authorization_error: 事前に指定したPaypal口座からの自動引き落とし手続き中にエラーが発生しました。再度お手続きをしてください。
     stripe:
       generic_error: ~
+      accept_authorization_error: ~
+      reject_authorization_error: ~
   error_pages:
     back_to_kassi_front_page: 前のページに戻る
     error_404:
@@ -1277,7 +1313,7 @@ ja:
       add_lots_of_email_addresses: ~
       this_article_link: この記事
       invitation_emails_field_placeholder: "friend1@example.com, friend2@example.com, ..."
-      invitation_message_field_placeholder: "〇〇ちゃん、このマーケットプレイス知ってる？ とりあえず見てみてよ。"
+      invitation_message_field_placeholder: ○○さん、このサイト知っていますか？よかったら少しのぞいてみてください。
       errors_in_emails: メール・アドレスが有効であることを確認してください。複数のアドレスを追加の場合は、半角コンマ、スペースなしで区切ってください。
     list_item:
       review: レビュー
@@ -1513,6 +1549,7 @@ ja:
         zero: メンテナンスのため、このウェブサイトは只今より一時的にオフラインになります
         other: "このウェブサイトはメンテナンスのため%{count}分後にオフラインになります"
       automatically_logged_out_please_sign_in: セッションの期限が切れました。もう一度ログインしてください
+      stripe_you_account_balance_is_not_0: ~
     settings:
       account: ご登録情報
       notifications: メール通知
@@ -1618,10 +1655,7 @@ ja:
         no_service_fee_you_will_get_paypal_text: "%{paypal_fee_info_link}は料金から控除されます。"
         no_service_fee_you_will_get_payment_text: ~
         after_service_fee_you_will_get_payment_text: ~
-        after_service_fee_you_will_get_paypal_text: "%{service_name}のご利用手数料 %{sum_with_currency}と%{paypal_fee_info_link}が料金から差し引かれます"
-        after_service_fee_you_will_get_stripe_text: ~
         payment_fee_info_link_text: ~
-        paypal_fee_info_link_text: PayPalのお支払い手数料
         delivery: 配送
         shipping: 発送する
         shipping_price: 送料
@@ -1933,7 +1967,8 @@ ja:
         other: "%{service_name}へのアクセスが制限されました。参加しなおすには、ご登録時のメールアドレスが必要です。"
       family_name: 姓
       given_name: 名
-      i_accept_the: 利用規約に同意します
+      i_accept_the_terms_and_privacy: ~
+      admin_emails_consent: ~
       invalid_invitation_code: その招待コードは無効です。
       invitation_code: 招待コード
       not_required: 、必要ありません
@@ -1942,6 +1977,7 @@ ja:
       show_my_name_to_others: "%{service_name}内の他のユーザーに私の本名を表示する"
       sign_up: "%{service_name}に新規登録する"
       terms: 利用規約
+      privacy: ~
       username_is_in_use: そのユーザ名はすでに使用されています。
       username_is_invalid: 無効なユーザ名です。文字と数字とアンダーバーが使用可能です。
       visible_only_to_you: あなただけに表示されるマーケットプレイスの管理ページ
@@ -2046,6 +2082,7 @@ ja:
       delete_personal_information: "アカウントを削除すると、個人情報 (名前、電話番号、住所、メールアドレス、プロフィール写真など) は永久に削除され、取り戻すことは出来なくなります。すべての作成された投稿も削除されます。アカウントの復旧はできません。"
       delete_information_others_involved: （他のユーザとの会話などの）付随するその他の情報、お取引履歴、レビューなどはあなたのアカウント削除お手続きのとき、すべて削除されます。次のステップに進むということは、あなたのお名前も、サイト上に表示されなくなります。
       unfinished_transactions: まだやりとりが完了がしていないお取引があるため、削除が出来ないようです。削除前に、すべてのお取引を最後まで完了させてください。
+      only_admin: ~
       new_password: 新しいパスワード
       save: 保存
       these_fields_are_shown_only_to_you: ユーザ名はあなたの名前を公表している場合を除いて、あなたのプロフィールに表示されます。他の情報はあなただけに表示されています。
@@ -2358,12 +2395,15 @@ ja:
       need_info: ~
       select_country: ~
       legal_name: ~
+      first_name: ~
+      last_name: ~
       country: ~
       birth_date: ~
       ssn_last_4: ~
       personal_id_number: ~
       address_country: ~
       address_state: ~
+      address_province: ~
       address_city: ~
       address_postal_code: ~
       address_line1: ~
@@ -2378,6 +2418,7 @@ ja:
       bank_routing_1: ~
       bank_routing_2: ~
       bank_currency: ~
+      update_also_bank_account: ~
       messages:
         account_number: ~
         routing_number: ~
@@ -2402,6 +2443,7 @@ ja:
     form_pin:
       social_insurance_number: ~
       social_security_number: ~
+      ssn_last_4: ~
       hong_kong_identity_card: ~
       singapore_identity_card: ~
       messages:

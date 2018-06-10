@@ -257,6 +257,7 @@ tr-TR:
         search_by_name_email: ~
         reset_search: ~
         for_search_terms: ~
+        this_makes_the_user_an_admin: ~
       new_layout:
         new_layout: ~
         description_roadmap_new: ~
@@ -280,6 +281,7 @@ tr-TR:
         invalid_facebook_connect_id: "Müşteri kimliği sadece rakam içerebilir."
         facebook_connect_secret: "Facebook müşteri gizli anahtarı"
         invalid_facebook_connect_secret: "Gizli anahtar sadece rakam ve A-F arası harfleri içerebilir."
+        enable_facebook_login: ~
         save: "Ayarları kaydet"
       analytics:
         analytics: Analytics
@@ -287,6 +289,10 @@ tr-TR:
         google_analytics_key_info_text: "Google Analytics hesabınızın takip kimliği"
         google_analytics_key_info_text_with_instructions: "Google Analytics hesabınızın izleme kodu: %{instructions_link}"
         google_analytics_instructions_link_text: "Google Analytics kurulumu hakkında daha fazla bilgi edinin."
+        sharetribe_analytics: ~
+        sharetribe_analytics_info_text_with_instructions: ~
+        sharetribe_analytics_instructions_link_text: ~
+        end_user_analytics: ~
         save: "Ayarları kaydet"
       menu_links:
         menu_links: "Menü bağlantıları"
@@ -308,6 +314,7 @@ tr-TR:
         invalid_post_listing_button_label: ~
       transactions:
         export_all_as_csv: ~
+        processing_export: ~
         transactions: "İşlemleri görüntüle"
         headers:
           conversation: "Konuşma başlığı"
@@ -366,6 +373,21 @@ tr-TR:
           other_party: ~
         participants: ~
         profile: ~
+      testimonials:
+        testimonials: ~
+        no_testimonials_found: ~
+        displaying_xx_reviews: ~
+        headers:
+          transaction: ~
+          author: ~
+          receiver: ~
+          status: ~
+          grade: ~
+          note: ~
+        status:
+          waiting: ~
+          skipped: ~
+          published: ~
     custom_fields:
       edit:
         edit_listing_field: "'%{field_name}' listeleme alanını düzenle"
@@ -463,14 +485,14 @@ tr-TR:
       allow_providers_to_manage_availability: ~
       per_hour_availability: ~
       per_day_availability: "\"Günlük\" kullanılabilirlik"
-      per_night_availability: "\"Gecelik\" kullanılabilirlik"
+      per_night_availability: "\"Her bir gece\" yararlanılabilirlik"
       pricing_units_disabled_info: "Takvim kullanılabirliği etkinleştirildiğinde fiyatlandırma tablosu kullanılamaz."
       can_not_find_name: ~
       index:
         listing_shapes: "İşlem türü"
-        description: ~
+        description: "Sipariş türleri, sipariş sürecinin sitenizde nasıl çalıştığını belirler. Kullanıcılarınızın kiralayıp satabilmelerine veya muhtemelen sadece duyurular yayınlayıp doğrudan mesajlarla iletişim kurabilmelerine karar verebilirsiniz."
         read_more_about_order_types: "Sipariş tipleriyle ilgili daha fazla bilgi al"
-        add_new_shape: ~
+        add_new_shape: "Yeni sipariş türü ekle: "
         select_template: "Şablon seç"
         all_categories: "Tüm kategoriler"
         no_categories: "Kategori yok"
@@ -480,24 +502,24 @@ tr-TR:
           listing_shape_categories: "Kullanıldığı kategoriler"
         order:
           saving_order: "Sipariş kaydediliyor"
-          save_order_successful: ~
+          save_order_successful: "Sipariş türü siparişi başarıyla kaydedildi"
           save_order_error: "Sipariş kaydedilirken hata yaşandı. Lütfen sayfayı yenileyip tekrar deneyiniz."
       templates:
-        selling_products: ~
-        renting_products: ~
-        offering_services: ~
-        giving_things_away: ~
+        selling_products: "Satılık ürünler"
+        renting_products: "Kiralık ürünler"
+        offering_services: "Sunulan hizmetler"
+        giving_things_away: "Bağışlanan şeyler"
         requesting: "Talep ediliyor"
         announcement: "Duyuru yayınlanılıyor"
-        custom: ~
+        custom: "Özel ayarlar"
       new:
-        create_listing_shape: ~
+        create_listing_shape: "Sipariş türü oluşturun"
         create: Oluştur
         cancel: İptal
         create_success: ~
         create_failure: "Yeni sipariş türü oluşturulamadı. Hata: %{error_msg}"
       edit:
-        edit_listing_shape: ~
+        edit_listing_shape: "Sipariş türünü düzenle %{shape}"
         update: Kaydet
         cancel: İptal
         update_success: "%{shape}"
@@ -507,7 +529,7 @@ tr-TR:
         can_not_delete_only_one_in_categories: ~
       listing_shape_name: İsim
       listing_shape_name_placeholder: "Ör. Sat"
-      action_button_label: ~
+      action_button_label: "Ödeme düğmesi etiketi"
       action_button_placeholder: "Ör. Sil"
       successfully_closed: ~
       successfully_deleted: "Sipariş türü %{order_type} başarıyla silindi"
@@ -518,12 +540,12 @@ tr-TR:
       units_title: "Fiyatlandırma tablosu"
       units_desc: "Fiyatlandırma birimlerini etkinleştirdiyseniz, liste fiyatı \"fiyatlandırma birimi başına fiyat\" olarak görüntülenir. Buna bir örnek: \"saatte 39 dolar\"."
       units:
-        piece: ~
-        hour: Saatlik
+        piece: "Her bir parça"
+        hour: "her bir saat"
         day: Günlük
-        night: Gecelik
-        week: Haftalık
-        month: Aylık
+        night: "her bir gece"
+        week: "Her bir hafta"
+        month: "Her bir ay"
       can_not_find: ~
       add_custom_unit: ~
       delete_custom_unit: Sil
@@ -623,11 +645,17 @@ tr-TR:
         payments_not_enabled: ~
     transaction_types:
       sell: Satmak
+      sell_w_online_payment: ~
+      sell_wo_online_payment: ~
       rent: "Kiraya vermek"
+      rent_w_online_payment: ~
+      rent_wo_online_payment: ~
       give: "Hediye etmek"
       lend: "Ödünç vermek"
       swap: Takas
       service: "Teklif etmek"
+      service_w_online_payment: ~
+      service_wo_online_payment: ~
       request: "Talep etmek"
       inquiry: Sorgulama
       share_for_free: "Bedelsiz paylaşım"
@@ -687,7 +715,6 @@ tr-TR:
     removed_user: "Silinmiş kullanıcı"
     payment_fee_info:
       title: ~
-      title_paypal: ~
       stripe: ~
       paypal: ~
       info: ~
@@ -699,10 +726,6 @@ tr-TR:
           PayPal her alışverişten sonra size komisyon oranlarını detaylı gösteren bir eposta göndermektedir.
       body_text_accept: ~
       link_to_paypal_text: buradan
-    paypal_only_fee_info:
-      title: ~
-      body_text: ~
-      link_to_paypal_text: ~
     stripe_fee_info:
       title: ~
       body_text: ~
@@ -778,6 +801,9 @@ tr-TR:
       canceled_offer: "teklifi iptal etti"
       paid: "%{sum} ödedi"
       payment_preauthorized: ~
+      stripe:
+        held_payment: ~
+        confirmed_request: ~
     new:
       message: Mesaj
       message_to: "%{author_name} üyesine mesaj"
@@ -850,6 +876,8 @@ tr-TR:
           intl: "PayPal ödemesini kabul etmeniz bekleniyor"
           unknown_reason: "Ödeme beklemede. Ayrıntılı bilgi için PayPal hesabınıza giriş yapın."
           verify: "PayPal hesabınızı doğrulatmanız bekleniyor"
+      stripe:
+        waiting_confirmation_from_requester: ~
     status_link:
       accept_offer: "Teklifi kabul et"
       accept_request: "Talebi kabul et"
@@ -919,6 +947,8 @@ tr-TR:
       has_marked_request_as_canceled: "%{other_party_full_name} '%{request}' talebini iptal etti. Yine de %{other_party_given_name}'e geri bildirim bırakabilirsiniz."
       giving_feedback_is_good_idea: "Geri bildirim bırakmak her zaman iyi bir fikirdir. Eğer her şey yolunda gittiyse, diğer üyelere %{other_party_given_name}'in güvenilir olduğunu bildirmelisiniz. Eğer sorun yaşadıysanız, bunlardan bahsetmekte de fayda var."
       give_feedback_to: "%{other_party_given_name} üyesin geri bildirim bırakın."
+      stripe:
+        has_marked_request_as_confirmed: ~
     transaction_automatically_confirmed:
       subject: "Talep otomatik olarak tamamlandı - geri bildirim bırakmayı unutmayın"
       we_have_marked_request_as_confirmed: "'%{request}' hakkındaki talebi tamamlandı olarak işaretledik. Talebin kabulünün üzerinden %{days_passed} gün geçtiği için, talep otomatik olarak tamamlandı."
@@ -993,6 +1023,8 @@ tr-TR:
       price_per_unit_type: ~
       quantity: ~
       you_have_received_new_payment: ~
+      stripe:
+        you_have_received_new_payment: ~
     payment_receipt_to_payer:
       receipt_of_payment: ~
       you_have_made_new_payment: ~
@@ -1030,6 +1062,8 @@ tr-TR:
       paypal_gateway_fee: ~
       money_will_be_transferred: "Ödeme %{recipient_name}'in hesabına a) talebi tamamlandı olarak işaretlediğinizde ya da b) ödeme yapmanızın ardından %{automatic_confirmation_days} gün geçtikten sonra aktarılacak."
       listing_per_unit_title: ~
+      stripe:
+        you_have_made_new_payment: ~
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name}, %{service_name} altında sana bir geri bildirimde bulundu"
       you_can_give_feedback_to: "%{name} kullanıcısına henüz bir geri bildirim vermedin."
@@ -1117,6 +1151,8 @@ tr-TR:
       reject_authorization_error: "izin verilmiş PayPal ödemesini reddederken bir hata meydana geldi. Lütfen tekrar deneyin."
     stripe:
       generic_error: ~
+      accept_authorization_error: ~
+      reject_authorization_error: ~
   error_pages:
     back_to_kassi_front_page: "Anasayfaya dön"
     error_404:
@@ -1507,6 +1543,7 @@ tr-TR:
       listing_author_payment_details_missing: "Bu listelemenin sahibi ödeme bilgilerini eklemediği için şu an ödeme alamıyor. Lütfen ilan sahibine veya bize ulaşın."
       images_are_processing: ~
       automatically_logged_out_please_sign_in: "Oturumunuzun süresi doldu, lütfen tekrar giriş yapın."
+      stripe_you_account_balance_is_not_0: ~
     settings:
       account: Hesap
       notifications: Bildirimler
@@ -1603,7 +1640,7 @@ tr-TR:
         location: Konum
       price:
         price: Fiyat
-        per: ~
+        per: "her bir"
         per_day: günlük
         mass: "parça, kg, l, m2, ..."
         time: "saat, gün, ay, ..."
@@ -1612,10 +1649,7 @@ tr-TR:
         no_service_fee_you_will_get_paypal_text: "%{paypal_fee_info_link} toplam ücretten kesilecektir..."
         no_service_fee_you_will_get_payment_text: ~
         after_service_fee_you_will_get_payment_text: ~
-        after_service_fee_you_will_get_paypal_text: "%{service_name} ücreti (%{sum_with_currency}) ve %{paypal_fee_info_link} toplam ücretten kesilecektir."
-        after_service_fee_you_will_get_stripe_text: ~
         payment_fee_info_link_text: ~
-        paypal_fee_info_link_text: "PayPal işlem ücreti"
         delivery: "Teslim Yöntemi"
         shipping: "Kargo:"
         shipping_price: "Kargo ücreti"
@@ -1696,8 +1730,8 @@ tr-TR:
       accept_for_frees: "Ücretsiz olarak kabul etmek"
       trades: "Değiş tokuş etmek"
     listing_actions:
-      booking_from: "'dan"
-      booking_to: "'a"
+      booking_from: "Giriş tarihi"
+      booking_to: "Çıkış tarihi"
       how_paypal_works: "PayPal Nasıl Çalışır"
       payment_help: "Ödeme yardımı"
       unable_load_availability: ~
@@ -1720,11 +1754,11 @@ tr-TR:
       community_not_configured_for_payments_admin: "%{service_name} ödeme almak için ayarlanmadı, yeni listelemeler yapamayacaksınız. Lütfen %{payment_settings_link} adresine giderek gerekli ödeme alanlarını doldurunuz."
     quantity:
       hour: "Aylık saat:"
-      day: ~
+      day: "Gün sayısı"
       night: "Gece sayısı:"
       week: "Hafta sayısı:"
       month: "Ay sayısı:"
-      custom: ~
+      custom: Miktar
     quantity_placeholder: Adet
     please_comment: Yorum
     reply_link:
@@ -1759,7 +1793,7 @@ tr-TR:
       processing_uploaded_image: "(Yüklenen görsel işleniyor...)"
       listing_created_at: "İlan oluşturuldu"
       price:
-        per_quantity_unit: "%{quantity_unit} başına"
+        per_quantity_unit: "%{quantity_unit} her bir"
         per_day: günlük
       delivery: "Teslim Yöntemi"
       shipping: "Kargo (+%{price})"
@@ -1770,11 +1804,11 @@ tr-TR:
       youtube_video_player: "YouTube video oynatıcısı"
     unit_types:
       piece: "adet başına"
-      hour: saatlik
+      hour: saat
       day: gün
-      night: gecelik
-      week: haftalık
-      month: aylık
+      night: gece
+      week: hafta
+      month: ay
     verification_required:
       verification_required: "Doğrulama gerekli"
   listing_conversations:
@@ -1927,7 +1961,8 @@ tr-TR:
         other: "%{service_name}'e erişim sınırlandırılmıştır. Katılım izniniz olduğunu gösteren bir e-posta adresine sahip olmalısınız."
       family_name: Soyad
       given_name: Ad
-      i_accept_the: "Okudum ve Kabul ediyorum:"
+      i_accept_the_terms_and_privacy: ~
+      admin_emails_consent: "Zaman zaman %{service_name} takım üyelerinden e-mailler alacağımı kabul ediyorum ve fikrimi istedim zaman değiştirebileceğimi anladım."
       invalid_invitation_code: "Davet kodu geçerli değil."
       invitation_code: "Davet kodu"
       not_required: ", gerekmemektedir"
@@ -1936,6 +1971,7 @@ tr-TR:
       show_my_name_to_others: "Diğer %{service_name} kullanıcılarına gerçek adımı göster"
       sign_up: "Yeni %{service_name} hesabı oluştur."
       terms: "Kullanım Koşulları"
+      privacy: ~
       username_is_in_use: "Bu kullanıcı adı kullanımdadır."
       username_is_invalid: "Kullanıcı adı geçersiz. Kullanıcı adı harf, rakam ve altçizgiden oluşabilir."
       visible_only_to_you: "yalnızca siz ve pazaryeri yöneticisi görebilir"
@@ -2040,6 +2076,7 @@ tr-TR:
       delete_personal_information: "Hesabınızı sildiğinizde kişisel bilgileriniz (ad, telefon, adres, eposta, profil fotoğrafı) geri getirilmeyecek şekilde silinecektir. Oluşturduğunuz bütün listelemeler silinecek ve hesabınızı tekrar aktif hale getiremeyeceksiniz."
       delete_information_others_involved: "Diğer üyeleri içeren site aktiviteleriniz (yazışmalarınız, yaptığınız işlemler, yorumlarınız vb.) silinmeyecektir. Ama isminiz yayınlanmayacaktır."
       unfinished_transactions: "Hali hazırda aktif listelemeleriniz olduğu için hesabınızı silemiyoruz. Bütün işlemler tamamlandıktan sonra lütfen tekrar deneyiniz."
+      only_admin: ~
       new_password: "Yeni şifre"
       save: Kaydet
       these_fields_are_shown_only_to_you: "Adınızı vermediyseniz profilinizde kullanıcı adınız görünür. Diğer bilgilerinizi yalnızca siz görüntüleyebilirsiniz."
@@ -2201,7 +2238,7 @@ tr-TR:
       december: Ara
     today: Bugün
     clear: Sil
-    format: mm/dd/yyyy
+    format: ay/gün/yıl
   time:
     formats:
       short: "%e %b %Y at %H:%M"
@@ -2233,10 +2270,10 @@ tr-TR:
         other: "%{count} gün"
   transactions:
     initiate:
-      booked_days: ~
+      booked_days: "Ayrılmış günler:"
       booked_nights: ~
       price_per_day: "Günlük ücret:"
-      price_per_night: "Gecelik fiyat"
+      price_per_night: "Her bir gece için fiyat"
       price_per_hour: ~
       price_per_unit: ~
       quantity: "Adet:"
@@ -2354,12 +2391,15 @@ tr-TR:
       need_info: ~
       select_country: ~
       legal_name: ~
+      first_name: ~
+      last_name: ~
       country: ~
       birth_date: ~
       ssn_last_4: ~
       personal_id_number: ~
       address_country: ~
       address_state: ~
+      address_province: ~
       address_city: ~
       address_postal_code: ~
       address_line1: ~
@@ -2374,6 +2414,7 @@ tr-TR:
       bank_routing_1: ~
       bank_routing_2: ~
       bank_currency: ~
+      update_also_bank_account: ~
       messages:
         account_number: ~
         routing_number: ~
@@ -2398,6 +2439,7 @@ tr-TR:
     form_pin:
       social_insurance_number: ~
       social_security_number: ~
+      ssn_last_4: ~
       hong_kong_identity_card: ~
       singapore_identity_card: ~
       messages:

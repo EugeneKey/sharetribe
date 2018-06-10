@@ -255,6 +255,7 @@ vi:
         search_by_name_email: ~
         reset_search: ~
         for_search_terms: ~
+        this_makes_the_user_an_admin: ~
       new_layout:
         new_layout: "Bố cục mới"
         description_roadmap_new: "Khi các thành phần bố cục mới được tạo sẵn cho thị trường của bạn, bạn có thể chọn xem bạn muốn bắt đầu sử dụng thành phần mới hay tiếp tục sử dụng thành phần mới. Bạn có thể bật / tắt vùng chọn ở bất kỳ điểm nào từ trang này. Bạn nên luôn luôn sử dụng phiên bản mới vì các thành phần cũ có thể được loại bỏ tại một số điểm. Trong trường hợp một thành phần mà bạn hiện đang sử dụng sẽ được loại bỏ, bạn sẽ được liên hệ trước."
@@ -278,6 +279,7 @@ vi:
         invalid_facebook_connect_id: "Tài khoản khách hàng chỉ nên chứa số."
         facebook_connect_secret: "Khách hàng bí mật Facebook"
         invalid_facebook_connect_secret: "Khách hàng bí mật chỉ chứa số và chữ cái từ a tới f."
+        enable_facebook_login: ~
         save: "Lưu thiết lâp"
       analytics:
         analytics: "Phân tích"
@@ -285,6 +287,10 @@ vi:
         google_analytics_key_info_text: "ID theo dõi tài khoản Google Analytics của bạn."
         google_analytics_key_info_text_with_instructions: "ID theo dõi tài khoản Google Analytics của bạn.%{instructions_link}."
         google_analytics_instructions_link_text: "Đọc thêm về kết nối Google Analytics"
+        sharetribe_analytics: ~
+        sharetribe_analytics_info_text_with_instructions: ~
+        sharetribe_analytics_instructions_link_text: ~
+        end_user_analytics: ~
         save: "Lưu thiết lâp"
       menu_links:
         menu_links: "Liên kết danh mục"
@@ -306,6 +312,7 @@ vi:
         invalid_post_listing_button_label: "Vui lòng cung cấp văn bản hợp lệ cho nút \"Đăng niêm yết mới\""
       transactions:
         export_all_as_csv: "Xuất tất cả dưới dạng CSV"
+        processing_export: ~
         transactions: "Xem giao dịch"
         headers:
           conversation: "Chủ đề đối thoại"
@@ -364,6 +371,21 @@ vi:
           other_party: ~
         participants: ~
         profile: ~
+      testimonials:
+        testimonials: ~
+        no_testimonials_found: ~
+        displaying_xx_reviews: ~
+        headers:
+          transaction: ~
+          author: ~
+          receiver: ~
+          status: ~
+          grade: ~
+          note: ~
+        status:
+          waiting: ~
+          skipped: ~
+          published: ~
     custom_fields:
       edit:
         edit_listing_field: "Chỉnh sửa trường liệt kê %{field_name}"
@@ -633,11 +655,17 @@ vi:
         payments_not_enabled: ~
     transaction_types:
       sell: Bán
+      sell_w_online_payment: ~
+      sell_wo_online_payment: ~
       rent: "Cho thuê"
+      rent_w_online_payment: ~
+      rent_wo_online_payment: ~
       give: Tặng
       lend: "Cho mượn"
       swap: "Trao đổi"
       service: "Chào bán"
+      service_w_online_payment: ~
+      service_wo_online_payment: ~
       request: "Yêu cầu"
       inquiry: "Thông báo"
       share_for_free: "Chia sẻ miễn phí"
@@ -697,7 +725,6 @@ vi:
     removed_user: "Đã loại bỏ người dùng"
     payment_fee_info:
       title: "Phí xử lý giao dịch"
-      title_paypal: "Phí xử lý của PayPal"
       stripe: Stripe
       paypal: PayPal
       info: ~
@@ -708,12 +735,6 @@ vi:
           Bạn có thể xem lệ phí chính xác bằng cách đăng nhập vào tài khoản PayPal của bạn và đi tới %{link_to_paypal}. Sau mỗi lần mua, bạn sẽ nhận được biên lai hiển thị chính xác chi phí.
       body_text_accept: ~
       link_to_paypal_text: đây
-    paypal_only_fee_info:
-      title: "Phí xử lý của PayPal"
-      body_text: |-
-          %{service_name} chấp nhận thanh toán qua PayPal. PayPal thu phí xử lý trên mỗi giao dịch. Mức phí này ở khoảng 2% đến 5% giá trị giao dịch, tuỳ vào tổng lượng giao dịch hàng tháng của bạn và quốc gia của người bán. Thông thường thì giao dịch nội địa bị tính phí thấp hơn giao dịch quốc tế, lượng giao dịch càng lớn thì phí càng ít.
-          Bạn có thể xem chi tiết tiền phí bằng cách đăng nhập vào tài khoản PayPal và tới %{link_to_paypal}. Sau mỗi giao dịch bạn sẽ nhận được một hoá đơn với mức phí cụ thể.
-      link_to_paypal_text: "trang này"
     stripe_fee_info:
       title: "Phí xử lý của Stripe"
       body_text: ~
@@ -789,6 +810,9 @@ vi:
       canceled_offer: "đã hủy đề nghị"
       paid: "Thanh toán %{sum}"
       payment_preauthorized: "Thanh toán đã được cho phép: %{sum}"
+      stripe:
+        held_payment: ~
+        confirmed_request: ~
     new:
       message: "Tin nhắn"
       message_to: "Nhắn tin cho %{author_name}"
@@ -861,6 +885,8 @@ vi:
           intl: "Đang chờ bạn chấp nhận thanh toán qua PayPal"
           unknown_reason: "Thanh toán đang chờ xử lý. Đăng nhập vào tài khoản PayPal của bạn để xem thêm chi tiết."
           verify: "Đang đợi bạn xác minh tài khoản PayPal"
+      stripe:
+        waiting_confirmation_from_requester: ~
     status_link:
       accept_offer: "Chấp nhận hỗ trợ"
       accept_request: "Chấp nhận yêu cầu"
@@ -930,6 +956,8 @@ vi:
       has_marked_request_as_canceled: ~
       giving_feedback_is_good_idea: "Để lại phản hồi luôn là một ý tốt. Nếu mọi chuyện suôn sẻ, hãy giúp cho mọi người biết có thể tin tưởng %{other_party_given_name}. Nếu có trục trặc gì thì bạn cũng có thể chia sẻ cho mọi người biết."
       give_feedback_to: "Để lại phản hồi cho %{other_party_given_name}"
+      stripe:
+        has_marked_request_as_confirmed: ~
     transaction_automatically_confirmed:
       subject: ~
       we_have_marked_request_as_confirmed: ~
@@ -1004,6 +1032,8 @@ vi:
       price_per_unit_type: ~
       quantity: ~
       you_have_received_new_payment: ~
+      stripe:
+        you_have_received_new_payment: ~
     payment_receipt_to_payer:
       receipt_of_payment: ~
       you_have_made_new_payment: ~
@@ -1041,6 +1071,8 @@ vi:
       paypal_gateway_fee: ~
       money_will_be_transferred: "Số tiền này sẽ được chuyển đến %{recipient_name} khi a) bạn đã đánh dấu yêu cầu hoàn thành hoặc b) %{automatic_confirmation_days} ngày đã trôi qua kể từ khi bạn trả tiền."
       listing_per_unit_title: ~
+      stripe:
+        you_have_made_new_payment: ~
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name} đã gửi bạn thông tin phản hồi tại %{service_name}"
       you_can_give_feedback_to: "Ban có thể đưa ra thông tin phản hồi đến %{name} tại"
@@ -1128,6 +1160,8 @@ vi:
       reject_authorization_error: "Đã xảy ra lỗi khi cố từ chối thanh toán của Paypal. Vui lòng thử lại."
     stripe:
       generic_error: ~
+      accept_authorization_error: ~
+      reject_authorization_error: ~
   error_pages:
     back_to_kassi_front_page: "Quay đầu trang"
     error_404:
@@ -1206,7 +1240,7 @@ vi:
     manage_listings: "Quản lý bài đăng"
     invite: "Mời bạn bè"
     login: ~
-    signup: "Đăng kí"
+    signup: "Đăng ký"
     menu: "Danh mục"
   homepage:
     additional_private_listings_slate:
@@ -1398,7 +1432,7 @@ vi:
       notifications: "Các thông báo"
       requests: "Yêu cầu kết bạn"
       settings: "Cài đặt"
-      sign_up: "Đăng kí"
+      sign_up: "Đăng ký"
     notifications:
       listing_could_not_be_saved: "Không thể lưu bài đăng. Vui lòng thử lại. Nếu vẫn tiếp tục gặp sự cố, xin vui lòng %{contact_admin_link}."
       contact_admin_link_text: "liên hệ quản lí"
@@ -1521,6 +1555,7 @@ vi:
         zero: "Trang web bây giờ sẽ không hoạt động để bảo trì"
         other: "Trang web bây giờ sẽ không hoạt động để bảo trì trong %{count} phút"
       automatically_logged_out_please_sign_in: "Bạn đã tự động đăng xuất. Xin vui lòng đăng nhập lại."
+      stripe_you_account_balance_is_not_0: ~
     settings:
       account: "Tài khoản"
       notifications: "Các ghi chú"
@@ -1626,10 +1661,7 @@ vi:
         no_service_fee_you_will_get_paypal_text: "%{paypal_fee_info_link} sẽ được khấu trừ khỏi giá."
         no_service_fee_you_will_get_payment_text: ~
         after_service_fee_you_will_get_payment_text: ~
-        after_service_fee_you_will_get_paypal_text: "Khi ai đó làm đơn đặt hàng, %{service_name} lệ phí (%{sum_with_currency}) và %{paypal_fee_info_link} sẽ được khấu trừ khỏi giá."
-        after_service_fee_you_will_get_stripe_text: ~
         payment_fee_info_link_text: ~
-        paypal_fee_info_link_text: "Phí xử lý thanh toán của PayPal"
         delivery: "Phương thức vận chuyển:"
         shipping: "Vận chuyển:"
         shipping_price: "Phí vận chuyển:"
@@ -1939,7 +1971,8 @@ vi:
       invalid_username_or_email: "Tên người dùng hoặc e-mail không hợp lệ hoặc đã được sử dụng"
       family_name: Họ
       given_name: Tên
-      i_accept_the: "Tôi chấp nhận"
+      i_accept_the_terms_and_privacy: ~
+      admin_emails_consent: ~
       invalid_invitation_code: "Mã lời mời không hợp lệ:"
       invitation_code: "Mã lời mời:"
       not_required: ", không bắt buộc"
@@ -1948,13 +1981,14 @@ vi:
       show_my_name_to_others: "Hiển thị tên thật của tôi cho các người dùng %{service_name} khác"
       sign_up: "Tạo một tài khoản mới trong %{service_name}"
       terms: "Điều khoản sử dụng"
+      privacy: ~
       username_is_in_use: "Tên người dùng này đang được sử dụng."
       username_is_invalid: "Tên người dùng không hợp lệ. Cho phép các ký tự là chữ cái, số và gạch dưới."
       visible_only_to_you: "chỉ hiện thị đối với bạn và cộng đồng quản trị"
       visible_to_everybody: "hiển thị đối với mọi người"
       create_account_with_facebook: "Đăng nhập bằng Facebook"
       OR: HOẶC
-      signup_with_email: "Đăng kí với email"
+      signup_with_email: "Đăng ký với email"
     profile_feedback:
       grade: "xếp loại:"
       and_gave_following_feedback: "và đã cung cấp thông tin phản hồi sau"
@@ -2052,6 +2086,7 @@ vi:
       delete_personal_information: "Nếu bạn xoá tài khoản của mình, thông tin cá nhân (tên, số điện thoại, địa chỉ, email, ảnh đại diện, v.v.) sẽ bị xóa vĩnh viễn và không phục hồi lại được. Tất cả các bài đăng của bạn sẽ bị xóa. Bạn sẽ không thể kích hoạt lại tài khoản của mình."
       delete_information_others_involved: "Thông tin mà các thành viên khác tham gia (cuộc trò chuyện với người khác, giao dịch bạn thực hiện, nhận xét bạn đưa cho người khác, v.v ...) sẽ không bị xóa khi bạn xóa tài khoản của mình. Tuy nhiên, tên của bạn sẽ không còn được hiển thị bên cạnh thông tin này."
       unfinished_transactions: "Bạn không thể xóa tài khoản của mình vì bạn có các giao dịch đang diễn ra. Vui lòng hoàn tất tất cả giao dịch trước khi xóa tài khoản của bạn."
+      only_admin: ~
       new_password: "Mật khẩu mới"
       save: Lưu
       these_fields_are_shown_only_to_you: "Tên người dùng được hiển thị trong tiểu sử của bạn trừ khi bạn đưa ra tên của bạn. Các thông tin khác chỉ hiện thị đối với bạn."
@@ -2370,12 +2405,15 @@ vi:
       need_info: ~
       select_country: ~
       legal_name: ~
+      first_name: ~
+      last_name: ~
       country: ~
       birth_date: ~
       ssn_last_4: ~
       personal_id_number: ~
       address_country: ~
       address_state: ~
+      address_province: ~
       address_city: ~
       address_postal_code: ~
       address_line1: ~
@@ -2390,6 +2428,7 @@ vi:
       bank_routing_1: ~
       bank_routing_2: ~
       bank_currency: ~
+      update_also_bank_account: ~
       messages:
         account_number: ~
         routing_number: ~
@@ -2414,6 +2453,7 @@ vi:
     form_pin:
       social_insurance_number: ~
       social_security_number: ~
+      ssn_last_4: ~
       hong_kong_identity_card: ~
       singapore_identity_card: ~
       messages:

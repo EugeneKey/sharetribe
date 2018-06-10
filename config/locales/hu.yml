@@ -261,6 +261,7 @@ hu:
         search_by_name_email: ~
         reset_search: ~
         for_search_terms: ~
+        this_makes_the_user_an_admin: ~
       new_layout:
         new_layout: "Új megjelenés"
         description_roadmap_new: ~
@@ -284,6 +285,7 @@ hu:
         invalid_facebook_connect_id: "Felhasználó azonosító csak számokat tartalmazhat."
         facebook_connect_secret: "Facebook kliens kulcs"
         invalid_facebook_connect_secret: "A kliens kulcs csak számokat tartalmazhat és betűket a-tól f-ig."
+        enable_facebook_login: ~
         save: "Beállítások mentése"
       analytics:
         analytics: Vizsgálat
@@ -291,6 +293,10 @@ hu:
         google_analytics_key_info_text: "Google Analytics fiókja azonosítójának lekövetése."
         google_analytics_key_info_text_with_instructions: "Google Analytics fiókja azonosítójának lekövetése.%{instructions_link}"
         google_analytics_instructions_link_text: "Leírás a Google Analytics csatlakoztatásáról."
+        sharetribe_analytics: ~
+        sharetribe_analytics_info_text_with_instructions: ~
+        sharetribe_analytics_instructions_link_text: ~
+        end_user_analytics: ~
         save: "Beállítások mentése"
       menu_links:
         menu_links: "Menü linkek"
@@ -312,6 +318,7 @@ hu:
         invalid_post_listing_button_label: "Kérem helyes szöveget írjon az Új hirdetés feladása gombhoz."
       transactions:
         export_all_as_csv: "Az öszes exportálása CSV-ként"
+        processing_export: ~
         transactions: "Mutassa a tranzakciókat"
         headers:
           conversation: "Párbeszéd vonala"
@@ -370,6 +377,21 @@ hu:
           other_party: ~
         participants: ~
         profile: ~
+      testimonials:
+        testimonials: ~
+        no_testimonials_found: ~
+        displaying_xx_reviews: ~
+        headers:
+          transaction: ~
+          author: ~
+          receiver: ~
+          status: ~
+          grade: ~
+          note: ~
+        status:
+          waiting: ~
+          skipped: ~
+          published: ~
     custom_fields:
       edit:
         edit_listing_field: "Mező szerkesztése %{field_name}"
@@ -637,11 +659,17 @@ hu:
         payments_not_enabled: ~
     transaction_types:
       sell: Eladás
+      sell_w_online_payment: ~
+      sell_wo_online_payment: ~
       rent: Bérbeadás
+      rent_w_online_payment: ~
+      rent_wo_online_payment: ~
       give: Ajándékozás
       lend: Kölcsönöz
       swap: Cserél
       service: Ajánlat
+      service_w_online_payment: ~
+      service_wo_online_payment: ~
       request: Kérés
       inquiry: Közlemény
       share_for_free: "ingyen fuvar"
@@ -701,7 +729,6 @@ hu:
     removed_user: "Törölt felhasználó"
     payment_fee_info:
       title: ~
-      title_paypal: ~
       stripe: ~
       paypal: ~
       info: ~
@@ -710,10 +737,6 @@ hu:
       body_text: "A PayPal kezelési költséget számol fel minden utaláskor. Ez az összeg a teljes eladási árnak 2% és 5% körüli része és a havi eladás mértékétől és a vevő lakhelyétől (ország) függ. Általában a hazai vásárlásoknak alacsonyabb a díja mint a nemzetközieknek és a nagyobb mértékű havi eladás kedvezményes díjakat eredményez. A pontos díjakat a PayPal fiókjába belépve tekintheti meg %{link_to_paypal}. Minden vásárlás után egy bizonylatot kap a díj pontos mértékéről."
       body_text_accept: ~
       link_to_paypal_text: itt
-    paypal_only_fee_info:
-      title: ~
-      body_text: ~
-      link_to_paypal_text: ~
     stripe_fee_info:
       title: ~
       body_text: ~
@@ -789,6 +812,9 @@ hu:
       canceled_offer: "Ajánlat törlése"
       paid: "Fizetve %{sum}"
       payment_preauthorized: "Fizetés engedélyezve: %{sum}"
+      stripe:
+        held_payment: ~
+        confirmed_request: ~
     new:
       message: Üzenet
       message_to: "Üzenet neki: %{author_name}"
@@ -863,6 +889,8 @@ hu:
           intl: "Várakozás önre, hogy elfogadja a PayPal-os kifizetést"
           unknown_reason: "A kifizetés függőben. További információért lépjen be a PayPal fiókjába."
           verify: "Várakozás önre, hogy hitelesítse a PayPal fiókját"
+      stripe:
+        waiting_confirmation_from_requester: ~
     status_link:
       accept_offer: "Ajánlat elfogadása"
       accept_request: "Ajánlatkérés elfogadása"
@@ -934,6 +962,8 @@ hu:
       has_marked_request_as_canceled: "%{other_party_full_name} törölte a rendelést '%{request}' felkérésre vonatkozóan. Ön továbbra is adhat visszajelzést %{other_party_given_name} számára."
       giving_feedback_is_good_idea: "Mindig jó, ha ad visszajelzést. Ha minden rendben ment, tudathatja másokkal is hogy, %{other_party_given_name} megbízható. Az is hasznos lehet, ha jelzi amennyiben problémája merült fel."
       give_feedback_to: "Adjon értékelést %{other_party_given_name} számára"
+      stripe:
+        has_marked_request_as_confirmed: ~
     transaction_automatically_confirmed:
       subject: "A rendelés automatikusan teljesítve - ne feledjen értékelést írni"
       we_have_marked_request_as_confirmed: "Ezen felkérést '%{request}' teljesítését befejezettnek jelöltük. A felkérés azért lett automatikusan teljesítve mert %{days_passed} nap eltelt mióta a felkérés elfogadásra került."
@@ -1008,6 +1038,8 @@ hu:
       price_per_unit_type: ~
       quantity: ~
       you_have_received_new_payment: ~
+      stripe:
+        you_have_received_new_payment: ~
     payment_receipt_to_payer:
       receipt_of_payment: ~
       you_have_made_new_payment: ~
@@ -1045,6 +1077,8 @@ hu:
       paypal_gateway_fee: ~
       money_will_be_transferred: "Az összeg akkor utalódik %{recipient_name} számára amennyiben a) ön a rendelést teljesítettnek jelölte vagy b) %{automatic_confirmation_days} nap eltelt amióta ön fizetett."
       listing_per_unit_title: ~
+      stripe:
+        you_have_made_new_payment: ~
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name} értékelte Önt itt: %{service_name}"
       you_can_give_feedback_to: "Ön még nem értékelte a következő usert: %{name}"
@@ -1134,6 +1168,8 @@ hu:
       reject_authorization_error: "Hiba történt a PayPal-os utalás elutasításakor. Kérem, próbálja újra!"
     stripe:
       generic_error: ~
+      accept_authorization_error: ~
+      reject_authorization_error: ~
   error_pages:
     back_to_kassi_front_page: Főoldalra
     error_404:
@@ -1528,6 +1564,7 @@ hu:
       maintenance_mode:
         other: "Karbantartási munkálatok miatt %{count} perc múlva a weboldal nem lesz elérhető "
       automatically_logged_out_please_sign_in: "Ön automatikusan kijlépett. Kérjük lépjen be újra."
+      stripe_you_account_balance_is_not_0: ~
     settings:
       account: "Felhasználói fiók"
       notifications: Megjegyzések
@@ -1633,10 +1670,7 @@ hu:
         no_service_fee_you_will_get_paypal_text: "%{paypal_fee_info_link} levonásra fog kerülni."
         no_service_fee_you_will_get_payment_text: ~
         after_service_fee_you_will_get_payment_text: ~
-        after_service_fee_you_will_get_paypal_text: "%{service_name} díja (%{sum_with_currency}) és %{paypal_fee_info_link} levonásra fog kerülni."
-        after_service_fee_you_will_get_stripe_text: ~
         payment_fee_info_link_text: ~
-        paypal_fee_info_link_text: "PayPal fizetési folyamat költsége"
         delivery: "Szállítás módja"
         shipping: Szállítás
         shipping_price: "Szállítási költség"
@@ -1950,7 +1984,8 @@ hu:
         other: "A hozzáférés korlátozott a %{service_name}-hez. Az e-mail címe megadásával igazolhatja a csatlakozáshoz való jogosultságát."
       family_name: Családnév
       given_name: Keresztnév
-      i_accept_the: Elfogadom
+      i_accept_the_terms_and_privacy: ~
+      admin_emails_consent: ~
       invalid_invitation_code: "Meghívó kód érvénytelen"
       invitation_code: "Meghívó kód"
       not_required: ", nem szükséges"
@@ -1959,6 +1994,7 @@ hu:
       show_my_name_to_others: "Lássák a valós nevem a %{service_name} oldal felhasználói"
       sign_up: "Új %{service_name} fiók létrehozása"
       terms: "felhasználási feltételek"
+      privacy: ~
       username_is_in_use: "Ez a felhasználónév már foglalt"
       username_is_invalid: "Érvénytelen felhasználónév. Csak betűk, számok és alsó aláhúzás engedélyezett."
       visible_only_to_you: "csak Ön és az adminisztrátor látja"
@@ -2063,6 +2099,7 @@ hu:
       delete_personal_information: "Amennyiben törölné a fiókját, a személyes adatai (név, telefonszám, cím, e-mailcím, profilkép stb.) véglegesen törlődnek. Az összes ön által feladott hirdetés törléslődni fog. A fiókot nem lesz módjában újraaktiválni."
       delete_information_others_involved: "Információ melynek más felhasználók is részesei voltak (társalgások, tranzakciók, értékelések, stb) nem törlődik a fiók törlésekor. De az ön neve már nem lesz feltűntetve ezek megjelenítésekor."
       unfinished_transactions: "Az ön fiókját a folyamatban lévő tranzakciók miatt nem lehet törölni. Kérjük fejezze be tranzakcióit a fiók törlése előtt."
+      only_admin: ~
       new_password: "Új jelszó"
       save: Mentés
       these_fields_are_shown_only_to_you: "A felhasználónév a profilban látható, kivéve ha a nevét adta meg. A többi infomációt csak Ön látja."
@@ -2377,12 +2414,15 @@ hu:
       need_info: ~
       select_country: ~
       legal_name: ~
+      first_name: ~
+      last_name: ~
       country: ~
       birth_date: ~
       ssn_last_4: ~
       personal_id_number: ~
       address_country: ~
       address_state: ~
+      address_province: ~
       address_city: ~
       address_postal_code: ~
       address_line1: ~
@@ -2397,6 +2437,7 @@ hu:
       bank_routing_1: ~
       bank_routing_2: ~
       bank_currency: ~
+      update_also_bank_account: ~
       messages:
         account_number: ~
         routing_number: ~
@@ -2421,6 +2462,7 @@ hu:
     form_pin:
       social_insurance_number: ~
       social_security_number: ~
+      ssn_last_4: ~
       hong_kong_identity_card: ~
       singapore_identity_card: ~
       messages:

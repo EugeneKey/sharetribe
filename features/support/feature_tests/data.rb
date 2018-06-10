@@ -4,9 +4,9 @@ module FeatureTests
 
     def create_marketplace(payment_gateway:)
 
-      marketplace = MarketplaceService::API::Marketplaces.create(
+      marketplace = MarketplaceService.create(
         marketplace_name: "Test marketplace",
-        marketplace_type: "service",
+        marketplace_type: "product",
         marketplace_country: "us",
         marketplace_language: "en",
         payment_process: :preauthorize

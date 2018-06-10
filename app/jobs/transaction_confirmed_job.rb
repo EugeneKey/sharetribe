@@ -13,8 +13,8 @@ class TransactionConfirmedJob < ActiveJob::Base
   def perform(transaction, community)
     MailCarrier.deliver_now(PersonMailer.transaction_confirmed(transaction, community))
 
-    if transaction.payment_gateway == "stripe"
-      payment = StripeService::Store::StripePayment.get(community.id, transaction.id)
+    if transaction.payment_gateway == :stripe
+      payment = StripeService::Store::StripePayment.get(community_id, transaction.id)
       default_available = APP_CONFIG.stripe_payout_delay.to_f.days.from_now
       available_date = (payment[:available_on] || default_available) + 24.hours
       case StripeService::API::Api.wrapper.charges_mode(community.id)

@@ -479,7 +479,7 @@ class ApplicationController < ActionController::Base
   end
 
   def display_branding_info?
-    !params[:controller].starts_with?("admin") && !@current_plan[:features][:whitelabel]
+    !admin_controller? && !(@current_plan && @current_plan[:features][:whitelabel])
   end
   helper_method :display_branding_info?
 
@@ -538,7 +538,7 @@ class ApplicationController < ActionController::Base
   def header_props
     user = Maybe(@current_user).map { |u|
       {
-        unread_count: MarketplaceService::Inbox::Query.notification_count(u.id, @current_community.id),
+        unread_count: InboxService.notification_count(u.id, @current_community.id),
         avatar_url: u.image.present? ? u.image.url(:thumb) : view_context.image_path("profile_image/thumb/missing.png"),
         current_user_name: PersonViewUtils.person_display_name(u, @current_community),
         inbox_path: person_inbox_path(u),
@@ -607,7 +607,7 @@ class ApplicationController < ActionController::Base
   end
 
   def setup_intercom_user
-    if admin_controller?
+    if admin_controller? && !request.xhr?
       AnalyticService::API::Intercom.setup_person(person: @current_user, community: @current_community)
     end
   end

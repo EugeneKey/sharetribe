@@ -160,7 +160,9 @@ class PeopleController < Devise::RegistrationsController
   end
 
   def build_devise_resource_from_person(person_params)
-    person_params.delete(:terms) #remove terms part which confuses Devise
+    #remove terms part which confuses Devise
+    person_params.delete(:terms)
+    person_params.delete(:admin_emails_consent)
 
     # This part is copied from Devise's regstration_controller#create
     build_resource(person_params)
@@ -191,6 +193,11 @@ class PeopleController < Devise::RegistrationsController
       Email.create!(:address => session["devise.facebook_data"]["email"], :send_notifications => true, :person => @person, :confirmed_at => Time.now, community_id: @current_community.id)
 
       @person.set_default_preferences
+
+      # By default no email consent is given
+      @person.preferences["email_from_admins"] = false
+      @person.save
+
       CommunityMembership.create(person: @person, community: @current_community, status: "pending_consent")
     end
 
@@ -277,14 +284,22 @@ class PeopleController < Devise::RegistrationsController
     target_user = Person.find_by!(username: params[:id], community_id: @current_community.id)
 
     has_unfinished = TransactionService::Transaction.has_unfinished_transactions(target_user.id)
-    return redirect_to search_path if has_unfinished
+    only_admin = @current_community.is_person_only_admin(target_user)
+
+    return redirect_to search_path if has_unfinished || only_admin
+
+    stripe_del = StripeService::API::Api.accounts.delete_seller_account(community_id: @current_community.id,
+                                                                        person_id: target_user.id)
+    unless stripe_del[:success]
+      flash[:error] =  t("layouts.notifications.stripe_you_account_balance_is_not_0")
+      return redirect_to search_path
+    end
 
     # Do all delete operations in transaction. Rollback if any of them fails
     ActiveRecord::Base.transaction do
-      UserService::API::Users.delete_user(target_user.id)
-      MarketplaceService::Listing::Command.delete_listings(target_user.id)
-
-      PaypalService::API::Api.accounts.delete(community_id: target_user.community_id, person_id: target_user.id)
+      Person.delete_user(target_user.id)
+      Listing.delete_by_author(target_user.id)
+      PaypalAccount.where(person_id: target_user.id, community_id: target_user.community_id).delete_all
     end
 
     sign_out target_user
@@ -337,6 +352,7 @@ class PeopleController < Devise::RegistrationsController
     initial_params[:person][:community_id] = current_community.id
 
     params = person_create_params(initial_params)
+    admin_emails_consent = params[:admin_emails_consent]
     person = Person.new
 
     email = Email.new(:person => person, :address => params[:email].downcase, :send_notifications => true, community_id: current_community.id)
@@ -353,6 +369,8 @@ class PeopleController < Devise::RegistrationsController
     end
 
     person.set_default_preferences
+    person.preferences["email_from_admins"] = (admin_emails_consent == "on")
+    person.save
 
     [person, email]
   end
@@ -375,6 +393,7 @@ class PeopleController < Devise::RegistrationsController
         :username,
         :test_group_number,
         :community_id,
+        :admin_emails_consent,
     ).permit!
   end
 

@@ -260,6 +260,7 @@ en-NZ:
         search_by_name_email: "Search for a name, email or display name"
         reset_search: "Show all"
         for_search_terms: "for: %{terms}"
+        this_makes_the_user_an_admin: ~
       new_layout:
         new_layout: "New layout"
         description_roadmap_new: "When new layout components are made available for your marketplace, you can choose whether you want to start using the new component or continue using the old one. You can toggle the selection at any point from this page. It's recommended to always be using the new version, as the old components might be phased out at some point. In case a component you're currently using is going to be phased out, you will be contacted in advance."
@@ -283,6 +284,7 @@ en-NZ:
         invalid_facebook_connect_id: "Client id should contain only numbers."
         facebook_connect_secret: "Facebook client secret"
         invalid_facebook_connect_secret: "Client secret should contain only numbers and letters from a to f."
+        enable_facebook_login: ~
         save: "Save settings"
       analytics:
         analytics: Analytics
@@ -290,6 +292,10 @@ en-NZ:
         google_analytics_key_info_text: "Tracking ID of your Google Analytics account."
         google_analytics_key_info_text_with_instructions: "Tracking ID of your Google Analytics account. %{instructions_link}."
         google_analytics_instructions_link_text: "Read more about connecting Google Analytics"
+        sharetribe_analytics: ~
+        sharetribe_analytics_info_text_with_instructions: ~
+        sharetribe_analytics_instructions_link_text: ~
+        end_user_analytics: ~
         save: "Save settings"
       menu_links:
         menu_links: "Menu links"
@@ -311,6 +317,7 @@ en-NZ:
         invalid_post_listing_button_label: "Please provide a valid text for \"Post a new listing\" button"
       transactions:
         export_all_as_csv: "Export all as CSV"
+        processing_export: ~
         transactions: "View transactions"
         headers:
           conversation: "Conversation thread"
@@ -369,6 +376,21 @@ en-NZ:
           other_party: "Other party"
         participants: "Conversation: %{starter} with %{author}"
         profile: "%{author}'s Profile"
+      testimonials:
+        testimonials: ~
+        no_testimonials_found: ~
+        displaying_xx_reviews: ~
+        headers:
+          transaction: ~
+          author: ~
+          receiver: ~
+          status: ~
+          grade: ~
+          note: ~
+        status:
+          waiting: ~
+          skipped: ~
+          published: ~
     custom_fields:
       edit:
         edit_listing_field: "Edit listing field '%{field_name}'"
@@ -642,11 +664,17 @@ en-NZ:
         payments_not_enabled: "Payments are not enabled for your marketplace"
     transaction_types:
       sell: Selling
+      sell_w_online_payment: ~
+      sell_wo_online_payment: ~
       rent: "Renting out"
+      rent_w_online_payment: ~
+      rent_wo_online_payment: ~
       give: "Giving away"
       lend: Lending
       swap: Swapping
       service: Offering
+      service_w_online_payment: ~
+      service_wo_online_payment: ~
       request: Requesting
       inquiry: Announcement
       share_for_free: "Sharing for free"
@@ -706,7 +734,6 @@ en-NZ:
     removed_user: "Removed user"
     payment_fee_info:
       title: "Payment processing fee"
-      title_paypal: "PayPal's processing fee"
       stripe: Stripe
       paypal: PayPal
       info: "Payments in %{service_name} are processed by either Stripe or PayPal. They both charge a fee from each payment."
@@ -717,12 +744,6 @@ en-NZ:
           You can see the exact fees by logging in to your PayPal account and going %{link_to_paypal}. After each purchase you will get a receipt displaying the exact fee.
       body_text_accept: |-
           This transaction is processed by PayPal. PayPal charges a processing fee from each payment. This fee is between 2% and 5% of the total sales price, depending on your monthly sales volume and the country of residence of the buyer. In general, domestic purchases have lower fees than international ones, and higher monthly sales give you a discount on fees.
-          You can see the exact fees by logging in to your PayPal account and going %{link_to_paypal}. After each purchase you will get a receipt displaying the exact fee.
-      link_to_paypal_text: here
-    paypal_only_fee_info:
-      title: "PayPal's payment processing fee"
-      body_text: |-
-          Payments in %{service_name} are processed by PayPal. PayPal charges a processing fee from each payment. This fee is between 2% and 5% of the total sales price, depending on your monthly sales volume and the country of residence of the buyer. In general, domestic purchases have lower fees than international ones, and higher monthly sales give you a discount on fees.
           You can see the exact fees by logging in to your PayPal account and going %{link_to_paypal}. After each purchase you will get a receipt displaying the exact fee.
       link_to_paypal_text: here
     stripe_fee_info:
@@ -800,6 +821,9 @@ en-NZ:
       canceled_offer: "cancelled the offer"
       paid: "paid %{sum}"
       payment_preauthorized: "Payment authorized: %{sum}"
+      stripe:
+        held_payment: ~
+        confirmed_request: ~
     new:
       message: Message
       message_to: "Message to %{author_name}"
@@ -872,6 +896,8 @@ en-NZ:
           intl: "Waiting for you to accept the PayPal payment"
           unknown_reason: "Payment is pending. Log in to your PayPal account to see more details."
           verify: "Waiting for you to verify your PayPal account"
+      stripe:
+        waiting_confirmation_from_requester: ~
     status_link:
       accept_offer: "Accept offer"
       accept_request: "Accept request"
@@ -941,6 +967,8 @@ en-NZ:
       has_marked_request_as_canceled: "%{other_party_full_name} has cancelled the order about '%{request}'. You can still give feedback to %{other_party_given_name}."
       giving_feedback_is_good_idea: "Giving feedback is always a good idea. If everything went well, you should let others know that %{other_party_given_name} can be trusted. If there were any problems, it's good to mention those as well."
       give_feedback_to: "Give feedback to %{other_party_given_name}"
+      stripe:
+        has_marked_request_as_confirmed: ~
     transaction_automatically_confirmed:
       subject: "Order automatically completed - remember to give feedback"
       we_have_marked_request_as_confirmed: "We have marked the order about '%{request}' completed. The order was automatically completed because %{days_passed} days have passed since the request was accepted."
@@ -1015,6 +1043,8 @@ en-NZ:
       price_per_unit_type: "Price per %{unit_type}"
       quantity: "Quantity:"
       you_have_received_new_payment: "You have been paid <b>%{payment_sum}</b> for <b>%{listing_title}</b> by %{payer_full_name}. Here is your receipt."
+      stripe:
+        you_have_received_new_payment: ~
     payment_receipt_to_payer:
       receipt_of_payment: "Receipt of payment"
       you_have_made_new_payment: "You have paid <b>%{payment_sum}</b> for <b>%{listing_title}</b> to %{recipient_full_name}. Here is a receipt of the payment."
@@ -1052,6 +1082,8 @@ en-NZ:
       paypal_gateway_fee: "PayPal's fee:"
       money_will_be_transferred: "The money will be transferred to %{recipient_name} when a) you have marked the request completed or b) %{automatic_confirmation_days} days have passed since you paid."
       listing_per_unit_title: ~
+      stripe:
+        you_have_made_new_payment: ~
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name} has given you feedback in %{service_name}"
       you_can_give_feedback_to: "You haven't yet given feedback to %{name}."
@@ -1139,6 +1171,8 @@ en-NZ:
       reject_authorization_error: "An error occurred while trying to reject preauthorized Paypal payment. Please, try again."
     stripe:
       generic_error: "An error occurred during the payment process. Could not finalize your Stripe payment."
+      accept_authorization_error: ~
+      reject_authorization_error: ~
   error_pages:
     back_to_kassi_front_page: "Back to the front page"
     error_404:
@@ -1533,6 +1567,7 @@ en-NZ:
         one: "The website will be offline for maintenance in %{count} minute"
         other: "The website will be offline for maintenance in %{count} minutes"
       automatically_logged_out_please_sign_in: "You have been automatically logged out. Please log in again."
+      stripe_you_account_balance_is_not_0: ~
     settings:
       account: Account
       notifications: Notifications
@@ -1638,10 +1673,7 @@ en-NZ:
         no_service_fee_you_will_get_paypal_text: "%{paypal_fee_info_link} will be deducted from the price."
         no_service_fee_you_will_get_payment_text: "%{payment_fee_info_link} will be deducted from the price."
         after_service_fee_you_will_get_payment_text: "Once someone makes an order, %{service_name} fee (%{sum_with_currency}) and a %{payment_fee_info_link} will be deducted from the price."
-        after_service_fee_you_will_get_paypal_text: "Once someone makes an order, %{service_name} fee (%{sum_with_currency}) and a %{paypal_fee_info_link} will be deducted from the price."
-        after_service_fee_you_will_get_stripe_text: "Once someone makes an order, %{service_name} fee (%{sum_with_currency}) will be deducted from the price."
         payment_fee_info_link_text: "payment processing fee"
-        paypal_fee_info_link_text: "PayPal's payment processing fee"
         delivery: "Delivery method"
         shipping: Shipping
         shipping_price: "Shipping fee"
@@ -1954,7 +1986,8 @@ en-NZ:
         other: "The access to %{service_name} is restricted. You need an email address that proves that you are entitled to join."
       family_name: "Last name"
       given_name: "First name"
-      i_accept_the: "I accept the"
+      i_accept_the_terms_and_privacy: ~
+      admin_emails_consent: ~
       invalid_invitation_code: "The invitation code is not valid."
       invitation_code: "Invitation code"
       not_required: ", not required"
@@ -1963,6 +1996,7 @@ en-NZ:
       show_my_name_to_others: "Show my real name to other %{service_name} users"
       sign_up: "Create a new %{service_name} account"
       terms: "terms of use"
+      privacy: ~
       username_is_in_use: "This username is already in use."
       username_is_invalid: "Username is invalid. Allowed characters are letters, numbers and underscore."
       visible_only_to_you: "visible only to you and the %{service_name} team"
@@ -2067,6 +2101,7 @@ en-NZ:
       delete_personal_information: "If you delete your account, your personal information (name, phone number, address, email, profile picture, etc.) will be deleted permanently and can't be recovered. All the listings you have created will be removed. You won't be able to reactivate your account."
       delete_information_others_involved: "Information where other members are involved (conversations with other people, transactions you've made, reviews you've given to others, etc) is not removed when you delete your account. However, your name will no longer be displayed next to this information."
       unfinished_transactions: "Your account can't be deleted because you have ongoing transactions. Please complete all transactions before deleting your account."
+      only_admin: ~
       new_password: "New password"
       save: Save
       these_fields_are_shown_only_to_you: "Username is shown in your profile unless you have given your name. Other information is only shown to you."
@@ -2409,12 +2444,15 @@ en-NZ:
       need_info: "We need some information about you to be able to send you money."
       select_country: "Select country..."
       legal_name: "Legal name"
+      first_name: ~
+      last_name: ~
       country: Country
       birth_date: "Birth date"
       ssn_last_4: "SSN Last 4"
       personal_id_number: "Personal ID number"
       address_country: Country
       address_state: State
+      address_province: ~
       address_city: City
       address_postal_code: "Postal code"
       address_line1: "Street address"
@@ -2429,6 +2467,7 @@ en-NZ:
       bank_routing_1: "Bank code"
       bank_routing_2: "Branch code"
       bank_currency: "Bank account currency"
+      update_also_bank_account: ~
       messages:
         account_number: "Account number"
         routing_number: "Routing number"
@@ -2453,6 +2492,7 @@ en-NZ:
     form_pin:
       social_insurance_number: "Social Insurance Number (SIN)"
       social_security_number: "Social Security Number (SSN)"
+      ssn_last_4: ~
       hong_kong_identity_card: "Hong Kong Identity Card Number (HKID)"
       singapore_identity_card: "National Registration Identity Card (NRIC) or Foreign Identification Number (FIN)"
       messages:

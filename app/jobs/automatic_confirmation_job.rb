@@ -13,9 +13,8 @@ class AutomaticConfirmationJob < ActiveJob::Base
 
   def perform(transaction, user, community)
 
-    if MarketplaceService::Transaction::Query.can_transition_to?(transaction.id, :confirmed)
-      MarketplaceService::Transaction::Command.transition_to(transaction.id, :confirmed)
-      # Delayed::Job.enqueue(TransactionAutomaticallyConfirmedJob.new(transaction.id, community.id))
+    if TransactionService::StateMachine.can_transition_to?(transaction.id, :confirmed)
+      TransactionService::StateMachine.transition_to(transaction.id, :confirmed)
       TransactionAutomaticallyConfirmedJob.perform_later(transaction.id, community)# sent to requester
     end
   end

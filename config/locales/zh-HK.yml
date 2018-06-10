@@ -255,6 +255,7 @@ zh-HK:
         search_by_name_email: ~
         reset_search: ~
         for_search_terms: ~
+        this_makes_the_user_an_admin: ~
       new_layout:
         new_layout: ~
         description_roadmap_new: ~
@@ -278,6 +279,7 @@ zh-HK:
         invalid_facebook_connect_id: ~
         facebook_connect_secret: ~
         invalid_facebook_connect_secret: ~
+        enable_facebook_login: ~
         save: 保存設定
       analytics:
         analytics: ~
@@ -285,6 +287,10 @@ zh-HK:
         google_analytics_key_info_text: "追蹤你的Google Analytics帳號。"
         google_analytics_key_info_text_with_instructions: "你的Google Analytics帳號的Tracking ID。%{instructions_link}。"
         google_analytics_instructions_link_text: ~
+        sharetribe_analytics: ~
+        sharetribe_analytics_info_text_with_instructions: ~
+        sharetribe_analytics_instructions_link_text: ~
+        end_user_analytics: ~
         save: 保存設定
       menu_links:
         menu_links: 目錄連結
@@ -306,6 +312,7 @@ zh-HK:
         invalid_post_listing_button_label: ~
       transactions:
         export_all_as_csv: ~
+        processing_export: ~
         transactions: 查閱交易記錄
         headers:
           conversation: 對話
@@ -364,6 +371,21 @@ zh-HK:
           other_party: ~
         participants: ~
         profile: ~
+      testimonials:
+        testimonials: ~
+        no_testimonials_found: ~
+        displaying_xx_reviews: ~
+        headers:
+          transaction: ~
+          author: ~
+          receiver: ~
+          status: ~
+          grade: ~
+          note: ~
+        status:
+          waiting: ~
+          skipped: ~
+          published: ~
     custom_fields:
       edit:
         edit_listing_field: ~
@@ -629,11 +651,17 @@ zh-HK:
         payments_not_enabled: ~
     transaction_types:
       sell: 出售
+      sell_w_online_payment: ~
+      sell_wo_online_payment: ~
       rent: 出租
+      rent_w_online_payment: ~
+      rent_wo_online_payment: ~
       give: 贈送
       lend: 出借
       swap: 交換
       service: 提出交易
+      service_w_online_payment: ~
+      service_wo_online_payment: ~
       request: 請求
       inquiry: 公告
       share_for_free: 免費分享
@@ -693,7 +721,6 @@ zh-HK:
     removed_user: ~
     payment_fee_info:
       title: ~
-      title_paypal: ~
       stripe: ~
       paypal: ~
       info: ~
@@ -701,10 +728,6 @@ zh-HK:
       title: PayPal的款項處理費
       body_text: "PayPal將對每筆付款收取一筆處理費。該費用介乎於總銷售價格的2%到5%之間，取決於你每月的銷售量和買家所在國家。大致上，國內的購買比國際的購買的費用為低，而愈高的每月銷售額則可以獲得折扣。你可以透過登入你的PayPal帳戶，到%{link_to_paypal}來查看詳細費用。在每次購買之後你將得到一張收據以顯示實際的費用。"
       body_text_accept: ~
-      link_to_paypal_text: ~
-    paypal_only_fee_info:
-      title: ~
-      body_text: ~
       link_to_paypal_text: ~
     stripe_fee_info:
       title: ~
@@ -781,6 +804,9 @@ zh-HK:
       canceled_offer: 已取消
       paid: "已支付%{sum}"
       payment_preauthorized: "已授權款項：%{sum}"
+      stripe:
+        held_payment: ~
+        confirmed_request: ~
     new:
       message: 訊息
       message_to: "發送給%{author_name}的訊息"
@@ -853,6 +879,8 @@ zh-HK:
           intl: 正等待你接受PayPal的款項
           unknown_reason: 正等待款項。請登入你的PayPal帳戶查看詳情。
           verify: 正在等待確認你的Paypal帳號
+      stripe:
+        waiting_confirmation_from_requester: ~
     status_link:
       accept_offer: 接受議價
       accept_request: 接受要求
@@ -922,6 +950,8 @@ zh-HK:
       has_marked_request_as_canceled: "%{other_party_full_name}已經把「%{request}」取消。你仍可以向%{other_party_given_name}作出回應。"
       giving_feedback_is_good_idea: "你可以給予回應。你應該讓其他人知道你與%{other_party_given_name}的交易愉快。如果有任何問題，你也可以在評論中提及。"
       give_feedback_to: "向%{other_party_given_name}作出回應"
+      stripe:
+        has_marked_request_as_confirmed: ~
     transaction_automatically_confirmed:
       subject: 交易自動完成——不要忘記給予回應
       we_have_marked_request_as_confirmed: "我們已經把「%{request}」標示作已完成。此交易已自動完成，因為在請求被接受後%{days_passed}天已經過去。"
@@ -996,6 +1026,8 @@ zh-HK:
       price_per_unit_type: ~
       quantity: ~
       you_have_received_new_payment: ~
+      stripe:
+        you_have_received_new_payment: ~
     payment_receipt_to_payer:
       receipt_of_payment: ~
       you_have_made_new_payment: ~
@@ -1033,6 +1065,8 @@ zh-HK:
       paypal_gateway_fee: ~
       money_will_be_transferred: "以下兩種情況發生時，款項將被轉帳至%{recipient_name}： a) 你標記請求為完成後；或 b) 在你付款%{automatic_confirmation_days}天後。"
       listing_per_unit_title: ~
+      stripe:
+        you_have_made_new_payment: ~
     new_testimonial:
       has_given_you_feedback_in_kassi: "%{name}已在%{service_name}對您作出評價。"
       you_can_give_feedback_to: "您還未對%{name}作出評價。"
@@ -1120,6 +1154,8 @@ zh-HK:
       reject_authorization_error: 當拒絕預先授權的PayPal付款時癹生錯誤。請稍後再試。
     stripe:
       generic_error: ~
+      accept_authorization_error: ~
+      reject_authorization_error: ~
   error_pages:
     back_to_kassi_front_page: 返回到主頁
     error_404:
@@ -1513,6 +1549,7 @@ zh-HK:
         zero: 網站即將關閉以進行維護
         other: "網站即將在%{count}內關閉以進行維護"
       automatically_logged_out_please_sign_in: 你已自動登出，請再次登入。
+      stripe_you_account_balance_is_not_0: ~
     settings:
       account: 帳戶
       notifications: 通知
@@ -1618,10 +1655,7 @@ zh-HK:
         no_service_fee_you_will_get_paypal_text: "%{paypal_fee_info_link}會從價格中扣除。"
         no_service_fee_you_will_get_payment_text: ~
         after_service_fee_you_will_get_payment_text: ~
-        after_service_fee_you_will_get_paypal_text: "%{service_name}的費用（%{sum_with_currency}）和%{paypal_fee_info_link}會從價格中扣除。"
-        after_service_fee_you_will_get_stripe_text: ~
         payment_fee_info_link_text: ~
-        paypal_fee_info_link_text: PayPal的款項處理費
         delivery: 配送方式
         shipping: 郵寄
         shipping_price: 運費
@@ -1933,7 +1967,8 @@ zh-HK:
         other: "你已被限制加入%{service_name}。你需要一個有效的電郵地址以加入我們。"
       family_name: 姓
       given_name: 名
-      i_accept_the: 我接受
+      i_accept_the_terms_and_privacy: ~
+      admin_emails_consent: ~
       invalid_invitation_code: 此邀請碼無效。
       invitation_code: 邀請碼
       not_required: 不需要
@@ -1942,6 +1977,7 @@ zh-HK:
       show_my_name_to_others: "向其它%{service_name}用戶顯示我的真實姓名"
       sign_up: "建立一個新的%{service_name}帳戶"
       terms: 使用條款
+      privacy: ~
       username_is_in_use: 此用戶名稱已被使用。
       username_is_invalid: 用戶名稱格式不正確。請使用字母，數字及底線。
       visible_only_to_you: 僅你和管理員可見
@@ -2046,6 +2082,7 @@ zh-HK:
       delete_personal_information: 如果你刪除你的帳號，你的個人信息（姓名，電話號碼，地址，電郵，個人資料圖片等等）都將被永久刪除且不能恢復。所有你發表的訊息將被刪除。你將不能重新啓動你的帳號。
       delete_information_others_involved: 涉及其他會員的訊息（和其他人的對話，你完成的交易，你给其他人的評論等）在你删除賑號後是不能被删除的。但是，你的名字將不會出現在這些訊息中。
       unfinished_transactions: "因你有正在進行中的交易，所以你的賬號不能被删除。 請在删除帳戶前完成所有交易。"
+      only_admin: ~
       new_password: 新密碼
       save: 儲存
       these_fields_are_shown_only_to_you: 除非你已提供姓名，否則用戶名稱將會被顯示在個人檔案頁面中。其他資料只有你才能閱覽。
@@ -2345,12 +2382,15 @@ zh-HK:
       need_info: ~
       select_country: ~
       legal_name: ~
+      first_name: ~
+      last_name: ~
       country: ~
       birth_date: ~
       ssn_last_4: ~
       personal_id_number: ~
       address_country: ~
       address_state: ~
+      address_province: ~
       address_city: ~
       address_postal_code: ~
       address_line1: ~
@@ -2365,6 +2405,7 @@ zh-HK:
       bank_routing_1: ~
       bank_routing_2: ~
       bank_currency: ~
+      update_also_bank_account: ~
       messages:
         account_number: ~
         routing_number: ~
@@ -2389,6 +2430,7 @@ zh-HK:
     form_pin:
       social_insurance_number: ~
       social_security_number: ~
+      ssn_last_4: ~
       hong_kong_identity_card: ~
       singapore_identity_card: ~
       messages:
